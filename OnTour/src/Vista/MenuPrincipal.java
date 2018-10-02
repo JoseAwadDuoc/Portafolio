@@ -135,10 +135,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
     private void MnListarRepresentatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnListarRepresentatesActionPerformed
         // TODO add your handling code here:
-        ListarRepresentantes listRepre = new ListarRepresentantes();
+        ListarApoderado listApod = new ListarApoderado();
         this.setVisible(false);
-        listRepre.setLocationRelativeTo(null);
-        listRepre.setVisible(true);
+        listApod.setLocationRelativeTo(null);
+        listApod.setVisible(true);
     }//GEN-LAST:event_MnListarRepresentatesActionPerformed
 
     private void MnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCerrarSesionActionPerformed

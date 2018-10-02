@@ -180,9 +180,9 @@ return rs;
 }
       
     
-    public String obtener_montopaquete(String nombrepaquete){
+    public String obtener_montopaquete(String descripcion){
         
-      ResultSet rs = this.consulta("Select * from paquete where DESCRIPCION = '"+nombrepaquete+"'");
+      ResultSet rs = this.consulta("Select * from paquete where DESCRIPCION = '"+descripcion+"'");
           String monto=new String();
         try{
             while (rs.next()){
@@ -240,7 +240,7 @@ return rs;
     
     public String agregar_contrato(int idpaquete,int rut,int idcurso,DATE fecha_inicio,int monto_venta,DATE fecha_evento)
     {
-    //ResultSet rs = this.consulta("INSERT INTO \"USUARIO2\".\"CONTRATO\" (IDCONTRATO, IDPAQUETE, RUT_REPRES, IDCURSO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) VALUES (SEQ_IDCONTRATO.nextval, '1', '11111', '2', TO_DATE('2018-10-01 19:01:43', 'YYYY-MM-DD HH24:MI:SS'), '120000', TO_DATE('2018-10-30 19:01:51', 'YYYY-MM-DD HH24:MI:SS'))");
+    ResultSet rs = this.consulta("INSERT INTO USUARIO2.CONTRATO (IDCONTRATO, IDPAQUETE, RUT_REPRES, IDCURSO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) VALUES (SEQ_IDCONTRATO.nextval, '1', '11111', '2', TO_DATE('2018-10-01 19:01:43', 'YYYY-MM-DD HH24:MI:SS'), '120000', TO_DATE('2018-10-30 19:01:51', 'YYYY-MM-DD HH24:MI:SS'))");
           String contrato=new String();
         try{
             while (rs.next()){

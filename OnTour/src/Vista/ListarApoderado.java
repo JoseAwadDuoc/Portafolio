@@ -6,8 +6,8 @@
 package Vista;
 
 import Controlador.Conexion;
-import Controlador.IAutenticacionDAO;
-import Modelo.RepresentanteAgencia;
+import Controlador.IApoderadoDAO;
+import Modelo.Apoderado;
 import java.awt.Dimension;
 import java.sql.SQLException;
 import java.util.List;
@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author jose_
  */
-public class ListarRepresentantes extends javax.swing.JFrame {
+public class ListarApoderado extends javax.swing.JFrame {
     DefaultTableModel modelo;
     /**
      * Creates new form MenuPrincipal
      */
-    public ListarRepresentantes() {
+    public ListarApoderado() {
         this.setMinimumSize(new Dimension(600, 500));
         initComponents();
         
@@ -88,13 +88,13 @@ public class ListarRepresentantes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void actualizarRepresentante(){
+    public void actualizarApoderado(){
         try {
-        List<RepresentanteAgencia> representante;
+        List<Apoderado> apoderado;
         modelo.setRowCount(0);
-        representante = IAutenticacionDAO.listarRepresentantes();
-            for (RepresentanteAgencia representantea : representante) {
-                Object[] obj= IAutenticacionDAO.objetoRepresentanteAgencia(representantea);
+        apoderado = IApoderadoDAO.listarApoderado();
+            for (Apoderado apoderadoa : apoderado) {
+                Object[] obj= IApoderadoDAO.objetoApoderado(apoderadoa);
                 modelo.addRow(obj);
                 this.TbListar.setModel(modelo);
                 
@@ -106,20 +106,22 @@ public class ListarRepresentantes extends javax.swing.JFrame {
     private void BtnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnListarActionPerformed
         // TODO add your handling code here:
         modelo= new DefaultTableModel();
+
         modelo.addColumn("Rut");
+        modelo.addColumn("Contraseña");
         modelo.addColumn("Id Comuna");
-        modelo.addColumn("Id Cargo");
         modelo.addColumn("Nombres");
         modelo.addColumn("Apellido paterno");
         modelo.addColumn("Apellido materno");
         modelo.addColumn("Fecha nacimiento");
-        modelo.addColumn("Dirección");
         modelo.addColumn("Teléfono");
-        modelo.addColumn("Contraseña");
+        modelo.addColumn("Perfil");
+        modelo.addColumn("Dirección");
         TbListar.setModel(modelo);
-        actualizarRepresentante();
+//        actualizarApoderado();
         Conexion con = new Conexion();
-        IAutenticacionDAO iaut = new IAutenticacionDAO();
+        IApoderadoDAO iapo = new IApoderadoDAO();
+        actualizarApoderado();
         //actualizarRepresentante();
     }//GEN-LAST:event_BtnListarActionPerformed
 
@@ -148,21 +150,23 @@ public class ListarRepresentantes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListarRepresentantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarApoderado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListarRepresentantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarApoderado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListarRepresentantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarApoderado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListarRepresentantes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ListarApoderado.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListarRepresentantes().setVisible(true);
+                new ListarApoderado().setVisible(true);
             }
         });
     }
