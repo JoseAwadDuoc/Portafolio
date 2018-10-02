@@ -4,6 +4,7 @@ package Controlador;
 import Modelo.RepresentanteAgencia;
 import Vista.Autenticacion;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -238,13 +239,15 @@ return rs;
     }
   
     
-    public String agregar_contrato(int idpaquete,int rut,int idcurso,DATE fecha_inicio,int monto_venta,DATE fecha_evento)
+    public String agregar_contrato(int idpaquete,int rut,int idcurso,String fecha_inicio,int monto_venta,String fecha_evento)
     {
-    ResultSet rs = this.consulta("INSERT INTO USUARIO2.CONTRATO (IDCONTRATO, IDPAQUETE, RUT_REPRES, IDCURSO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) VALUES (SEQ_IDCONTRATO.nextval, '1', '11111', '2', TO_DATE('2018-10-01 19:01:43', 'YYYY-MM-DD HH24:MI:SS'), '120000', TO_DATE('2018-10-30 19:01:51', 'YYYY-MM-DD HH24:MI:SS'))");
+    ResultSet rs = this.consulta("INSERT INTO USUARIO2.CONTRATO (IDCONTRATO, IDPAQUETE, RUT_REPRES, IDCURSO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) VALUES (SEQ_IDCONTRATO.nextval,"+idpaquete+", "+rut+","+idcurso +", TO_DATE('"+fecha_inicio+"', 'DD-MM-YYYY'),"+monto_venta+", TO_DATE('"+fecha_evento+"', 'DD-MM-YYYY'))");
           String contrato=new String();
         try{
             while (rs.next()){
-            
+                
+                confirmarcambio();
+                
                 System.out.println("Contrato Ingresado Correctamente");
                     }rs.close();
                 
@@ -255,7 +258,84 @@ return rs;
         }
     return contrato;
     }
+    
+    public String eliminar_contrato(int idpaquete)
+    {
+    ResultSet rs = this.consulta("DELETE FROM contrato where idcontrato ="+idpaquete+"");
+          String contrato=new String();
+        try{
+            while (rs.next()){
+                
+                confirmarcambio();
+                
+                System.out.println("Contrato Eliminado Correctamente");
+                    }rs.close();
+                
+        }catch (SQLException e){
+            
+            System.out.println(e.getMessage());
+        
+        }
+    return contrato;
+    }
+    
+    
+    public void confirmarcambio(){
+    ResultSet rs= this.consulta("COMMIT");
+            
+    
+        try {
+            rs.next();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+            
+   }
   
+    
+    
+     public DefaultComboBoxModel obtener_Representantes(){
+        DefaultComboBoxModel listamodelo = new DefaultComboBoxModel();
+        listamodelo.addElement("Seleccione Agente");
+        ResultSet rs = this.consulta("Select CONCAT(NOMBRES,CONCAT(' ',APATERNO)) as nombre_agente from REPRESENTANTE_AGENCIA");
+        
+       
+        try{
+            while (rs.next()){
+            listamodelo.addElement(rs.getString("nombre_agente"));
+            
+                    }rs.close();
+                
+        }catch (SQLException e){
+            
+            System.out.println(e.getMessage());
+        
+        }
+
+  return listamodelo;
+
+}
+    
+    
+    
+    public String obtener_rutRepresentante(String nombreagente){
+        
+      ResultSet rs = this.consulta("Select CONCAT(NOMBRES,CONCAT(' ',APATERNO)) as nombre_agente,rut_representante from REPRESENTANTE_AGENCIA where CONCAT(NOMBRES,CONCAT(' ',APATERNO)) = '"+nombreagente+"'");
+          String rutagente=new String();
+        try{
+            while (rs.next()){
+             rutagente=rs.getString("rut_representante");
+            
+                    }rs.close();
+                
+        }catch (SQLException e){
+            
+            System.out.println(e.getMessage());
+        
+        }
+
+  return rutagente;    
+    }
 }
    
 
