@@ -7,6 +7,8 @@ package Vista;
 
 import Controlador.IAutenticacionDAO;
 import java.awt.event.ItemEvent;
+import java.util.Date;
+import java.util.HashSet;
 
 /**
  *
@@ -23,6 +25,7 @@ public class AgregarContratos extends javax.swing.JFrame {
         initComponents();
             this.ComboPaquete.setModel(IDAO.obtener_Paquete());
             this.ComboColegio.setModel(IDAO.obtener_Colegio());
+            this.comboagente.setModel(IDAO.obtener_Representantes());
                    
            
     }
@@ -39,7 +42,6 @@ public class AgregarContratos extends javax.swing.JFrame {
         LblPaquete = new javax.swing.JLabel();
         ComboPaquete = new javax.swing.JComboBox<>();
         lblagente = new javax.swing.JLabel();
-        txtagente_rut = new javax.swing.JTextField();
         lblcolegio = new javax.swing.JLabel();
         ComboColegio = new javax.swing.JComboBox<>();
         ComboCurso = new javax.swing.JComboBox<>();
@@ -50,6 +52,9 @@ public class AgregarContratos extends javax.swing.JFrame {
         BtnCancelar = new javax.swing.JButton();
         lblmensaje = new javax.swing.JLabel();
         lblMonto = new javax.swing.JLabel();
+        comboagente = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        txtfechaevento = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +90,11 @@ public class AgregarContratos extends javax.swing.JFrame {
         lblmonto.setText("Monto Meta a cumplir:");
 
         btnAgregar.setText("Agregar Contrato");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
 
         BtnBorrarcampos.setText("Borrar Campos");
         BtnBorrarcampos.addActionListener(new java.awt.event.ActionListener() {
@@ -95,9 +105,14 @@ public class AgregarContratos extends javax.swing.JFrame {
 
         BtnCancelar.setText("Cancelar");
 
-        lblmensaje.setText("jLabel2");
+        comboagente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboagente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboagenteItemStateChanged(evt);
+            }
+        });
 
-        lblMonto.setText("jLabel2");
+        jLabel1.setText("Fecha Evento : ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,23 +132,26 @@ public class AgregarContratos extends javax.swing.JFrame {
                             .addComponent(LblPaquete)
                             .addComponent(lblcolegio)
                             .addComponent(lblcurso, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblmonto))))
+                            .addComponent(lblmonto)
+                            .addComponent(jLabel1))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnCancelar))
+                        .addComponent(BtnCancelar)
+                        .addGap(6, 6, 6))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtagente_rut)
                             .addComponent(ComboColegio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ComboCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ComboPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addGap(67, 67, 67))
+                                    .addComponent(ComboPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(comboagente, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtfechaevento, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 6, Short.MAX_VALUE)))))
+                .addGap(61, 61, 61))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -146,10 +164,10 @@ public class AgregarContratos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LblPaquete)
                     .addComponent(ComboPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblagente)
-                    .addComponent(txtagente_rut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboagente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblcolegio)
@@ -158,14 +176,15 @@ public class AgregarContratos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ComboCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblcurso))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lblmonto))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtfechaevento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblmonto)
+                    .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -195,8 +214,10 @@ public class AgregarContratos extends javax.swing.JFrame {
     private void BtnBorrarcamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarcamposActionPerformed
         ComboPaquete.setSelectedIndex(0);
         ComboColegio.setSelectedIndex(0);
-        txtagente_rut.setText(null);
+        comboagente.setSelectedIndex(0);
         ComboCurso.setSelectedIndex(0);
+        txtfechaevento.setText(" ");
+        lblmonto.setText(" ");
         
         lblmensaje.setText("Campos Reseteados correctamente");
 
@@ -212,12 +233,7 @@ public class AgregarContratos extends javax.swing.JFrame {
         
         lblMonto.setText("$"+combopaq1);
         //=============================//
-      //Obtención Id Paquete (Para uso en el insert)//
-       int idpaquete= Integer.parseInt(IDAO.obtener_idpaquete(combopaq));
-        System.out.println("ID PAquete: "+idpaquete);
-        
-      
-       
+    
         
         
         
@@ -227,24 +243,73 @@ public class AgregarContratos extends javax.swing.JFrame {
 
     private void ComboCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboCursoItemStateChanged
 
- //=============================//
-        //Obtención ID CURSO (Para uso en el insert)//
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboCursoItemStateChanged
+
+    private void comboagenteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboagenteItemStateChanged
+      
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_comboagenteItemStateChanged
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+      
+        try {
+            //Obtención del monto del paquete
+        String montopaq=String.valueOf(ComboPaquete.getSelectedItem());
+        String montopaq1;
+        
+        montopaq1=IDAO.obtener_montopaquete(montopaq);
+        
+        int monto=Integer.parseInt(montopaq1);
+      
+        
+        System.out.println("monto: "+monto);
+        
+        //Obtención rut agente
+            String comboag= String.valueOf(comboagente.getSelectedItem());
+        String comboag1=IDAO.obtener_rutRepresentante(comboag);
+        
+       int rutagente = Integer.parseInt(comboag1);
+        System.out.println("Rut Agente: "+rutagente);
+       
+       //Obtener Fecha contrato
+       java.util.Date fechacontrato = new Date();
+       
+       String fecha_contrato= String.valueOf(fechacontrato);
+       
+        System.out.println("Fecha contrato: "+fecha_contrato);
+        
+    //Obtención ID CURSO (Para uso en el insert)//
         String combocur= String.valueOf(ComboCurso.getSelectedItem());
         String combocur1=IDAO.obtener_idcurso(combocur);
        int idcurso = Integer.parseInt(combocur1);
        
         System.out.println("id Curso : "+idcurso);
-               
-              
         
-       //int idcurso= Integer.parseInt(IDAO.obtener_idcurso(combocurso));
+         //Obtención Id Paquete (Para uso en el insert)//
+       int idpaquete= Integer.parseInt(IDAO.obtener_idpaquete(montopaq));
+        System.out.println("ID PAquete: "+idpaquete);
        
-        //System.out.println("Id CURSO: "+idcurso);
-       //=============================//
+        
+        //Obtener Fecha Evento
+        String fecha_evento=txtfechaevento.getText();
+        
+            System.out.println("Fecha_evento : "+fecha_evento);
+            
+            IDAO.agregar_contrato(idpaquete,rutagente,idcurso,"02/10/2018",monto,fecha_evento);
        
+            
+            lblmensaje.setText("Contrato Agregado Correctamente");
+            
+        } catch (Exception e) {
+            lblmensaje.setText(e.getMessage());
+        }
 
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboCursoItemStateChanged
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -289,12 +354,14 @@ public class AgregarContratos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboPaquete;
     private javax.swing.JLabel LblPaquete;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JComboBox<String> comboagente;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblMonto;
     private javax.swing.JLabel lblagente;
     private javax.swing.JLabel lblcolegio;
     private javax.swing.JLabel lblcurso;
     private javax.swing.JLabel lblmensaje;
     private javax.swing.JLabel lblmonto;
-    private javax.swing.JTextField txtagente_rut;
+    private javax.swing.JTextField txtfechaevento;
     // End of variables declaration//GEN-END:variables
 }

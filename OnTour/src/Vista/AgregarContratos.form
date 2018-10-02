@@ -39,6 +39,7 @@
                           <Component id="lblcolegio" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblcurso" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
                           <Component id="lblmonto" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -46,24 +47,26 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Component id="BtnCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtagente_rut" max="32767" attributes="0"/>
                           <Component id="ComboColegio" alignment="0" max="32767" attributes="0"/>
                           <Component id="ComboCurso" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblMonto" min="-2" pref="151" max="-2" attributes="0"/>
                                   <Component id="ComboPaquete" min="-2" pref="423" max="-2" attributes="0"/>
+                                  <Component id="comboagente" alignment="0" min="-2" pref="423" max="-2" attributes="0"/>
+                                  <Component id="txtfechaevento" alignment="0" min="-2" pref="170" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="67" pref="67" max="-2" attributes="0"/>
+              <EmptySpace min="61" pref="61" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -80,10 +83,10 @@
                   <Component id="LblPaquete" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="ComboPaquete" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblagente" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtagente_rut" alignment="3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="lblagente" min="-2" max="-2" attributes="0"/>
+                  <Component id="comboagente" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -95,17 +98,17 @@
                   <Component id="ComboCurso" min="-2" max="-2" attributes="0"/>
                   <Component id="lblcurso" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="lblmonto" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblMonto" min="-2" pref="28" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtfechaevento" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="105" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblmonto" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblMonto" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="69" max="32767" attributes="0"/>
               <Component id="lblmensaje" min="-2" pref="43" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -146,8 +149,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agente Registrador:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtagente_rut">
     </Component>
     <Component class="javax.swing.JLabel" name="lblcolegio">
       <Properties>
@@ -201,6 +202,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar Contrato"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAgregarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BtnBorrarcampos">
       <Properties>
@@ -216,14 +220,33 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblmensaje">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblMonto">
+    </Component>
+    <Component class="javax.swing.JComboBox" name="comboagente">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel2"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="comboagenteItemStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Fecha Evento : "/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtfechaevento">
     </Component>
   </SubComponents>
 </Form>
