@@ -104,6 +104,11 @@ public class AgregarContratos extends javax.swing.JFrame {
         });
 
         BtnCancelar.setText("Cancelar");
+        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCancelarActionPerformed(evt);
+            }
+        });
 
         comboagente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboagente.addItemListener(new java.awt.event.ItemListener() {
@@ -310,6 +315,14 @@ public class AgregarContratos extends javax.swing.JFrame {
 
 // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        ConsultaContratos ConsultContr = new ConsultaContratos();
+        ConsultContr.setLocationRelativeTo(null);
+        ConsultContr.setVisible(true);
+    }//GEN-LAST:event_BtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
