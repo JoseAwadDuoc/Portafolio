@@ -7,21 +7,23 @@ package Vista;
 
 import Controlador.IAutenticacionDAO;
 import Modelo.RepresentanteAgencia;
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author jose_
  */
-public class MenuPrincipal extends javax.swing.JFrame {
+public class MenuDueno extends javax.swing.JFrame {
 
     /**
-     * Creates new form MenuPrincipal
+     * Creates new form MenuDueno
      */
-    public MenuPrincipal() {
+    public MenuDueno() {
+        this.setMinimumSize(new Dimension(450, 350));
         initComponents();
         RepresentanteAgencia rp = new RepresentanteAgencia();
-        LblMensajeBienvenido1.setText(IAutenticacionDAO.RP.getNombre());
+        LblMensajeBienvenido1.setText(IAutenticacionDAO.RP.getNombre()); 
     }
 
     /**
@@ -33,45 +35,37 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BtnSeguros = new javax.swing.JButton();
-        BtnContratos = new javax.swing.JButton();
         BtnEstadoDeCuenta = new javax.swing.JButton();
+        BtnGenerarReportes = new javax.swing.JButton();
         LblMensajeBienvenido = new javax.swing.JLabel();
         LblMensajeBienvenido1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        MnListarRepresentates = new javax.swing.JMenuItem();
         MnCerrarSesion = new javax.swing.JMenuItem();
         MnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        BtnSeguros.setText("Gestionar Seguros");
-
-        BtnContratos.setText("Administrar Contratos");
-        BtnContratos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnContratosActionPerformed(evt);
-            }
-        });
+        getContentPane().setLayout(null);
 
         BtnEstadoDeCuenta.setText("Consulta Estado de Cuenta");
+        getContentPane().add(BtnEstadoDeCuenta);
+        BtnEstadoDeCuenta.setBounds(12, 75, 400, 62);
+
+        BtnGenerarReportes.setText("Generar Reporte de Avance");
+        getContentPane().add(BtnGenerarReportes);
+        BtnGenerarReportes.setBounds(12, 144, 400, 62);
 
         LblMensajeBienvenido.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         LblMensajeBienvenido.setText("HOLA!!");
+        getContentPane().add(LblMensajeBienvenido);
+        LblMensajeBienvenido.setBounds(12, 13, 139, 44);
 
         LblMensajeBienvenido1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        LblMensajeBienvenido1.setText("----");
+        LblMensajeBienvenido1.setText("--------------");
+        getContentPane().add(LblMensajeBienvenido1);
+        LblMensajeBienvenido1.setBounds(158, 13, 227, 44);
 
         jMenu1.setText("Opciones");
-
-        MnListarRepresentates.setText("Listar Representantes");
-        MnListarRepresentates.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnListarRepresentatesActionPerformed(evt);
-            }
-        });
-        jMenu1.add(MnListarRepresentates);
 
         MnCerrarSesion.setText("Cerrar Sesión");
         MnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -93,53 +87,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         setJMenuBar(jMenuBar1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(BtnSeguros)
-                        .addGap(27, 27, 27)
-                        .addComponent(BtnContratos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(BtnEstadoDeCuenta))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(LblMensajeBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LblMensajeBienvenido1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblMensajeBienvenido)
-                    .addComponent(LblMensajeBienvenido1))
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnSeguros)
-                    .addComponent(BtnContratos))
-                .addGap(18, 18, 18)
-                .addComponent(BtnEstadoDeCuenta)
-                .addGap(71, 71, 71))
-        );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void MnListarRepresentatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnListarRepresentatesActionPerformed
-        // TODO add your handling code here:
-        ListarRepresentantes listRepre = new ListarRepresentantes();
-        this.setVisible(false);
-        listRepre.setLocationRelativeTo(null);
-        listRepre.setVisible(true);
-    }//GEN-LAST:event_MnListarRepresentatesActionPerformed
 
     private void MnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCerrarSesionActionPerformed
         // TODO add your handling code here:
@@ -151,7 +100,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
             Autenti.setLocationRelativeTo(null);
             Autenti.setVisible(true);
         }else{
-            
+
         }
     }//GEN-LAST:event_MnCerrarSesionActionPerformed
 
@@ -162,14 +111,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_MnSalirActionPerformed
-
-    private void BtnContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnContratosActionPerformed
-        // TODO add your handling code here:
-        ConsultaContratos ConsultContr = new ConsultaContratos();
-        this.setVisible(false);
-        ConsultContr.setLocationRelativeTo(null);
-        ConsultContr.setVisible(true);
-    }//GEN-LAST:event_BtnContratosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,32 +129,30 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuDueno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuDueno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuDueno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MenuDueno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuPrincipal().setVisible(true);
+                new MenuDueno().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnContratos;
     private javax.swing.JButton BtnEstadoDeCuenta;
-    private javax.swing.JButton BtnSeguros;
+    private javax.swing.JButton BtnGenerarReportes;
     private javax.swing.JLabel LblMensajeBienvenido;
     private javax.swing.JLabel LblMensajeBienvenido1;
     private javax.swing.JMenuItem MnCerrarSesion;
-    private javax.swing.JMenuItem MnListarRepresentates;
     private javax.swing.JMenuItem MnSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;

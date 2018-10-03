@@ -336,6 +336,27 @@ return rs;
 
   return rutagente;    
     }
+    
+        public int obtener_perfil(String rutagente){
+        
+      ResultSet rs = this.consulta("select * from representante_agencia where rut_representante = '"+rutagente+"'");
+      
+      //select * from representante_agencia where IDCARGO = ;
+           Integer idcargo =0;
+        try{
+            while (rs.next()){
+             idcargo=rs.getInt("IDCARGO");
+            
+                    }rs.close();
+                
+        }catch (SQLException e){
+            
+            System.out.println(e.getMessage());
+        
+        }
+
+  return idcargo;    
+    }
 }
    
 

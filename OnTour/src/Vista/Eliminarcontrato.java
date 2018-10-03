@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.IAutenticacionDAO;
+import java.awt.Dimension;
 import java.util.HashSet;
 import java.util.Set;
 import javax.swing.JOptionPane;
@@ -21,6 +22,7 @@ private IAutenticacionDAO IDAO= new IAutenticacionDAO();
      * Creates new form Eliminarcontrato
      */
     public Eliminarcontrato() {
+        this.setMinimumSize(new Dimension(460, 250));
         initComponents();
     }
 
@@ -40,8 +42,13 @@ private IAutenticacionDAO IDAO= new IAutenticacionDAO();
         BtnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setText("Ingrese el ID del contrato a eliminar:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(10, 20, 211, 16);
+        getContentPane().add(txtcontratodel);
+        txtcontratodel.setBounds(230, 20, 41, 22);
 
         btneliminar.setBackground(new java.awt.Color(255, 0, 0));
         btneliminar.setText("Eliminar");
@@ -50,6 +57,10 @@ private IAutenticacionDAO IDAO= new IAutenticacionDAO();
                 btneliminarActionPerformed(evt);
             }
         });
+        getContentPane().add(btneliminar);
+        btneliminar.setBounds(280, 20, 130, 50);
+        getContentPane().add(lblmensajeeliminar);
+        lblmensajeeliminar.setBounds(100, 70, 171, 30);
 
         BtnVolver.setText("Volver");
         BtnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -57,44 +68,8 @@ private IAutenticacionDAO IDAO= new IAutenticacionDAO();
                 BtnVolverActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtcontratodel, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btneliminar)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblmensajeeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(BtnVolver))))
-                .addContainerGap(137, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(txtcontratodel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(btneliminar))
-                    .addComponent(lblmensajeeliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BtnVolver)
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        getContentPane().add(BtnVolver);
+        BtnVolver.setBounds(340, 120, 69, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
