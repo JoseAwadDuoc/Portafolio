@@ -18,7 +18,7 @@ public class Autenticacion extends javax.swing.JFrame {
     int cont;
     Conexion con = new Conexion();
     public void activar(){tiempo.start();};
-    public final static int TWO_SECOND=5;
+    public final static int TWO_SECOND=10;
     /**
      * Creates new form Autenticacion
      */
@@ -92,15 +92,26 @@ public class Autenticacion extends javax.swing.JFrame {
         public void actionPerformed(ActionEvent ae) {
             cont++;
             pbBarra.setValue(cont);
+            
             if(cont==101){
-                tiempo.stop();
+                tiempo.stop(); 
+                IAutenticacionDAO IDAO= new IAutenticacionDAO();
+                String rutag= TxtRut.getText();
+                int cargoag1=IDAO.obtener_perfil(rutag);
+                
+             if (cargoag1==2) {                
+                MenuDueno menuDueno = new MenuDueno();
+                menuDueno.setLocationRelativeTo(null);
+                setVisible(false);
+                menuDueno.setVisible(true);
+            }else{    
                 MenuPrincipal menuprincipal = new MenuPrincipal();
                 menuprincipal.setLocationRelativeTo(null);
                 setVisible(false);
                 menuprincipal.setVisible(true);
+            }               
             }
         }
-        
     }
     private void BtnAutenticacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAutenticacionActionPerformed
         // TODO add your handling code here:
@@ -108,15 +119,14 @@ public class Autenticacion extends javax.swing.JFrame {
         String pass= new String (TxtPass.getPassword());
         
         try {
-            IAutenticacionDAO aut = new IAutenticacionDAO();
-            
-            
+            IAutenticacionDAO aut = new IAutenticacionDAO();                        
             if(aut.validarUsuario(rutt, pass)){
                 cont=-1;
                 pbBarra.setValue(0);
                 pbBarra.setStringPainted(true);
                 tiempo=new Timer(TWO_SECOND,new TimerListener());
                 activar();
+                
             }else{
                 JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectas");
                 TxtRut.setText("");

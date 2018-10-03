@@ -7,6 +7,7 @@ package Vista;
 
 import Controlador.IAutenticacionDAO;
 import Modelo.RepresentanteAgencia;
+import java.awt.Dimension;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,9 +20,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipal() {
+        this.setMinimumSize(new Dimension(450, 350));
         initComponents();
         RepresentanteAgencia rp = new RepresentanteAgencia();
         LblMensajeBienvenido1.setText(IAutenticacionDAO.RP.getNombre());
+        
+        
     }
 
     /**
@@ -45,8 +49,11 @@ public class MenuPrincipal extends javax.swing.JFrame {
         MnSalir = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         BtnSeguros.setText("Gestionar Seguros");
+        getContentPane().add(BtnSeguros);
+        BtnSeguros.setBounds(12, 75, 191, 55);
 
         BtnContratos.setText("Administrar Contratos");
         BtnContratos.addActionListener(new java.awt.event.ActionListener() {
@@ -54,18 +61,31 @@ public class MenuPrincipal extends javax.swing.JFrame {
                 BtnContratosActionPerformed(evt);
             }
         });
+        getContentPane().add(BtnContratos);
+        BtnContratos.setBounds(221, 75, 197, 55);
 
         BtnEstadoDeCuenta.setText("Consulta Estado de Cuenta");
+        BtnEstadoDeCuenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnEstadoDeCuentaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(BtnEstadoDeCuenta);
+        BtnEstadoDeCuenta.setBounds(130, 140, 191, 62);
 
         LblMensajeBienvenido.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         LblMensajeBienvenido.setText("HOLA!!");
+        getContentPane().add(LblMensajeBienvenido);
+        LblMensajeBienvenido.setBounds(12, 18, 139, 44);
 
         LblMensajeBienvenido1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        LblMensajeBienvenido1.setText("----");
+        LblMensajeBienvenido1.setText("--------------");
+        getContentPane().add(LblMensajeBienvenido1);
+        LblMensajeBienvenido1.setBounds(158, 18, 227, 44);
 
         jMenu1.setText("Opciones");
 
-        MnListarRepresentates.setText("Listar Representantes");
+        MnListarRepresentates.setText("Listar Apoderados");
         MnListarRepresentates.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnListarRepresentatesActionPerformed(evt);
@@ -92,43 +112,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(BtnSeguros)
-                        .addGap(27, 27, 27)
-                        .addComponent(BtnContratos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addComponent(BtnEstadoDeCuenta))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addComponent(LblMensajeBienvenido, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LblMensajeBienvenido1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(106, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblMensajeBienvenido)
-                    .addComponent(LblMensajeBienvenido1))
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnSeguros)
-                    .addComponent(BtnContratos))
-                .addGap(18, 18, 18)
-                .addComponent(BtnEstadoDeCuenta)
-                .addGap(71, 71, 71))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,6 +153,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ConsultContr.setLocationRelativeTo(null);
         ConsultContr.setVisible(true);
     }//GEN-LAST:event_BtnContratosActionPerformed
+
+    private void BtnEstadoDeCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEstadoDeCuentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnEstadoDeCuentaActionPerformed
 
     /**
      * @param args the command line arguments

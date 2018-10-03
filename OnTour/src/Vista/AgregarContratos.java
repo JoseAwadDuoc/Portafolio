@@ -6,6 +6,7 @@
 package Vista;
 
 import Controlador.IAutenticacionDAO;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.util.Date;
 import java.util.HashSet;
@@ -22,6 +23,7 @@ public class AgregarContratos extends javax.swing.JFrame {
      * Creates new form AgregarContratos
      */
     public AgregarContratos() {
+        this.setMinimumSize(new Dimension(468, 550));
         initComponents();
             this.ComboPaquete.setModel(IDAO.obtener_Paquete());
             this.ComboColegio.setModel(IDAO.obtener_Colegio());
@@ -55,10 +57,14 @@ public class AgregarContratos extends javax.swing.JFrame {
         comboagente = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         txtfechaevento = new javax.swing.JTextField();
+        LblTituloAgregarContrato = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         LblPaquete.setText("Seleccionar Paquete Turistico:");
+        getContentPane().add(LblPaquete);
+        LblPaquete.setBounds(43, 141, 174, 16);
 
         ComboPaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboPaquete.addItemListener(new java.awt.event.ItemListener() {
@@ -66,10 +72,16 @@ public class AgregarContratos extends javax.swing.JFrame {
                 ComboPaqueteItemStateChanged(evt);
             }
         });
+        getContentPane().add(ComboPaquete);
+        ComboPaquete.setBounds(224, 138, 186, 22);
 
         lblagente.setText("Agente Registrador:");
+        getContentPane().add(lblagente);
+        lblagente.setBounds(43, 173, 115, 16);
 
         lblcolegio.setText("Seleccione Colegio:");
+        getContentPane().add(lblcolegio);
+        lblcolegio.setBounds(43, 202, 112, 16);
 
         ComboColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboColegio.addItemListener(new java.awt.event.ItemListener() {
@@ -77,6 +89,8 @@ public class AgregarContratos extends javax.swing.JFrame {
                 ComboColegioItemStateChanged(evt);
             }
         });
+        getContentPane().add(ComboColegio);
+        ComboColegio.setBounds(224, 202, 186, 22);
 
         ComboCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Curso Asociado" }));
         ComboCurso.addItemListener(new java.awt.event.ItemListener() {
@@ -84,10 +98,16 @@ public class AgregarContratos extends javax.swing.JFrame {
                 ComboCursoItemStateChanged(evt);
             }
         });
+        getContentPane().add(ComboCurso);
+        ComboCurso.setBounds(224, 231, 186, 22);
 
         lblcurso.setText("Seleccione Curso:");
+        getContentPane().add(lblcurso);
+        lblcurso.setBounds(43, 231, 122, 16);
 
         lblmonto.setText("Monto Meta a cumplir:");
+        getContentPane().add(lblmonto);
+        lblmonto.setBounds(43, 300, 129, 16);
 
         btnAgregar.setText("Agregar Contrato");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +115,8 @@ public class AgregarContratos extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAgregar);
+        btnAgregar.setBounds(50, 360, 131, 25);
 
         BtnBorrarcampos.setText("Borrar Campos");
         BtnBorrarcampos.addActionListener(new java.awt.event.ActionListener() {
@@ -102,6 +124,8 @@ public class AgregarContratos extends javax.swing.JFrame {
                 BtnBorrarcamposActionPerformed(evt);
             }
         });
+        getContentPane().add(BtnBorrarcampos);
+        BtnBorrarcampos.setBounds(200, 360, 119, 25);
 
         BtnCancelar.setText("Cancelar");
         BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -109,6 +133,12 @@ public class AgregarContratos extends javax.swing.JFrame {
                 BtnCancelarActionPerformed(evt);
             }
         });
+        getContentPane().add(BtnCancelar);
+        BtnCancelar.setBounds(330, 360, 83, 25);
+        getContentPane().add(lblmensaje);
+        lblmensaje.setBounds(200, 390, 170, 30);
+        getContentPane().add(lblMonto);
+        lblMonto.setBounds(230, 300, 151, 28);
 
         comboagente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         comboagente.addItemListener(new java.awt.event.ItemListener() {
@@ -116,88 +146,19 @@ public class AgregarContratos extends javax.swing.JFrame {
                 comboagenteItemStateChanged(evt);
             }
         });
+        getContentPane().add(comboagente);
+        comboagente.setBounds(224, 167, 186, 22);
 
         jLabel1.setText("Fecha Evento : ");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(43, 271, 89, 16);
+        getContentPane().add(txtfechaevento);
+        txtfechaevento.setBounds(224, 271, 170, 22);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(btnAgregar)
-                        .addGap(18, 18, 18)
-                        .addComponent(BtnBorrarcampos))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblagente)
-                            .addComponent(LblPaquete)
-                            .addComponent(lblcolegio)
-                            .addComponent(lblcurso, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblmonto)
-                            .addComponent(jLabel1))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BtnCancelar)
-                        .addGap(6, 6, 6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ComboColegio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ComboCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ComboPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboagente, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtfechaevento, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 6, Short.MAX_VALUE)))))
-                .addGap(61, 61, 61))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(204, 204, 204))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LblPaquete)
-                    .addComponent(ComboPaquete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblagente)
-                    .addComponent(comboagente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblcolegio)
-                    .addComponent(ComboColegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ComboCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblcurso))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(txtfechaevento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblmonto)
-                    .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(106, 106, 106)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregar)
-                    .addComponent(BtnBorrarcampos)
-                    .addComponent(BtnCancelar))
-                .addGap(26, 26, 26))
-        );
+        LblTituloAgregarContrato.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblTituloAgregarContrato.setText("Agregar Contrato:");
+        getContentPane().add(LblTituloAgregarContrato);
+        LblTituloAgregarContrato.setBounds(52, 23, 163, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -366,6 +327,7 @@ public class AgregarContratos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboCurso;
     private javax.swing.JComboBox<String> ComboPaquete;
     private javax.swing.JLabel LblPaquete;
+    private javax.swing.JLabel LblTituloAgregarContrato;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JComboBox<String> comboagente;
     private javax.swing.JLabel jLabel1;
