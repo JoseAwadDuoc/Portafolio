@@ -241,7 +241,7 @@ return rs;
     
     public String agregar_contrato(int idpaquete,int rut,int idcurso,String fecha_inicio,int monto_venta,String fecha_evento)
     {
-    ResultSet rs = this.consulta("INSERT INTO USUARIO2.CONTRATO (IDCONTRATO, IDPAQUETE, RUT_REPRES, IDCURSO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) VALUES (SEQ_IDCONTRATO.nextval,"+idpaquete+", "+rut+","+idcurso +", TO_DATE('"+fecha_inicio+"', 'DD-MM-YYYY'),"+monto_venta+", TO_DATE('"+fecha_evento+"', 'DD-MM-YYYY'))");
+    ResultSet rs = this.consulta("INSERT INTO USUARIO2.CONTRATO (IDCONTRATO, IDPAQUETE, RUT_REPRES, IDCURSO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) VALUES (idContrato.nextval,"+idpaquete+", "+rut+","+idcurso +", TO_DATE('"+fecha_inicio+"', 'DD-MM-YYYY'),"+monto_venta+", TO_DATE('"+fecha_evento+"', 'DD-MM-YYYY'))");
           String contrato=new String();
         try{
             while (rs.next()){
