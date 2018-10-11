@@ -237,6 +237,7 @@ return rs;
 
   return idcurso;    
     }
+    
   
     
     public String agregar_contrato(int idpaquete,int rut,int idcurso,String fecha_inicio,int monto_venta,String fecha_evento)
@@ -357,6 +358,71 @@ return rs;
 
   return idcargo;    
     }
+        
+        
+         public DefaultComboBoxModel obtener_Ciudad(){
+        DefaultComboBoxModel listaCiudad = new DefaultComboBoxModel();
+        listaCiudad.addElement("Seleccione Ciudad");
+        ResultSet rs = this.consulta("SELECT * FROM CIUDAD ORDER BY NOMBRE_CIUDAD ASC");
+        
+       
+        try{
+            while (rs.next()){
+            listaCiudad.addElement(rs.getString("NOMBRE_CIUDAD"));
+            
+                    }rs.close();
+                
+        }catch (SQLException e){
+            
+            System.out.println(e.getMessage());
+        
+        }
+
+  return listaCiudad;
+
+}
+    
+    
+    public DefaultComboBoxModel obtener_comuna(String comuna){
+        DefaultComboBoxModel listapaquete = new DefaultComboBoxModel();
+        listapaquete.addElement("Seleccione Comuna ");
+        ResultSet rs = this.consulta("SELECT * FROM COMUNA co join CIUDAD cu on(co.IDCIUDAD=cu.IDCIUDAD)" + "WHERE co.NOMBRE_COMUNA = '"+comuna+"'");
+          
+        try{
+            while (rs.next()){
+            listapaquete.addElement(rs.getString("IDCOMUNA"));
+            
+                    }rs.close();
+                
+        }catch (SQLException e){
+            
+            System.out.println(e.getMessage());
+        
+        }
+
+  return listapaquete;
+
+}
+
+//    public String obtener_idcomuna(String nombrecomuna){
+//        
+//      ResultSet rs = this.consulta("SELECT * FROM COMUNA where NOMBRE_COMUNA = '"+nombrecomuna+"'");
+//          String idcomuna=new String();
+//        try{
+//            while (rs.next()){
+//             idcomuna=rs.getString("NOMBRE_COMUNA");
+//            
+//                    }rs.close();
+//                
+//        }catch (SQLException e){
+//            
+//            System.out.println(e.getMessage());
+//        
+//        }
+//
+//  return idcomuna;    
+//    }
+    
 }
    
 

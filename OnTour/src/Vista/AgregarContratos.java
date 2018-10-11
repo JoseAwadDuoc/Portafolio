@@ -9,7 +9,6 @@ import Controlador.IAutenticacionDAO;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.util.Date;
-import java.util.HashSet;
 
 /**
  *
@@ -72,6 +71,11 @@ public class AgregarContratos extends javax.swing.JFrame {
                 ComboPaqueteItemStateChanged(evt);
             }
         });
+        ComboPaquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboPaqueteActionPerformed(evt);
+            }
+        });
         getContentPane().add(ComboPaquete);
         ComboPaquete.setBounds(224, 138, 186, 22);
 
@@ -87,6 +91,11 @@ public class AgregarContratos extends javax.swing.JFrame {
         ComboColegio.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ComboColegioItemStateChanged(evt);
+            }
+        });
+        ComboColegio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboColegioActionPerformed(evt);
             }
         });
         getContentPane().add(ComboColegio);
@@ -284,6 +293,14 @@ public class AgregarContratos extends javax.swing.JFrame {
         ConsultContr.setLocationRelativeTo(null);
         ConsultContr.setVisible(true);
     }//GEN-LAST:event_BtnCancelarActionPerformed
+
+    private void ComboPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboPaqueteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboPaqueteActionPerformed
+
+    private void ComboColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboColegioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboColegioActionPerformed
 
     /**
      * @param args the command line arguments

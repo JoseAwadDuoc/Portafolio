@@ -3,11 +3,13 @@ package Controlador;
 
 import Modelo.Apoderado;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -68,6 +70,25 @@ public class IApoderadoDAO {
            }
                 return obj;
     }
+    
+    
+   
 
+        
+    public ResultSet consulta(String sql){
+        Connection con = null;
+        ResultSet rs = null;
+    
+  try {
+            con = Conexion.conectar();
+            PreparedStatement stm= con.prepareStatement(sql);
+            rs = stm.executeQuery();
+  }catch(SQLException e){	
+
+    System.out.println("Error Consulta :"+ e.getMessage());
+}
+  
+return rs;
+}
     
 }
