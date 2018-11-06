@@ -52,11 +52,11 @@ public class ContratoDAO extends DbUtilidades {
         return listapaquete;
     }
 
-    public DefaultComboBoxModel obtenerCurso(String curso) {
+    public DefaultComboBoxModel obtenerCurso(String colegio) {
         DefaultComboBoxModel listapaquete = new DefaultComboBoxModel();
         listapaquete.addElement("Seleccione Curso Asociado");
         ResultSet rs = this.consulta("Select * from CURSO cu join colegio co on(cu.idcolegio=co.idcolegio)"
-                + "WHERE co.nombre_colegio = '" + curso + "'");
+                + "WHERE co.nombre_colegio = '" + colegio + "'");
 
         try {
             while (rs.next()) {

@@ -10,6 +10,7 @@ import Dao.AutenticacionDAO;
 import Dao.RepresentanteAgenciaDAO;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -241,12 +242,19 @@ public class AgregarContratosView extends javax.swing.JFrame {
             int rutagente = Integer.parseInt(comboag1);
             System.out.println("Rut Agente: " + rutagente);
 
-            //Obtener Fecha contrato
-            java.util.Date fechacontrato = new Date();
+            
 
-            String fecha_contrato = String.valueOf(fechacontrato);
-
-            System.out.println("Fecha contrato: " + fecha_contrato);
+           Calendar fcontrato = Calendar.getInstance();
+           
+          int dia = fcontrato.get(Calendar.DATE);
+          int mes = fcontrato.get(Calendar.MONTH);
+          int anio = fcontrato.get(Calendar.YEAR);
+          
+         String fecha_contrato= new String();
+         fecha_contrato= String.valueOf(dia)+"/"+String.valueOf(mes+1)+"/"+String.valueOf(anio);
+         
+            System.out.println(fecha_contrato);
+           
 
             //Obtención ID CURSO (Para uso en el insert)//
             String combocur = String.valueOf(ComboCurso.getSelectedItem());
@@ -263,8 +271,12 @@ public class AgregarContratosView extends javax.swing.JFrame {
             String fecha_evento = txtfechaevento.getText();
 
             System.out.println("Fecha_evento : " + fecha_evento);
+            
+            //Obtener Fecha Del sistema
+            
+            
 
-            contratoDAO.agregarContrato(idpaquete, rutagente, idcurso, "02/10/2018", monto, fecha_evento);
+            contratoDAO.agregarContrato(idpaquete, rutagente, idcurso, fecha_contrato, monto, fecha_evento);
 
             lblmensaje.setText("Contrato Agregado Correctamente");
 

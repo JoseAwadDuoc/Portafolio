@@ -96,14 +96,9 @@
                       <Component id="TxtPassApoderado" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="60" pref="60" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="50" pref="50" max="-2" attributes="0"/>
-                              <Component id="TxtCorreoApoderado" min="-2" pref="140" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="LblCorreoApoderado" min="-2" pref="60" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="LblCorreoApoderado" min="-2" pref="92" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="TxtCorreoApoderado" min="-2" pref="140" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="40" pref="40" max="-2" attributes="0"/>
@@ -179,12 +174,17 @@
                           <Component id="LblPassApoderado" min="-2" max="-2" attributes="0"/>
                           <Component id="TxtPassApoderado" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="TxtCorreoApoderado" min="-2" max="-2" attributes="0"/>
-                          <Component id="LblCorreoApoderado" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                              <Component id="TxtCorreoApoderado" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="LblCorreoApoderado" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
@@ -314,7 +314,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="LblCorreoApoderado">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Correo:"/>
+        <Property name="text" type="java.lang.String" value="Correo Electronico:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="TxtCorreoApoderado">
