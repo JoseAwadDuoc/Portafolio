@@ -14,6 +14,7 @@ import java.util.List;
  * @author jose_
  */
 public class ApoderadoDAO {
+    private DbUtilidades dbutils;
 
     public static Apoderado apo = new Apoderado();
 
@@ -87,4 +88,56 @@ public class ApoderadoDAO {
         return rs;
     }
 
+     public ArrayList ObtenerApoderado(String Rut) {
+
+        ResultSet rs = this.consulta("Select * from Apoderado apo join COMUNA co on (apo.IDCOMUNA=co.IDCOMUNA) JOIN CIUDAD cu on(co.IDCIUDAD=cu.IDCIUDAD) where RUT_APODERADO = '" + Rut + "'");
+        ArrayList apoderado= new ArrayList();
+        try {
+            while (rs.next()) {
+                 apoderado.add(rs.getString("RUT_APODERADO"));
+                 apoderado.add(rs.getString("NOMBRES"));
+                 apoderado.add(rs.getString("APATERNO"));
+                 apoderado.add(rs.getString("AMATERNO"));
+                 apoderado.add(rs.getString("FNACIMIENTO"));
+                 apoderado.add(rs.getString("TELEFONO"));
+                 apoderado.add(rs.getString("PERFIL"));
+                 apoderado.add(rs.getString("DIRECCION"));
+                 apoderado.add(rs.getString("CORREO"));
+                 apoderado.add(rs.getString("PASS_APODERADO"));
+                 apoderado.add(rs.getString("NOMBRE_CIUDAD"));
+                 apoderado.add(rs.getString("NOMBRE_COMUNA"));
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return apoderado;
+    }
+  
+     
+     public String ModificarApoderado(int rut,String nombre,String apaterno,String amaterno,String fnacimiento,int telefono,int idcomuna,String direccion, String password,String email, String perfil) {
+        ResultSet rs =this.consulta("UPDATE APODERADO SET NOMBRES='"+nombre+"',APATERNO='"+apaterno+"',AMATERNO='"+amaterno+"',FNACIMIENTO=TO_DATE('"+fnacimiento +"','DD-MM-YYYY'),TELEFONO="+telefono+",PERFIL='"+perfil+"',IDCOMUNA="+idcomuna+",CORREO='"+email+"',PASS_APODERADO='"+password+"' WHERE RUT_APODERADO="+rut+"");
+        String apoderado = new String();
+        try {
+            while (rs.next()) {
+
+                dbutils.confirmarCambio();
+
+                System.out.println("Apoderado Modificado Correctamente");
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+
+        }
+        
+        
+        
+        return apoderado;
+    }
+    
 }

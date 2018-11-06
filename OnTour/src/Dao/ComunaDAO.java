@@ -15,14 +15,14 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class ComunaDAO extends DbUtilidades {
 
-    public DefaultComboBoxModel obtenerComuna(String comuna) {
+    public DefaultComboBoxModel obtenerComuna(String ciudad) {
         DefaultComboBoxModel listapaquete = new DefaultComboBoxModel();
         listapaquete.addElement("Seleccione Comuna ");
-        ResultSet rs = this.consulta("SELECT * FROM COMUNA co join CIUDAD cu on(co.IDCIUDAD=cu.IDCIUDAD)" + "WHERE co.NOMBRE_COMUNA = '" + comuna + "'");
+        ResultSet rs = this.consulta("SELECT * FROM COMUNA co join CIUDAD cu on(co.IDCIUDAD=cu.IDCIUDAD)" + "WHERE cu.NOMBRE_CIUDAD = '" + ciudad + "'");
 
         try {
             while (rs.next()) {
-                listapaquete.addElement(rs.getString("IDCOMUNA"));
+                listapaquete.addElement(rs.getString("NOMBRE_COMUNA"));
 
             }
             rs.close();
@@ -37,4 +37,22 @@ public class ComunaDAO extends DbUtilidades {
 
     }
 
+    public String obtenerIdComuna(String nombrecomuna) {
+
+        ResultSet rs = this.consulta("Select * from COMUNA where NOMBRE_COMUNA = '" + nombrecomuna + "'");
+       String idcomuna="";
+        try {
+            while (rs.next()) {
+                idcomuna = rs.getString("IDCOMUNA");
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return idcomuna;
+    }
+    
+    
 }
