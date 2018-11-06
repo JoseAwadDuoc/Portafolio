@@ -5,6 +5,7 @@
  */
 package view;
 
+import Dao.ApoderadoDAO;
 import Dao.AutenticacionDAO;
 import Dao.CiudadDAO;
 import Dao.ComunaDAO;
@@ -15,17 +16,18 @@ import java.awt.event.ItemEvent;
  * @author jose_
  */
 public class AgregarApoderadosView extends javax.swing.JFrame {
-    
+
     private AutenticacionDAO autenticacionDAO = new AutenticacionDAO();
-    private ComunaDAO comunaDAO = new ComunaDAO();
+    private ApoderadoDAO apoderadoDAO = new ApoderadoDAO();
     private CiudadDAO ciudadDAO = new CiudadDAO();
-    
+    private ComunaDAO comunaDAO = new ComunaDAO();
+
     /**
      * Creates new form AgregarApoderados
      */
     public AgregarApoderadosView() {
-        initComponents();     
-            this.CmbxCiudad.setModel(ciudadDAO.obtenerCiudad());
+        initComponents();
+        this.CmbxCiudad.setModel(ciudadDAO.obtenerCiudad());
 
     }
 
@@ -97,7 +99,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
 
         LblComunaApoderado.setText("Comuna: ");
 
-        CmbxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CmbxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
         CmbxComuna.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbxComunaItemStateChanged(evt);
@@ -120,6 +122,11 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         RbtPerfilNo.setText("No");
 
         BtnResgistrar.setText("Registrar");
+        BtnResgistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnResgistrarActionPerformed(evt);
+            }
+        });
 
         BtnVolver.setText("Volver");
         BtnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -282,11 +289,9 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
 
     private void CmbxCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbxCiudadItemStateChanged
         // TODO add your handling code here:
-
-        if (evt.getStateChange()== ItemEvent.SELECTED) 
-        {
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
             String comuna;
-            comuna= String.valueOf(CmbxCiudad.getSelectedItem());
+            comuna = String.valueOf(CmbxCiudad.getSelectedItem());
             this.CmbxComuna.setModel(comunaDAO.obtenerComuna(comuna));
         }
 
@@ -303,6 +308,36 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         MenuPrin.setLocationRelativeTo(null);
         MenuPrin.setVisible(true);
     }//GEN-LAST:event_BtnVolverActionPerformed
+
+    private void BtnResgistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResgistrarActionPerformed
+        // TODO add your handling code here:
+        try {
+            
+            int rutApod = Integer.parseInt(TxtRutApoderado.getText());
+            System.out.println("asas: " +rutApod);
+            
+            String nombre = TxtNombreApoderado.getText();
+            String ap= TxtAPaternoApoderado.getText();
+            String am=TxtAMaternoApoderado.getText();
+            String fechaNac = TxtFNacimiento.getText();
+            int tel= Integer.parseInt(TxtTelefonoApoderado.getText());
+            
+            String comboCom = String.valueOf(CmbxComuna.getSelectedItem());
+            String comboCom1 = comunaDAO.obtenerIdComuna(comboCom);
+            int idcomuna = Integer.parseInt(comboCom1);
+            
+            String direccion= TxtDireccionApoderado.getText();
+            String contrasena = TxtPassApoderado.getText();
+            String correo = TxtCorreoApoderado.getText();
+
+            // direccion, contraseña, correo , perfil
+            
+            apoderadoDAO.agregarApoderado(rutApod, nombre, ap, am, fechaNac, tel, idcomuna, direccion, contrasena, correo, "SI");
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BtnResgistrarActionPerformed
 
     /**
      * @param args the command line arguments
