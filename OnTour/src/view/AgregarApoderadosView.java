@@ -40,14 +40,15 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         LblRutApoderado = new javax.swing.JLabel();
-        TxtNombreApoderado = new javax.swing.JTextField();
+        TxtRutApoderado = new javax.swing.JTextField();
         LblNombreApoderado = new javax.swing.JLabel();
-        TxtAMaternoApoderado = new javax.swing.JTextField();
+        TxtNombreApoderado = new javax.swing.JTextField();
         LblAPaterno = new javax.swing.JLabel();
         TxtAPaternoApoderado = new javax.swing.JTextField();
         LblAMaterno = new javax.swing.JLabel();
-        TxtRutApoderado = new javax.swing.JTextField();
+        TxtAMaternoApoderado = new javax.swing.JTextField();
         LblFNacimiento = new javax.swing.JLabel();
         TxtFNacimiento = new javax.swing.JTextField();
         LblTelefono = new javax.swing.JLabel();
@@ -116,8 +117,10 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
 
         LblPerfilApoderado.setText("Encargado:");
 
+        buttonGroup1.add(RbtPerfilSi);
         RbtPerfilSi.setText("Sí");
 
+        buttonGroup1.add(RbtPerfilNo);
         RbtPerfilNo.setSelected(true);
         RbtPerfilNo.setText("No");
 
@@ -146,19 +149,19 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
                         .addGap(70, 70, 70)
                         .addComponent(LblRutApoderado)
                         .addGap(11, 11, 11)
-                        .addComponent(TxtNombreApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtRutApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
                         .addComponent(LblNombreApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
-                        .addComponent(TxtAMaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtNombreApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LblAPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(TxtAPaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
-                        .addComponent(TxtRutApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(TxtAMaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(LblAMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(LblFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -221,18 +224,18 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LblRutApoderado)
-                            .addComponent(TxtNombreApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtRutApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LblNombreApoderado)
-                            .addComponent(TxtAMaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(TxtNombreApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LblAPaterno)
                             .addComponent(TxtAPaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtRutApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TxtAMaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LblAMaterno))
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -327,12 +330,25 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
             int idcomuna = Integer.parseInt(comboCom1);
             
             String direccion= TxtDireccionApoderado.getText();
-            String contrasena = TxtPassApoderado.getText();
+            String contrasena = String.valueOf(TxtPassApoderado.getPassword());
             String correo = TxtCorreoApoderado.getText();
+            
+            String perfil= new String();
+            
+            if(RbtPerfilSi.isSelected()){
+            
+                perfil="SI";
+                
+            }else{
+            perfil="NO";
+            }
+            
 
             // direccion, contraseña, correo , perfil
             
-            apoderadoDAO.agregarApoderado(rutApod, nombre, ap, am, fechaNac, tel, idcomuna, direccion, contrasena, correo, "SI");
+            apoderadoDAO.agregarApoderado(rutApod, nombre,ap,am, fechaNac, tel, idcomuna, direccion, contrasena, correo,perfil);
+            
+            
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -403,5 +419,6 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     private javax.swing.JPasswordField TxtPassApoderado;
     private javax.swing.JTextField TxtRutApoderado;
     private javax.swing.JTextField TxtTelefonoApoderado;
+    private javax.swing.ButtonGroup buttonGroup1;
     // End of variables declaration//GEN-END:variables
 }
