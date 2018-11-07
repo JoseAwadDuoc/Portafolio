@@ -89,15 +89,14 @@ public class ApoderadoDAO {
     }
     
         public String agregarApoderado(int rut,String nombres, String aPaterno, String aMaterno,String fechaNacimiento,int telefono,int idComuna ,String direccion, String contrasena,String correo, String perfil) {
-        ResultSet rs = this.consulta("INSERT INTO USUARIO2.APODERADO (Rut_Apoderado,Pass_Apoderado,idComuna,Nombres,Apaterno,Amaterno,Fnacimiento,Telefono,Perfil,Direccion,Correo)"
-                + "VALUES (" + rut + "," + contrasena + "," + idComuna + "," +nombres +"," + aPaterno+","+aMaterno+","+", TO_DATE('" + fechaNacimiento + "', 'DD-MM-YYYY')," + telefono 
-                + idComuna+","+direccion+","+contrasena+","+correo+","+perfil+",)");
+        ResultSet rs = this.consulta("INSERT INTO USUARIO2.APODERADO (Rut_Apoderado,Pass_Apoderado,idComuna,Nombres,Apaterno,Amaterno,Fnacimiento,Telefono,Perfil,Direccion,Correo) VALUES "
+                + "( "+ rut + ",'" + contrasena + "'," + idComuna + ",'" +nombres +"','" + aPaterno+"','"+aMaterno+"',TO_DATE('"+ fechaNacimiento+"','DD-MM-YYYY')," + telefono+",'"+perfil+"','"+direccion+"','"+correo+"')");
         String apoderado = new String();
         try {
             while (rs.next()) {
                 DbUtilidades db = new DbUtilidades();
 
-                db.confirmarCambio();
+                //db.confirmarCambio();
 
                 System.out.println("Apoderado Ingresado Correctamente");
             }

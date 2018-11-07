@@ -11,8 +11,8 @@ public class Conexion {
         
         String pass="USUARIO2";
         String user="USUARIO2";
-        String bd="jdbc:oracle:thin:@localhost:1521:XE";
-//      String bd = "jdbc:oracle:thin:@dbontour.intercity.net:1521:XE";
+        //String bd="jdbc:oracle:thin:@localhost:1521:XE";
+    String bd = "jdbc:oracle:thin:@dbontour.intercity.net:1521:XE";
         
         try{
             con = DriverManager.getConnection(bd,user,pass);
