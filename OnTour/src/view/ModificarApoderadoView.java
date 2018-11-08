@@ -9,9 +9,9 @@ import Dao.ApoderadoDAO;
 import Dao.CiudadDAO;
 import Dao.ComunaDAO;
 import Dao.DbUtilidades;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
-import javafx.scene.control.RadioButton;
 
 /**
  *
@@ -26,6 +26,7 @@ private DbUtilidades dbutils= new DbUtilidades();
      * Creates new form ModificarApoderadoView
      */
     public ModificarApoderadoView() {
+        this.setMinimumSize(new Dimension(478, 600));
         initComponents();
          this.CmbCiudad.setModel(ciudadDAO.obtenerCiudad());
     }
@@ -72,6 +73,7 @@ private DbUtilidades dbutils= new DbUtilidades();
         lblmensaje = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         btnmodificar.setText("Modificar Apoderado");
         btnmodificar.addActionListener(new java.awt.event.ActionListener() {
@@ -79,206 +81,123 @@ private DbUtilidades dbutils= new DbUtilidades();
                 btnmodificarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnmodificar);
+        btnmodificar.setBounds(140, 460, 220, 40);
 
-        btnBuscarxRut.setBackground(new java.awt.Color(102, 0, 153));
+        btnBuscarxRut.setBackground(new java.awt.Color(204, 0, 204));
         btnBuscarxRut.setText("Buscar");
         btnBuscarxRut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarxRutActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBuscarxRut);
+        btnBuscarxRut.setBounds(258, 13, 96, 25);
 
         jButton3.setText("Volver");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(382, 488, 69, 25);
 
         jLabel1.setText("Rut Apoderado:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(23, 17, 90, 16);
+        getContentPane().add(txtRut);
+        txtRut.setBounds(118, 14, 122, 22);
 
         jLabel2.setText("Nombre:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(86, 80, 50, 16);
+        getContentPane().add(txtNombreUsuario);
+        txtNombreUsuario.setBounds(154, 77, 228, 22);
 
         jLabel3.setText("Correo Electronico:");
-
-        txtEmail.setText("jTextField1");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(21, 375, 110, 16);
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(154, 372, 228, 22);
 
         jLabel4.setText("Apellido Paterno:");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(35, 109, 98, 16);
 
         jLabel5.setText("Apellido Materno:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(35, 138, 101, 16);
 
         jLabel6.setText("Telefono:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(76, 199, 55, 14);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(12, 45, 399, 6);
 
         jLabel7.setText("Ciudad:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(87, 228, 44, 16);
 
         jLabel8.setText("Comuna:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(79, 260, 52, 16);
 
         jLabel9.setText("Dirección:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(74, 295, 57, 16);
 
         jLabel10.setText("Contraseña:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(61, 338, 70, 16);
 
         jLabel11.setText("Encargado:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(46, 416, 65, 16);
+        getContentPane().add(txtAppPaterno);
+        txtAppPaterno.setBounds(154, 106, 228, 22);
+        getContentPane().add(txtAppMaterno);
+        txtAppMaterno.setBounds(154, 135, 228, 22);
+        getContentPane().add(txtTelefono);
+        txtTelefono.setBounds(154, 199, 228, 22);
 
-        txtAppPaterno.setText("jTextField2");
-
-        txtAppMaterno.setText("jTextField3");
-
-        txtTelefono.setText("jTextField4");
-
-        CmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
         CmbCiudad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbCiudadItemStateChanged(evt);
             }
         });
+        getContentPane().add(CmbCiudad);
+        CmbCiudad.setBounds(154, 228, 228, 22);
 
-        CmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        txtDireccion.setText("jTextField5");
-
-        txtPassword.setText("jPasswordField1");
+        CmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
+        getContentPane().add(CmbComuna);
+        CmbComuna.setBounds(154, 257, 228, 22);
+        getContentPane().add(txtDireccion);
+        txtDireccion.setBounds(154, 292, 228, 22);
+        getContentPane().add(txtPassword);
+        txtPassword.setBounds(154, 332, 228, 22);
 
         buttonGroup1.add(rbtPerfilSi);
         rbtPerfilSi.setText("Si");
+        getContentPane().add(rbtPerfilSi);
+        rbtPerfilSi.setBounds(154, 412, 39, 25);
 
         buttonGroup1.add(rbtPerfilNo);
         rbtPerfilNo.setText("No");
+        getContentPane().add(rbtPerfilNo);
+        rbtPerfilNo.setBounds(239, 412, 43, 25);
 
         jLabel12.setText("Fecha de Nacimiento:");
-
-        txtFNacimiento.setText("jTextField1");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(12, 167, 124, 16);
+        getContentPane().add(txtFNacimiento);
+        txtFNacimiento.setBounds(154, 164, 228, 22);
 
         lblmensaje.setForeground(new java.awt.Color(255, 51, 0));
         lblmensaje.setText("jLabel13");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(58, 58, 58)
-                .addComponent(btnmodificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(58, 58, 58))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel11)
-                .addGap(18, 18, 18)
-                .addComponent(rbtPerfilSi)
-                .addGap(67, 67, 67)
-                .addComponent(rbtPerfilNo)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(21, 21, 21)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel6)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel8)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel9)
-                                .addComponent(jLabel10)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabel12))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(jLabel5))))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPassword)
-                    .addComponent(txtDireccion)
-                    .addComponent(CmbComuna, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CmbCiudad, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTelefono)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtFNacimiento)
-                    .addComponent(txtAppMaterno)
-                    .addComponent(txtAppPaterno)
-                    .addComponent(txtNombreUsuario))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(90, 90, 90)
-                .addComponent(lblmensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(112, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1)
-                        .addGap(20, 20, 20)
-                        .addComponent(txtRut)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnBuscarxRut, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBuscarxRut)
-                    .addComponent(jLabel1)
-                    .addComponent(txtRut, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtAppPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtAppMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(CmbCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(CmbComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel10)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel11)
-                    .addComponent(rbtPerfilSi)
-                    .addComponent(rbtPerfilNo))
-                .addGap(18, 18, 18)
-                .addComponent(lblmensaje)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnmodificar)
-                    .addComponent(jButton3))
-                .addGap(23, 23, 23))
-        );
+        getContentPane().add(lblmensaje);
+        lblmensaje.setBounds(40, 440, 301, 16);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -402,12 +321,20 @@ private DbUtilidades dbutils= new DbUtilidades();
     
         } catch (Exception e) {
             
-            lblmensaje.setText("No se ha podido Modificar al Apoderado,Contacte a HelpDesk");
+            //lblmensaje.setText("No se ha podido Modificar al Apoderado,Contacte a HelpDesk");
         }
         
         
         
     }//GEN-LAST:event_btnmodificarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MenuApoderadoView MenuApode = new MenuApoderadoView();
+        MenuApode.setLocationRelativeTo(null);
+        MenuApode.setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

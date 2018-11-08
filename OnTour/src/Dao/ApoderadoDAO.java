@@ -96,7 +96,7 @@ public class ApoderadoDAO {
             while (rs.next()) {
                 DbUtilidades db = new DbUtilidades();
 
-                //db.confirmarCambio();
+                db.confirmarCambio();
 
                 System.out.println("Apoderado Ingresado Correctamente");
             }
@@ -142,7 +142,7 @@ public class ApoderadoDAO {
   
      
      public String ModificarApoderado(int rut,String nombre,String apaterno,String amaterno,String fnacimiento,int telefono,int idcomuna,String direccion, String password,String email, String perfil) {
-        ResultSet rs =this.consulta("UPDATE APODERADO SET NOMBRES='"+nombre+"',APATERNO='"+apaterno+"',AMATERNO='"+amaterno+"',FNACIMIENTO=TO_DATE('"+fnacimiento +"','DD-MM-YYYY'),TELEFONO="+telefono+",PERFIL='"+perfil+"',IDCOMUNA="+idcomuna+",CORREO='"+email+"',PASS_APODERADO='"+password+"' WHERE RUT_APODERADO="+rut+"");
+        ResultSet rs =this.consulta("UPDATE APODERADO SET NOMBRES='"+nombre+"',APATERNO='"+apaterno+"',AMATERNO='"+amaterno+"',TO_DATE('"+ fnacimiento+"','DD-MM-YYYY')," +telefono+",PERFIL='"+perfil+"',IDCOMUNA="+idcomuna+",CORREO='"+email+"',PASS_APODERADO='"+password+"' WHERE RUT_APODERADO="+rut+"");
         String apoderado = new String();
         try {
             while (rs.next()) {

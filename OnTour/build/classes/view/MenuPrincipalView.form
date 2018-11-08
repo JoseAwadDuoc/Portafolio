@@ -9,14 +9,6 @@
             <Property name="text" type="java.lang.String" value="Opciones"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="MnListarRepresentates">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Listar Apoderados"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnListarRepresentatesActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="MnCerrarSesion">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cerrar Sesi&#xf3;n"/>
@@ -31,6 +23,34 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnSalirActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="MnAdministradoresCrud">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Otros"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="MnApoderado">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Apoderado"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnApoderadoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MnAlumno">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Alumno"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MnColegio">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Colegio"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MnColegioActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

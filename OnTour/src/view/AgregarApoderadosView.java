@@ -91,7 +91,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
 
         LblCiudad.setText("Ciudad:");
 
-        CmbxCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        CmbxCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
         CmbxCiudad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 CmbxCiudadItemStateChanged(evt);
@@ -110,8 +110,6 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         LblDireccion.setText("Dirección: ");
 
         LblPassApoderado.setText("Contraseña:");
-
-        TxtPassApoderado.setText("jPasswordField1");
 
         LblCorreoApoderado.setText("Correo Electronico:");
 
@@ -307,7 +305,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        ListarApoderadoView MenuPrin = new ListarApoderadoView();
+        MenuApoderadoView MenuPrin = new MenuApoderadoView();
         MenuPrin.setLocationRelativeTo(null);
         MenuPrin.setVisible(true);
     }//GEN-LAST:event_BtnVolverActionPerformed
