@@ -42,9 +42,12 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         LblMensajeBienvenido1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        MnListarRepresentates = new javax.swing.JMenuItem();
         MnCerrarSesion = new javax.swing.JMenuItem();
         MnSalir = new javax.swing.JMenuItem();
+        MnAdministradoresCrud = new javax.swing.JMenu();
+        MnApoderado = new javax.swing.JMenuItem();
+        MnAlumno = new javax.swing.JMenuItem();
+        MnColegio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -83,14 +86,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenu1.setText("Opciones");
 
-        MnListarRepresentates.setText("Listar Apoderados");
-        MnListarRepresentates.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnListarRepresentatesActionPerformed(evt);
-            }
-        });
-        jMenu1.add(MnListarRepresentates);
-
         MnCerrarSesion.setText("Cerrar Sesión");
         MnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,18 +104,33 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        MnAdministradoresCrud.setText("Otros");
+
+        MnApoderado.setText("Apoderado");
+        MnApoderado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnApoderadoActionPerformed(evt);
+            }
+        });
+        MnAdministradoresCrud.add(MnApoderado);
+
+        MnAlumno.setText("Alumno");
+        MnAdministradoresCrud.add(MnAlumno);
+
+        MnColegio.setText("Colegio");
+        MnColegio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnColegioActionPerformed(evt);
+            }
+        });
+        MnAdministradoresCrud.add(MnColegio);
+
+        jMenuBar1.add(MnAdministradoresCrud);
+
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void MnListarRepresentatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnListarRepresentatesActionPerformed
-        // TODO add your handling code here:
-        ListarApoderadoView listApod = new ListarApoderadoView();
-        this.setVisible(false);
-        listApod.setLocationRelativeTo(null);
-        listApod.setVisible(true);
-    }//GEN-LAST:event_MnListarRepresentatesActionPerformed
 
     private void MnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCerrarSesionActionPerformed
         // TODO add your handling code here:
@@ -155,6 +165,22 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private void BtnEstadoDeCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEstadoDeCuentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnEstadoDeCuentaActionPerformed
+
+    private void MnApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnApoderadoActionPerformed
+        // TODO add your handling code here:
+        MenuApoderadoView listApod = new MenuApoderadoView();
+        this.setVisible(false);
+        listApod.setLocationRelativeTo(null);
+        listApod.setVisible(true);
+    }//GEN-LAST:event_MnApoderadoActionPerformed
+
+    private void MnColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnColegioActionPerformed
+        // TODO add your handling code here:
+        MenuColegioView menColegio = new MenuColegioView();
+        this.setVisible(false);
+        menColegio.setLocationRelativeTo(null);
+        menColegio.setVisible(true);
+    }//GEN-LAST:event_MnColegioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,8 +224,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton BtnSeguros;
     private javax.swing.JLabel LblMensajeBienvenido;
     private javax.swing.JLabel LblMensajeBienvenido1;
+    private javax.swing.JMenu MnAdministradoresCrud;
+    private javax.swing.JMenuItem MnAlumno;
+    private javax.swing.JMenuItem MnApoderado;
     private javax.swing.JMenuItem MnCerrarSesion;
-    private javax.swing.JMenuItem MnListarRepresentates;
+    private javax.swing.JMenuItem MnColegio;
     private javax.swing.JMenuItem MnSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
