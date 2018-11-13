@@ -10,6 +10,7 @@ import Dao.CiudadDAO;
 import Dao.ColegioDAO;
 import Dao.ComunaDAO;
 import java.awt.event.ItemEvent;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -27,6 +28,7 @@ public class AgregarColegioView extends javax.swing.JFrame {
      */
     public AgregarColegioView() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.CmbxCiudadColegio.setModel(ciudadDAO.obtenerCiudad());
     }
 

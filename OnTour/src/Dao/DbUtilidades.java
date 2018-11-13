@@ -27,9 +27,25 @@ public class DbUtilidades {
             PreparedStatement stm = con.prepareStatement(sql);
             rs = stm.executeQuery();
         } catch (SQLException e) {
-            System.out.println("Error Consulta :" + e.getMessage());
+            System.out.println("Error consulta :" + e.getMessage());
         }
         return rs;
+    }
+    
+    protected boolean actualizar(String sql) {
+        Connection con = null;
+        try {
+            con = Conexion.conectar();
+            PreparedStatement stm = con.prepareStatement(sql);
+            stm.execute();
+            con.commit();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error actualizar :" + e.getMessage());
+            return false;
+        } finally {
+            this.cerrarRecursos(con);
+        }
     }
     
     protected void cerrarRecursos(Statement st, Connection conn) {
@@ -65,8 +81,4 @@ public class DbUtilidades {
             System.out.println(e.getMessage());
         }
     }
-    
-    
-  
-    
 }

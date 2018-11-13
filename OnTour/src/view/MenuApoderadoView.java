@@ -5,12 +5,9 @@
  */
 package view;
 
-import Dao.Conexion;
-import Dao.ApoderadoDAO;
-import model.Apoderado;
+import controller.ApoderadosController;
 import java.awt.Dimension;
-import java.sql.SQLException;
-import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,22 +16,19 @@ import javax.swing.table.DefaultTableModel;
  */
 public final class MenuApoderadoView extends javax.swing.JFrame {
 
-    private ApoderadoDAO apoderadoDAO= new ApoderadoDAO();
+    private ApoderadosController controller = new ApoderadosController();
+
     DefaultTableModel modelo;
-    
+
     /**
      * Creates new form MenuPrincipalView
      */
     public MenuApoderadoView() {
-        this.setMinimumSize(new Dimension(816,446));
+        this.setMinimumSize(new Dimension(816, 446));
         initComponents();
-//        Conexion con = new Conexion();
-//        con.conectar();
-//        OcultarFormularioRegistrar();
-//        this.jScrollPane1.setVisible(false);
-//        this.CmbxCiudad.setModel(IDAO.obtener_Ciudad());
-//        this.CmbxComuna.setModel(IDAO.obtener_Curso(curso));
-        
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        this.BtnModificarApoderado.setVisible(false);
+
     }
 
     /**
@@ -52,7 +46,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         BtnListar = new javax.swing.JButton();
         BtnVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TbListar = new javax.swing.JTable();
+        tableApoderados = new javax.swing.JTable();
         LblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,7 +88,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         getContentPane().add(BtnVolver);
         BtnVolver.setBounds(410, 30, 79, 40);
 
-        TbListar.setModel(new javax.swing.table.DefaultTableModel(
+        tableApoderados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -105,11 +99,10 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
 
             }
         ));
-        TbListar.setEnabled(false);
-        jScrollPane1.setViewportView(TbListar);
+        jScrollPane1.setViewportView(tableApoderados);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 90, 700, 230);
+        jScrollPane1.setBounds(20, 100, 700, 230);
 
         LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fondo.jpg"))); // NOI18N
         getContentPane().add(LblFondo);
@@ -118,74 +111,28 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void actualizarApoderado(){
-        try {
-        List<Apoderado> apoderado;
-        modelo.setRowCount(0);
-        apoderado = ApoderadoDAO.listarApoderado();
-            for (Apoderado apoderadoa : apoderado) {
-                Object[] obj= ApoderadoDAO.objetoApoderado(apoderadoa);
-                modelo.addRow(obj);
-                this.TbListar.setModel(modelo);
-                
-            }
-        } catch (SQLException e) {
-        }
-    }
-    
-//    public void OcultarFormularioRegistrar(){
-//        this.TxtRutApoderado.setVisible(false);
-//        this.TxtNombreApoderado.setVisible(false);
-//        this.TxtAPaternoApoderado.setVisible(false);
-//        this.TxtAMaternoApoderado.setVisible(false);
-//        this.TxtDireccionApoderado.setVisible(false);
-//        this.TxtFNacimiento.setVisible(false);
-//        this.TxtTelefonoApoderado.setVisible(false);
-//        this.CmbxCiudad.setVisible(false);
-//        this.CmbxComuna.setVisible(false);
-//        this.TxtPassApoderado.setVisible(false);
-//        this.TxtPassApoderado.setVisible(false);
-//        this.TxtCorreoApoderado.setVisible(false);
-//        this.RbtPerfilNo.setVisible(false);
-//        this.RbtPerfilSi.setVisible(false);
-//        
+//    public void actualizarApoderado(){
+//        try {
+//        List<Apoderado> apoderado;
+//        modelo.setRowCount(0);
+//        apoderado = ApoderadoDAO.listarApoderado();
+//            for (Apoderado apoderadoa : apoderado) {
+//                Object[] obj= ApoderadoDAO.objetoApoderado(apoderadoa);
+//                modelo.addRow(obj);
+//                this.TbListar.setModel(modelo);
+//                
+//            }
+//        } catch (SQLException e) {
+//        }
 //    }
-    
-//        public void MostrarFormularioRegistrar(){
-//        this.TxtRutApoderado.setVisible(true);
-//        this.TxtNombreApoderado.setVisible(true);
-//        this.TxtAPaternoApoderado.setVisible(true);
-//        this.TxtAMaternoApoderado.setVisible(true);
-//        this.TxtDireccionApoderado.setVisible(true);
-//        this.TxtFNacimiento.setVisible(true);
-//        this.TxtTelefonoApoderado.setVisible(true);
-//        this.CmbxCiudad.setVisible(true);
-//        this.CmbxComuna.setVisible(true);
-//        this.TxtPassApoderado.setVisible(true);
-//    }
-    
+
     private void BtnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnListarActionPerformed
         // TODO add your handling code here:
-//        OcultarFormularioRegistrar();
         this.jScrollPane1.setVisible(true);
-        modelo= new DefaultTableModel();
 
-        modelo.addColumn("Rut");
-        modelo.addColumn("Contraseña");
-        modelo.addColumn("Id Comuna");
-        modelo.addColumn("Nombres");
-        modelo.addColumn("Apellido paterno");
-        modelo.addColumn("Apellido materno");
-        modelo.addColumn("Fecha nacimiento");
-        modelo.addColumn("Teléfono");
-        modelo.addColumn("Perfil");
-        modelo.addColumn("Dirección");
-        TbListar.setModel(modelo);
-//        actualizarApoderado();
-        Conexion con = new Conexion();
-        ApoderadoDAO iapo = new ApoderadoDAO();
-        actualizarApoderado();
-        //actualizarRepresentante();
+        DefaultTableModel modelotabla = this.controller.consultarApoderados();
+        this.tableApoderados.setModel(modelotabla);
+        this.BtnModificarApoderado.setVisible(true);
     }//GEN-LAST:event_BtnListarActionPerformed
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
@@ -202,16 +149,22 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         this.setVisible(false);
         AgregarApod.setLocationRelativeTo(null);
         AgregarApod.setVisible(true);
-//        this.jScrollPane1.setVisible(false);
-//        MostrarFormularioRegistrar();
+
     }//GEN-LAST:event_BtnRegistrarApoderadoActionPerformed
 
     private void BtnModificarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarApoderadoActionPerformed
         // TODO add your handling code here:
-        ModificarApoderadoView ModificarApod = new ModificarApoderadoView();
-        this.setVisible(false);
-        ModificarApod.setLocationRelativeTo(null);
-        ModificarApod.setVisible(true);
+        int seleccionado = this.tableApoderados.getSelectedRow();
+        if (seleccionado > -1) {
+
+            Object valor = ((DefaultTableModel) this.tableApoderados.getModel()).getValueAt(seleccionado, 0);
+            int rutApoderado = Integer.parseInt(valor.toString());
+
+            ModificarApoderadoView ModificarApod = new ModificarApoderadoView(rutApoderado);
+            this.setVisible(false);
+            ModificarApod.setLocationRelativeTo(null);
+            ModificarApod.setVisible(true);
+        }
     }//GEN-LAST:event_BtnModificarApoderadoActionPerformed
 
     /**
@@ -287,7 +240,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
     private javax.swing.JButton BtnRegistrarApoderado;
     private javax.swing.JButton BtnVolver;
     private javax.swing.JLabel LblFondo;
-    private javax.swing.JTable TbListar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tableApoderados;
     // End of variables declaration//GEN-END:variables
 }

@@ -15,13 +15,14 @@ public class Apoderado {
     private String aMaterno;
     private String fechaNacimiento;
     private int telefono;
-    private String perfil;
+    private boolean encargado;
     private String direccion;
+    private String correo;
 
     public Apoderado() {
     }
 
-    public Apoderado(int rut, String contrasena, int idComuna, String nombres, String aPaterno, String aMaterno, String fechaNacimiento, int telefono, String perfil, String direccion) {
+    public Apoderado(int rut, String contrasena, int idComuna, String nombres, String aPaterno, String aMaterno, String fechaNacimiento, int telefono, boolean encargado, String direccion, String correo) {
         this.rut = rut;
         this.contrasena = contrasena;
         this.idComuna = idComuna;
@@ -30,8 +31,9 @@ public class Apoderado {
         this.aMaterno = aMaterno;
         this.fechaNacimiento = fechaNacimiento;
         this.telefono = telefono;
-        this.perfil = perfil;
+        this.encargado = encargado;
         this.direccion = direccion;
+        this.correo = correo;
     }
 
     public int getRut() {
@@ -98,12 +100,12 @@ public class Apoderado {
         this.telefono = telefono;
     }
 
-    public String isPerfil() {
-        return perfil;
+    public boolean isEncargado() {
+        return encargado;
     }
 
-    public void setPerfil(String perfil) {
-        this.perfil = perfil;
+    public void setEncargado(boolean encargado) {
+        this.encargado = encargado;
     }
 
     public String getDireccion() {
@@ -114,11 +116,21 @@ public class Apoderado {
         this.direccion = direccion;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
     @Override
     public String toString() {
-        return "Apoderado{" + "rut=" + rut + ", contrasena=" + contrasena + ", idComuna=" + idComuna + ", nombres=" + nombres + ", aPaterno=" + aPaterno + ", aMaterno=" + aMaterno + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", perfil=" + perfil + ", direccion=" + direccion + '}';
+        return "Apoderado{" + "rut=" + rut + ", contrasena=" + contrasena + ", idComuna=" + idComuna + ", nombres=" + nombres + ", aPaterno=" + aPaterno + ", aMaterno=" + aMaterno + ", fechaNacimiento=" + fechaNacimiento + ", telefono=" + telefono + ", encargado=" + encargado + ", direccion=" + direccion + ", correo=" + correo + '}';
     }
+
     
     
+
     
 }

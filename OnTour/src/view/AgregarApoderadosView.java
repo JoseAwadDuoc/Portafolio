@@ -9,7 +9,10 @@ import Dao.ApoderadoDAO;
 import Dao.AutenticacionDAO;
 import Dao.CiudadDAO;
 import Dao.ComunaDAO;
+import controller.ApoderadosController;
 import java.awt.event.ItemEvent;
+import javax.swing.ImageIcon;
+import model.Apoderado;
 
 /**
  *
@@ -17,8 +20,7 @@ import java.awt.event.ItemEvent;
  */
 public class AgregarApoderadosView extends javax.swing.JFrame {
 
-    private AutenticacionDAO autenticacionDAO = new AutenticacionDAO();
-    private ApoderadoDAO apoderadoDAO = new ApoderadoDAO();
+    private ApoderadosController controller = new ApoderadosController();
     private CiudadDAO ciudadDAO = new CiudadDAO();
     private ComunaDAO comunaDAO = new ComunaDAO();
 
@@ -27,6 +29,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
      */
     public AgregarApoderadosView() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.CmbxCiudad.setModel(ciudadDAO.obtenerCiudad());
 
     }
@@ -331,23 +334,30 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
             String contrasena = String.valueOf(TxtPassApoderado.getPassword());
             String correo = TxtCorreoApoderado.getText();
             
-            String perfil= new String();
+            boolean encargado= false;
             
             if(RbtPerfilSi.isSelected()){
             
-                perfil="SI";
+                encargado=true;
                 
-            }else{
-            perfil="NO";
             }
             
-
-            // direccion, contraseña, correo , perfil
-            
-            apoderadoDAO.agregarApoderado(rutApod, nombre,ap,am, fechaNac, tel, idcomuna, direccion, contrasena, correo,perfil);
-            
-            
-            
+           Apoderado apoderado = new Apoderado();
+           apoderado.setRut(rutApod);
+           apoderado.setNombres(nombre);
+           apoderado.setContrasena(contrasena);
+           apoderado.setaPaterno(ap);
+           apoderado.setaMaterno(am);
+           apoderado.setFechaNacimiento(fechaNac);
+           apoderado.setTelefono(tel);
+           apoderado.setContrasena(contrasena);
+           apoderado.setCorreo(correo);
+           apoderado.setDireccion(direccion);
+           apoderado.setEncargado(encargado);
+           apoderado.setIdComuna(idcomuna);
+           
+           controller.agregarApoderado(apoderado);
+  
         } catch (Exception e) {
             e.printStackTrace();
         }

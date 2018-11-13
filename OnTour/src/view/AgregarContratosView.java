@@ -1,17 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import Dao.ContratoDAO;
 import Dao.AutenticacionDAO;
 import Dao.RepresentanteAgenciaDAO;
+import Dao.SeguroDAO;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,16 +20,19 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private AutenticacionDAO autenticacionDAO = new AutenticacionDAO();
     private ContratoDAO contratoDAO = new ContratoDAO();
     private RepresentanteAgenciaDAO representanteAgenciaDAO = new RepresentanteAgenciaDAO();
-    
+    private SeguroDAO seguroDAO = new SeguroDAO();
+
     /**
      * Creates new form AgregarContratos
      */
     public AgregarContratosView() {
-        this.setMinimumSize(new Dimension(468, 550));
+        this.setMinimumSize(new Dimension(500, 620));
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.ComboPaquete.setModel(contratoDAO.obtenerPaquete());
         this.ComboColegio.setModel(contratoDAO.obtenerColegio());
         this.comboagente.setModel(representanteAgenciaDAO.obtenerRepresentantes());
+        this.cmbSeguro.setModel(seguroDAO.obtenerSeguro());
     }
 
     /**
@@ -43,52 +44,50 @@ public class AgregarContratosView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblPaquete = new javax.swing.JLabel();
-        ComboPaquete = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
         lblagente = new javax.swing.JLabel();
+        comboagente = new javax.swing.JComboBox<>();
         lblcolegio = new javax.swing.JLabel();
         ComboColegio = new javax.swing.JComboBox<>();
         ComboCurso = new javax.swing.JComboBox<>();
         lblcurso = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        dateChooserFechaEvento = new com.toedter.calendar.JDateChooser();
+        ComboPaquete = new javax.swing.JComboBox<>();
+        LblPaquete = new javax.swing.JLabel();
         lblmonto = new javax.swing.JLabel();
+        cmbSeguro = new javax.swing.JComboBox<>();
+        lblMonto = new javax.swing.JLabel();
+        lblSeguro = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         BtnBorrarcampos = new javax.swing.JButton();
         BtnCancelar = new javax.swing.JButton();
-        lblmensaje = new javax.swing.JLabel();
-        lblMonto = new javax.swing.JLabel();
-        comboagente = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        txtfechaevento = new javax.swing.JTextField();
-        LblTituloAgregarContrato = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("On Tour");
         getContentPane().setLayout(null);
 
-        LblPaquete.setText("Seleccionar Paquete Turistico:");
-        getContentPane().add(LblPaquete);
-        LblPaquete.setBounds(43, 141, 174, 16);
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Registrar Contrato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jPanel1.setLayout(null);
 
-        ComboPaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        ComboPaquete.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ComboPaqueteItemStateChanged(evt);
-            }
-        });
-        ComboPaquete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboPaqueteActionPerformed(evt);
-            }
-        });
-        getContentPane().add(ComboPaquete);
-        ComboPaquete.setBounds(224, 138, 186, 22);
-
+        lblagente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblagente.setText("Agente Registrador:");
-        getContentPane().add(lblagente);
-        lblagente.setBounds(43, 173, 115, 16);
+        jPanel1.add(lblagente);
+        lblagente.setBounds(30, 60, 140, 20);
 
+        comboagente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboagente.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboagenteItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(comboagente);
+        comboagente.setBounds(180, 50, 200, 40);
+
+        lblcolegio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblcolegio.setText("Seleccione Colegio:");
-        getContentPane().add(lblcolegio);
-        lblcolegio.setBounds(43, 202, 112, 16);
+        jPanel1.add(lblcolegio);
+        lblcolegio.setBounds(30, 110, 131, 20);
 
         ComboColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         ComboColegio.addItemListener(new java.awt.event.ItemListener() {
@@ -101,8 +100,8 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 ComboColegioActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboColegio);
-        ComboColegio.setBounds(224, 202, 186, 22);
+        jPanel1.add(ComboColegio);
+        ComboColegio.setBounds(180, 100, 200, 40);
 
         ComboCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Curso Asociado" }));
         ComboCurso.addItemListener(new java.awt.event.ItemListener() {
@@ -110,67 +109,98 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 ComboCursoItemStateChanged(evt);
             }
         });
-        getContentPane().add(ComboCurso);
-        ComboCurso.setBounds(224, 231, 186, 22);
+        jPanel1.add(ComboCurso);
+        ComboCurso.setBounds(180, 150, 200, 40);
 
+        lblcurso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblcurso.setText("Seleccione Curso:");
-        getContentPane().add(lblcurso);
-        lblcurso.setBounds(43, 231, 122, 16);
+        jPanel1.add(lblcurso);
+        lblcurso.setBounds(40, 150, 122, 20);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Fecha Evento : ");
+        jPanel1.add(jLabel1);
+        jLabel1.setBounds(60, 200, 106, 20);
+        jPanel1.add(dateChooserFechaEvento);
+        dateChooserFechaEvento.setBounds(180, 200, 200, 30);
+
+        ComboPaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboPaquete.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboPaqueteItemStateChanged(evt);
+            }
+        });
+        ComboPaquete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboPaqueteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ComboPaquete);
+        ComboPaquete.setBounds(180, 240, 200, 40);
+
+        LblPaquete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        LblPaquete.setText("Paquete Turistico:");
+        jPanel1.add(LblPaquete);
+        LblPaquete.setBounds(40, 240, 125, 20);
+
+        lblmonto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblmonto.setText("Monto Meta a cumplir:");
-        getContentPane().add(lblmonto);
-        lblmonto.setBounds(43, 300, 129, 16);
+        jPanel1.add(lblmonto);
+        lblmonto.setBounds(10, 290, 154, 20);
 
-        btnAgregar.setText("Agregar Contrato");
+        cmbSeguro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbSeguro.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbSeguroItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(cmbSeguro);
+        cmbSeguro.setBounds(180, 320, 200, 40);
+
+        lblMonto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(lblMonto);
+        lblMonto.setBounds(180, 280, 190, 30);
+
+        lblSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblSeguro.setText("Seleccione Seguro:");
+        jPanel1.add(lblSeguro);
+        lblSeguro.setBounds(30, 330, 130, 20);
+
+        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
+        btnAgregar.setText("Guardar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAgregar);
-        btnAgregar.setBounds(50, 360, 131, 25);
+        jPanel1.add(btnAgregar);
+        btnAgregar.setBounds(140, 380, 260, 50);
 
-        BtnBorrarcampos.setText("Borrar Campos");
+        BtnBorrarcampos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BtnBorrarcampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
+        BtnBorrarcampos.setText("Limpiar");
         BtnBorrarcampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBorrarcamposActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnBorrarcampos);
-        BtnBorrarcampos.setBounds(200, 360, 119, 25);
+        jPanel1.add(BtnBorrarcampos);
+        BtnBorrarcampos.setBounds(140, 460, 120, 40);
 
-        BtnCancelar.setText("Cancelar");
+        BtnCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
+        BtnCancelar.setText("Volver");
         BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCancelarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCancelar);
-        BtnCancelar.setBounds(330, 360, 83, 25);
-        getContentPane().add(lblmensaje);
-        lblmensaje.setBounds(200, 390, 170, 30);
-        getContentPane().add(lblMonto);
-        lblMonto.setBounds(230, 300, 151, 28);
+        jPanel1.add(BtnCancelar);
+        BtnCancelar.setBounds(270, 460, 130, 40);
 
-        comboagente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboagente.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                comboagenteItemStateChanged(evt);
-            }
-        });
-        getContentPane().add(comboagente);
-        comboagente.setBounds(224, 167, 186, 22);
-
-        jLabel1.setText("Fecha Evento : ");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(43, 271, 89, 16);
-        getContentPane().add(txtfechaevento);
-        txtfechaevento.setBounds(224, 271, 170, 22);
-
-        LblTituloAgregarContrato.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblTituloAgregarContrato.setText("Agregar Contrato:");
-        getContentPane().add(LblTituloAgregarContrato);
-        LblTituloAgregarContrato.setBounds(52, 23, 163, 22);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(20, 50, 440, 510);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -191,10 +221,8 @@ public class AgregarContratosView extends javax.swing.JFrame {
         ComboColegio.setSelectedIndex(0);
         comboagente.setSelectedIndex(0);
         ComboCurso.setSelectedIndex(0);
-        txtfechaevento.setText(" ");
+        dateChooserFechaEvento.setDate(null);
         lblmonto.setText(" ");
-
-        lblmensaje.setText("Campos Reseteados correctamente");
 
 // TODO add your handling code here:
     }//GEN-LAST:event_BtnBorrarcamposActionPerformed
@@ -223,7 +251,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
     }//GEN-LAST:event_comboagenteItemStateChanged
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
         try {
             //Obtención del monto del paquete
             String montopaq = String.valueOf(ComboPaquete.getSelectedItem());
@@ -242,19 +270,16 @@ public class AgregarContratosView extends javax.swing.JFrame {
             int rutagente = Integer.parseInt(comboag1);
             System.out.println("Rut Agente: " + rutagente);
 
-            
+            Calendar fcontrato = Calendar.getInstance();
 
-           Calendar fcontrato = Calendar.getInstance();
-           
-          int dia = fcontrato.get(Calendar.DATE);
-          int mes = fcontrato.get(Calendar.MONTH);
-          int anio = fcontrato.get(Calendar.YEAR);
-          
-         String fecha_contrato= new String();
-         fecha_contrato= String.valueOf(dia)+"/"+String.valueOf(mes+1)+"/"+String.valueOf(anio);
-         
-            System.out.println(fecha_contrato);
-           
+            int dia = fcontrato.get(Calendar.DATE);
+            int mes = fcontrato.get(Calendar.MONTH);
+            int anio = fcontrato.get(Calendar.YEAR);
+
+            String fecha_contrato = new String();
+            fecha_contrato = String.valueOf(dia) + "/" + String.valueOf(mes + 1) + "/" + String.valueOf(anio);
+
+            System.out.println("Fecha de contrato: " + fecha_contrato);
 
             //Obtención ID CURSO (Para uso en el insert)//
             String combocur = String.valueOf(ComboCurso.getSelectedItem());
@@ -263,26 +288,30 @@ public class AgregarContratosView extends javax.swing.JFrame {
 
             System.out.println("id Curso : " + idcurso);
 
+            String cmbseg = String.valueOf(cmbSeguro.getSelectedItem());
+            String cmbseg1 = seguroDAO.obtenerIdSeguro(cmbseg);
+            int idseguro = Integer.parseInt(cmbseg1);
+            System.out.println("id seguro : " + idseguro);
+
             //Obtención Id Paquete (Para uso en el insert)//
             int idpaquete = Integer.parseInt(contratoDAO.obtenerIdPaquete(montopaq));
-            System.out.println("ID PAquete: " + idpaquete);
+            System.out.println("ID Paquete: " + idpaquete);
 
             //Obtener Fecha Evento
-            String fecha_evento = txtfechaevento.getText();
+            String fecha_evento = formato.format(dateChooserFechaEvento.getDate());
+//            String fecha_evento = dateChooserFechaEvento.getText();
 
             System.out.println("Fecha_evento : " + fecha_evento);
-            
+
             //Obtener Fecha Del sistema
-            
-            
+            contratoDAO.agregarContrato(idpaquete, rutagente, idcurso, idseguro, fecha_contrato, monto, fecha_evento);
 
-            contratoDAO.agregarContrato(idpaquete, rutagente, idcurso, fecha_contrato, monto, fecha_evento);
-
-            lblmensaje.setText("Contrato Agregado Correctamente");
+            JOptionPane.showMessageDialog(this, "Contrato registrado");
+            
 
         } catch (Exception e) {
             e.printStackTrace();
-            lblmensaje.setText(e.getMessage());
+//            lblmensaje.setText(e.getMessage());
         }
 
 // TODO add your handling code here:
@@ -291,7 +320,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        ConsultaContratosView ConsultContr = new ConsultaContratosView();
+        MenuContratosView ConsultContr = new MenuContratosView();
         ConsultContr.setLocationRelativeTo(null);
         ConsultContr.setVisible(true);
     }//GEN-LAST:event_BtnCancelarActionPerformed
@@ -303,6 +332,10 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private void ComboColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboColegioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboColegioActionPerformed
+
+    private void cmbSeguroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSeguroItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbSeguroItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -347,16 +380,17 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> ComboCurso;
     private javax.swing.JComboBox<String> ComboPaquete;
     private javax.swing.JLabel LblPaquete;
-    private javax.swing.JLabel LblTituloAgregarContrato;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JComboBox<String> cmbSeguro;
     private javax.swing.JComboBox<String> comboagente;
+    private com.toedter.calendar.JDateChooser dateChooserFechaEvento;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblMonto;
+    private javax.swing.JLabel lblSeguro;
     private javax.swing.JLabel lblagente;
     private javax.swing.JLabel lblcolegio;
     private javax.swing.JLabel lblcurso;
-    private javax.swing.JLabel lblmensaje;
     private javax.swing.JLabel lblmonto;
-    private javax.swing.JTextField txtfechaevento;
     // End of variables declaration//GEN-END:variables
 }

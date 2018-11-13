@@ -4,164 +4,137 @@ import model.Apoderado;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author jose_
  */
-public class ApoderadoDAO {
-    private DbUtilidades dbutils;
+public class ApoderadoDAO extends DbUtilidades {
 
     public static Apoderado apo = new Apoderado();
 
-    public static List<Apoderado> listarApoderado() throws SQLException {
-        List<Apoderado> listApoderado = null;
-        Connection con = null;
-
+    public Map<String, List> obtenerApoderados() {
+        Map<String, List> map = null;
         try {
 
-            con = Conexion.conectar();
-            Statement st = con.createStatement();
-            String sql = "SELECT * FROM APODERADO";
+            Statement st = Conexion.conectar().createStatement();
+            String sql = "Select * From apoderado where estado = 1";
 
             ResultSet rs = st.executeQuery(sql);
-            listApoderado = new ArrayList();
-            while (rs.next()) {
-                Apoderado apo = new Apoderado();
-                apo.setRut(rs.getInt(1));
-                apo.setContrasena(rs.getString(2));
-                apo.setIdComuna(rs.getInt(3));
-                apo.setNombres(rs.getString(4));;
-                apo.setaPaterno(rs.getString(5));
-                apo.setaMaterno(rs.getString(6));
-                apo.setFechaNacimiento(rs.getString(7));
-                apo.setTelefono(rs.getInt(8));
-                apo.setPerfil(rs.getString(9));
-                apo.setDireccion(rs.getString(10));
 
-                listApoderado.add(apo);
+            ResultSetMetaData rsMD = rs.getMetaData();
+            int numerocolumnas = rsMD.getColumnCount();
+
+            List<Object> columnLabels = new ArrayList<>();
+
+            for (int x = 1; x <= numerocolumnas; x++) {
+                columnLabels.add(rsMD.getColumnLabel(x));
             }
+
+            List<Object> columnValues = new ArrayList<>();
+
+            while (rs.next()) {
+                Object[] fila = new Object[numerocolumnas];
+                for (int i = 0; i < numerocolumnas; i++) {
+                    fila[i] = rs.getObject(i + 1);
+                }
+                columnValues.add(fila);
+            }
+
+            rs.close();
+
+            map = new HashMap<>();
+            map.put("columnLabels", columnLabels);
+            map.put("columnValues", columnValues);
+
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("No se ha encontrado ningún contrato activo.");
         }
-
-        return listApoderado;
+        return map;
     }
 
-    public static Object[] objetoApoderado(Apoderado apoderado) {
+    public boolean agregarApoderado(Apoderado apoderado){
+        String perfil = apoderado.isEncargado() ? "SI" : "NO";
+        int rut = apoderado.getRut();
+        String nombres = apoderado.getNombres();
+        String aPaterno = apoderado.getaPaterno();
+        String aMaterno = apoderado.getaMaterno();
+        String fechaNacimiento = apoderado.getFechaNacimiento();
+        int telefono = apoderado.getTelefono();
+        int idComuna = apoderado.getIdComuna();
+        String direccion = apoderado.getDireccion();
+        String contrasena = apoderado.getContrasena();
+        String correo = apoderado.getCorreo();
 
-        Object[] obj = new Object[10];
-        try {
-            obj[0] = apoderado.getRut();
-            obj[1] = apoderado.getContrasena();
-            obj[2] = apoderado.getIdComuna();
-            obj[3] = apoderado.getNombres();
-            obj[4] = apoderado.getaPaterno();
-            obj[5] = apoderado.getaMaterno();
-            obj[6] = apoderado.getFechaNacimiento();
-            obj[7] = apoderado.getTelefono();
-            obj[8] = apoderado.isPerfil();
-            obj[9] = apoderado.getDireccion();
-        } catch (Exception e) {
-
-        }
-        return obj;
+        return this.actualizar("INSERT INTO APODERADO (Rut_Apoderado,Pass_Apoderado,idComuna,Nombres,Apaterno,Amaterno,Fnacimiento,Telefono,Perfil,Direccion,Correo) "
+                + "VALUES "
+                + "( " + rut + 
+                ",'" + contrasena + 
+                "'," + idComuna + 
+                ",'" + nombres + 
+                "','" + aPaterno + 
+                "','" + aMaterno + 
+                "',TO_DATE('" + fechaNacimiento + "','DD-MM-YYYY')," + telefono + 
+                ",'" + perfil + 
+                "','" + direccion + 
+                "','" + correo + "')");
+ 
     }
 
-    public ResultSet consulta(String sql) {
-        Connection con = null;
-        ResultSet rs = null;
-
-        try {
-            con = Conexion.conectar();
-            PreparedStatement stm = con.prepareStatement(sql);
-            rs = stm.executeQuery();
-        } catch (SQLException e) {
-
-            System.out.println("Error Consulta :" + e.getMessage());
-        }
-
-        return rs;
-    }
-    
-        public String agregarApoderado(int rut,String nombres, String aPaterno, String aMaterno,String fechaNacimiento,int telefono,int idComuna ,String direccion, String contrasena,String correo, String perfil) {
-        ResultSet rs = this.consulta("INSERT INTO USUARIO2.APODERADO (Rut_Apoderado,Pass_Apoderado,idComuna,Nombres,Apaterno,Amaterno,Fnacimiento,Telefono,Perfil,Direccion,Correo) VALUES "
-                + "( "+ rut + ",'" + contrasena + "'," + idComuna + ",'" +nombres +"','" + aPaterno+"','"+aMaterno+"',TO_DATE('"+ fechaNacimiento+"','DD-MM-YYYY')," + telefono+",'"+perfil+"','"+direccion+"','"+correo+"')");
-        String apoderado = new String();
-        try {
-            while (rs.next()) {
-                DbUtilidades db = new DbUtilidades();
-
-                db.confirmarCambio();
-
-                System.out.println("Apoderado Ingresado Correctamente");
-            }
-            rs.close();
-
-        } catch (SQLException e) {
-
-            System.out.println(e.getMessage());
-
-        }
-        return apoderado;
-    }
-
+    public Apoderado buscarApoderadoPorRut(int rut) {
         
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-     public ArrayList ObtenerApoderado(String Rut) {
-
-        ResultSet rs = this.consulta("Select * from Apoderado apo join COMUNA co on (apo.IDCOMUNA=co.IDCOMUNA) JOIN CIUDAD cu on(co.IDCIUDAD=cu.IDCIUDAD) where RUT_APODERADO = '" + Rut + "'");
-        ArrayList apoderado= new ArrayList();
+        ResultSet rs = this.consulta("Select * from Apoderado apo join COMUNA co on (apo.IDCOMUNA=co.IDCOMUNA) JOIN CIUDAD cu on(co.IDCIUDAD=cu.IDCIUDAD) where RUT_APODERADO = '" + rut + "'");
+        Apoderado apoderado = new Apoderado();
         try {
             while (rs.next()) {
-                 apoderado.add(rs.getString("RUT_APODERADO"));
-                 apoderado.add(rs.getString("NOMBRES"));
-                 apoderado.add(rs.getString("APATERNO"));
-                 apoderado.add(rs.getString("AMATERNO"));
-                 apoderado.add(rs.getString("FNACIMIENTO"));
-                 apoderado.add(rs.getString("TELEFONO"));
-                 apoderado.add(rs.getString("PERFIL"));
-                 apoderado.add(rs.getString("DIRECCION"));
-                 apoderado.add(rs.getString("CORREO"));
-                 apoderado.add(rs.getString("PASS_APODERADO"));
-                 apoderado.add(rs.getString("NOMBRE_CIUDAD"));
-                 apoderado.add(rs.getString("NOMBRE_COMUNA"));
+                apoderado.setRut(rs.getInt("RUT_APODERADO"));
+                apoderado.setNombres(rs.getString("NOMBRES"));
+                apoderado.setaPaterno(rs.getString("APATERNO"));
+                apoderado.setaMaterno(rs.getString("AMATERNO"));
+                apoderado.setFechaNacimiento(sdf.format(rs.getDate("FNACIMIENTO")));
+                apoderado.setTelefono(rs.getInt("TELEFONO"));
+                apoderado.setEncargado("SI".equalsIgnoreCase(rs.getString("PERFIL")));
+                apoderado.setDireccion(rs.getString("DIRECCION"));
+                apoderado.setCorreo(rs.getString("CORREO"));
+                apoderado.setContrasena(rs.getString("PASS_APODERADO"));
+                apoderado.setIdComuna(rs.getInt("IDCOMUNA"));
             }
             rs.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return apoderado;
     }
-  
-     
-     public String ModificarApoderado(int rut,String nombre,String apaterno,String amaterno,String fnacimiento,int telefono,int idcomuna,String direccion, String password,String email, String perfil) {
-        ResultSet rs =this.consulta("UPDATE APODERADO SET NOMBRES='"+nombre+"',APATERNO='"+apaterno+"',AMATERNO='"+amaterno+"',TO_DATE('"+ fnacimiento+"','DD-MM-YYYY')," +telefono+",PERFIL='"+perfil+"',IDCOMUNA="+idcomuna+",CORREO='"+email+"',PASS_APODERADO='"+password+"' WHERE RUT_APODERADO="+rut+"");
-        String apoderado = new String();
-        try {
-            while (rs.next()) {
 
-                dbutils.confirmarCambio();
-
-                System.out.println("Apoderado Modificado Correctamente");
-            }
-            rs.close();
-
-        } catch (SQLException e) {
-
-            System.out.println(e.getMessage());
-
-        }
+    public boolean actualizarApoderado(Apoderado apoderado){
+        
+        String perfil = apoderado.isEncargado() ? "SI" : "NO";
+        
+        String sql = "UPDATE APODERADO SET NOMBRES='" + apoderado.getNombres() + 
+                 "',APATERNO='" + apoderado.getaPaterno() + 
+                 "',AMATERNO='" + apoderado.getaMaterno() + 
+                 "',FNACIMIENTO = TO_DATE('" + apoderado.getFechaNacimiento() + "','DD-MM-YYYY')" +
+                 ",TELEFONO="+ apoderado.getTelefono() + 
+                 ",PERFIL='" + perfil + 
+                 "',IDCOMUNA=" + apoderado.getIdComuna() + 
+                 ",CORREO='" + apoderado.getCorreo() + 
+                 "',PASS_APODERADO='" + apoderado.getContrasena() + 
+                 "' WHERE RUT_APODERADO=" + apoderado.getRut();
         
         
-        
-        return apoderado;
+        return this.actualizar(sql);
     }
-    
+
 }

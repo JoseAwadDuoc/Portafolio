@@ -5,30 +5,37 @@
  */
 package view;
 
-import Dao.ApoderadoDAO;
 import Dao.CiudadDAO;
 import Dao.ComunaDAO;
-import Dao.DbUtilidades;
+import controller.ApoderadosController;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
-import java.util.ArrayList;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import model.Apoderado;
 
 /**
  *
  * @author corellana
  */
 public class ModificarApoderadoView extends javax.swing.JFrame {
-private CiudadDAO ciudadDAO = new CiudadDAO();
-private ApoderadoDAO apoderadoDao= new ApoderadoDAO();
-private ComunaDAO comunaDAO = new ComunaDAO();
-private DbUtilidades dbutils= new DbUtilidades();
+
+    private ApoderadosController controller = new ApoderadosController();
+    private CiudadDAO ciudadDAO = new CiudadDAO();
+    private ComunaDAO comunaDAO = new ComunaDAO();
+
     /**
      * Creates new form ModificarApoderadoView
      */
-    public ModificarApoderadoView() {
+    public ModificarApoderadoView(int rutApoderado) {
         this.setMinimumSize(new Dimension(478, 600));
         initComponents();
-         this.CmbCiudad.setModel(ciudadDAO.obtenerCiudad());
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        if (rutApoderado > 0) {
+            this.txtRut.setText(String.valueOf(rutApoderado));
+            this.btnBuscarxRut.doClick();
+        }
+        this.cmbCiudad.setModel(ciudadDAO.obtenerCiudad());
     }
 
     /**
@@ -49,7 +56,7 @@ private DbUtilidades dbutils= new DbUtilidades();
         jLabel2 = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        txtCorreo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -62,10 +69,10 @@ private DbUtilidades dbutils= new DbUtilidades();
         txtAppPaterno = new javax.swing.JTextField();
         txtAppMaterno = new javax.swing.JTextField();
         txtTelefono = new javax.swing.JTextField();
-        CmbCiudad = new javax.swing.JComboBox<>();
-        CmbComuna = new javax.swing.JComboBox<>();
+        cmbCiudad = new javax.swing.JComboBox<>();
+        cmbComuna = new javax.swing.JComboBox<>();
         txtDireccion = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JPasswordField();
+        txtContrasena = new javax.swing.JPasswordField();
         rbtPerfilSi = new javax.swing.JRadioButton();
         rbtPerfilNo = new javax.swing.JRadioButton();
         jLabel12 = new javax.swing.JLabel();
@@ -118,8 +125,8 @@ private DbUtilidades dbutils= new DbUtilidades();
         jLabel3.setText("Correo Electronico:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(21, 375, 110, 16);
-        getContentPane().add(txtEmail);
-        txtEmail.setBounds(154, 372, 228, 22);
+        getContentPane().add(txtCorreo);
+        txtCorreo.setBounds(154, 372, 228, 22);
 
         jLabel4.setText("Apellido Paterno:");
         getContentPane().add(jLabel4);
@@ -161,22 +168,22 @@ private DbUtilidades dbutils= new DbUtilidades();
         getContentPane().add(txtTelefono);
         txtTelefono.setBounds(154, 199, 228, 22);
 
-        CmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
-        CmbCiudad.addItemListener(new java.awt.event.ItemListener() {
+        cmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
+        cmbCiudad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbCiudadItemStateChanged(evt);
+                cmbCiudadItemStateChanged(evt);
             }
         });
-        getContentPane().add(CmbCiudad);
-        CmbCiudad.setBounds(154, 228, 228, 22);
+        getContentPane().add(cmbCiudad);
+        cmbCiudad.setBounds(154, 228, 228, 22);
 
-        CmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
-        getContentPane().add(CmbComuna);
-        CmbComuna.setBounds(154, 257, 228, 22);
+        cmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
+        getContentPane().add(cmbComuna);
+        cmbComuna.setBounds(154, 257, 228, 22);
         getContentPane().add(txtDireccion);
         txtDireccion.setBounds(154, 292, 228, 22);
-        getContentPane().add(txtPassword);
-        txtPassword.setBounds(154, 332, 228, 22);
+        getContentPane().add(txtContrasena);
+        txtContrasena.setBounds(154, 332, 228, 22);
 
         buttonGroup1.add(rbtPerfilSi);
         rbtPerfilSi.setText("Si");
@@ -206,126 +213,92 @@ private DbUtilidades dbutils= new DbUtilidades();
         lblmensaje.setText("");
         try {
             //Obtener apoderado
-        String rut=txtRut.getText();
-        ArrayList apo1= new ArrayList();
-        apo1=apoderadoDao.ObtenerApoderado(rut);
-        
-       
-        
-        //Transformar a String Datos Apoderado Seleccionado
-        
-        //String fnacimiento =String.valueOf(apo1.get(4));
-        
-        
-       /* 
-        
-        
-        String telefono =String.valueOf(apo1.get(5));
-        
-        String direccion =String.valueOf(apo1.get(7));
-        String correo =String.valueOf(apo1.get(8));
-        
-        String ciudad =String.valueOf(apo1.get(10));
-        String comuna =String.valueOf(apo1.get(11));*/
-        String perfil=String.valueOf(apo1.get(6));
-        String pass =String.valueOf(apo1.get(9));
-        
-        //RELLENAR JTEXFIELD
-        txtNombreUsuario.setText(String.valueOf(apo1.get(1)));
-        txtAppPaterno.setText(String.valueOf(apo1.get(2)));
-        txtAppMaterno.setText(String.valueOf(apo1.get(3)));
-        txtFNacimiento.setText(String.valueOf(apo1.get(4)));
-        txtTelefono.setText(String.valueOf(apo1.get(5)));
-        txtDireccion.setText(String.valueOf(apo1.get(7)));
-        txtEmail.setText(String.valueOf(apo1.get(8)));
-        CmbCiudad.setSelectedItem(String.valueOf(apo1.get(10)));
-        CmbComuna.setSelectedItem(String.valueOf(apo1.get(11)));
-        txtPassword.setText(String.valueOf(apo1.get(9)));
-        
-        
-       
-        
-        
-        rbtPerfilNo.setActionCommand("NO");
-        if(apo1.get(6).equals("SI")){
-         rbtPerfilSi.setSelected(true);
-                  
-        }else{
-        
-        rbtPerfilNo.setSelected(true);
-        }
-            
+            String rut = txtRut.getText();
+
+            Apoderado apo = this.controller.buscarApoderadoPorRut(Integer.parseInt(rut));
+
+            txtNombreUsuario.setText(String.valueOf(apo.getNombres()));
+            txtAppPaterno.setText(String.valueOf(apo.getaPaterno()));
+            txtAppMaterno.setText(String.valueOf(apo.getaPaterno()));
+            txtFNacimiento.setText(String.valueOf(apo.getFechaNacimiento()));
+            txtTelefono.setText(String.valueOf(apo.getTelefono()));
+            txtDireccion.setText(String.valueOf(apo.getDireccion()));
+            txtCorreo.setText(String.valueOf(apo.getCorreo()));
+            cmbCiudad.setSelectedItem(String.valueOf(""));
+            cmbComuna.setSelectedItem(String.valueOf(apo.getIdComuna()));
+            txtContrasena.setText(String.valueOf(apo.getContrasena()));
+            rbtPerfilNo.setActionCommand("NO");
+
+            if (apo.isEncargado()) {
+                rbtPerfilSi.setSelected(true);
+            } else {
+                rbtPerfilNo.setSelected(true);
+            }
         } catch (Exception e) {
-            
             lblmensaje.setText("El Objeto de Busqueda, no existe.");
         }
-        
-        
-        
     }//GEN-LAST:event_btnBuscarxRutActionPerformed
 
-    private void CmbCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbCiudadItemStateChanged
+    private void cmbCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCiudadItemStateChanged
 
-           if (evt.getStateChange()== ItemEvent.SELECTED) 
-        {
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
             String ciudad;
-            ciudad= String.valueOf(CmbCiudad.getSelectedItem());
-            this.CmbComuna.setModel(comunaDAO.obtenerComuna(ciudad));
+            ciudad = String.valueOf(cmbCiudad.getSelectedItem());
+            this.cmbComuna.setModel(comunaDAO.obtenerComuna(ciudad));
         }
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_CmbCiudadItemStateChanged
+    }//GEN-LAST:event_cmbCiudadItemStateChanged
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
         try {
-            int rut=Integer.parseInt(txtRut.getText());
-        String nombre=txtNombreUsuario.getText();
-        String Apaterno=txtAppPaterno.getText();
-        String Amaterno=txtAppMaterno.getText();
-        int telefono=Integer.parseInt(txtTelefono.getText());
-        String fnacimiento=txtFNacimiento.getText();
-        //IDCOMUNA OBTENER
-        String nombrecomuna_mod= String.valueOf(CmbComuna.getSelectedItem());
-        String nombrecomuna_idcomuna= comunaDAO.obtenerIdComuna(nombrecomuna_mod);
-        int idcomuna= Integer.parseInt(nombrecomuna_idcomuna);
-        
-       String direccion=txtDireccion.getText();
-       String password=String.valueOf(txtPassword.getPassword());
-       String email=txtEmail.getText();
-       
-       //SELECCION PERFIL
-       String perfil="";
-       
-       if(rbtPerfilSi.isSelected()){
-            perfil="SI";
-       }else{
-            perfil="NO";
-       }
-       //PRUEBA VALIDACION CAMPOS REALES
-       
-            System.out.println("Rut: "+rut);
-            System.out.println("Nombres: "+nombre);
-            System.out.println("Apellidos: "+Apaterno+" "+Amaterno);
-            System.out.println("Telefoni : "+telefono);
-            System.out.println("F nacimient: "+fnacimiento);
-            System.out.println("ID COMUNA: "+idcomuna);
-            System.out.println("Dirección : "+direccion);
-            System.out.println("Password:"+password);
-            System.out.println("Email:"+email);
-            System.out.println("PERFIL : "+perfil);
-
-       
-       
-       apoderadoDao.ModificarApoderado(rut, nombre, Apaterno, Amaterno, fnacimiento, telefono, idcomuna, direccion, password, email, perfil);
-       lblmensaje.setText("Apoderado Modificado Correctamente.");
-    
-        } catch (Exception e) {
+            int rut = Integer.parseInt(txtRut.getText());
+            String nombre = txtNombreUsuario.getText();
+            String aPaterno = txtAppPaterno.getText();
+            String aMaterno = txtAppMaterno.getText();
             
-            //lblmensaje.setText("No se ha podido Modificar al Apoderado,Contacte a HelpDesk");
+            if (txtTelefono.getText().length() != 9) {
+                throw new Exception("Número de teléfono invalido");
+            }
+            
+            int telefono = Integer.parseInt(txtTelefono.getText());
+            String fnacimiento = txtFNacimiento.getText();
+            //IDCOMUNA OBTENER
+            String nombrecomuna_mod = String.valueOf(cmbComuna.getSelectedItem());
+            
+            if ("Seleccione Comuna".equals(nombrecomuna_mod)) {
+                throw new Exception("Seleccione Ciudad y Comuna");
+            }
+            
+            String nombrecomuna_idcomuna = comunaDAO.obtenerIdComuna(nombrecomuna_mod);
+            
+            if ("".equals(nombrecomuna_idcomuna)) {
+                throw new Exception("Seleccione Ciudad y Comuna");
+            }
+            
+            int idcomuna = Integer.parseInt(nombrecomuna_idcomuna);
+            
+            String direccion = txtDireccion.getText();
+            String contrasena = String.valueOf(txtContrasena.getPassword());
+            String correo = txtCorreo.getText();
+
+            boolean encargado = false;
+
+            if (rbtPerfilSi.isSelected()) {
+                encargado = true;
+            }
+
+            Apoderado apo = new Apoderado(rut, contrasena, idcomuna, nombre, aPaterno, aMaterno, fnacimiento, telefono, encargado, direccion, correo);
+            System.out.println(apo);
+            this.controller.actualizarApoderado(apo);
+            lblmensaje.setText("Apoderado Modificado Correctamente.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
-        
-        
-        
+
+
     }//GEN-LAST:event_btnmodificarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -366,17 +339,17 @@ private DbUtilidades dbutils= new DbUtilidades();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarApoderadoView().setVisible(true);
+                new ModificarApoderadoView(0).setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> CmbCiudad;
-    private javax.swing.JComboBox<String> CmbComuna;
     private javax.swing.JButton btnBuscarxRut;
     private javax.swing.JButton btnmodificar;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmbCiudad;
+    private javax.swing.JComboBox<String> cmbComuna;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -396,11 +369,11 @@ private DbUtilidades dbutils= new DbUtilidades();
     private javax.swing.JRadioButton rbtPerfilSi;
     private javax.swing.JTextField txtAppMaterno;
     private javax.swing.JTextField txtAppPaterno;
+    private javax.swing.JPasswordField txtContrasena;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFNacimiento;
     private javax.swing.JTextField txtNombreUsuario;
-    private javax.swing.JPasswordField txtPassword;
     private javax.swing.JTextField txtRut;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
