@@ -11,9 +11,7 @@ public class Main {
         AutenticacionView login = new AutenticacionView();
         login.setLocationRelativeTo(null);
         login.setVisible(true);
-        
+     
+        services.OnTourServices.main(args);
     }
-    
-    
-   
 }

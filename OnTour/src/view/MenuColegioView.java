@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author jose_
@@ -16,6 +18,7 @@ public class MenuColegioView extends javax.swing.JFrame {
      */
     public MenuColegioView() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
     }
 
     /**

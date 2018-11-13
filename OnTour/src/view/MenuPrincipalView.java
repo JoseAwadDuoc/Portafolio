@@ -8,6 +8,7 @@ package view;
 import Dao.AutenticacionDAO;
 import model.RepresentanteAgencia;
 import java.awt.Dimension;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -20,8 +21,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipalView() {
-        this.setMinimumSize(new Dimension(450, 350));
+        this.setMinimumSize(new Dimension(600, 500));
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         RepresentanteAgencia rp = new RepresentanteAgencia();
         LblMensajeBienvenido1.setText(AutenticacionDAO.RP.getNombre());
     }
@@ -35,11 +37,13 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LblMensajeBienvenido = new javax.swing.JLabel();
+        LblMensajeBienvenido1 = new javax.swing.JLabel();
+        Logo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         BtnSeguros = new javax.swing.JButton();
         BtnContratos = new javax.swing.JButton();
         BtnEstadoDeCuenta = new javax.swing.JButton();
-        LblMensajeBienvenido = new javax.swing.JLabel();
-        LblMensajeBienvenido1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MnCerrarSesion = new javax.swing.JMenuItem();
@@ -50,42 +54,64 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         MnColegio = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("On Tour");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setFont(new java.awt.Font("AGA Arabesque", 1, 36)); // NOI18N
         getContentPane().setLayout(null);
 
-        BtnSeguros.setText("Gestionar Seguros");
-        getContentPane().add(BtnSeguros);
-        BtnSeguros.setBounds(12, 75, 191, 55);
+        LblMensajeBienvenido.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        LblMensajeBienvenido.setText("BIENVENIDO!");
+        getContentPane().add(LblMensajeBienvenido);
+        LblMensajeBienvenido.setBounds(180, 30, 270, 44);
 
+        LblMensajeBienvenido1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        LblMensajeBienvenido1.setText("--------------");
+        getContentPane().add(LblMensajeBienvenido1);
+        LblMensajeBienvenido1.setBounds(230, 90, 227, 44);
+
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        getContentPane().add(Logo);
+        Logo.setBounds(0, -20, 200, 180);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel1.setLayout(null);
+
+        BtnSeguros.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnSeguros.setText("Gestionar Seguros");
+        jPanel1.add(BtnSeguros);
+        BtnSeguros.setBounds(10, 20, 240, 55);
+
+        BtnContratos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnContratos.setText("Administrar Contratos");
         BtnContratos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnContratosActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnContratos);
-        BtnContratos.setBounds(221, 75, 197, 55);
+        jPanel1.add(BtnContratos);
+        BtnContratos.setBounds(260, 20, 231, 55);
 
+        BtnEstadoDeCuenta.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnEstadoDeCuenta.setText("Consulta Estado de Cuenta");
         BtnEstadoDeCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEstadoDeCuentaActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnEstadoDeCuenta);
-        BtnEstadoDeCuenta.setBounds(130, 140, 191, 62);
+        jPanel1.add(BtnEstadoDeCuenta);
+        BtnEstadoDeCuenta.setBounds(120, 90, 300, 62);
 
-        LblMensajeBienvenido.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        LblMensajeBienvenido.setText("HOLA!!");
-        getContentPane().add(LblMensajeBienvenido);
-        LblMensajeBienvenido.setBounds(12, 18, 139, 44);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(20, 160, 520, 160);
 
-        LblMensajeBienvenido1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        LblMensajeBienvenido1.setText("--------------");
-        getContentPane().add(LblMensajeBienvenido1);
-        LblMensajeBienvenido1.setBounds(158, 18, 227, 44);
+        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
+        jMenu1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
         jMenu1.setText("Opciones");
+        jMenu1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
 
+        MnCerrarSesion.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        MnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logout.png"))); // NOI18N
         MnCerrarSesion.setText("Cerrar Sesión");
         MnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +120,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         });
         jMenu1.add(MnCerrarSesion);
 
+        MnSalir.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        MnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
         MnSalir.setText("Salir");
         MnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +132,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu1);
 
+        MnAdministradoresCrud.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
         MnAdministradoresCrud.setText("Otros");
+        MnAdministradoresCrud.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
 
+        MnApoderado.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         MnApoderado.setText("Apoderado");
         MnApoderado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,9 +145,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         });
         MnAdministradoresCrud.add(MnApoderado);
 
+        MnAlumno.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         MnAlumno.setText("Alumno");
         MnAdministradoresCrud.add(MnAlumno);
 
+        MnColegio.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
         MnColegio.setText("Colegio");
         MnColegio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,7 +189,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void BtnContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnContratosActionPerformed
         // TODO add your handling code here:
-        ConsultaContratosView ConsultContr = new ConsultaContratosView();
+        MenuContratosView ConsultContr = new MenuContratosView();
         this.setVisible(false);
         ConsultContr.setLocationRelativeTo(null);
         ConsultContr.setVisible(true);
@@ -224,6 +257,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JButton BtnSeguros;
     private javax.swing.JLabel LblMensajeBienvenido;
     private javax.swing.JLabel LblMensajeBienvenido1;
+    private javax.swing.JLabel Logo;
     private javax.swing.JMenu MnAdministradoresCrud;
     private javax.swing.JMenuItem MnAlumno;
     private javax.swing.JMenuItem MnApoderado;
@@ -232,5 +266,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem MnSalir;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -5,6 +5,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -123,10 +124,15 @@ public class ContratoDAO extends DbUtilidades {
         return idcurso;
     }
 
-    public String agregarContrato(int idpaquete, int rut, int idcurso, String fecha_inicio, int monto_venta, String fecha_evento) {
-        ResultSet rs = this.consulta("INSERT INTO USUARIO2.CONTRATO (IDPAQUETE, RUT_REPRES, IDCURSO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) "
-                + "VALUES (" + idpaquete + ", " + rut + "," + idcurso + ", TO_DATE('" + fecha_inicio + "', 'DD-MM-YYYY')," + monto_venta 
-                + ", TO_DATE('" + fecha_evento + "', 'DD-MM-YYYY'))");
+    public String agregarContrato(int idpaquete, int rut, int idcurso,int idseguro, String fecha_inicio, int monto_venta, String fecha_evento) {
+        ResultSet rs = this.consulta("INSERT INTO CONTRATO (IDPAQUETE, RUT_REPRES, IDCURSO, IDSEGURO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) "
+                + "VALUES (" + idpaquete + 
+                ", "+ rut + 
+                "," + idcurso +
+                "," + idseguro + 
+                ", TO_DATE('" + fecha_inicio + "', 'DD-MM-YYYY')," 
+                + monto_venta + 
+                ", TO_DATE('" + fecha_evento + "', 'DD-MM-YYYY'))");
         String contrato = new String();
         try {
             while (rs.next()) {
@@ -190,6 +196,7 @@ public class ContratoDAO extends DbUtilidades {
                 for (int i = 0; i < numerocolumnas; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
+                System.out.println(" q" +Arrays.asList(fila));
                 columnValues.add(fila);
             }
             

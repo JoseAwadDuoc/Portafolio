@@ -5,14 +5,16 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class Conexion {
+    
+//    public static final String BD_NAME = "USUARIO2";
 
     public static Connection conectar(){
         Connection con;
         
-        String pass="USUARIO2";
-        String user="USUARIO2";
-        //String bd="jdbc:oracle:thin:@localhost:1521:XE";
-    String bd = "jdbc:oracle:thin:@dbontour.intercity.net:1521:XE";
+        String pass="PORTAFOLIO";
+        String user="PORTAFOLIO";
+        String bd="jdbc:oracle:thin:@localhost:1521:XE";
+        //String bd = "jdbc:oracle:thin:@dbontour.intercity.net:1521:XE";
         
         try{
             con = DriverManager.getConnection(bd,user,pass);
