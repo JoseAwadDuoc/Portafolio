@@ -92,6 +92,8 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
         btnmodificar.setBounds(140, 460, 220, 40);
 
         btnBuscarxRut.setBackground(new java.awt.Color(204, 0, 204));
+        btnBuscarxRut.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnBuscarxRut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ShearchApoderado.png"))); // NOI18N
         btnBuscarxRut.setText("Buscar");
         btnBuscarxRut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,7 +101,7 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnBuscarxRut);
-        btnBuscarxRut.setBounds(258, 13, 96, 25);
+        btnBuscarxRut.setBounds(290, 10, 170, 60);
 
         jButton3.setText("Volver");
         jButton3.addActionListener(new java.awt.event.ActionListener() {

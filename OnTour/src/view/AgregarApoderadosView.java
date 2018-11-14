@@ -10,7 +10,9 @@ import Dao.AutenticacionDAO;
 import Dao.CiudadDAO;
 import Dao.ComunaDAO;
 import controller.ApoderadosController;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
+import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 import model.Apoderado;
 
@@ -28,9 +30,10 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
      * Creates new form AgregarApoderados
      */
     public AgregarApoderadosView() {
+        this.setMinimumSize(new Dimension(615, 853));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
-        this.CmbxCiudad.setModel(ciudadDAO.obtenerCiudad());
+        this.cmbxCiudad.setModel(ciudadDAO.obtenerCiudad());
 
     }
 
@@ -44,295 +47,272 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jPanel1 = new javax.swing.JPanel();
         LblRutApoderado = new javax.swing.JLabel();
-        TxtRutApoderado = new javax.swing.JTextField();
+        txtRutApoderado = new javax.swing.JTextField();
         LblNombreApoderado = new javax.swing.JLabel();
-        TxtNombreApoderado = new javax.swing.JTextField();
+        txtNombreApoderado = new javax.swing.JTextField();
         LblAPaterno = new javax.swing.JLabel();
-        TxtAPaternoApoderado = new javax.swing.JTextField();
+        txtAPaternoApoderado = new javax.swing.JTextField();
         LblAMaterno = new javax.swing.JLabel();
-        TxtAMaternoApoderado = new javax.swing.JTextField();
+        txtAMaternoApoderado = new javax.swing.JTextField();
         LblFNacimiento = new javax.swing.JLabel();
-        TxtFNacimiento = new javax.swing.JTextField();
+        txtFNacimiento = new javax.swing.JTextField();
         LblTelefono = new javax.swing.JLabel();
-        TxtTelefonoApoderado = new javax.swing.JTextField();
+        txtTelefonoApoderado = new javax.swing.JTextField();
         LblCiudad = new javax.swing.JLabel();
-        CmbxCiudad = new javax.swing.JComboBox<>();
+        cmbxCiudad = new javax.swing.JComboBox<>();
         LblComunaApoderado = new javax.swing.JLabel();
-        CmbxComuna = new javax.swing.JComboBox<>();
+        cmbxComuna = new javax.swing.JComboBox<>();
         LblDireccion = new javax.swing.JLabel();
-        TxtDireccionApoderado = new javax.swing.JTextField();
+        txtDireccionApoderado = new javax.swing.JTextField();
         LblPassApoderado = new javax.swing.JLabel();
-        TxtPassApoderado = new javax.swing.JPasswordField();
+        txtPassApoderado = new javax.swing.JPasswordField();
         LblCorreoApoderado = new javax.swing.JLabel();
-        TxtCorreoApoderado = new javax.swing.JTextField();
+        txtCorreoApoderado = new javax.swing.JTextField();
         LblPerfilApoderado = new javax.swing.JLabel();
         RbtPerfilSi = new javax.swing.JRadioButton();
         RbtPerfilNo = new javax.swing.JRadioButton();
-        BtnResgistrar = new javax.swing.JButton();
-        BtnVolver = new javax.swing.JButton();
+        btnResgistrarApoderado = new javax.swing.JButton();
+        btnVolverApoderado = new javax.swing.JButton();
+        btnLimpiarApoderado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("On Tour");
 
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Registrar Apoderado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jPanel1.setLayout(null);
+
+        LblRutApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblRutApoderado.setText("RUT:");
+        jPanel1.add(LblRutApoderado);
+        LblRutApoderado.setBounds(120, 60, 100, 22);
 
+        txtRutApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txtRutApoderado);
+        txtRutApoderado.setBounds(200, 50, 210, 40);
+
+        LblNombreApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblNombreApoderado.setText("Nombre: ");
+        jPanel1.add(LblNombreApoderado);
+        LblNombreApoderado.setBounds(90, 110, 130, 22);
 
+        txtNombreApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txtNombreApoderado);
+        txtNombreApoderado.setBounds(200, 100, 210, 40);
+
+        LblAPaterno.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblAPaterno.setText("Apellido Paterno:");
+        jPanel1.add(LblAPaterno);
+        LblAPaterno.setBounds(20, 160, 180, 22);
 
-        TxtAPaternoApoderado.addActionListener(new java.awt.event.ActionListener() {
+        txtAPaternoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtAPaternoApoderado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TxtAPaternoApoderadoActionPerformed(evt);
+                txtAPaternoApoderadoActionPerformed(evt);
             }
         });
+        jPanel1.add(txtAPaternoApoderado);
+        txtAPaternoApoderado.setBounds(200, 150, 210, 40);
 
+        LblAMaterno.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblAMaterno.setText("Apellido Materno:");
+        jPanel1.add(LblAMaterno);
+        LblAMaterno.setBounds(20, 210, 190, 22);
 
+        txtAMaternoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txtAMaternoApoderado);
+        txtAMaternoApoderado.setBounds(200, 200, 210, 40);
+
+        LblFNacimiento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblFNacimiento.setText("Fecha Nacimiento:");
+        jPanel1.add(LblFNacimiento);
+        LblFNacimiento.setBounds(10, 260, 170, 20);
 
+        txtFNacimiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txtFNacimiento);
+        txtFNacimiento.setBounds(200, 250, 210, 40);
+
+        LblTelefono.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblTelefono.setText("Teléfono: ");
+        jPanel1.add(LblTelefono);
+        LblTelefono.setBounds(90, 310, 140, 22);
 
+        txtTelefonoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txtTelefonoApoderado);
+        txtTelefonoApoderado.setBounds(200, 300, 210, 40);
+
+        LblCiudad.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblCiudad.setText("Ciudad:");
+        jPanel1.add(LblCiudad);
+        LblCiudad.setBounds(110, 350, 130, 22);
 
-        CmbxCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
-        CmbxCiudad.addItemListener(new java.awt.event.ItemListener() {
+        cmbxCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbxCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
+        cmbxCiudad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbxCiudadItemStateChanged(evt);
+                cmbxCiudadItemStateChanged(evt);
             }
         });
+        jPanel1.add(cmbxCiudad);
+        cmbxCiudad.setBounds(200, 350, 210, 30);
 
+        LblComunaApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblComunaApoderado.setText("Comuna: ");
+        jPanel1.add(LblComunaApoderado);
+        LblComunaApoderado.setBounds(100, 400, 130, 22);
 
-        CmbxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
-        CmbxComuna.addItemListener(new java.awt.event.ItemListener() {
+        cmbxComuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
+        cmbxComuna.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbxComunaItemStateChanged(evt);
+                cmbxComunaItemStateChanged(evt);
             }
         });
+        jPanel1.add(cmbxComuna);
+        cmbxComuna.setBounds(200, 400, 210, 30);
 
+        LblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblDireccion.setText("Dirección: ");
+        jPanel1.add(LblDireccion);
+        LblDireccion.setBounds(90, 450, 130, 22);
 
+        txtDireccionApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txtDireccionApoderado);
+        txtDireccionApoderado.setBounds(200, 440, 210, 40);
+
+        LblPassApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblPassApoderado.setText("Contraseña:");
+        jPanel1.add(LblPassApoderado);
+        LblPassApoderado.setBounds(70, 500, 150, 22);
 
+        txtPassApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txtPassApoderado);
+        txtPassApoderado.setBounds(200, 490, 210, 40);
+
+        LblCorreoApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblCorreoApoderado.setText("Correo Electronico:");
+        jPanel1.add(LblCorreoApoderado);
+        LblCorreoApoderado.setBounds(10, 550, 190, 22);
 
+        txtCorreoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jPanel1.add(txtCorreoApoderado);
+        txtCorreoApoderado.setBounds(200, 540, 210, 40);
+
+        LblPerfilApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblPerfilApoderado.setText("Encargado:");
+        jPanel1.add(LblPerfilApoderado);
+        LblPerfilApoderado.setBounds(80, 600, 140, 22);
 
         buttonGroup1.add(RbtPerfilSi);
+        RbtPerfilSi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         RbtPerfilSi.setText("Sí");
+        jPanel1.add(RbtPerfilSi);
+        RbtPerfilSi.setBounds(240, 580, 50, 60);
 
         buttonGroup1.add(RbtPerfilNo);
+        RbtPerfilNo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         RbtPerfilNo.setSelected(true);
         RbtPerfilNo.setText("No");
+        jPanel1.add(RbtPerfilNo);
+        RbtPerfilNo.setBounds(320, 580, 50, 60);
 
-        BtnResgistrar.setText("Registrar");
-        BtnResgistrar.addActionListener(new java.awt.event.ActionListener() {
+        btnResgistrarApoderado.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnResgistrarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
+        btnResgistrarApoderado.setText("Registrar");
+        btnResgistrarApoderado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnResgistrarActionPerformed(evt);
+                btnResgistrarApoderadoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnResgistrarApoderado);
+        btnResgistrarApoderado.setBounds(200, 650, 220, 60);
 
-        BtnVolver.setText("Volver");
-        BtnVolver.addActionListener(new java.awt.event.ActionListener() {
+        btnVolverApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnVolverApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
+        btnVolverApoderado.setText("Volver");
+        btnVolverApoderado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnVolverActionPerformed(evt);
+                btnVolverApoderadoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnVolverApoderado);
+        btnVolverApoderado.setBounds(320, 750, 130, 40);
+
+        btnLimpiarApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLimpiarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
+        btnLimpiarApoderado.setText("Limpiar");
+        jPanel1.add(btnLimpiarApoderado);
+        btnLimpiarApoderado.setBounds(170, 750, 120, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addComponent(LblRutApoderado)
-                        .addGap(11, 11, 11)
-                        .addComponent(TxtRutApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(LblNombreApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(TxtNombreApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LblAPaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(TxtAPaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(TxtAMaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(LblAMaterno, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LblFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(TxtFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(TxtTelefonoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(50, 50, 50)
-                                .addComponent(CmbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(LblCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(LblComunaApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(CmbxComuna, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblDireccion)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(TxtDireccionApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(LblPassApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, 0)
-                        .addComponent(TxtPassApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(LblCorreoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(TxtCorreoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(LblPerfilApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(RbtPerfilSi)
-                        .addGap(11, 11, 11)
-                        .addComponent(RbtPerfilNo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(60, 60, 60)
-                        .addComponent(BtnResgistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblRutApoderado)
-                            .addComponent(TxtRutApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblNombreApoderado)
-                            .addComponent(TxtNombreApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblAPaterno)
-                            .addComponent(TxtAPaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TxtAMaternoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LblAMaterno))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(TxtFNacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblTelefono)
-                            .addComponent(TxtTelefonoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CmbxCiudad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LblCiudad))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblComunaApoderado)
-                            .addComponent(CmbxComuna, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblDireccion)
-                            .addComponent(TxtDireccionApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LblPassApoderado)
-                            .addComponent(TxtPassApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(TxtCorreoApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LblCorreoApoderado)))
-                        .addGap(8, 8, 8)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(LblPerfilApoderado))
-                            .addComponent(RbtPerfilSi)
-                            .addComponent(RbtPerfilNo))
-                        .addGap(14, 14, 14)
-                        .addComponent(BtnResgistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(BtnVolver)
-                        .addContainerGap())))
+                .addGap(23, 23, 23)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void TxtAPaternoApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TxtAPaternoApoderadoActionPerformed
+    private void txtAPaternoApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAPaternoApoderadoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_TxtAPaternoApoderadoActionPerformed
+    }//GEN-LAST:event_txtAPaternoApoderadoActionPerformed
 
-    private void CmbxCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbxCiudadItemStateChanged
+    private void cmbxCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbxCiudadItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             String comuna;
-            comuna = String.valueOf(CmbxCiudad.getSelectedItem());
-            this.CmbxComuna.setModel(comunaDAO.obtenerComuna(comuna));
+            comuna = String.valueOf(cmbxCiudad.getSelectedItem());
+            this.cmbxComuna.setModel(comunaDAO.obtenerComuna(comuna));
         }
 
-    }//GEN-LAST:event_CmbxCiudadItemStateChanged
+    }//GEN-LAST:event_cmbxCiudadItemStateChanged
 
-    private void CmbxComunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbxComunaItemStateChanged
+    private void cmbxComunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbxComunaItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_CmbxComunaItemStateChanged
+    }//GEN-LAST:event_cmbxComunaItemStateChanged
 
-    private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
+    private void btnVolverApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverApoderadoActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         MenuApoderadoView MenuPrin = new MenuApoderadoView();
         MenuPrin.setLocationRelativeTo(null);
         MenuPrin.setVisible(true);
-    }//GEN-LAST:event_BtnVolverActionPerformed
+    }//GEN-LAST:event_btnVolverApoderadoActionPerformed
 
-    private void BtnResgistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnResgistrarActionPerformed
+    private void btnResgistrarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarApoderadoActionPerformed
         // TODO add your handling code here:
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
         try {
             
-            int rutApod = Integer.parseInt(TxtRutApoderado.getText());
+            int rutApod = Integer.parseInt(txtRutApoderado.getText());
             System.out.println("asas: " +rutApod);
             
-            String nombre = TxtNombreApoderado.getText();
-            String ap= TxtAPaternoApoderado.getText();
-            String am=TxtAMaternoApoderado.getText();
-            String fechaNac = TxtFNacimiento.getText();
-            int tel= Integer.parseInt(TxtTelefonoApoderado.getText());
+            String nombre = txtNombreApoderado.getText();
+            String ap= txtAPaternoApoderado.getText();
+            String am=txtAMaternoApoderado.getText();
+//            String fechaNac = formato.format(jdatechooserFechaNacimiento.getDate());
+            String fechaNac = txtFNacimiento.getText();
+            int tel= Integer.parseInt(txtTelefonoApoderado.getText());
             
-            String comboCom = String.valueOf(CmbxComuna.getSelectedItem());
+            String comboCom = String.valueOf(cmbxComuna.getSelectedItem());
             String comboCom1 = comunaDAO.obtenerIdComuna(comboCom);
             int idcomuna = Integer.parseInt(comboCom1);
             
-            String direccion= TxtDireccionApoderado.getText();
-            String contrasena = String.valueOf(TxtPassApoderado.getPassword());
-            String correo = TxtCorreoApoderado.getText();
+            String direccion= txtDireccionApoderado.getText();
+            String contrasena = String.valueOf(txtPassApoderado.getPassword());
+            String correo = txtCorreoApoderado.getText();
             
             boolean encargado= false;
             
@@ -361,7 +341,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_BtnResgistrarActionPerformed
+    }//GEN-LAST:event_btnResgistrarApoderadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -400,10 +380,6 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnResgistrar;
-    private javax.swing.JButton BtnVolver;
-    private javax.swing.JComboBox<String> CmbxCiudad;
-    private javax.swing.JComboBox<String> CmbxComuna;
     private javax.swing.JLabel LblAMaterno;
     private javax.swing.JLabel LblAPaterno;
     private javax.swing.JLabel LblCiudad;
@@ -418,15 +394,21 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     private javax.swing.JLabel LblTelefono;
     private javax.swing.JRadioButton RbtPerfilNo;
     private javax.swing.JRadioButton RbtPerfilSi;
-    private javax.swing.JTextField TxtAMaternoApoderado;
-    private javax.swing.JTextField TxtAPaternoApoderado;
-    private javax.swing.JTextField TxtCorreoApoderado;
-    private javax.swing.JTextField TxtDireccionApoderado;
-    private javax.swing.JTextField TxtFNacimiento;
-    private javax.swing.JTextField TxtNombreApoderado;
-    private javax.swing.JPasswordField TxtPassApoderado;
-    private javax.swing.JTextField TxtRutApoderado;
-    private javax.swing.JTextField TxtTelefonoApoderado;
+    private javax.swing.JButton btnLimpiarApoderado;
+    private javax.swing.JButton btnResgistrarApoderado;
+    private javax.swing.JButton btnVolverApoderado;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmbxCiudad;
+    private javax.swing.JComboBox<String> cmbxComuna;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTextField txtAMaternoApoderado;
+    private javax.swing.JTextField txtAPaternoApoderado;
+    private javax.swing.JTextField txtCorreoApoderado;
+    private javax.swing.JTextField txtDireccionApoderado;
+    private javax.swing.JTextField txtFNacimiento;
+    private javax.swing.JTextField txtNombreApoderado;
+    private javax.swing.JPasswordField txtPassApoderado;
+    private javax.swing.JTextField txtRutApoderado;
+    private javax.swing.JTextField txtTelefonoApoderado;
     // End of variables declaration//GEN-END:variables
 }

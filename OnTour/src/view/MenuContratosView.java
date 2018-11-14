@@ -28,7 +28,7 @@ public class MenuContratosView extends javax.swing.JFrame {
      * Creates new form ConsultaContratos
      */
     public MenuContratosView() {
-        this.setMinimumSize(new Dimension(1007,500));
+        this.setMinimumSize(new Dimension(840,500));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.tableContratos.setVisible(false);
@@ -70,9 +70,10 @@ public class MenuContratosView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableContratos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 180, 950, 210);
+        jScrollPane1.setBounds(20, 180, 780, 210);
 
         BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
         BtnVolver.setText("Volver");
         BtnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +81,7 @@ public class MenuContratosView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BtnVolver);
-        BtnVolver.setBounds(850, 400, 120, 50);
+        BtnVolver.setBounds(650, 400, 150, 50);
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
         getContentPane().add(Logo);
@@ -90,37 +91,40 @@ public class MenuContratosView extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         btnConsultar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnConsultar.setText("Consultar Contratos");
+        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
+        btnConsultar.setText("Consultar ");
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
             }
         });
         jPanel1.add(btnConsultar);
-        btnConsultar.setBounds(50, 40, 220, 70);
+        btnConsultar.setBounds(10, 40, 190, 70);
 
         btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAgregar.setText("Agregar Contratos");
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
+        btnAgregar.setText("Agregar ");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
         jPanel1.add(btnAgregar);
-        btnAgregar.setBounds(300, 40, 230, 70);
+        btnAgregar.setBounds(210, 40, 180, 70);
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnEliminar.setText("Eliminar Contrato");
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Delete.png"))); // NOI18N
+        btnEliminar.setText("Eliminar ");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
             }
         });
         jPanel1.add(btnEliminar);
-        btnEliminar.setBounds(560, 40, 200, 70);
+        btnEliminar.setBounds(400, 40, 170, 70);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(180, 30, 790, 140);
+        jPanel1.setBounds(180, 30, 620, 140);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
