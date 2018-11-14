@@ -21,7 +21,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipalView() {
-        this.setMinimumSize(new Dimension(600, 500));
+        this.setMinimumSize(new Dimension(680, 500));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         RepresentanteAgencia rp = new RepresentanteAgencia();
@@ -44,6 +44,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         BtnSeguros = new javax.swing.JButton();
         BtnContratos = new javax.swing.JButton();
         BtnEstadoDeCuenta = new javax.swing.JButton();
+        lblLogout = new javax.swing.JLabel();
+        lblCerrarSesion = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         MnCerrarSesion = new javax.swing.JMenuItem();
@@ -77,11 +79,13 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         BtnSeguros.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnSeguros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/GestionarSeguros.png"))); // NOI18N
         BtnSeguros.setText("Gestionar Seguros");
         jPanel1.add(BtnSeguros);
-        BtnSeguros.setBounds(10, 20, 240, 55);
+        BtnSeguros.setBounds(20, 20, 260, 60);
 
         BtnContratos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnContratos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdministrarContratos.png"))); // NOI18N
         BtnContratos.setText("Administrar Contratos");
         BtnContratos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,20 +93,34 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(BtnContratos);
-        BtnContratos.setBounds(260, 20, 231, 55);
+        BtnContratos.setBounds(290, 20, 290, 60);
 
         BtnEstadoDeCuenta.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnEstadoDeCuenta.setText("Consulta Estado de Cuenta");
+        BtnEstadoDeCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EstadoCuenta.png"))); // NOI18N
+        BtnEstadoDeCuenta.setText("Estado de Cuenta");
         BtnEstadoDeCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnEstadoDeCuentaActionPerformed(evt);
             }
         });
         jPanel1.add(BtnEstadoDeCuenta);
-        BtnEstadoDeCuenta.setBounds(120, 90, 300, 62);
+        BtnEstadoDeCuenta.setBounds(180, 90, 250, 62);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 160, 520, 160);
+        jPanel1.setBounds(20, 160, 600, 160);
+
+        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logout.png"))); // NOI18N
+        lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblLogoutMouseClicked(evt);
+            }
+        });
+        getContentPane().add(lblLogout);
+        lblLogout.setBounds(570, 10, 40, 30);
+
+        lblCerrarSesion.setText("Cerrar Sesión");
+        getContentPane().add(lblCerrarSesion);
+        lblCerrarSesion.setBounds(550, 40, 90, 20);
 
         jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
@@ -137,6 +155,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         MnAdministradoresCrud.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
 
         MnApoderado.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        MnApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdminApoderados.png"))); // NOI18N
         MnApoderado.setText("Apoderado");
         MnApoderado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,10 +165,12 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         MnAdministradoresCrud.add(MnApoderado);
 
         MnAlumno.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        MnAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdministrarStudent.png"))); // NOI18N
         MnAlumno.setText("Alumno");
         MnAdministradoresCrud.add(MnAlumno);
 
         MnColegio.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        MnColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdministrarColegio.png"))); // NOI18N
         MnColegio.setText("Colegio");
         MnColegio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +236,20 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         menColegio.setVisible(true);
     }//GEN-LAST:event_MnColegioActionPerformed
 
+    private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null,"¿Seguro deseas Cerrar Sesion?");
+        if(input==0){
+            JOptionPane.showMessageDialog(this, "Sesión Cerrada con éxito");
+            this.setVisible(false);
+            AutenticacionView Autenti = new AutenticacionView();
+            Autenti.setLocationRelativeTo(null);
+            Autenti.setVisible(true);
+        }else{
+            
+        }
+    }//GEN-LAST:event_lblLogoutMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -267,5 +302,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblCerrarSesion;
+    private javax.swing.JLabel lblLogout;
     // End of variables declaration//GEN-END:variables
 }

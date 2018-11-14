@@ -24,7 +24,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
      * Creates new form MenuPrincipalView
      */
     public MenuApoderadoView() {
-        this.setMinimumSize(new Dimension(816, 446));
+        this.setMinimumSize(new Dimension(860, 500));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.BtnModificarApoderado.setVisible(false);
@@ -41,44 +41,20 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
     private void initComponents() {
 
         BtnGroupPerfil = new javax.swing.ButtonGroup();
-        BtnModificarApoderado = new javax.swing.JButton();
-        BtnRegistrarApoderado = new javax.swing.JButton();
-        BtnListar = new javax.swing.JButton();
         BtnVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableApoderados = new javax.swing.JTable();
-        LblFondo = new javax.swing.JLabel();
+        lblLogo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        BtnRegistrarApoderado = new javax.swing.JButton();
+        BtnListar = new javax.swing.JButton();
+        BtnModificarApoderado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        BtnModificarApoderado.setText("Modificar");
-        BtnModificarApoderado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnModificarApoderadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BtnModificarApoderado);
-        BtnModificarApoderado.setBounds(230, 30, 120, 40);
-
-        BtnRegistrarApoderado.setText("Registrar");
-        BtnRegistrarApoderado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegistrarApoderadoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BtnRegistrarApoderado);
-        BtnRegistrarApoderado.setBounds(120, 30, 100, 40);
-
-        BtnListar.setText("Listar");
-        BtnListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnListarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(BtnListar);
-        BtnListar.setBounds(20, 30, 90, 40);
-
+        BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
         BtnVolver.setText("Volver");
         BtnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,7 +62,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(BtnVolver);
-        BtnVolver.setBounds(410, 30, 79, 40);
+        BtnVolver.setBounds(630, 410, 150, 40);
 
         tableApoderados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,11 +78,50 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableApoderados);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 100, 700, 230);
+        jScrollPane1.setBounds(30, 170, 750, 230);
 
-        LblFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Fondo.jpg"))); // NOI18N
-        getContentPane().add(LblFondo);
-        LblFondo.setBounds(-10, -10, 830, 550);
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        getContentPane().add(lblLogo);
+        lblLogo.setBounds(0, 0, 186, 170);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Administrador Apoderados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel1.setLayout(null);
+
+        BtnRegistrarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnRegistrarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddApoderado.png"))); // NOI18N
+        BtnRegistrarApoderado.setText("Registrar");
+        BtnRegistrarApoderado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarApoderadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnRegistrarApoderado);
+        BtnRegistrarApoderado.setBounds(10, 30, 170, 70);
+
+        BtnListar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
+        BtnListar.setText("Listar");
+        BtnListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnListarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnListar);
+        BtnListar.setBounds(200, 30, 140, 70);
+
+        BtnModificarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnModificarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EditApoderado.png"))); // NOI18N
+        BtnModificarApoderado.setText("Modificar");
+        BtnModificarApoderado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarApoderadoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnModificarApoderado);
+        BtnModificarApoderado.setBounds(360, 30, 170, 70);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(180, 40, 610, 120);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -239,8 +254,9 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
     private javax.swing.JButton BtnModificarApoderado;
     private javax.swing.JButton BtnRegistrarApoderado;
     private javax.swing.JButton BtnVolver;
-    private javax.swing.JLabel LblFondo;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JTable tableApoderados;
     // End of variables declaration//GEN-END:variables
 }

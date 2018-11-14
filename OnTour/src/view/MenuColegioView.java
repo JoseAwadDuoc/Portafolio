@@ -5,6 +5,11 @@
  */
 package view;
 
+import Dao.AutenticacionDAO;
+import Dao.CiudadDAO;
+import Dao.ColegioDAO;
+import Dao.ComunaDAO;
+import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,6 +17,10 @@ import javax.swing.ImageIcon;
  * @author jose_
  */
 public class MenuColegioView extends javax.swing.JFrame {
+    private AutenticacionDAO autenticacionDAO = new AutenticacionDAO();
+    private ColegioDAO colegioDAO = new ColegioDAO();
+    private CiudadDAO ciudadDAO = new CiudadDAO();
+    private ComunaDAO comunaDAO = new ComunaDAO();
 
     /**
      * Creates new form MenuColegioView
@@ -30,10 +39,36 @@ public class MenuColegioView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblLogo = new javax.swing.JLabel();
+        btnListarColegio = new javax.swing.JPanel();
         BtnAgregarColegio = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        VolverColegio = new javax.swing.JButton();
+        jPanelAgregarColegio = new javax.swing.JPanel();
+        LblNombreColegio = new javax.swing.JLabel();
+        TxtNombreColegio = new javax.swing.JTextField();
+        LblDireccionColegio = new javax.swing.JLabel();
+        TxtDireccionColegio = new javax.swing.JTextField();
+        LblCiudadColegio = new javax.swing.JLabel();
+        CmbxCiudadColegio = new javax.swing.JComboBox<>();
+        cmbxComunaColegio = new javax.swing.JComboBox<>();
+        LblComunaColegio = new javax.swing.JLabel();
+        LblTelefonoColegio = new javax.swing.JLabel();
+        TxtTelefonoColegio = new javax.swing.JTextField();
+        BtnAgregarColegio1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTableColegio = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+
+        btnListarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Admistrador de Colegio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+
+        BtnAgregarColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnAgregarColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddColegio2.png"))); // NOI18N
         BtnAgregarColegio.setText("Agregar");
         BtnAgregarColegio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -41,21 +76,154 @@ public class MenuColegioView extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
+        jButton1.setText("Consultar");
+
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Delete.png"))); // NOI18N
+        jButton2.setText("Eliminar");
+
+        javax.swing.GroupLayout btnListarColegioLayout = new javax.swing.GroupLayout(btnListarColegio);
+        btnListarColegio.setLayout(btnListarColegioLayout);
+        btnListarColegioLayout.setHorizontalGroup(
+            btnListarColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnListarColegioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BtnAgregarColegio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addGap(18, 18, 18)
+                .addComponent(jButton2)
+                .addContainerGap(43, Short.MAX_VALUE))
+        );
+        btnListarColegioLayout.setVerticalGroup(
+            btnListarColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnListarColegioLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addGroup(btnListarColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BtnAgregarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        VolverColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        VolverColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
+        VolverColegio.setText("Volver");
+
+        jPanelAgregarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Registrar Colegio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanelAgregarColegio.setLayout(null);
+
+        LblNombreColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblNombreColegio.setText("Nombre: ");
+        jPanelAgregarColegio.add(LblNombreColegio);
+        LblNombreColegio.setBounds(40, 60, 100, 22);
+        jPanelAgregarColegio.add(TxtNombreColegio);
+        TxtNombreColegio.setBounds(130, 50, 210, 40);
+
+        LblDireccionColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblDireccionColegio.setText("Dirección: ");
+        jPanelAgregarColegio.add(LblDireccionColegio);
+        LblDireccionColegio.setBounds(30, 110, 110, 22);
+        jPanelAgregarColegio.add(TxtDireccionColegio);
+        TxtDireccionColegio.setBounds(130, 100, 210, 40);
+
+        LblCiudadColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblCiudadColegio.setText("Ciudad: ");
+        jPanelAgregarColegio.add(LblCiudadColegio);
+        LblCiudadColegio.setBounds(50, 160, 90, 22);
+
+        CmbxCiudadColegio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        CmbxCiudadColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
+        CmbxCiudadColegio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CmbxCiudadColegioItemStateChanged(evt);
+            }
+        });
+        jPanelAgregarColegio.add(CmbxCiudadColegio);
+        CmbxCiudadColegio.setBounds(130, 150, 210, 40);
+
+        cmbxComunaColegio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbxComunaColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
+        jPanelAgregarColegio.add(cmbxComunaColegio);
+        cmbxComunaColegio.setBounds(130, 200, 210, 40);
+
+        LblComunaColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblComunaColegio.setText("Comuna: ");
+        jPanelAgregarColegio.add(LblComunaColegio);
+        LblComunaColegio.setBounds(40, 210, 100, 22);
+
+        LblTelefonoColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblTelefonoColegio.setText("Teléfono:");
+        jPanelAgregarColegio.add(LblTelefonoColegio);
+        LblTelefonoColegio.setBounds(30, 260, 100, 22);
+        jPanelAgregarColegio.add(TxtTelefonoColegio);
+        TxtTelefonoColegio.setBounds(130, 250, 210, 40);
+
+        BtnAgregarColegio1.setText("Agregar");
+        BtnAgregarColegio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnAgregarColegio1ActionPerformed(evt);
+            }
+        });
+        jPanelAgregarColegio.add(BtnAgregarColegio1);
+        BtnAgregarColegio1.setBounds(130, 300, 210, 50);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Listar Colegios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel1.setLayout(null);
+
+        jTableColegio.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane1.setViewportView(jTableColegio);
+
+        jPanel1.add(jScrollPane1);
+        jScrollPane1.setBounds(20, 30, 550, 135);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtnAgregarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnListarColegio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(VolverColegio))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(274, 274, 274)
+                        .addComponent(jPanelAgregarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(BtnAgregarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnListarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(VolverColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanelAgregarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -68,6 +236,35 @@ public class MenuColegioView extends javax.swing.JFrame {
         agregarColegio.setLocationRelativeTo(null);
         agregarColegio.setVisible(true);
     }//GEN-LAST:event_BtnAgregarColegioActionPerformed
+
+    private void CmbxCiudadColegioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbxCiudadColegioItemStateChanged
+        // TODO add your handling code here:
+        if (evt.getStateChange() == ItemEvent.SELECTED) {
+            String comuna;
+            comuna = String.valueOf(CmbxCiudadColegio.getSelectedItem());
+            this.cmbxComunaColegio.setModel(comunaDAO.obtenerComuna(comuna));
+        }
+    }//GEN-LAST:event_CmbxCiudadColegioItemStateChanged
+
+    private void BtnAgregarColegio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarColegio1ActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            String cmbxComuna = String.valueOf(cmbxComunaColegio.getSelectedItem());
+            String cmbxComuna1 = comunaDAO.obtenerIdComuna(cmbxComuna);
+            int idcomuna = Integer.parseInt(cmbxComuna1);
+
+            String nombre = TxtNombreColegio.getText();
+            String direccion = TxtDireccionColegio.getText();
+            int telefono = Integer.parseInt(TxtTelefonoColegio.getText());
+
+            colegioDAO.agregarColegio(idcomuna, nombre, direccion, telefono);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }//GEN-LAST:event_BtnAgregarColegio1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -106,5 +303,25 @@ public class MenuColegioView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarColegio;
+    private javax.swing.JButton BtnAgregarColegio1;
+    private javax.swing.JComboBox<String> CmbxCiudadColegio;
+    private javax.swing.JLabel LblCiudadColegio;
+    private javax.swing.JLabel LblComunaColegio;
+    private javax.swing.JLabel LblDireccionColegio;
+    private javax.swing.JLabel LblNombreColegio;
+    private javax.swing.JLabel LblTelefonoColegio;
+    private javax.swing.JTextField TxtDireccionColegio;
+    private javax.swing.JTextField TxtNombreColegio;
+    private javax.swing.JTextField TxtTelefonoColegio;
+    private javax.swing.JButton VolverColegio;
+    private javax.swing.JPanel btnListarColegio;
+    private javax.swing.JComboBox<String> cmbxComunaColegio;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanelAgregarColegio;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableColegio;
+    private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }
