@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idcontrato" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[Select c.idcontrato,p.descripcion as "Descripcion Paquete",
+concat(re.nombres,CONCAT(' ',CONCAT(re.apaterno,CONCAT(' ',re.amaterno)))) AS "Nombre Ejecutivo",
+col.nombre_colegio,cu.descripcion as "Curso",ase.nombre_aseguradora,c.fecha_contrato,c.monto_meta,
+SUM(al.monto_personal) AS "Deposito a la Fecha",c.fecha_evento
+From contrato c 
+join curso cu on(c.idcurso=cu.idcurso)
+join seguro seg on(seg.idseguro=c.idseguro)
+join colegio col on(cu.idcolegio=col.idcolegio)
+join representante_agencia re on(re.rut_representante=c.rut_repres)
+join paquete p on(p.idpaquete=c.idpaquete)
+join aseguradora ase on(seg.idaseguradora=ase.idaseguradora)
+join alumno al on(al.idcurso=cu.idcurso)
+where c.idcontrato=$P{idcontrato}
+group by c.idcontrato,p.descripcion,
+concat(re.nombres,CONCAT(' ',CONCAT(re.apaterno,CONCAT(' ',re.amaterno)))),
+col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.monto_meta,c.fecha_evento]]>
+	</queryString>
+	<field name="IDCONTRATO" class="java.math.BigDecimal"/>
+	<field name="Descripcion Paquete" class="java.lang.String"/>
+	<field name="Nombre Ejecutivo" class="java.lang.String"/>
+	<field name="NOMBRE_COLEGIO" class="java.lang.String"/>
+	<field name="Curso" class="java.lang.String"/>
+	<field name="NOMBRE_ASEGURADORA" class="java.lang.String"/>
+	<field name="FECHA_CONTRATO" class="java.sql.Timestamp"/>
+	<field name="MONTO_META" class="java.math.BigDecimal"/>
+	<field name="Deposito a la Fecha" class="java.math.BigDecimal"/>
+	<field name="FECHA_EVENTO" class="java.sql.Timestamp"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="230" y="20" width="263" height="39"/>
+				<textElement textAlignment="Justified">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[REPORTE DE AVANCE]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="8" width="92" height="71"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\corellana\\Documents\\NetBeansProjects\\Portafolio\\OnTour\\src\\imagenes\\logo1.png"]]></imageExpression>
+			</image>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="403" y="0" width="152" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="328" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="298" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[CONTRATO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="59" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[PAQUETE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[CURSO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[FECHA CONTRATO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="150" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[FECHA EVENTO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="179" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[MONTO META:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="59" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Descripcion Paquete}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{IDCONTRATO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="90" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Curso}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="120" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{FECHA_CONTRATO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="150" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{FECHA_EVENTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="179" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{MONTO_META}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="140" y="207" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{Deposito a la Fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="207" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[REGISTRADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="32" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Nombre Ejecutivo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="32" width="114" height="20"/>
+				<textElement/>
+				<text><![CDATA[NOMBRE EJECUTIVO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="245" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[ASEGURADORA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="140" y="245" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMBRE_ASEGURADORA}]]></textFieldExpression>
+			</textField>
+			<elementGroup/>
+			<barChart>
+				<chart>
+					<reportElement x="262" y="10" width="521" height="278"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["MONTO META"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{MONTO_META}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{MONTO_META}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["MONTO AHORRADO"        ]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{Deposito a la Fecha}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Deposito a la Fecha}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot orientation="Horizontal"/>
+					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+					<categoryAxisFormat>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="403" y="34" width="201" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Solucomp Software Development LTDA.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

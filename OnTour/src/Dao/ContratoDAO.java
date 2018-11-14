@@ -123,6 +123,24 @@ public class ContratoDAO extends DbUtilidades {
 
         return idcurso;
     }
+    
+    public int obtenerIdContrato(int idcurso) {
+
+        ResultSet rs = this.consulta("Select * from Contrato where idcurso = '" + idcurso + "'");
+        int idcontrato=0;
+        try {
+            while (rs.next()) {
+                idcontrato = rs.getInt("idcontrato");
+
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return idcontrato;
+    }
 
     public String agregarContrato(int idpaquete, int rut, int idcurso,int idseguro, String fecha_inicio, int monto_venta, String fecha_evento) {
         ResultSet rs = this.consulta("INSERT INTO CONTRATO (IDPAQUETE, RUT_REPRES, IDCURSO, IDSEGURO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) "
