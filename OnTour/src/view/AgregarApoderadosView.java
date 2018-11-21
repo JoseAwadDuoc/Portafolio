@@ -297,7 +297,6 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         try {
             
             int rutApod = Integer.parseInt(txtRutApoderado.getText());
-            System.out.println("asas: " +rutApod);
             
             String nombre = txtNombreApoderado.getText();
             String ap= txtAPaternoApoderado.getText();

@@ -1,9 +1,7 @@
 package app;
 import Dao.Conexion;
 import Dao.GenerarReporteDAO;
-import view.AutenticacionView;
 import java.sql.SQLException;
-import view.GenerarReporteAvance;
 
 public class Main {
 

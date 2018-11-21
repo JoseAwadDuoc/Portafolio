@@ -6,10 +6,6 @@
 package view;
 
 import Dao.PdfDAO;
-import Dao.Conexion;
-import Dao.PdfDAO;
-
-import controller.PDFController;
 
 import controller.PDFController;
 import java.io.File;
@@ -31,7 +27,7 @@ import model.Tabla_PdfVO;
 public class MostrarPDF extends javax.swing.JFrame {
 
     private PdfDAO pdfdao = new PdfDAO();
-    private PDFController controller= new PDFController();
+    private PDFController controller = new PDFController();
 
     /**
      * Creates new form MostrarPDF
@@ -40,34 +36,20 @@ public class MostrarPDF extends javax.swing.JFrame {
     String ruta_default = "C:/portafolio/PDF/";
     String ruta_archivo = "";
     String nombre_archivo = " ";
-  
 
     public MostrarPDF() {
         initComponents();
         this.CmbContrato.setModel(pdfdao.obtenerContrato());
-        
+
         //TABLA
-        
         this.tablepdf.setVisible(true);
         DefaultTableModel modelotabla = this.controller.consultarContratos();
-        this.tablepdf.setModel(modelotabla); 
-        
-       
-        
+        this.tablepdf.setModel(modelotabla);
+
         //termino tabla
-        
-        
         activa_boton(false, true, true);
         CmbContrato.setEnabled(false);
     }
-
- 
-
-  
-
- 
-
-   
 
     public void activa_boton(boolean a, boolean b, boolean c) {
         btnguardar.setEnabled(a);
@@ -250,39 +232,39 @@ public class MostrarPDF extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnseleccionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnseleccionarActionPerformed
-       // seleccionar_pdf();
-       
-       JFileChooser j = new JFileChooser();
+        // seleccionar_pdf();
+
+        JFileChooser j = new JFileChooser();
         FileNameExtensionFilter fi = new FileNameExtensionFilter("pdf", "pdf");
         j.setFileFilter(fi);
         int se = j.showOpenDialog(this);
         if (se == 0) {
             this.btnseleccionar.setText("" + j.getSelectedFile().getName());
             nombre_archivo = j.getSelectedFile().getName();
-            ruta_archivo=ruta_default+nombre_archivo;
-             File archivopdforigen= new File(j.getSelectedFile().getAbsolutePath());
-             File destinopdf= new File(ruta_archivo);
-             
-              try {
-                        InputStream in = new FileInputStream(archivopdforigen);
-                        OutputStream out = new FileOutputStream(destinopdf);
+            ruta_archivo = ruta_default + nombre_archivo;
+            File archivopdforigen = new File(j.getSelectedFile().getAbsolutePath());
+            File destinopdf = new File(ruta_archivo);
 
-                        byte[] buf = new byte[1024];
-                        int len;
+            try {
+                InputStream in = new FileInputStream(archivopdforigen);
+                OutputStream out = new FileOutputStream(destinopdf);
 
-                        while ((len = in.read(buf)) > 0) {
-                                out.write(buf, 0, len);
-                        }
+                byte[] buf = new byte[1024];
+                int len;
 
-                        in.close();
-                        out.close();
-                } catch (IOException ioe){
-                        ioe.printStackTrace();
+                while ((len = in.read(buf)) > 0) {
+                    out.write(buf, 0, len);
                 }
+
+                in.close();
+                out.close();
+            } catch (IOException ioe) {
+                ioe.printStackTrace();
+            }
         } else {
         }
-        
-       
+
+
     }//GEN-LAST:event_btnseleccionarActionPerformed
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
@@ -290,36 +272,27 @@ public class MostrarPDF extends javax.swing.JFrame {
         //Obtención rut agente
         int idcontra = Integer.parseInt(String.valueOf(CmbContrato.getSelectedItem()));
         int idcontrato = pdfdao.obtenerIdContrato(idcontra);
-        
-        //PRUEBA
-        
-        
-        
-        
-        //TERMINO PRUEBA
-         
-       
-        
-              System.out.println("nombre:"+nombre_archivo);
-              System.out.println("ruta:"+ruta_archivo);
-              System.out.println("idcontrato "+idcontrato);
 
-              try {
-            
-                  pdfdao.Agregar_PdfVO(nombre_archivo, ruta_archivo, idcontrato);
-           // guardar_pdf(idcontrato,nombre_archivo,ruta_archivo);
+        //PRUEBA
+        //TERMINO PRUEBA
+        System.out.println("nombre:" + nombre_archivo);
+        System.out.println("ruta:" + ruta_archivo);
+        System.out.println("idcontrato " + idcontrato);
+
+        try {
+
+            pdfdao.Agregar_PdfVO(nombre_archivo, ruta_archivo, idcontrato);
+            // guardar_pdf(idcontrato,nombre_archivo,ruta_archivo);
             //tpdf.visualizar_PdfVO(tabla);
-          
-            
-             //TABLA
-        
-        this.tablepdf.setVisible(true);
-        DefaultTableModel modelotabla = this.controller.consultarContratos();
-        this.tablepdf.setModel(modelotabla); 
-        
-            activa_boton(false, true,true);
+
+            //TABLA
+            this.tablepdf.setVisible(true);
+            DefaultTableModel modelotabla = this.controller.consultarContratos();
+            this.tablepdf.setModel(modelotabla);
+
+            activa_boton(false, true, true);
             CmbContrato.setEnabled(false);
-       
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
@@ -327,34 +300,29 @@ public class MostrarPDF extends javax.swing.JFrame {
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
 //        eliminar_pdf(id);
-       // tpdf.visualizar_PdfVO(tabla);
-       /* activa_boton(false, false, false);
+        // tpdf.visualizar_PdfVO(tabla);
+        /* activa_boton(false, false, false);
         CmbContrato.setEnabled(false);
         ruta_archivo = "";
        
-       */
-       
-         int seleccionado= this.tablepdf.getSelectedRow();
+         */
+
+        int seleccionado = this.tablepdf.getSelectedRow();
         if (seleccionado > -1) {
-            
+
             int confirm = JOptionPane.showConfirmDialog(null, "¿Está Seguro del Archivo a eliminar?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirm == JOptionPane.YES_OPTION) {
-                
-               
-                
-               
-                 
+
                 Object valor = ((DefaultTableModel) this.tablepdf.getModel()).getValueAt(seleccionado, 0);
                 int idContrato = Integer.parseInt(valor.toString());
-                
-                 //ELIMINAR ARCHIVO REAL
-                 String rutadlt= pdfdao.obtenerrutapdf(idContrato);
-                 File destino = new File(rutadlt);
-                 destino.delete();
-                 
-               
+
+                //ELIMINAR ARCHIVO REAL
+                String rutadlt = pdfdao.obtenerrutapdf(idContrato);
+                File destino = new File(rutadlt);
+                destino.delete();
+
                 boolean eliminado = this.controller.eliminararchivopdf(idContrato);
-                if(eliminado){
+                if (eliminado) {
                     ((DefaultTableModel) this.tablepdf.getModel()).removeRow(seleccionado);
                     JOptionPane.showMessageDialog(this, "Archivo Eliminado");
                 }
@@ -362,7 +330,7 @@ public class MostrarPDF extends javax.swing.JFrame {
             } else {
                 System.out.println("Cancelación de eliminado");
             }
-        }else {
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione un contrato");
         }
     }//GEN-LAST:event_btneliminarActionPerformed
@@ -371,17 +339,17 @@ public class MostrarPDF extends javax.swing.JFrame {
         activa_boton(false, false, false);
 
         CmbContrato.setEnabled(false);
-        
-         File destino = new File(ruta_archivo);
-                 destino.delete();
+
+        File destino = new File(ruta_archivo);
+        destino.delete();
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void btnnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnuevoActionPerformed
         activa_boton(true, false, false);
         CmbContrato.setEnabled(true);
         ruta_archivo = "";
-        
-        
+
+
     }//GEN-LAST:event_btnnuevoActionPerformed
 
     /**
