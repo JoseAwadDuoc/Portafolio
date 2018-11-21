@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe7ab4a5-f19d-4340-9abd-7fdbd4fc6c08">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -40,24 +40,26 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="230" y="20" width="263" height="39" uuid="4a569c2a-70eb-4600-9268-2a91139880c1"/>
+				<reportElement x="230" y="20" width="263" height="39"/>
 				<textElement textAlignment="Justified">
 					<font size="24"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE AVANCE]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="8" width="92" height="71" uuid="0234af46-7635-446e-a71e-b049bac46cf2"/>
-				<imageExpression><![CDATA["C:\\Users\\corellana\\Documents\\NetBeansProjects\\Portafolio\\OnTour\\src\\imagenes\\logo1.png"]]></imageExpression>
-			</image>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="403" y="0" width="152" height="20" uuid="8a380aaa-53f1-4dfa-a39f-6ba4a8ea7952"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<reportElement x="403" y="0" width="152" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="328" y="0" width="100" height="20" uuid="31960d7c-a2e5-4291-a060-6b2e75c74c55"/>
+				<reportElement x="328" y="0" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
+			<image>
+				<reportElement x="15" y="7" width="74" height="72"/>
+				<imageExpression class="java.lang.String"><![CDATA["C:\\Users\\jose_\\Desktop\\Proyecto Portafolio\\OnTour\\src\\imagenes\\logo1.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
@@ -69,81 +71,99 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 	<detail>
 		<band height="298" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="20" uuid="28fbbee9-1469-4ae6-a1fa-fe536db8a721"/>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[CONTRATO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="59" width="100" height="20" uuid="846093af-f55b-4b1e-9189-21785ad19fee"/>
+				<reportElement x="0" y="59" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[PAQUETE:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="90" width="100" height="20" uuid="da92dc73-dc29-4eda-822d-8817072af2d1"/>
+				<reportElement x="0" y="90" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[CURSO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="120" width="100" height="20" uuid="0dab986a-9bc0-4cc3-a6fa-773d574c8ce5"/>
+				<reportElement x="0" y="120" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[FECHA CONTRATO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="150" width="100" height="20" uuid="46159474-5ead-44fd-818f-c505562e804d"/>
+				<reportElement x="0" y="150" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[FECHA EVENTO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="179" width="100" height="20" uuid="3845bb8f-c7f5-4a38-b178-801d4b9d3116"/>
+				<reportElement x="0" y="179" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[MONTO META:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="140" y="59" width="100" height="20" uuid="492ae199-5051-4029-8cdb-7d191c1b67b5"/>
-				<textFieldExpression><![CDATA[$F{Descripcion Paquete}]]></textFieldExpression>
+				<reportElement x="140" y="59" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Descripcion Paquete}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="0" width="100" height="20" uuid="20306ab4-392d-45ca-9777-eacac24d1b32"/>
-				<textFieldExpression><![CDATA[$F{IDCONTRATO}]]></textFieldExpression>
+				<reportElement x="140" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{IDCONTRATO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="90" width="100" height="20" uuid="32539c4a-aba1-4533-9612-f8659b08c691"/>
-				<textFieldExpression><![CDATA[$F{Curso}]]></textFieldExpression>
+				<reportElement x="140" y="90" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Curso}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="120" width="100" height="20" uuid="607aec9e-a1a5-4122-afbf-a5ab383b7777"/>
-				<textFieldExpression><![CDATA[$F{FECHA_CONTRATO}]]></textFieldExpression>
+				<reportElement x="140" y="120" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{FECHA_CONTRATO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="150" width="100" height="20" uuid="733b214a-75e6-4c32-99e1-9aec5aa51339"/>
-				<textFieldExpression><![CDATA[$F{FECHA_EVENTO}]]></textFieldExpression>
+				<reportElement x="140" y="150" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{FECHA_EVENTO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="179" width="100" height="20" uuid="85123538-0ab5-43e6-90be-71b7c8f577e2"/>
-				<textFieldExpression><![CDATA[$F{MONTO_META}]]></textFieldExpression>
+				<reportElement x="140" y="179" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{MONTO_META}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="207" width="100" height="20" uuid="f24ea946-6bd3-41b4-aa85-89c496cb0abf"/>
-				<textFieldExpression><![CDATA[$F{Deposito a la Fecha}]]></textFieldExpression>
+				<reportElement x="140" y="207" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{Deposito a la Fecha}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="207" width="100" height="20" uuid="bf55e3e6-d1e9-4da4-95c1-61b379c48a4f"/>
+				<reportElement x="0" y="207" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[REGISTRADO:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="140" y="32" width="100" height="20" uuid="b203e361-cbcb-46f8-b3a1-e5fd1d82f23b"/>
-				<textFieldExpression><![CDATA[$F{Nombre Ejecutivo}]]></textFieldExpression>
+				<reportElement x="140" y="32" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Nombre Ejecutivo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="32" width="114" height="20" uuid="90a06712-4f36-4e10-8f64-afd383d54180"/>
+				<reportElement x="0" y="32" width="114" height="20"/>
+				<textElement/>
 				<text><![CDATA[NOMBRE EJECUTIVO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="245" width="100" height="20" uuid="150a88f5-e347-422a-868b-b1256ad3497a"/>
+				<reportElement x="0" y="245" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[ASEGURADORA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="140" y="245" width="100" height="20" uuid="bb0e6837-c314-4911-a649-0de0f3d738e9"/>
-				<textFieldExpression><![CDATA[$F{NOMBRE_ASEGURADORA}]]></textFieldExpression>
+				<reportElement x="140" y="245" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMBRE_ASEGURADORA}]]></textFieldExpression>
 			</textField>
 			<elementGroup/>
 			<barChart>
 				<chart>
-					<reportElement x="262" y="10" width="521" height="278" uuid="6ff82310-8045-4162-899b-be83d908073c"/>
+					<reportElement x="262" y="10" width="521" height="278"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -164,10 +184,16 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 					<plot orientation="Horizontal"/>
 					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
 					<categoryAxisFormat>
-						<axisFormat/>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
 					</categoryAxisFormat>
 					<valueAxisFormat>
-						<axisFormat/>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
 					</valueAxisFormat>
 				</barPlot>
 			</barChart>
@@ -179,7 +205,7 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 	<pageFooter>
 		<band height="54" splitType="Stretch">
 			<staticText>
-				<reportElement x="403" y="34" width="201" height="20" uuid="4752e7d5-d372-4c8d-bb46-c2efef821bc0"/>
+				<reportElement x="403" y="34" width="201" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>

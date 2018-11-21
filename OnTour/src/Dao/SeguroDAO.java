@@ -8,12 +8,30 @@ package Dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
+import model.Seguro;
 
 /**
  *
  * @author jose_
  */
 public class SeguroDAO extends DbUtilidades {
+
+    public boolean agregarSeguro(Seguro seguro) {
+
+        int idTipoSeguro = seguro.getIdTipoSeguro();
+        int idAseguradora = seguro.getIdAseguradora();
+        int precio = seguro.getPrecio();
+        String fechaIni = seguro.getFechaIni();
+        String fechaFin = seguro.getFechFin();
+
+        return this.actualizar("INSERT INTO SEGURO (IDTIPO_SEGURO,IDASEGURADORA,CANT_PERSONAS,FECHA_INI,FECHA_TER) "
+                + "VALUES "
+                + "( " + idTipoSeguro
+                + "," + idAseguradora
+                + "," + precio
+                + ",TO_DATE('" + fechaIni + "','DD-MM-YYYY'),"
+                + ",TO_DATE('" + fechaFin + "','DD-MM-YYYY'))");
+    }
 
     public DefaultComboBoxModel obtenerSeguro() {
         DefaultComboBoxModel listamodelo = new DefaultComboBoxModel();
