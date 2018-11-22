@@ -5,8 +5,6 @@
  */
 package view;
 
-import Dao.ApoderadoDAO;
-import Dao.AutenticacionDAO;
 import Dao.CiudadDAO;
 import Dao.ComunaDAO;
 import controller.ApoderadosController;
@@ -76,6 +74,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         btnResgistrarApoderado = new javax.swing.JButton();
         btnVolverApoderado = new javax.swing.JButton();
         btnLimpiarApoderado = new javax.swing.JButton();
+        jDateChooserFechaNac = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
@@ -244,6 +243,8 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         btnLimpiarApoderado.setText("Limpiar");
         jPanel1.add(btnLimpiarApoderado);
         btnLimpiarApoderado.setBounds(170, 750, 120, 40);
+        jPanel1.add(jDateChooserFechaNac);
+        jDateChooserFechaNac.setBounds(450, 270, 95, 22);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -292,51 +293,51 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverApoderadoActionPerformed
 
     private void btnResgistrarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarApoderadoActionPerformed
-        // TODO add your handling code here:
+
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
         try {
-            
+
             int rutApod = Integer.parseInt(txtRutApoderado.getText());
-            
+
             String nombre = txtNombreApoderado.getText();
-            String ap= txtAPaternoApoderado.getText();
-            String am=txtAMaternoApoderado.getText();
-//            String fechaNac = formato.format(jdatechooserFechaNacimiento.getDate());
-            String fechaNac = txtFNacimiento.getText();
-            int tel= Integer.parseInt(txtTelefonoApoderado.getText());
-            
+            String ap = txtAPaternoApoderado.getText();
+            String am = txtAMaternoApoderado.getText();
+
+            String fechaNac = formato.format(jDateChooserFechaNac.getDate());
+            int tel = Integer.parseInt(txtTelefonoApoderado.getText());
+
             String comboCom = String.valueOf(cmbxComuna.getSelectedItem());
             String comboCom1 = comunaDAO.obtenerIdComuna(comboCom);
             int idcomuna = Integer.parseInt(comboCom1);
-            
-            String direccion= txtDireccionApoderado.getText();
+
+            String direccion = txtDireccionApoderado.getText();
             String contrasena = String.valueOf(txtPassApoderado.getPassword());
             String correo = txtCorreoApoderado.getText();
-            
-            boolean encargado= false;
-            
-            if(RbtPerfilSi.isSelected()){
-            
-                encargado=true;
-                
+
+            boolean encargado = false;
+
+            if (RbtPerfilSi.isSelected()) {
+
+                encargado = true;
+
             }
-            
-           Apoderado apoderado = new Apoderado();
-           apoderado.setRut(rutApod);
-           apoderado.setNombres(nombre);
-           apoderado.setContrasena(contrasena);
-           apoderado.setaPaterno(ap);
-           apoderado.setaMaterno(am);
-           apoderado.setFechaNacimiento(fechaNac);
-           apoderado.setTelefono(tel);
-           apoderado.setContrasena(contrasena);
-           apoderado.setCorreo(correo);
-           apoderado.setDireccion(direccion);
-           apoderado.setEncargado(encargado);
-           apoderado.setIdComuna(idcomuna);
-           
-           controller.agregarApoderado(apoderado);
-  
+
+            Apoderado apoderado = new Apoderado();
+            apoderado.setRut(rutApod);
+            apoderado.setNombres(nombre);
+            apoderado.setContrasena(contrasena);
+            apoderado.setaPaterno(ap);
+            apoderado.setaMaterno(am);
+            apoderado.setFechaNacimiento(fechaNac);
+            apoderado.setTelefono(tel);
+            apoderado.setContrasena(contrasena);
+            apoderado.setCorreo(correo);
+            apoderado.setDireccion(direccion);
+            apoderado.setEncargado(encargado);
+            apoderado.setIdComuna(idcomuna);
+
+            controller.agregarApoderado(apoderado);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -399,6 +400,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbxCiudad;
     private javax.swing.JComboBox<String> cmbxComuna;
+    private com.toedter.calendar.JDateChooser jDateChooserFechaNac;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtAMaternoApoderado;
     private javax.swing.JTextField txtAPaternoApoderado;

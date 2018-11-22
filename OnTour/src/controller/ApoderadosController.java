@@ -63,7 +63,7 @@ public class ApoderadosController {
         if (apoderado == null) {
             throw new Exception("Apoderado no puede ser null");
         }
-        if (!apoderado.getFechaNacimiento().contains("-")) {
+        if (!apoderado.getFechaNacimiento().contains("/")) {
             throw new Exception("Formato de fecha de nacimiento invalida");
         }
         boolean creado = this.apoderadoDAO.agregarApoderado(apoderado);

@@ -28,7 +28,7 @@ public class MenuContratosView extends javax.swing.JFrame {
      * Creates new form ConsultaContratos
      */
     public MenuContratosView() {
-        this.setMinimumSize(new Dimension(840,500));
+        this.setMinimumSize(new Dimension(1016,500));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.tableContratos.setVisible(false);
@@ -49,8 +49,9 @@ public class MenuContratosView extends javax.swing.JFrame {
         Logo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnConsultar = new javax.swing.JButton();
-        btnAgregar = new javax.swing.JButton();
+        btnAgregarArchivo = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnAgregarContrato = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
@@ -70,7 +71,7 @@ public class MenuContratosView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableContratos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 180, 780, 210);
+        jScrollPane1.setBounds(20, 180, 930, 210);
 
         BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
@@ -101,16 +102,16 @@ public class MenuContratosView extends javax.swing.JFrame {
         jPanel1.add(btnConsultar);
         btnConsultar.setBounds(10, 40, 190, 70);
 
-        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
-        btnAgregar.setText("Agregar ");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarArchivo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAgregarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
+        btnAgregarArchivo.setText("PDF");
+        btnAgregarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                btnAgregarArchivoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar);
-        btnAgregar.setBounds(210, 40, 180, 70);
+        jPanel1.add(btnAgregarArchivo);
+        btnAgregarArchivo.setBounds(580, 40, 180, 70);
 
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Delete.png"))); // NOI18N
@@ -123,8 +124,19 @@ public class MenuContratosView extends javax.swing.JFrame {
         jPanel1.add(btnEliminar);
         btnEliminar.setBounds(400, 40, 170, 70);
 
+        btnAgregarContrato.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAgregarContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
+        btnAgregarContrato.setText("Agregar ");
+        btnAgregarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarContratoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregarContrato);
+        btnAgregarContrato.setBounds(210, 40, 180, 70);
+
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(180, 30, 620, 140);
+        jPanel1.setBounds(180, 30, 770, 140);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -144,13 +156,13 @@ public class MenuContratosView extends javax.swing.JFrame {
         MenuPrin.setVisible(true);
     }//GEN-LAST:event_BtnVolverActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void btnAgregarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarArchivoActionPerformed
         // TODO add your handling code here:
-        AgregarContratosView AgregarContr = new AgregarContratosView();
+        MenuPdfView subirPdf = new MenuPdfView();
         this.setVisible(false);
-        AgregarContr.setLocationRelativeTo(null);
-        AgregarContr.setVisible(true);
-    }//GEN-LAST:event_btnAgregarActionPerformed
+        subirPdf.setLocationRelativeTo(null);
+        subirPdf.setVisible(true);
+    }//GEN-LAST:event_btnAgregarArchivoActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
@@ -177,6 +189,14 @@ public class MenuContratosView extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnAgregarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarContratoActionPerformed
+        // TODO add your handling code here:
+        AgregarContratosView agregarContratos = new AgregarContratosView();
+        this.setVisible(false);
+        agregarContratos.setLocationRelativeTo(null);
+        agregarContratos.setVisible(true);
+    }//GEN-LAST:event_btnAgregarContratoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -223,7 +243,8 @@ public class MenuContratosView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnVolver;
     private javax.swing.JLabel Logo;
-    private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnAgregarArchivo;
+    private javax.swing.JButton btnAgregarContrato;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JPanel jPanel1;

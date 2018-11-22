@@ -7,21 +7,27 @@ package view;
 
 import Dao.ContratoDAO;
 import Dao.GenerarReporteDAO;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
+import utils.GuiUtils;
 
 /**
  *
  * @author corellana
  */
 public class GenerarReporteAvance extends javax.swing.JFrame {
- private ContratoDAO contratoDAO = new ContratoDAO();
- private GenerarReporteDAO reporteDAO= new GenerarReporteDAO();
-    /** private ContratoDAO contratoDAO = new ContratoDAO();
-     * Creates new form GenerarReporteAvance
+
+    private ContratoDAO contratoDAO = new ContratoDAO();
+    private GenerarReporteDAO reporteDAO = new GenerarReporteDAO();
+
+    /**
+     * private ContratoDAO contratoDAO = new ContratoDAO(); Creates new form
+     * GenerarReporteAvance
      */
     public GenerarReporteAvance() {
+        this.setMinimumSize(new Dimension(400,400));
         initComponents();
-        this.CmbColegio.setModel(contratoDAO.obtenerColegio());
+        this.CmbColegio.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerColegio()));
     }
 
     /**
@@ -42,10 +48,15 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
         btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
         jLabel1.setText("Colegio");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(40, 40, 103, 24);
 
         jLabel2.setText("Curso:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(43, 102, 103, 24);
 
         CmbColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         CmbColegio.addItemListener(new java.awt.event.ItemListener() {
@@ -53,8 +64,12 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
                 CmbColegioItemStateChanged(evt);
             }
         });
+        getContentPane().add(CmbColegio);
+        CmbColegio.setBounds(130, 30, 230, 50);
 
         CmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(CmbCurso);
+        CmbCurso.setBounds(130, 100, 230, 40);
 
         BtnGenerarReporte.setText("Generar Reporte");
         BtnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
@@ -62,57 +77,20 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
                 BtnGenerarReporteActionPerformed(evt);
             }
         });
-
-        lblMensaje.setText("jLabel3");
+        getContentPane().add(BtnGenerarReporte);
+        BtnGenerarReporte.setBounds(130, 190, 226, 44);
+        getContentPane().add(lblMensaje);
+        lblMensaje.setBounds(130, 160, 240, 16);
 
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
         btnVolver.setText("Volver");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
-                        .addGap(54, 54, 54)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(CmbColegio, 0, 200, Short.MAX_VALUE)
-                            .addComponent(CmbCurso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(252, 252, 252))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblMensaje, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(BtnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(101, 101, 101)
-                                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CmbColegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(lblMensaje)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BtnGenerarReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(244, Short.MAX_VALUE))
-        );
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnVolver);
+        btnVolver.setBounds(220, 250, 140, 44);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -121,7 +99,7 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             String curso;
             curso = String.valueOf(CmbColegio.getSelectedItem());
-            this.CmbCurso.setModel(contratoDAO.obtenerCurso(curso));
+            this.CmbCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCurso(curso)));
         }
 
 // TODO add your handling code here:
@@ -130,26 +108,31 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
     private void BtnGenerarReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGenerarReporteActionPerformed
 
         try {
-            
+
             //Obtención ID CURSO (Para uso en el insert)//
             String combocur = String.valueOf(CmbCurso.getSelectedItem());
             String combocur1 = contratoDAO.obtenerIdCurso(combocur);
             int idcurso = Integer.parseInt(combocur1);
-            
-            
-            int idcontrato= contratoDAO.obtenerIdContrato(idcurso);
-            
+
+            int idcontrato = contratoDAO.obtenerIdContrato(idcurso);
+
             reporteDAO.GenerarReporteAvance(idcontrato);
-            
-            
+
         } catch (Exception e) {
-            
+
             lblMensaje.setText("No se encuentra un Contrato Vigente.");
         }
-        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnGenerarReporteActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MenuDuenoView menuDueno = new MenuDuenoView();
+        menuDueno.setLocationRelativeTo(null);
+        menuDueno.setVisible(true);
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments

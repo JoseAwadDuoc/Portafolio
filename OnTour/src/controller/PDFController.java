@@ -45,7 +45,7 @@ public class PDFController {
     
     public boolean eliminararchivopdf(int id){
         try {
-            this.pdao.eliminararchivopdf(id);
+            this.pdao.eliminarArchivoPdf(id);
             return true;
         } catch (Exception e) {
             e.printStackTrace();

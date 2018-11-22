@@ -8,8 +8,10 @@ import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import utils.GuiUtils;
 
 /**
  *
@@ -22,6 +24,10 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private RepresentanteAgenciaDAO representanteAgenciaDAO = new RepresentanteAgenciaDAO();
     private SeguroDAO seguroDAO = new SeguroDAO();
 
+    private int montoPaquete = 0;
+    private int montoSeguro = 0;
+    
+    
     /**
      * Creates new form AgregarContratos
      */
@@ -29,8 +35,8 @@ public class AgregarContratosView extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(500, 620));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
-        this.ComboPaquete.setModel(contratoDAO.obtenerPaquete());
-        this.ComboColegio.setModel(contratoDAO.obtenerColegio());
+        this.ComboPaquete.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerPaquete()));
+        this.ComboColegio.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerColegio()));
         this.comboagente.setModel(representanteAgenciaDAO.obtenerRepresentantes());
         this.cmbSeguro.setModel(seguroDAO.obtenerSeguro());
     }
@@ -57,7 +63,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
         LblPaquete = new javax.swing.JLabel();
         lblmonto = new javax.swing.JLabel();
         cmbSeguro = new javax.swing.JComboBox<>();
-        lblMonto = new javax.swing.JLabel();
+        lblMontoValue = new javax.swing.JLabel();
         lblSeguro = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         BtnBorrarcampos = new javax.swing.JButton();
@@ -157,9 +163,9 @@ public class AgregarContratosView extends javax.swing.JFrame {
         jPanel1.add(cmbSeguro);
         cmbSeguro.setBounds(180, 320, 200, 40);
 
-        lblMonto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(lblMonto);
-        lblMonto.setBounds(180, 280, 190, 30);
+        lblMontoValue.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(lblMontoValue);
+        lblMontoValue.setBounds(180, 280, 190, 30);
 
         lblSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblSeguro.setText("Seleccione Seguro:");
@@ -210,7 +216,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             String curso;
             curso = String.valueOf(ComboColegio.getSelectedItem());
-            this.ComboCurso.setModel(contratoDAO.obtenerCurso(curso));
+            this.ComboCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCurso(curso)));
         }
 
 // TODO add your handling code here:
@@ -230,14 +236,13 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private void ComboPaqueteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboPaqueteItemStateChanged
         //Obtención del monto del paquete
         String combopaq = String.valueOf(ComboPaquete.getSelectedItem());
-        String combopaq1;
-
-        combopaq1 = contratoDAO.obtenerMontoPaquete(combopaq);
-
-        lblMonto.setText("$" + combopaq1);
-        //=============================//
-
-// TODO add your handling code here:
+        System.out.println("combopaq:"+ combopaq);
+        this.montoPaquete = contratoDAO.obtenerMontoPaquete(combopaq);
+        System.out.println("montoPaquete:"+ this.montoPaquete);
+        int monto = this.calcularMontoResultado();
+        if (monto > 0) {
+            lblMontoValue.setText(String.valueOf(monto));
+        }
     }//GEN-LAST:event_ComboPaqueteItemStateChanged
 
     private void ComboCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboCursoItemStateChanged
@@ -255,13 +260,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
         try {
             //Obtención del monto del paquete
             String montopaq = String.valueOf(ComboPaquete.getSelectedItem());
-            String montopaq1;
-
-            montopaq1 = contratoDAO.obtenerMontoPaquete(montopaq);
-
-            int monto = Integer.parseInt(montopaq1);
-
-            System.out.println("monto: " + monto);
+            int montopaq1 = contratoDAO.obtenerMontoPaquete(montopaq);
 
             //Obtención rut agente
             String comboag = String.valueOf(comboagente.getSelectedItem());
@@ -269,16 +268,8 @@ public class AgregarContratosView extends javax.swing.JFrame {
 
             int rutagente = Integer.parseInt(comboag1);
             System.out.println("Rut Agente: " + rutagente);
-
-            Calendar fcontrato = Calendar.getInstance();
-
-            int dia = fcontrato.get(Calendar.DATE);
-            int mes = fcontrato.get(Calendar.MONTH);
-            int anio = fcontrato.get(Calendar.YEAR);
-
-            String fecha_contrato = new String();
-            fecha_contrato = String.valueOf(dia) + "/" + String.valueOf(mes + 1) + "/" + String.valueOf(anio);
-
+            
+            String fecha_contrato = formato.format(new Date());
             System.out.println("Fecha de contrato: " + fecha_contrato);
 
             //Obtención ID CURSO (Para uso en el insert)//
@@ -299,14 +290,17 @@ public class AgregarContratosView extends javax.swing.JFrame {
 
             //Obtener Fecha Evento
             String fecha_evento = formato.format(dateChooserFechaEvento.getDate());
-//            String fecha_evento = dateChooserFechaEvento.getText();
-
             System.out.println("Fecha_evento : " + fecha_evento);
+            
+            int monto = this.calcularMontoResultado();
 
-            //Obtener Fecha Del sistema
-            contratoDAO.agregarContrato(idpaquete, rutagente, idcurso, idseguro, fecha_contrato, monto, fecha_evento);
-
-            JOptionPane.showMessageDialog(this, "Contrato registrado");
+            if (monto > 0) {
+            
+                contratoDAO.agregarContrato(idpaquete, rutagente, idcurso, idseguro, fecha_contrato, monto, fecha_evento);
+                JOptionPane.showMessageDialog(this, "Contrato registrado");
+            } else {
+                JOptionPane.showMessageDialog(this, "Falta monto calculado");
+            }
             
 
         } catch (Exception e) {
@@ -334,9 +328,26 @@ public class AgregarContratosView extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboColegioActionPerformed
 
     private void cmbSeguroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSeguroItemStateChanged
-        // TODO add your handling code here:
+        String comboseg = String.valueOf(cmbSeguro.getSelectedItem());
+        System.out.println("comboseg:"+ comboseg);
+        this.montoSeguro = seguroDAO.obtenerMontoSeguro(comboseg);
+        System.out.println("montoSeguro:"+ this.montoSeguro);
+        int monto = this.calcularMontoResultado();
+        if (monto > 0) {
+            lblMontoValue.setText(String.valueOf(monto));
+        }
     }//GEN-LAST:event_cmbSeguroItemStateChanged
 
+    
+    private int calcularMontoResultado() {
+        int monto = 0;
+        if (this.montoPaquete > 0 && this.montoSeguro > 0) {
+            int cantidadAlumnos = 1;
+            monto = (this.montoPaquete * cantidadAlumnos) + (this.montoSeguro * cantidadAlumnos);
+        }
+        return monto;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -388,7 +399,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateChooserFechaEvento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblMonto;
+    private javax.swing.JLabel lblMontoValue;
     private javax.swing.JLabel lblSeguro;
     private javax.swing.JLabel lblagente;
     private javax.swing.JLabel lblcolegio;

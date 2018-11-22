@@ -81,6 +81,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         BtnSeguros.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnSeguros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/GestionarSeguros.png"))); // NOI18N
         BtnSeguros.setText("Gestionar Seguros");
+        BtnSeguros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSegurosActionPerformed(evt);
+            }
+        });
         jPanel1.add(BtnSeguros);
         BtnSeguros.setBounds(20, 20, 260, 60);
 
@@ -188,22 +193,22 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void MnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCerrarSesionActionPerformed
         // TODO add your handling code here:
-        int input = JOptionPane.showConfirmDialog(null,"¿Seguro deseas Cerrar Sesion?");
-        if(input==0){
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro deseas Cerrar Sesion?");
+        if (input == 0) {
             JOptionPane.showMessageDialog(this, "Sesión Cerrada con éxito");
             this.setVisible(false);
             AutenticacionView Autenti = new AutenticacionView();
             Autenti.setLocationRelativeTo(null);
             Autenti.setVisible(true);
-        }else{
-            
+        } else {
+
         }
     }//GEN-LAST:event_MnCerrarSesionActionPerformed
 
     private void MnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSalirActionPerformed
         // TODO add your handling code here:
         int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
-        if(input==0){
+        if (input == 0) {
             this.dispose();
         }
     }//GEN-LAST:event_MnSalirActionPerformed
@@ -238,17 +243,25 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
-        int input = JOptionPane.showConfirmDialog(null,"¿Seguro deseas Cerrar Sesion?");
-        if(input==0){
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro deseas Cerrar Sesion?");
+        if (input == 0) {
             JOptionPane.showMessageDialog(this, "Sesión Cerrada con éxito");
             this.setVisible(false);
             AutenticacionView Autenti = new AutenticacionView();
             Autenti.setLocationRelativeTo(null);
             Autenti.setVisible(true);
-        }else{
-            
+        } else {
+
         }
     }//GEN-LAST:event_lblLogoutMouseClicked
+
+    private void BtnSegurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSegurosActionPerformed
+        // TODO add your handling code here:
+        MenuSegurosView menuSeguros = new MenuSegurosView();
+        this.setVisible(false);
+        menuSeguros.setLocationRelativeTo(null);
+        menuSeguros.setVisible(true);
+    }//GEN-LAST:event_BtnSegurosActionPerformed
 
     /**
      * @param args the command line arguments

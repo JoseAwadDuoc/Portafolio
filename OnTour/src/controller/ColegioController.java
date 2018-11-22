@@ -23,6 +23,7 @@ public class ColegioController {
     public DefaultTableModel consultarColegios() {
 
         DefaultTableModel modelotabla = new DefaultTableModel();
+        
         Map<String, List> map = this.colegioDAO.obtenerColegios();
         if (map != null) {
 

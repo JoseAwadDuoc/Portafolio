@@ -20,6 +20,7 @@ import javax.crypto.spec.SecretKeySpec;
 public class DbUtilidades {
 
     protected ResultSet consulta(String sql) {
+        System.out.println("consulta: " + sql);
         Connection con = null;
         ResultSet rs = null;
         try {
@@ -33,6 +34,7 @@ public class DbUtilidades {
     }
     
     protected boolean actualizar(String sql) {
+        System.out.println("actualizar: " + sql);
         Connection con = null;
         try {
             con = Conexion.conectar();
