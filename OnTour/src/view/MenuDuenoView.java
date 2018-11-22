@@ -51,6 +51,11 @@ public class MenuDuenoView extends javax.swing.JFrame {
         BtnEstadoDeCuenta.setBounds(12, 75, 400, 62);
 
         BtnGenerarReportes.setText("Generar Reporte de Avance");
+        BtnGenerarReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGenerarReportesActionPerformed(evt);
+            }
+        });
         getContentPane().add(BtnGenerarReportes);
         BtnGenerarReportes.setBounds(12, 144, 400, 62);
 
@@ -110,6 +115,14 @@ public class MenuDuenoView extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_MnSalirActionPerformed
+
+    private void BtnGenerarReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGenerarReportesActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        GenerarReporteAvance generarReporte = new GenerarReporteAvance();
+        generarReporte.setLocationRelativeTo(null);
+        generarReporte.setVisible(true);
+    }//GEN-LAST:event_BtnGenerarReportesActionPerformed
 
     /**
      * @param args the command line arguments

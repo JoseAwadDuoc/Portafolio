@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -17,14 +16,14 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class ContratoDAO extends DbUtilidades {
 
-    public DefaultComboBoxModel obtenerPaquete() {
-        DefaultComboBoxModel listapaquete = new DefaultComboBoxModel();
-        listapaquete.addElement("Seleccione Paquete Turistico");
+    public List<String> obtenerPaquete() {
+        List<String> listapaquete = new ArrayList<>();
+        listapaquete.add("Seleccione Paquete Turistico");
         ResultSet rs = this.consulta("Select * from paquete ORDER BY descripcion ASC");
 
         try {
             while (rs.next()) {
-                listapaquete.addElement(rs.getString("DESCRIPCION"));
+                listapaquete.add(rs.getString("DESCRIPCION"));
             }
             rs.close();
 
@@ -34,14 +33,14 @@ public class ContratoDAO extends DbUtilidades {
         return listapaquete;
     }
 
-    public DefaultComboBoxModel obtenerColegio() {
-        DefaultComboBoxModel listapaquete = new DefaultComboBoxModel();
-        listapaquete.addElement("Seleccione Colegio Asociado");
+    public List<String> obtenerColegio() {
+        List<String> listapaquete = new ArrayList<>();
+        listapaquete.add("Seleccione Colegio Asociado");
         ResultSet rs = this.consulta("Select * from COLEGIO ORDER BY NOMBRE_COLEGIO ASC");
 
         try {
             while (rs.next()) {
-                listapaquete.addElement(rs.getString("NOMBRE_COLEGIO"));
+                listapaquete.add(rs.getString("NOMBRE_COLEGIO"));
 
             }
             rs.close();
@@ -53,15 +52,15 @@ public class ContratoDAO extends DbUtilidades {
         return listapaquete;
     }
 
-    public DefaultComboBoxModel obtenerCurso(String colegio) {
-        DefaultComboBoxModel listapaquete = new DefaultComboBoxModel();
-        listapaquete.addElement("Seleccione Curso Asociado");
+    public List<String> obtenerCurso(String colegio) {
+        List<String> listapaquete = new ArrayList<>();
+        listapaquete.add("Seleccione Curso Asociado");
         ResultSet rs = this.consulta("Select * from CURSO cu join colegio co on(cu.idcolegio=co.idcolegio)"
                 + "WHERE co.nombre_colegio = '" + colegio + "'");
 
         try {
             while (rs.next()) {
-                listapaquete.addElement(rs.getString("DESCRIPCION"));
+                listapaquete.add(rs.getString("DESCRIPCION"));
             }
             rs.close();
 
@@ -72,13 +71,13 @@ public class ContratoDAO extends DbUtilidades {
         return listapaquete;
     }
 
-    public String obtenerMontoPaquete(String descripcion) {
+    public int obtenerMontoPaquete(String descripcion) {
 
         ResultSet rs = this.consulta("Select * from paquete where DESCRIPCION = '" + descripcion + "'");
-        String monto = new String();
+        int monto =0;
         try {
             while (rs.next()) {
-                monto = rs.getString("PRECIO");
+                monto = rs.getInt("PRECIO");
             }
             rs.close();
 
@@ -229,4 +228,6 @@ public class ContratoDAO extends DbUtilidades {
         }
         return map;
     }
+    
+    
 }

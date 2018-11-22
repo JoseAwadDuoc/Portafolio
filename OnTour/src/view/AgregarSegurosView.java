@@ -1,7 +1,6 @@
 package view;
 
 import Dao.AseguradoraDAO;
-import Dao.AutenticacionDAO;
 import Dao.SeguroDAO;
 import controller.SegurosController;
 import java.awt.Dimension;
@@ -17,7 +16,6 @@ import model.Seguro;
 public class AgregarSegurosView extends javax.swing.JFrame {
 
     private SegurosController controller = new SegurosController();
-    private AutenticacionDAO autenticacionDAO = new AutenticacionDAO();
     private SeguroDAO seguroDAO = new SeguroDAO();
     private AseguradoraDAO aseguradoraDAO = new AseguradoraDAO();
 
