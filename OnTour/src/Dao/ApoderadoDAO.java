@@ -72,7 +72,7 @@ public class ApoderadoDAO extends DbUtilidades {
         String contrasena = apoderado.getContrasena();
         String correo = apoderado.getCorreo();
 
-        return this.actualizar("INSERT INTO APODERADO (Rut_Apoderado,Pass_Apoderado,idComuna,Nombres,Apaterno,Amaterno,Fnacimiento,Telefono,Perfil,Direccion,Correo) "
+      /*  return this.actualizar("INSERT INTO APODERADO (Rut_Apoderado,Pass_Apoderado,idComuna,Nombres,Apaterno,Amaterno,Fnacimiento,Telefono,Perfil,Direccion,Correo) "
                 + "VALUES "
                 + "( " + rut + 
                 ",'" + contrasena + 
@@ -84,6 +84,9 @@ public class ApoderadoDAO extends DbUtilidades {
                 ",'" + perfil + 
                 "','" + direccion + 
                 "','" + correo + "')");
+        */
+      
+      return this.actualizar("call sp_apoderado_insertar("+rut+",'"+contrasena+"',"+idComuna+",'"+nombres+"','"+aPaterno+"','"+aMaterno+"','"+fechaNacimiento+"','"+telefono+"','"+perfil+"','"+direccion+"','"+correo+"',1)");
  
     }
 
@@ -119,7 +122,7 @@ public class ApoderadoDAO extends DbUtilidades {
         
         String perfil = apoderado.isEncargado() ? "SI" : "NO";
         
-        String sql = "UPDATE APODERADO SET NOMBRES='" + apoderado.getNombres() + 
+      /*  String sql = "UPDATE APODERADO SET NOMBRES='" + apoderado.getNombres() + 
                  "',APATERNO='" + apoderado.getaPaterno() + 
                  "',AMATERNO='" + apoderado.getaMaterno() + 
                  "',FNACIMIENTO = TO_DATE('" + apoderado.getFechaNacimiento() + "','DD-MM-YYYY')" +
@@ -129,6 +132,9 @@ public class ApoderadoDAO extends DbUtilidades {
                  ",CORREO='" + apoderado.getCorreo() + 
                  "',PASS_APODERADO='" + apoderado.getContrasena() + 
                  "' WHERE RUT_APODERADO=" + apoderado.getRut();
+
+*/
+      String sql="call sp_apoderado_modificar("+apoderado.getRut()+",'"+apoderado.getContrasena()+"',"+apoderado.getIdComuna()+",'"+apoderado.getNombres()+"','"+apoderado.getaPaterno()+"','"+apoderado.getaMaterno()+"','"+apoderado.getFechaNacimiento()+"','"+apoderado.getTelefono()+"','"+perfil+"','"+apoderado.getDireccion()+"','"+apoderado.getCorreo()+"')";
         
         
         return this.actualizar(sql);

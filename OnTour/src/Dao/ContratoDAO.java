@@ -142,14 +142,17 @@ public class ContratoDAO extends DbUtilidades {
     }
 
     public String agregarContrato(int idpaquete, int rut, int idcurso,int idseguro, String fecha_inicio, int monto_venta, String fecha_evento) {
-        ResultSet rs = this.consulta("INSERT INTO CONTRATO (IDPAQUETE, RUT_REPRES, IDCURSO, IDSEGURO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) "
+       /* ResultSet rs = this.consulta("INSERT INTO CONTRATO (IDPAQUETE, RUT_REPRES, IDCURSO, IDSEGURO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) "
                 + "VALUES (" + idpaquete + 
                 ", "+ rut + 
                 "," + idcurso +
                 "," + idseguro + 
                 ", TO_DATE('" + fecha_inicio + "', 'DD-MM-YYYY')," 
                 + monto_venta + 
-                ", TO_DATE('" + fecha_evento + "', 'DD-MM-YYYY'))");
+                ", TO_DATE('" + fecha_evento + "', 'DD-MM-YYYY'))"); */
+       
+                ResultSet rs=this.consulta("call sp_contrato_insertar("+idpaquete+","+rut+","+idcurso+","+idseguro+",'"+fecha_inicio+"',"+monto_venta+",'"+fecha_evento+"',1)");
+              //  call sp_contrato(1,222222221,2,2,'25/11/2018',15000000,'01/01/2030',1)
         String contrato = new String();
         try {
             while (rs.next()) {
@@ -169,7 +172,8 @@ public class ContratoDAO extends DbUtilidades {
     }
 
     public String eliminarContrato(int id) {
-        ResultSet rs = this.consulta("UPDATE contrato SET estado = 0 where idcontrato =" + id);
+       // ResultSet rs = this.consulta("UPDATE contrato SET estado = 0 where idcontrato =" + id);
+        ResultSet rs = this.consulta("CALL sp_contrato_disable("+id+")");
         String contrato = new String();
         try {
             while (rs.next()) {
