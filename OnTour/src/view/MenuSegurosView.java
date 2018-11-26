@@ -11,22 +11,23 @@ import Dao.CiudadDAO;
 import Dao.ColegioDAO;
 import Dao.ComunaDAO;
 import Dao.SeguroDAO;
+import Dao.TipoSeguroDAO;
 import controller.SegurosController;
 import java.awt.Dimension;
-import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import model.Seguro;
 
 /**
  *
  * @author jose_
  */
 public class MenuSegurosView extends javax.swing.JFrame {
+
     private SegurosController controller = new SegurosController();
     private SeguroDAO seguroDAO = new SeguroDAO();
     private AseguradoraDAO aseguradoraDAO = new AseguradoraDAO();
+    private TipoSeguroDAO tipoSeguroDAO = new TipoSeguroDAO();
 
     DefaultTableModel modelo;
 
@@ -39,14 +40,11 @@ public class MenuSegurosView extends javax.swing.JFrame {
      * Creates new form MenuColegioView
      */
     public MenuSegurosView() {
-        this.setMinimumSize(new Dimension(100, 200));
+        this.setMinimumSize(new Dimension(960, 380));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
-        this.jpanelRegistrarSeguro.setVisible(false);
         this.btnModificarSeguros.setVisible(false);
         this.jPanelListarSeguros.setVisible(false);
-        this.ComboAseguradora.setModel(aseguradoraDAO.obtenerAseguradoras());
-        this.comboTipoSeguro.setModel(seguroDAO.obtenerSeguro());
     }
 
     /**
@@ -67,21 +65,6 @@ public class MenuSegurosView extends javax.swing.JFrame {
         jPanelListarSeguros = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSeguro = new javax.swing.JTable();
-        jpanelRegistrarSeguro = new javax.swing.JPanel();
-        lblTipoSeguro = new javax.swing.JLabel();
-        comboTipoSeguro = new javax.swing.JComboBox<>();
-        lblAseguradora = new javax.swing.JLabel();
-        ComboAseguradora = new javax.swing.JComboBox<>();
-        lblFechaIni = new javax.swing.JLabel();
-        dateChooserFechaEvento = new com.toedter.calendar.JDateChooser();
-        lblPrecioSeguro = new javax.swing.JLabel();
-        lblMonto = new javax.swing.JLabel();
-        btnAgregar = new javax.swing.JButton();
-        BtnBorrarcampos = new javax.swing.JButton();
-        BtnCancelar = new javax.swing.JButton();
-        txtPrecioSeguro = new javax.swing.JTextField();
-        lblFechaIni1 = new javax.swing.JLabel();
-        dateChooserFechaFin = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -167,86 +150,7 @@ public class MenuSegurosView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableSeguro);
 
         jPanelListarSeguros.add(jScrollPane1);
-        jScrollPane1.setBounds(20, 30, 470, 130);
-
-        jpanelRegistrarSeguro.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Registrar Seguro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
-        jpanelRegistrarSeguro.setLayout(null);
-
-        lblTipoSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTipoSeguro.setText("Seguro:");
-        jpanelRegistrarSeguro.add(lblTipoSeguro);
-        lblTipoSeguro.setBounds(70, 110, 140, 20);
-
-        comboTipoSeguro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jpanelRegistrarSeguro.add(comboTipoSeguro);
-        comboTipoSeguro.setBounds(150, 100, 200, 40);
-
-        lblAseguradora.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblAseguradora.setText("Aseguradora:");
-        jpanelRegistrarSeguro.add(lblAseguradora);
-        lblAseguradora.setBounds(30, 50, 94, 20);
-
-        ComboAseguradora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jpanelRegistrarSeguro.add(ComboAseguradora);
-        ComboAseguradora.setBounds(150, 40, 200, 40);
-
-        lblFechaIni.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblFechaIni.setText("Fecha Inicio : ");
-        jpanelRegistrarSeguro.add(lblFechaIni);
-        lblFechaIni.setBounds(40, 210, 95, 20);
-        jpanelRegistrarSeguro.add(dateChooserFechaEvento);
-        dateChooserFechaEvento.setBounds(150, 200, 200, 30);
-
-        lblPrecioSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblPrecioSeguro.setText("Precio:");
-        jpanelRegistrarSeguro.add(lblPrecioSeguro);
-        lblPrecioSeguro.setBounds(80, 160, 47, 20);
-
-        lblMonto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jpanelRegistrarSeguro.add(lblMonto);
-        lblMonto.setBounds(180, 280, 190, 30);
-
-        btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
-        btnAgregar.setText("Guardar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
-            }
-        });
-        jpanelRegistrarSeguro.add(btnAgregar);
-        btnAgregar.setBounds(120, 300, 260, 50);
-
-        BtnBorrarcampos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BtnBorrarcampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
-        BtnBorrarcampos.setText("Limpiar");
-        BtnBorrarcampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBorrarcamposActionPerformed(evt);
-            }
-        });
-        jpanelRegistrarSeguro.add(BtnBorrarcampos);
-        BtnBorrarcampos.setBounds(120, 380, 120, 40);
-
-        BtnCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        BtnCancelar.setText("Volver");
-        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCancelarActionPerformed(evt);
-            }
-        });
-        jpanelRegistrarSeguro.add(BtnCancelar);
-        BtnCancelar.setBounds(250, 380, 130, 40);
-        jpanelRegistrarSeguro.add(txtPrecioSeguro);
-        txtPrecioSeguro.setBounds(150, 150, 200, 30);
-
-        lblFechaIni1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblFechaIni1.setText("Fecha Fin : ");
-        jpanelRegistrarSeguro.add(lblFechaIni1);
-        lblFechaIni1.setBounds(60, 260, 77, 20);
-        jpanelRegistrarSeguro.add(dateChooserFechaFin);
-        dateChooserFechaFin.setBounds(150, 250, 200, 30);
+        jScrollPane1.setBounds(20, 30, 560, 130);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -255,16 +159,12 @@ public class MenuSegurosView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnListarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VolverSeguro))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jpanelRegistrarSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 440, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jPanelListarSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 509, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanelListarSeguros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListarColegio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(VolverSeguro)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -278,35 +178,25 @@ public class MenuSegurosView extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(22, 22, 22)
                         .addComponent(VolverSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jpanelRegistrarSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jPanelListarSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanelListarSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnAgregarSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarSeguroActionPerformed
-        // TODO add your handling code here:
-        this.jpanelRegistrarSeguro.setVisible(true);
-        this.jPanelListarSeguros.setVisible(false);
-//        AgregarColegioView agregarColegio = new AgregarColegioView();
-//        this.setVisible(false);
-//        agregarColegio.setLocationRelativeTo(null);
-//        agregarColegio.setVisible(true);
+        AgregarSegurosView agregarSeguros = new AgregarSegurosView();
+        this.setVisible(false);
+        agregarSeguros.setLocationRelativeTo(null);
+        agregarSeguros.setVisible(true);
     }//GEN-LAST:event_BtnAgregarSeguroActionPerformed
 
     private void btnConsultarSegurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarSegurosActionPerformed
-        // TODO add your handling code here:
-        this.jpanelRegistrarSeguro.setVisible(false);
+
         this.jPanelListarSeguros.setVisible(true);
         this.jScrollPane1.setVisible(true);
-
         DefaultTableModel modelotabla = this.controller.consultarSeguros();
         this.jTableSeguro.setModel(modelotabla);
         this.btnModificarSeguros.setVisible(true);
@@ -344,65 +234,6 @@ public class MenuSegurosView extends javax.swing.JFrame {
         MenuPrin.setLocationRelativeTo(null);
         MenuPrin.setVisible(true);
     }//GEN-LAST:event_VolverSeguroActionPerformed
-
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
-        try {
-
-            String cmbseg = String.valueOf(ComboAseguradora.getSelectedItem());
-            String cmbseg1 = aseguradoraDAO.obtenerIdAseguradora(cmbseg);
-            int idaseguradora = Integer.parseInt(cmbseg1);
-            System.out.println("id aseguradora : " + idaseguradora);
-
-            String cmbseg2 = String.valueOf(comboTipoSeguro.getSelectedItem());
-            String cmbseg3 = seguroDAO.obtenerIdSeguro(cmbseg2);
-            int idseguro = Integer.parseInt(cmbseg3);
-            System.out.println("id seguro : " + idseguro);
-
-            int precio = Integer.parseInt(txtPrecioSeguro.getText());
-            System.out.println("Precio: " + precio);
-
-          
-            String fecha_ini = formato.format(dateChooserFechaEvento.getDate());
-            System.out.println("Fecha Inicio : " + fecha_ini);
-
-            
-            String fecha_fin = formato.format(dateChooserFechaFin.getDate());
-            System.out.println("Fecha Fin : " + fecha_fin);
-
-            Seguro seguro = new Seguro();
-            seguro.setIdTipoSeguro(idseguro);
-            seguro.setIdAseguradora(idaseguradora);
-            seguro.setPrecio(precio);
-            seguro.setFechaIni(fecha_ini);
-            seguro.setFechFin(fecha_fin);
-
-            controller.agregarSeguro(seguro);
-            JOptionPane.showMessageDialog(this, "Seguro registrado");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void BtnBorrarcamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarcamposActionPerformed
-
-        ComboAseguradora.setSelectedIndex(0);
-        comboTipoSeguro.setSelectedIndex(0);
-        txtPrecioSeguro.setText(" ");
-        dateChooserFechaEvento.setDate(null);
-        dateChooserFechaFin.setDate(null);
-    }//GEN-LAST:event_BtnBorrarcamposActionPerformed
-
-    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        MenuPrincipalView MenuPrin = new MenuPrincipalView();
-        MenuPrin.setLocationRelativeTo(null);
-        MenuPrin.setVisible(true);
-    }//GEN-LAST:event_BtnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -444,28 +275,13 @@ public class MenuSegurosView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarSeguro;
-    private javax.swing.JButton BtnBorrarcampos;
-    private javax.swing.JButton BtnCancelar;
-    private javax.swing.JComboBox<String> ComboAseguradora;
     private javax.swing.JButton VolverSeguro;
-    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnConsultarSeguros;
     private javax.swing.JPanel btnListarColegio;
     private javax.swing.JButton btnModificarSeguros;
-    private javax.swing.JComboBox<String> comboTipoSeguro;
-    private com.toedter.calendar.JDateChooser dateChooserFechaEvento;
-    private com.toedter.calendar.JDateChooser dateChooserFechaFin;
     private javax.swing.JPanel jPanelListarSeguros;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableSeguro;
-    private javax.swing.JPanel jpanelRegistrarSeguro;
-    private javax.swing.JLabel lblAseguradora;
-    private javax.swing.JLabel lblFechaIni;
-    private javax.swing.JLabel lblFechaIni1;
     private javax.swing.JLabel lblLogo;
-    private javax.swing.JLabel lblMonto;
-    private javax.swing.JLabel lblPrecioSeguro;
-    private javax.swing.JLabel lblTipoSeguro;
-    private javax.swing.JTextField txtPrecioSeguro;
     // End of variables declaration//GEN-END:variables
 }

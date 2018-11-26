@@ -27,7 +27,7 @@ public class SegurosController {
         System.out.println("creado " + creado);
         return creado;
     }
-    
+
     public DefaultTableModel consultarSeguros() {
 
         DefaultTableModel modelotabla = new DefaultTableModel();
@@ -49,8 +49,8 @@ public class SegurosController {
 
         return modelotabla;
     }
-    
-        public boolean eliminarSeguro(int id){
+
+    public boolean eliminarSeguro(int id) {
         try {
             this.seguroDAO.eliminarSeguro(id);
             return true;
@@ -58,6 +58,6 @@ public class SegurosController {
             e.printStackTrace();
             return false;
         }
-        
+
     }
 }

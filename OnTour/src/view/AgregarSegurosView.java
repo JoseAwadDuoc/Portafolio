@@ -2,6 +2,7 @@ package view;
 
 import Dao.AseguradoraDAO;
 import Dao.SeguroDAO;
+import Dao.TipoSeguroDAO;
 import controller.SegurosController;
 import java.awt.Dimension;
 import java.text.SimpleDateFormat;
@@ -18,6 +19,7 @@ public class AgregarSegurosView extends javax.swing.JFrame {
     private SegurosController controller = new SegurosController();
     private SeguroDAO seguroDAO = new SeguroDAO();
     private AseguradoraDAO aseguradoraDAO = new AseguradoraDAO();
+    private TipoSeguroDAO tipoSeguroDAO = new TipoSeguroDAO();
 
     /**
      * Creates new form AgregarContratos
@@ -27,7 +29,7 @@ public class AgregarSegurosView extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.ComboAseguradora.setModel(aseguradoraDAO.obtenerAseguradoras());
-        this.comboTipoSeguro.setModel(seguroDAO.obtenerSeguro());
+        this.comboTipoSeguro.setModel(tipoSeguroDAO.obtenerTipoSeguro());
 
     }
 
@@ -166,18 +168,16 @@ public class AgregarSegurosView extends javax.swing.JFrame {
             System.out.println("id aseguradora : " + idaseguradora);
 
             String cmbseg2 = String.valueOf(comboTipoSeguro.getSelectedItem());
-            String cmbseg3 = seguroDAO.obtenerIdSeguro(cmbseg2);
+            String cmbseg3 = tipoSeguroDAO.obtenerIdTipoSeguro(cmbseg2);
             int idseguro = Integer.parseInt(cmbseg3);
             System.out.println("id seguro : " + idseguro);
 
             int precio = Integer.parseInt(txtPrecioSeguro.getText());
             System.out.println("Precio: " + precio);
 
-          
             String fecha_ini = formato.format(dateChooserFechaEvento.getDate());
             System.out.println("Fecha Inicio : " + fecha_ini);
 
-            
             String fecha_fin = formato.format(dateChooserFechaFin.getDate());
             System.out.println("Fecha Fin : " + fecha_fin);
 
@@ -201,9 +201,9 @@ public class AgregarSegurosView extends javax.swing.JFrame {
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        MenuContratosView ConsultContr = new MenuContratosView();
-        ConsultContr.setLocationRelativeTo(null);
-        ConsultContr.setVisible(true);
+        MenuSegurosView menuSeguro = new MenuSegurosView();
+        menuSeguro.setLocationRelativeTo(null);
+        menuSeguro.setVisible(true);
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     /**

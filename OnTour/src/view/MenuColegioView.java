@@ -9,7 +9,6 @@ import Dao.AutenticacionDAO;
 import Dao.CiudadDAO;
 import Dao.ColegioDAO;
 import Dao.ComunaDAO;
-import controller.ApoderadosController;
 import controller.ColegioController;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;

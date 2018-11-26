@@ -10,7 +10,7 @@ public class PdfDAO extends DbUtilidades {
     public DefaultComboBoxModel obtenerContrato() {
         DefaultComboBoxModel listapaquete = new DefaultComboBoxModel();
         listapaquete.addElement("Seleccione Contrato");
-        ResultSet rs = this.consulta("Select IDCONTRATO from contrato ORDER BY IDCONTRATO ASC");
+        ResultSet rs = this.consulta("Select IDCONTRATO from contrato where estado =1 ORDER BY IDCONTRATO ASC");
 
         try {
             while (rs.next()) {

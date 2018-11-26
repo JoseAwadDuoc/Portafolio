@@ -26,6 +26,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
 
     private int montoPaquete = 0;
     private int montoSeguro = 0;
+    private int cantidadAlumnos=0;
     
     
     /**
@@ -101,11 +102,6 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 ComboColegioItemStateChanged(evt);
             }
         });
-        ComboColegio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboColegioActionPerformed(evt);
-            }
-        });
         jPanel1.add(ComboColegio);
         ComboColegio.setBounds(180, 100, 200, 40);
 
@@ -134,11 +130,6 @@ public class AgregarContratosView extends javax.swing.JFrame {
         ComboPaquete.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ComboPaqueteItemStateChanged(evt);
-            }
-        });
-        ComboPaquete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboPaqueteActionPerformed(evt);
             }
         });
         jPanel1.add(ComboPaquete);
@@ -218,6 +209,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
             curso = String.valueOf(ComboColegio.getSelectedItem());
             this.ComboCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCurso(curso)));
         }
+        
 
 // TODO add your handling code here:
     }//GEN-LAST:event_ComboColegioItemStateChanged
@@ -247,6 +239,14 @@ public class AgregarContratosView extends javax.swing.JFrame {
 
     private void ComboCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboCursoItemStateChanged
 
+        String combopaq = String.valueOf(ComboCurso.getSelectedItem());
+        System.out.println("combo curso:"+ combopaq);
+        cantidadAlumnos = contratoDAO.obtenerCatidadAlumnos(combopaq);
+        System.out.println("cantidad alumnos: "+ cantidadAlumnos);
+        int monto = this.calcularMontoResultado();
+        if (monto > 0) {
+            lblMontoValue.setText(String.valueOf(monto));
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboCursoItemStateChanged
 
@@ -319,14 +319,6 @@ public class AgregarContratosView extends javax.swing.JFrame {
         ConsultContr.setVisible(true);
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
-    private void ComboPaqueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboPaqueteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboPaqueteActionPerformed
-
-    private void ComboColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboColegioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ComboColegioActionPerformed
-
     private void cmbSeguroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSeguroItemStateChanged
         String comboseg = String.valueOf(cmbSeguro.getSelectedItem());
         System.out.println("comboseg:"+ comboseg);
@@ -341,8 +333,8 @@ public class AgregarContratosView extends javax.swing.JFrame {
     
     private int calcularMontoResultado() {
         int monto = 0;
-        if (this.montoPaquete > 0 && this.montoSeguro > 0) {
-            int cantidadAlumnos = 1;
+        if (this.montoPaquete > 0 && this.montoSeguro > 0 && this.cantidadAlumnos > 0) {
+            int cantidadAlumnos = this.cantidadAlumnos;
             monto = (this.montoPaquete * cantidadAlumnos) + (this.montoSeguro * cantidadAlumnos);
         }
         return monto;

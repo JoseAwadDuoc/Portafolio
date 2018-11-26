@@ -1,6 +1,5 @@
 package model;
 
-import Dao.PdfDAO;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
@@ -9,7 +8,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import Dao.DbUtilidades;
 import Dao.Conexion;
 import Dao.DbUtilidades;
 import Dao.PdfDAO;
@@ -18,7 +16,7 @@ public class Tabla_PdfVO extends DbUtilidades {
 
     PdfDAO dao = null;
 
-  /*  public void visualizar_PdfVO(JTable tabla) {
+    /*  public void visualizar_PdfVO(JTable tabla) {
         tabla.setDefaultRenderer(Object.class, new imgTabla());
         DefaultTableModel dt = new DefaultTableModel() {
             @Override
@@ -59,14 +57,12 @@ public class Tabla_PdfVO extends DbUtilidades {
             tabla.setRowHeight(32);
         }
     }*/
-    
-    
     public Map<String, List> obtenerContratos() {
         Map<String, List> map = null;
         try {
-            
+
             Statement st = Conexion.conectar().createStatement();
-            String sql = "Select * From ARCHIVO ORDER BY IDARCHIVO ASC";
+            String sql = "Select idarchivo id,nombrearchivo Nombre,rutaarchivo Ruta,idcontrato \"ID Contrato\" From ARCHIVO ORDER BY IDARCHIVO ASC";
 
             ResultSet rs = st.executeQuery(sql);
 
@@ -78,7 +74,7 @@ public class Tabla_PdfVO extends DbUtilidades {
             for (int x = 1; x <= numerocolumnas; x++) {
                 columnLabels.add(rsMD.getColumnLabel(x));
             }
-            
+
             List<Object> columnValues = new ArrayList<>();
 
             while (rs.next()) {
@@ -86,21 +82,20 @@ public class Tabla_PdfVO extends DbUtilidades {
                 for (int i = 0; i < numerocolumnas; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
-                System.out.println(" q" +Arrays.asList(fila));
+                System.out.println(" q" + Arrays.asList(fila));
                 columnValues.add(fila);
             }
-            
+
             rs.close();
-            
+
             map = new HashMap<>();
             map.put("columnLabels", columnLabels);
             map.put("columnValues", columnValues);
-            
+
         } catch (Exception e) {
             System.out.println("No se ha encontrado ningún contrato activo.");
         }
         return map;
     }
-
 
 }
