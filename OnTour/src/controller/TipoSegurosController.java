@@ -5,28 +5,33 @@
  */
 package controller;
 
-;
-import Dao.*;
+import Dao.TipoSeguroDAO;
 import java.util.List;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
-import model.Tabla_PdfVO;
+import model.TipoSeguro;
 
 /**
  *
  * @author jose_
  */
+public class TipoSegurosController {
 
+    private TipoSeguroDAO tipoSeguroDAO = new TipoSeguroDAO();
 
-public class PDFController {
+    public boolean agregarTipoSeguro(TipoSeguro tipoSeguro) throws Exception {
+        if (tipoSeguro == null) {
+            throw new Exception("Tipo Seguro no puede ser null");
+        }
+        boolean creado = this.tipoSeguroDAO.agregarSeguro(tipoSeguro);
+        System.out.println("creado " + creado);
+        return creado;
+    }
 
-    private Tabla_PdfVO pdfVO = new Tabla_PdfVO();
-    private PdfDAO pdao = new PdfDAO();
-
-    public DefaultTableModel consultarContratos() {
+    public DefaultTableModel consultarTipoSeguros() {
 
         DefaultTableModel modelotabla = new DefaultTableModel();
-        Map<String, List> map = this.pdfVO.obtenerContratos();
+        Map<String, List> map = this.tipoSeguroDAO.obtenerTipoSeguros();
         if (map != null) {
 
             List columnLabels = map.get("columnLabels");
@@ -45,14 +50,4 @@ public class PDFController {
         return modelotabla;
     }
 
-    public boolean eliminararchivopdf(int id) {
-        try {
-            this.pdao.eliminarArchivoPdf(id);
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-
-    }
 }

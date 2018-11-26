@@ -54,6 +54,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         MnApoderado = new javax.swing.JMenuItem();
         MnAlumno = new javax.swing.JMenuItem();
         MnColegio = new javax.swing.JMenuItem();
+        MnTipoSeguro = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
@@ -184,6 +185,16 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         });
         MnAdministradoresCrud.add(MnColegio);
 
+        MnTipoSeguro.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        MnTipoSeguro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/TipoSeguro.png"))); // NOI18N
+        MnTipoSeguro.setText("Tipo Seguros");
+        MnTipoSeguro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnTipoSeguroActionPerformed(evt);
+            }
+        });
+        MnAdministradoresCrud.add(MnTipoSeguro);
+
         jMenuBar1.add(MnAdministradoresCrud);
 
         setJMenuBar(jMenuBar1);
@@ -263,6 +274,14 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         menuSeguros.setVisible(true);
     }//GEN-LAST:event_BtnSegurosActionPerformed
 
+    private void MnTipoSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTipoSeguroActionPerformed
+        // TODO add your handling code here:
+        AgregarTipoSegurosView tipoSeg = new AgregarTipoSegurosView();
+        this.setVisible(false);
+        tipoSeg.setLocationRelativeTo(null);
+        tipoSeg.setVisible(true);
+    }//GEN-LAST:event_MnTipoSeguroActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -312,6 +331,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JMenuItem MnCerrarSesion;
     private javax.swing.JMenuItem MnColegio;
     private javax.swing.JMenuItem MnSalir;
+    private javax.swing.JMenuItem MnTipoSeguro;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;

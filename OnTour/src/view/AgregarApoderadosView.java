@@ -55,7 +55,6 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         LblAMaterno = new javax.swing.JLabel();
         txtAMaternoApoderado = new javax.swing.JTextField();
         LblFNacimiento = new javax.swing.JLabel();
-        txtFNacimiento = new javax.swing.JTextField();
         LblTelefono = new javax.swing.JLabel();
         txtTelefonoApoderado = new javax.swing.JTextField();
         LblCiudad = new javax.swing.JLabel();
@@ -127,10 +126,6 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         LblFNacimiento.setText("Fecha Nacimiento:");
         jPanel1.add(LblFNacimiento);
         LblFNacimiento.setBounds(10, 260, 170, 20);
-
-        txtFNacimiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txtFNacimiento);
-        txtFNacimiento.setBounds(200, 250, 210, 40);
 
         LblTelefono.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblTelefono.setText("Teléfono: ");
@@ -244,7 +239,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         jPanel1.add(btnLimpiarApoderado);
         btnLimpiarApoderado.setBounds(170, 750, 120, 40);
         jPanel1.add(jDateChooserFechaNac);
-        jDateChooserFechaNac.setBounds(450, 270, 95, 22);
+        jDateChooserFechaNac.setBounds(200, 250, 210, 40);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -406,7 +401,6 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     private javax.swing.JTextField txtAPaternoApoderado;
     private javax.swing.JTextField txtCorreoApoderado;
     private javax.swing.JTextField txtDireccionApoderado;
-    private javax.swing.JTextField txtFNacimiento;
     private javax.swing.JTextField txtNombreApoderado;
     private javax.swing.JPasswordField txtPassApoderado;
     private javax.swing.JTextField txtRutApoderado;

@@ -14,35 +14,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
-import model.Seguro;
+import model.TipoSeguro;
 
 /**
  *
  * @author jose_
  */
-public class SeguroDAO extends DbUtilidades {
+public class TipoSeguroDAO extends DbUtilidades {
 
-    public boolean agregarSeguro(Seguro seguro) {
+    public boolean agregarSeguro(TipoSeguro tipoSeguros) {
 
-        int idTipoSeguro = seguro.getIdTipoSeguro();
-        int idAseguradora = seguro.getIdAseguradora();
-        int precio = seguro.getPrecio();
-        String fechaIni = seguro.getFechaIni();
-        String fechaFin = seguro.getFechFin();
+        String tipoSeguro = tipoSeguros.getTipoSeguro();
 
-        return this.actualizar("INSERT INTO SEGURO (IDTIPO_SEGURO,IDASEGURADORA,CANT_PERSONAS,FECHA_INI,FECHA_TER) "
+        return this.actualizar("INSERT INTO TIPO_SEGURO (DESCRIPCION) "
                 + "VALUES "
-                + "( " + idTipoSeguro
-                + "," + idAseguradora
-                + "," + precio
-                + ",TO_DATE('" + fechaIni + "','DD-MM-YYYY')"
-                + ",TO_DATE('" + fechaFin + "','DD-MM-YYYY'))");
+                + "('" + tipoSeguro + "')");
     }
 
-    public DefaultComboBoxModel obtenerSeguro() {
+    public DefaultComboBoxModel obtenerTipoSeguro() {
         DefaultComboBoxModel listamodelo = new DefaultComboBoxModel();
         listamodelo.addElement("Seleccione Seguro");
-        ResultSet rs = this.consulta("select ts.descripcion from seguro s join tipo_seguro ts on(s.idtipo_seguro=ts.idtipo_seguro)");
+        ResultSet rs = this.consulta("SELECT descripcion FROM tipo_seguro where idtipo_seguro=idtipo_seguro");
 
         try {
             while (rs.next()) {
@@ -60,13 +52,13 @@ public class SeguroDAO extends DbUtilidades {
 
     }
 
-    public String obtenerIdSeguro(String nombreseguro) {
+    public String obtenerIdTipoSeguro(String nombreseguro) {
 
-        ResultSet rs = this.consulta("Select * from seguro s join tipo_seguro ts on(s.idtipo_seguro=ts.idtipo_seguro) where DESCRIPCION ='" + nombreseguro + "'");
+        ResultSet rs = this.consulta("Select * from tipo_seguro where DESCRIPCION ='" + nombreseguro + "'");
         String idseguro = new String();
         try {
             while (rs.next()) {
-                idseguro = rs.getString("idseguro");
+                idseguro = rs.getString("idtipo_seguro");
             }
             rs.close();
 
@@ -77,27 +69,41 @@ public class SeguroDAO extends DbUtilidades {
         return idseguro;
     }
 
-    public int obtenerMontoSeguro(String descripcion) {
-        ResultSet rs = this.consulta("select s.cant_personas from seguro s join tipo_seguro ts on(s.idtipo_seguro=ts.idtipo_seguro) where ts.descripcion like '" + descripcion + "'");
-        int monto = 0;
+    public boolean existeTipoSeguroIdTipoSeguro(int idTipoSeguro) {
+        ResultSet rs = this.consulta("Select idtipo_seguro from tipo_seguro where idtipo_seguro = " + idTipoSeguro);
+        int idTipoSeguro1 = 0;
         try {
             while (rs.next()) {
-                monto = rs.getInt("CANT_PERSONAS");
-                break;
+                idTipoSeguro1 = rs.getInt("idtipo_seguro");
             }
             rs.close();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-        return monto;
+        return idTipoSeguro1 != 0;
     }
 
-    public Map<String, List> obtenerSeguros() {
+    public int obtenerIdTipoSeguro(int idTipoSeguro) {
+
+        ResultSet rs = this.consulta("Select idtipo_seguro from tipo_seguro where idtipo_seguro = " + idTipoSeguro);
+        int idTipoSeguro1 = 0;
+        try {
+            while (rs.next()) {
+                idTipoSeguro1 = rs.getInt("idtipo_seguro");
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return idTipoSeguro1;
+    }
+
+    public Map<String, List> obtenerTipoSeguros() {
         Map<String, List> map = null;
         try {
 
             Statement st = Conexion.conectar().createStatement();
-            String sql = "SELECT se.IDSEGURO ID,ts.DESCRIPCION Seguro, se.cant_personas Precio,se.fecha_ini Fecha_Inicio,se.fecha_ter Fecha_Termino FROM SEGURO se JOIN TIPO_SEGURO ts on (se.IDTIPO_SEGURO=ts.IDTIPO_SEGURO)";
+            String sql = "SELECT idtipo_seguro, descripcion FROM tipo_seguro";
             System.out.println("sql: " + sql);
             ResultSet rs = st.executeQuery(sql);
             System.out.println("rs: " + rs);
@@ -132,26 +138,6 @@ public class SeguroDAO extends DbUtilidades {
             System.out.println("No se ha encontrado ningún seguro.");
         }
         return map;
-    }
-
-    public String eliminarSeguro(int id) {
-        ResultSet rs = this.consulta("DELETE seguro where idseguro =" + id);
-        String seguro = new String();
-        try {
-            while (rs.next()) {
-
-                confirmarCambio();
-
-                System.out.println("Seguro Eliminado Correctamente");
-            }
-            rs.close();
-
-        } catch (SQLException e) {
-
-            System.out.println(e.getMessage());
-
-        }
-        return seguro;
     }
 
 }

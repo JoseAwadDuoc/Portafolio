@@ -74,7 +74,7 @@ public class ContratoDAO extends DbUtilidades {
     public int obtenerMontoPaquete(String descripcion) {
 
         ResultSet rs = this.consulta("Select * from paquete where DESCRIPCION = '" + descripcion + "'");
-        int monto =0;
+        int monto = 0;
         try {
             while (rs.next()) {
                 monto = rs.getInt("PRECIO");
@@ -122,11 +122,11 @@ public class ContratoDAO extends DbUtilidades {
 
         return idcurso;
     }
-    
+
     public int obtenerIdContrato(int idcurso) {
 
         ResultSet rs = this.consulta("Select * from Contrato where idcurso = '" + idcurso + "'");
-        int idcontrato=0;
+        int idcontrato = 0;
         try {
             while (rs.next()) {
                 idcontrato = rs.getInt("idcontrato");
@@ -141,8 +141,8 @@ public class ContratoDAO extends DbUtilidades {
         return idcontrato;
     }
 
-    public String agregarContrato(int idpaquete, int rut, int idcurso,int idseguro, String fecha_inicio, int monto_venta, String fecha_evento) {
-       /* ResultSet rs = this.consulta("INSERT INTO CONTRATO (IDPAQUETE, RUT_REPRES, IDCURSO, IDSEGURO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) "
+    public String agregarContrato(int idpaquete, int rut, int idcurso, int idseguro, String fecha_inicio, int monto_venta, String fecha_evento) {
+        /* ResultSet rs = this.consulta("INSERT INTO CONTRATO (IDPAQUETE, RUT_REPRES, IDCURSO, IDSEGURO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) "
                 + "VALUES (" + idpaquete + 
                 ", "+ rut + 
                 "," + idcurso +
@@ -150,9 +150,9 @@ public class ContratoDAO extends DbUtilidades {
                 ", TO_DATE('" + fecha_inicio + "', 'DD-MM-YYYY')," 
                 + monto_venta + 
                 ", TO_DATE('" + fecha_evento + "', 'DD-MM-YYYY'))"); */
-       
-                ResultSet rs=this.consulta("call sp_contrato_insertar("+idpaquete+","+rut+","+idcurso+","+idseguro+",'"+fecha_inicio+"',"+monto_venta+",'"+fecha_evento+"',1)");
-              //  call sp_contrato(1,222222221,2,2,'25/11/2018',15000000,'01/01/2030',1)
+
+        ResultSet rs = this.consulta("call sp_contrato_insertar(" + idpaquete + "," + rut + "," + idcurso + "," + idseguro + ",'" + fecha_inicio + "'," + monto_venta + ",'" + fecha_evento + "',1)");
+        //  call sp_contrato(1,222222221,2,2,'25/11/2018',15000000,'01/01/2030',1)
         String contrato = new String();
         try {
             while (rs.next()) {
@@ -172,8 +172,8 @@ public class ContratoDAO extends DbUtilidades {
     }
 
     public String eliminarContrato(int id) {
-       // ResultSet rs = this.consulta("UPDATE contrato SET estado = 0 where idcontrato =" + id);
-        ResultSet rs = this.consulta("CALL sp_contrato_disable("+id+")");
+        // ResultSet rs = this.consulta("UPDATE contrato SET estado = 0 where idcontrato =" + id);
+        ResultSet rs = this.consulta("CALL sp_contrato_disable(" + id + ")");
         String contrato = new String();
         try {
             while (rs.next()) {
@@ -195,7 +195,7 @@ public class ContratoDAO extends DbUtilidades {
     public Map<String, List> obtenerContratos() {
         Map<String, List> map = null;
         try {
-            
+
             Statement st = Conexion.conectar().createStatement();
             String sql = "Select * From Contrato where estado = 1";
 
@@ -209,7 +209,7 @@ public class ContratoDAO extends DbUtilidades {
             for (int x = 1; x <= numerocolumnas; x++) {
                 columnLabels.add(rsMD.getColumnLabel(x));
             }
-            
+
             List<Object> columnValues = new ArrayList<>();
 
             while (rs.next()) {
@@ -217,21 +217,38 @@ public class ContratoDAO extends DbUtilidades {
                 for (int i = 0; i < numerocolumnas; i++) {
                     fila[i] = rs.getObject(i + 1);
                 }
-                System.out.println(" q" +Arrays.asList(fila));
+                System.out.println(" q" + Arrays.asList(fila));
                 columnValues.add(fila);
             }
-            
+
             rs.close();
-            
+
             map = new HashMap<>();
             map.put("columnLabels", columnLabels);
             map.put("columnValues", columnValues);
-            
+
         } catch (Exception e) {
             System.out.println("No se ha encontrado ningún contrato activo.");
         }
         return map;
     }
-    
-    
+
+    public int obtenerCatidadAlumnos(String descripcion) {
+        ResultSet rs = this.consulta("SELECT count(c.idcurso) , c.descripcion FROM ALUMNO a JOIN CURSO c ON(a.idcurso=c.idcurso) WHERE c.descripcion= '" + descripcion + "' group by c.descripcion");
+        int catidadAlumnos = 0;
+        try {
+            while (rs.next()) {
+                catidadAlumnos = rs.getInt("count(c.idcurso)");
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return catidadAlumnos;
+    }
+
+//    
+//    SELECT count(c.idcurso) , c.descripcion FROM ALUMNO a JOIN CURSO c ON(a.idcurso=c.idcurso) WHERE c.descripcion=c.descripcion group by c.descripcion;
 }

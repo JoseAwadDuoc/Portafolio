@@ -40,7 +40,7 @@ public class MenuPdfView extends javax.swing.JFrame {
     String nombre_archivo = " ";
 
     public MenuPdfView() {
-        this.setMinimumSize(new Dimension(880,500));
+        this.setMinimumSize(new Dimension(880, 500));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.CmbContrato.setModel(pdfdao.obtenerContrato());
@@ -52,6 +52,7 @@ public class MenuPdfView extends javax.swing.JFrame {
         //termino tabla
         activa_boton(false, true, true);
         CmbContrato.setEnabled(false);
+        this.btnseleccionarPdf.setEnabled(false);
     }
 
     public void activa_boton(boolean a, boolean b, boolean c) {
@@ -91,15 +92,22 @@ public class MenuPdfView extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Subir Archivo PDF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel2.setLayout(null);
 
         lblSeleccionContrato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblSeleccionContrato.setText("Seleccione Contrato:");
+        jPanel2.add(lblSeleccionContrato);
+        lblSeleccionContrato.setBounds(56, 47, 143, 17);
 
         lblSeleccionarPdf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblSeleccionarPdf.setText("Seleccionar archivo:");
+        jPanel2.add(lblSeleccionarPdf);
+        lblSeleccionarPdf.setBounds(61, 99, 143, 17);
 
         CmbContrato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         CmbContrato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Contrato" }));
+        jPanel2.add(CmbContrato);
+        CmbContrato.setBounds(216, 37, 243, 44);
 
         btnseleccionarPdf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnseleccionarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/PDF.png"))); // NOI18N
@@ -109,45 +117,11 @@ public class MenuPdfView extends javax.swing.JFrame {
                 btnseleccionarPdfActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblSeleccionContrato)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addComponent(CmbContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(lblSeleccionarPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnseleccionarPdf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(95, 95, 95))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(lblSeleccionContrato)
-                        .addGap(35, 35, 35)
-                        .addComponent(lblSeleccionarPdf)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(CmbContrato, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnseleccionarPdf)
-                        .addGap(0, 17, Short.MAX_VALUE))))
-        );
+        jPanel2.add(btnseleccionarPdf);
+        btnseleccionarPdf.setBounds(216, 88, 243, 57);
 
         getContentPane().add(jPanel2);
-        jPanel2.setBounds(220, 40, 560, 168);
+        jPanel2.setBounds(220, 40, 560, 160);
 
         jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -285,6 +259,7 @@ public class MenuPdfView extends javax.swing.JFrame {
         if (existeArchivo) {
             JOptionPane.showMessageDialog(this, "Ya existe un archivo para este contrato.");
             return;
+
         }
 
         //PRUEBA
@@ -396,6 +371,18 @@ public class MenuPdfView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MenuPdfView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
