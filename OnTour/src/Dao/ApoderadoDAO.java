@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import utils.Md5Utils;
 
 /**
  *
@@ -85,6 +86,8 @@ public class ApoderadoDAO extends DbUtilidades {
                 "','" + direccion + 
                 "','" + correo + "')");
         */
+      
+      contrasena = Md5Utils.md5(contrasena);
       
       return this.actualizar("call sp_apoderado_insertar("+rut+",'"+contrasena+"',"+idComuna+",'"+nombres+"','"+aPaterno+"','"+aMaterno+"','"+fechaNacimiento+"','"+telefono+"','"+perfil+"','"+direccion+"','"+correo+"',1)");
  

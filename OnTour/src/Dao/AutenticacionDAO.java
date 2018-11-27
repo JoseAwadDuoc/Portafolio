@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import utils.Md5Utils;
 
 //Ordenar código de manera MVC
 public class AutenticacionDAO extends DbUtilidades {
@@ -18,6 +19,9 @@ public class AutenticacionDAO extends DbUtilidades {
         model.RepresentanteAgencia repreA = new RepresentanteAgencia();
 
         try {
+            
+            contraseña = Md5Utils.md5(contraseña);
+            
             con = Conexion.conectar();
             st = con.createStatement();
             String sql = "SELECT RUT_REPRESENTANTE,PASS_REPRESENTANTE,NOMBRES FROM REPRESENTANTE_AGENCIA "
