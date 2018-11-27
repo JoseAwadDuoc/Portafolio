@@ -186,7 +186,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         MnAdministradoresCrud.add(MnColegio);
 
         MnTipoSeguro.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        MnTipoSeguro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/TipoSeguro.png"))); // NOI18N
+        //MnTipoSeguro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/TipoSeguro.png"))); // NOI18N
         MnTipoSeguro.setText("Tipo Seguros");
         MnTipoSeguro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

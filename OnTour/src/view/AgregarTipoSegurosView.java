@@ -50,9 +50,9 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
         jpanelRegistrarSeguro.setLayout(null);
 
         lblTipoSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTipoSeguro.setText("Nombre Seguro:");
+        lblTipoSeguro.setText("Nombre tipo seguro:");
         jpanelRegistrarSeguro.add(lblTipoSeguro);
-        lblTipoSeguro.setBounds(40, 60, 140, 20);
+        lblTipoSeguro.setBounds(20, 60, 150, 20);
 
         lblMonto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jpanelRegistrarSeguro.add(lblMonto);
@@ -112,8 +112,13 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
             TipoSeguro nombreSeguro = new TipoSeguro();
             nombreSeguro.setTipoSeguro(tipoSeguro);
 
-            controller.agregarTipoSeguro(nombreSeguro);
-            JOptionPane.showMessageDialog(this, "Seguro registrado");
+            boolean agregado = controller.agregarTipoSeguro(nombreSeguro);
+            
+            if (agregado) {
+                JOptionPane.showMessageDialog(this, "Tipo de seguro registrado");
+            }else{
+                JOptionPane.showMessageDialog(this, "El tipo de seguro no se pudo registrar", "Error", JOptionPane.ERROR_MESSAGE);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();

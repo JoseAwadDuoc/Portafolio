@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import model.KeyValue;
 import model.Seguro;
 
 /**
@@ -28,9 +29,8 @@ public class AgregarSegurosView extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(500, 620));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
-        this.ComboAseguradora.setModel(aseguradoraDAO.obtenerAseguradoras());
-        this.comboTipoSeguro.setModel(tipoSeguroDAO.obtenerTipoSeguro());
-
+        this.comboAseguradora.setModel(aseguradoraDAO.obtenerAseguradoras());
+        this.comboTipoSeguro.setModel(tipoSeguroDAO.obtenerTipoSeguros());
     }
 
     /**
@@ -46,7 +46,7 @@ public class AgregarSegurosView extends javax.swing.JFrame {
         lblTipoSeguro = new javax.swing.JLabel();
         comboTipoSeguro = new javax.swing.JComboBox<>();
         lblAseguradora = new javax.swing.JLabel();
-        ComboAseguradora = new javax.swing.JComboBox<>();
+        comboAseguradora = new javax.swing.JComboBox<>();
         lblFechaIni = new javax.swing.JLabel();
         dateChooserFechaEvento = new com.toedter.calendar.JDateChooser();
         lblPrecioSeguro = new javax.swing.JLabel();
@@ -66,9 +66,9 @@ public class AgregarSegurosView extends javax.swing.JFrame {
         jpanelRegistrarSeguro.setLayout(null);
 
         lblTipoSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblTipoSeguro.setText("Seguro:");
+        lblTipoSeguro.setText("Tipo de seguro:");
         jpanelRegistrarSeguro.add(lblTipoSeguro);
-        lblTipoSeguro.setBounds(70, 110, 140, 20);
+        lblTipoSeguro.setBounds(20, 110, 140, 20);
 
         comboTipoSeguro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jpanelRegistrarSeguro.add(comboTipoSeguro);
@@ -79,9 +79,9 @@ public class AgregarSegurosView extends javax.swing.JFrame {
         jpanelRegistrarSeguro.add(lblAseguradora);
         lblAseguradora.setBounds(30, 50, 94, 20);
 
-        ComboAseguradora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jpanelRegistrarSeguro.add(ComboAseguradora);
-        ComboAseguradora.setBounds(150, 40, 200, 40);
+        comboAseguradora.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jpanelRegistrarSeguro.add(comboAseguradora);
+        comboAseguradora.setBounds(150, 40, 200, 40);
 
         lblFechaIni.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblFechaIni.setText("Fecha Inicio : ");
@@ -149,7 +149,7 @@ public class AgregarSegurosView extends javax.swing.JFrame {
 
     private void BtnBorrarcamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarcamposActionPerformed
 //        ComboPaquete.setSelectedIndex(0);
-        ComboAseguradora.setSelectedIndex(0);
+        comboAseguradora.setSelectedIndex(0);
         comboTipoSeguro.setSelectedIndex(0);
 //        ComboCurso.setSelectedIndex(0);
         dateChooserFechaEvento.setDate(null);
@@ -162,7 +162,7 @@ public class AgregarSegurosView extends javax.swing.JFrame {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
         try {
 
-            String cmbseg = String.valueOf(ComboAseguradora.getSelectedItem());
+            String cmbseg = String.valueOf(comboAseguradora.getSelectedItem());
             String cmbseg1 = aseguradoraDAO.obtenerIdAseguradora(cmbseg);
             int idaseguradora = Integer.parseInt(cmbseg1);
             System.out.println("id aseguradora : " + idaseguradora);
@@ -188,8 +188,12 @@ public class AgregarSegurosView extends javax.swing.JFrame {
             seguro.setFechaIni(fecha_ini);
             seguro.setFechFin(fecha_fin);
 
-            controller.agregarSeguro(seguro);
-            JOptionPane.showMessageDialog(this, "Seguro registrado");
+            boolean agregado = controller.agregarSeguro(seguro);
+            if (agregado) {
+                JOptionPane.showMessageDialog(this, "Seguro registrado");
+            }else{
+                JOptionPane.showMessageDialog(this, "El seguro no se pudo registrar", "Error", JOptionPane.ERROR_MESSAGE);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -259,8 +263,8 @@ public class AgregarSegurosView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnBorrarcampos;
     private javax.swing.JButton BtnCancelar;
-    private javax.swing.JComboBox<String> ComboAseguradora;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JComboBox<String> comboAseguradora;
     private javax.swing.JComboBox<String> comboTipoSeguro;
     private com.toedter.calendar.JDateChooser dateChooserFechaEvento;
     private com.toedter.calendar.JDateChooser dateChooserFechaFin;

@@ -14,6 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
+import model.KeyValue;
 import model.TipoSeguro;
 
 /**
@@ -28,28 +29,41 @@ public class TipoSeguroDAO extends DbUtilidades {
 
         return this.actualizar("INSERT INTO TIPO_SEGURO (DESCRIPCION) "
                 + "VALUES "
-                + "('" + tipoSeguro + "')");
+                + "('" + tipoSeguro.trim().toUpperCase() + "')");
     }
 
-    public DefaultComboBoxModel obtenerTipoSeguro() {
+    public DefaultComboBoxModel obtenerTipoSeguros() {
         DefaultComboBoxModel listamodelo = new DefaultComboBoxModel();
-        listamodelo.addElement("Seleccione Seguro");
-        ResultSet rs = this.consulta("SELECT descripcion FROM tipo_seguro where idtipo_seguro=idtipo_seguro");
-
+        listamodelo.addElement(new KeyValue(-1, "Seleccione Seguro"));
+        ResultSet rs = this.consulta("SELECT idtipo_seguro, descripcion FROM tipo_seguro");
         try {
             while (rs.next()) {
-                listamodelo.addElement(rs.getString("descripcion"));
+                int id = rs.getInt("idtipo_seguro");
+                String text = rs.getString("descripcion");
+                listamodelo.addElement(new KeyValue(id, text));
             }
             rs.close();
-
         } catch (SQLException e) {
-
             System.out.println(e.getMessage());
-
         }
-
         return listamodelo;
-
+    }
+    
+    public DefaultComboBoxModel obtenerSegurosPorIdAseguradora(int idAseguradora) {
+        DefaultComboBoxModel listamodelo = new DefaultComboBoxModel();
+        listamodelo.addElement(new KeyValue(-1, "Seleccione Seguro"));
+        ResultSet rs = this.consulta("SELECT s.idseguro, ts.descripcion FROM seguro s join tipo_seguro ts on(s.idtipo_seguro=ts.idtipo_seguro) where idaseguradora = " + idAseguradora);
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("idseguro");
+                String text = rs.getString("descripcion");
+                listamodelo.addElement(new KeyValue(id, text));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return listamodelo;
     }
 
     public String obtenerIdTipoSeguro(String nombreseguro) {
@@ -98,7 +112,7 @@ public class TipoSeguroDAO extends DbUtilidades {
         return idTipoSeguro1;
     }
 
-    public Map<String, List> obtenerTipoSeguros() {
+    public Map<String, List> obtenerTipoSegurosMap() {
         Map<String, List> map = null;
         try {
 

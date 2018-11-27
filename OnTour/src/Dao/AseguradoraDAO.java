@@ -8,6 +8,7 @@ package Dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.DefaultComboBoxModel;
+import model.KeyValue;
 
 /**
  *
@@ -17,22 +18,19 @@ public class AseguradoraDAO extends DbUtilidades{
     
     public DefaultComboBoxModel obtenerAseguradoras() {
         DefaultComboBoxModel listamodelo = new DefaultComboBoxModel();
-        listamodelo.addElement("Seleccione Aseguradora");
+        listamodelo.addElement(new KeyValue(-1, "Seleccione Aseguradora"));
         ResultSet rs = this.consulta("SELECT * FROM ASEGURADORA ORDER BY NOMBRE_ASEGURADORA ASC");
-
         try {
             while (rs.next()) {
-                listamodelo.addElement(rs.getString("nombre_aseguradora"));
-
+                int id = rs.getInt("idaseguradora");
+                String text = rs.getString("nombre_aseguradora");
+                listamodelo.addElement(new KeyValue(id, text));
             }
             rs.close();
 
         } catch (SQLException e) {
-
             System.out.println(e.getMessage());
-
         }
-
         return listamodelo;
 
     }

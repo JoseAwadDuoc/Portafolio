@@ -31,7 +31,7 @@ public class TipoSegurosController {
     public DefaultTableModel consultarTipoSeguros() {
 
         DefaultTableModel modelotabla = new DefaultTableModel();
-        Map<String, List> map = this.tipoSeguroDAO.obtenerTipoSeguros();
+        Map<String, List> map = this.tipoSeguroDAO.obtenerTipoSegurosMap();
         if (map != null) {
 
             List columnLabels = map.get("columnLabels");

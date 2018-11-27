@@ -312,9 +312,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
             boolean encargado = false;
 
             if (RbtPerfilSi.isSelected()) {
-
                 encargado = true;
-
             }
 
             Apoderado apoderado = new Apoderado();
