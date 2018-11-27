@@ -190,6 +190,7 @@ public class MenuColegioView extends javax.swing.JFrame {
         jPanelAgregarColegio.add(TxtTelefonoColegio);
         TxtTelefonoColegio.setBounds(130, 250, 210, 40);
 
+        BtnAgregarColegio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
         BtnAgregarColegio1.setText("Agregar");
         BtnAgregarColegio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

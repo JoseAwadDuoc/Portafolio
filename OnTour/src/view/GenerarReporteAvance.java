@@ -25,9 +25,10 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
      * GenerarReporteAvance
      */
     public GenerarReporteAvance() {
-        this.setMinimumSize(new Dimension(400,400));
+        this.setMinimumSize(new Dimension(600, 600));
         initComponents();
         this.CmbColegio.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerColegio()));
+        this.CmbCurso.setEnabled(false);
     }
 
     /**
@@ -39,48 +40,30 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        BtnBorrarcampos = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         CmbColegio = new javax.swing.JComboBox<>();
         CmbCurso = new javax.swing.JComboBox<>();
         BtnGenerarReporte = new javax.swing.JButton();
+        lblOtenerColegio = new javax.swing.JLabel();
+        lblObtenerCurso = new javax.swing.JLabel();
         lblMensaje = new javax.swing.JLabel();
-        btnVolver = new javax.swing.JButton();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Colegio");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(40, 40, 103, 24);
-
-        jLabel2.setText("Curso:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(43, 102, 103, 24);
-
-        CmbColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        CmbColegio.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbColegioItemStateChanged(evt);
-            }
-        });
-        getContentPane().add(CmbColegio);
-        CmbColegio.setBounds(130, 30, 230, 50);
-
-        CmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(CmbCurso);
-        CmbCurso.setBounds(130, 100, 230, 40);
-
-        BtnGenerarReporte.setText("Generar Reporte");
-        BtnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+        BtnBorrarcampos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BtnBorrarcampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
+        BtnBorrarcampos.setText("Limpiar");
+        BtnBorrarcampos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnGenerarReporteActionPerformed(evt);
+                BtnBorrarcamposActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnGenerarReporte);
-        BtnGenerarReporte.setBounds(130, 190, 226, 44);
-        getContentPane().add(lblMensaje);
-        lblMensaje.setBounds(130, 160, 240, 16);
+        getContentPane().add(BtnBorrarcampos);
+        BtnBorrarcampos.setBounds(170, 390, 120, 41);
 
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
         btnVolver.setText("Volver");
@@ -90,7 +73,50 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btnVolver);
-        btnVolver.setBounds(220, 250, 140, 44);
+        btnVolver.setBounds(300, 390, 130, 40);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Generar Reporte", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel1.setLayout(null);
+
+        CmbColegio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                CmbColegioItemStateChanged(evt);
+            }
+        });
+        jPanel1.add(CmbColegio);
+        CmbColegio.setBounds(130, 30, 230, 50);
+
+        jPanel1.add(CmbCurso);
+        CmbCurso.setBounds(130, 90, 230, 40);
+
+        BtnGenerarReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/GenerateReport.png"))); // NOI18N
+        BtnGenerarReporte.setText("Generar Reporte");
+        BtnGenerarReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnGenerarReporteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnGenerarReporte);
+        BtnGenerarReporte.setBounds(130, 150, 230, 44);
+
+        lblOtenerColegio.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        lblOtenerColegio.setText("Colegio:");
+        jPanel1.add(lblOtenerColegio);
+        lblOtenerColegio.setBounds(30, 40, 80, 24);
+
+        lblObtenerCurso.setFont(new java.awt.Font("Tahoma", 3, 18)); // NOI18N
+        lblObtenerCurso.setText("Curso:");
+        jPanel1.add(lblObtenerCurso);
+        lblObtenerCurso.setBounds(50, 100, 103, 24);
+        jPanel1.add(lblMensaje);
+        lblMensaje.setBounds(30, 200, 240, 16);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(40, 160, 470, 230);
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        getContentPane().add(lblLogo);
+        lblLogo.setBounds(0, -10, 186, 188);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,6 +125,7 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             String curso;
             curso = String.valueOf(CmbColegio.getSelectedItem());
+            this.CmbCurso.setEnabled(true);
             this.CmbCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCurso(curso)));
         }
 
@@ -133,6 +160,11 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
         menuDueno.setLocationRelativeTo(null);
         menuDueno.setVisible(true);
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void BtnBorrarcamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarcamposActionPerformed
+        CmbColegio.setSelectedIndex(0);
+        CmbCurso.setSelectedIndex(0);
+    }//GEN-LAST:event_BtnBorrarcamposActionPerformed
 
     /**
      * @param args the command line arguments
@@ -170,12 +202,15 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnBorrarcampos;
     private javax.swing.JButton BtnGenerarReporte;
     private javax.swing.JComboBox<String> CmbColegio;
     private javax.swing.JComboBox<String> CmbCurso;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblMensaje;
+    private javax.swing.JLabel lblObtenerCurso;
+    private javax.swing.JLabel lblOtenerColegio;
     // End of variables declaration//GEN-END:variables
 }
