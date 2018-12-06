@@ -6,8 +6,10 @@
 package view;
 
 import controller.ApoderadosController;
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -20,14 +22,12 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
 
-    /**
-     * Creates new form MenuPrincipalView
-     */
     public MenuApoderadoView() {
-        this.setMinimumSize(new Dimension(860, 500));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(720, 570));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
-        this.BtnModificarApoderado.setVisible(false);
+        this.lblModificarApoderado.setVisible(false);
 
     }
 
@@ -41,28 +41,145 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
     private void initComponents() {
 
         BtnGroupPerfil = new javax.swing.ButtonGroup();
-        BtnVolver = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableApoderados = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        lblMinimizar = new javax.swing.JLabel();
+        lblLogoMenu = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        BtnRegistrarApoderado = new javax.swing.JButton();
-        BtnListar = new javax.swing.JButton();
-        BtnModificarApoderado = new javax.swing.JButton();
+        lblRegistrarApoderado = new javax.swing.JLabel();
+        lblModificarApoderado = new javax.swing.JLabel();
+        lblListarApoderado = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableApoderados = new javax.swing.JTable();
+        BtnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(null);
 
-        BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        BtnVolver.setText("Volver");
-        BtnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnVolverActionPerformed(evt);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
             }
         });
-        getContentPane().add(BtnVolver);
-        BtnVolver.setBounds(630, 410, 150, 40);
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, -1, 30));
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 10, 30, 30));
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 720, 50);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        jPanel2.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 170));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Administrador Apoderados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(12, 161, 215))); // NOI18N
+        jPanel1.setLayout(null);
+
+        lblRegistrarApoderado.setBackground(new java.awt.Color(255, 255, 255));
+        lblRegistrarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblRegistrarApoderado.setForeground(new java.awt.Color(12, 161, 215));
+        lblRegistrarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add1.png"))); // NOI18N
+        lblRegistrarApoderado.setText("Registrar");
+        lblRegistrarApoderado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblRegistrarApoderadoMouseMoved(evt);
+            }
+        });
+        lblRegistrarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblRegistrarApoderadoMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblRegistrarApoderadoMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblRegistrarApoderado);
+        lblRegistrarApoderado.setBounds(20, 30, 230, 120);
+
+        lblModificarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblModificarApoderado.setForeground(new java.awt.Color(12, 161, 215));
+        lblModificarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Editar.png"))); // NOI18N
+        lblModificarApoderado.setText("Modificar");
+        lblModificarApoderado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblModificarApoderadoMouseMoved(evt);
+            }
+        });
+        lblModificarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblModificarApoderadoMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblModificarApoderadoMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblModificarApoderado);
+        lblModificarApoderado.setBounds(330, 100, 130, 70);
+
+        lblListarApoderado.setBackground(new java.awt.Color(255, 255, 255));
+        lblListarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblListarApoderado.setForeground(new java.awt.Color(12, 161, 215));
+        lblListarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
+        lblListarApoderado.setText("Listar");
+        lblListarApoderado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblListarApoderadoMouseMoved(evt);
+            }
+        });
+        lblListarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblListarApoderadoMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblListarApoderadoMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblListarApoderado);
+        lblListarApoderado.setBounds(340, 30, 110, 60);
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 510, 190));
 
         tableApoderados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -75,80 +192,42 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
 
             }
         ));
+        tableApoderados.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tableApoderados);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 170, 750, 230);
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 680, 200));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
-        getContentPane().add(lblLogo);
-        lblLogo.setBounds(0, 0, 186, 170);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Administrador Apoderados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-        jPanel1.setLayout(null);
-
-        BtnRegistrarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnRegistrarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddApoderado.png"))); // NOI18N
-        BtnRegistrarApoderado.setText("Registrar");
-        BtnRegistrarApoderado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnRegistrarApoderadoActionPerformed(evt);
+        BtnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        BtnVolver.setText("Volver");
+        BtnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnVolver.setIconTextGap(-10);
+        BtnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        BtnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnVolverMouseMoved(evt);
             }
         });
-        jPanel1.add(BtnRegistrarApoderado);
-        BtnRegistrarApoderado.setBounds(10, 30, 170, 70);
-
-        BtnListar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnListar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
-        BtnListar.setText("Listar");
-        BtnListar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnListarActionPerformed(evt);
+        BtnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnVolverMouseExited(evt);
             }
         });
-        jPanel1.add(BtnListar);
-        BtnListar.setBounds(200, 30, 140, 70);
-
-        BtnModificarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnModificarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EditApoderado.png"))); // NOI18N
-        BtnModificarApoderado.setText("Modificar");
-        BtnModificarApoderado.addActionListener(new java.awt.event.ActionListener() {
+        BtnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnModificarApoderadoActionPerformed(evt);
+                BtnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnModificarApoderado);
-        BtnModificarApoderado.setBounds(360, 30, 170, 70);
+        jPanel2.add(BtnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 430, 140, 60));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(180, 40, 610, 120);
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 50, 720, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-//    public void actualizarApoderado(){
-//        try {
-//        List<Apoderado> apoderado;
-//        modelo.setRowCount(0);
-//        apoderado = ApoderadoDAO.listarApoderado();
-//            for (Apoderado apoderadoa : apoderado) {
-//                Object[] obj= ApoderadoDAO.objetoApoderado(apoderadoa);
-//                modelo.addRow(obj);
-//                this.TbListar.setModel(modelo);
-//                
-//            }
-//        } catch (SQLException e) {
-//        }
-//    }
-
-    private void BtnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnListarActionPerformed
-        // TODO add your handling code here:
-        this.jScrollPane1.setVisible(true);
-
-        DefaultTableModel modelotabla = this.controller.consultarApoderados();
-        this.tableApoderados.setModel(modelotabla);
-        this.BtnModificarApoderado.setVisible(true);
-    }//GEN-LAST:event_BtnListarActionPerformed
 
     private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
         // TODO add your handling code here:
@@ -158,16 +237,57 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         MenuPrin.setVisible(true);
     }//GEN-LAST:event_BtnVolverActionPerformed
 
-    private void BtnRegistrarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoActionPerformed
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void lblRegistrarApoderadoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarApoderadoMouseMoved
+        // TODO add your handling code here:
+        lblRegistrarApoderado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+    }//GEN-LAST:event_lblRegistrarApoderadoMouseMoved
+
+    private void lblRegistrarApoderadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarApoderadoMouseClicked
         // TODO add your handling code here:
         AgregarApoderadosView AgregarApod = new AgregarApoderadosView();
         this.setVisible(false);
         AgregarApod.setLocationRelativeTo(null);
         AgregarApod.setVisible(true);
+    }//GEN-LAST:event_lblRegistrarApoderadoMouseClicked
 
-    }//GEN-LAST:event_BtnRegistrarApoderadoActionPerformed
+    private void lblRegistrarApoderadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRegistrarApoderadoMouseExited
+        // TODO add your handling code here:
+        lblRegistrarApoderado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblRegistrarApoderadoMouseExited
 
-    private void BtnModificarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarApoderadoActionPerformed
+    private void lblListarApoderadoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListarApoderadoMouseMoved
+        // TODO add your handling code here:
+        lblListarApoderado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+    }//GEN-LAST:event_lblListarApoderadoMouseMoved
+
+    private void lblListarApoderadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListarApoderadoMouseExited
+        // TODO add your handling code here:
+        lblListarApoderado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblListarApoderadoMouseExited
+
+    private void lblListarApoderadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListarApoderadoMouseClicked
+        // TODO add your handling code here:
+        this.jScrollPane1.setVisible(true);
+
+        DefaultTableModel modelotabla = this.controller.consultarApoderados();
+        this.tableApoderados.setModel(modelotabla);
+        this.lblModificarApoderado.setVisible(true);
+    }//GEN-LAST:event_lblListarApoderadoMouseClicked
+
+    private void lblModificarApoderadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModificarApoderadoMouseClicked
         // TODO add your handling code here:
         int seleccionado = this.tableApoderados.getSelectedRow();
         if (seleccionado > -1) {
@@ -179,8 +299,51 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
             this.setVisible(false);
             ModificarApod.setLocationRelativeTo(null);
             ModificarApod.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione un apoderado a modificar");
         }
-    }//GEN-LAST:event_BtnModificarApoderadoActionPerformed
+
+    }//GEN-LAST:event_lblModificarApoderadoMouseClicked
+
+    private void lblModificarApoderadoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModificarApoderadoMouseMoved
+        // TODO add your handling code here:
+        lblModificarApoderado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+    }//GEN-LAST:event_lblModificarApoderadoMouseMoved
+
+    private void lblModificarApoderadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblModificarApoderadoMouseExited
+        // TODO add your handling code here:
+        lblModificarApoderado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblModificarApoderadoMouseExited
+
+    private void BtnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnVolverMouseMoved
+        // TODO add your handling code here:
+        BtnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnVolverMouseMoved
+
+    private void BtnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnVolverMouseExited
+        // TODO add your handling code here:
+        BtnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnVolverMouseExited
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
 
     /**
      * @param args the command line arguments
@@ -249,14 +412,19 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.ButtonGroup BtnGroupPerfil;
-    private javax.swing.JButton BtnListar;
-    private javax.swing.JButton BtnModificarApoderado;
-    private javax.swing.JButton BtnRegistrarApoderado;
     private javax.swing.JButton BtnVolver;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblListarApoderado;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
+    private javax.swing.JLabel lblModificarApoderado;
+    private javax.swing.JLabel lblRegistrarApoderado;
     private javax.swing.JTable tableApoderados;
     // End of variables declaration//GEN-END:variables
 }
