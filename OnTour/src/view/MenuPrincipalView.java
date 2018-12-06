@@ -6,10 +6,16 @@
 package view;
 
 import Dao.AutenticacionDAO;
+import java.awt.Color;
 import model.RepresentanteAgencia;
 import java.awt.Dimension;
+import java.awt.Insets;
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import AppPackage.AnimationClass;
 
 /**
  *
@@ -21,11 +27,22 @@ public class MenuPrincipalView extends javax.swing.JFrame {
      * Creates new form MenuPrincipal
      */
     public MenuPrincipalView() {
-        this.setMinimumSize(new Dimension(680, 500));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(961, 970));
         initComponents();
+//        setExtendedState(MAXIMIZED_BOTH);
+        UIManager.put("TextField.background", Color.WHITE);
+        UIManager.put("TextField.border", BorderFactory.createCompoundBorder(
+                new AutenticacionView.CustomeBorder(),
+                new EmptyBorder(new Insets(4, 4, 4, 4))));
+        this.getContentPane().setBackground(Color.white);
+//        this.jMenuBar1.setBackground(new Color(12, 161, 215));
+//        this.jPanel2.setBackground(new Color(12,161,215));
+        jPanel1.setBackground(Color.white);
+
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         RepresentanteAgencia rp = new RepresentanteAgencia();
-        LblMensajeBienvenido1.setText(AutenticacionDAO.RP.getNombre());
+        LblMensajeBienvenido1.setText(AutenticacionDAO.RP.getNombre() + " " + AutenticacionDAO.RP.getaPaterno());
     }
 
     /**
@@ -37,220 +54,326 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblMensajeBienvenido = new javax.swing.JLabel();
-        LblMensajeBienvenido1 = new javax.swing.JLabel();
-        Logo = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lblLogoMenu = new javax.swing.JLabel();
+        lblMinimizar = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        BtnSeguros = new javax.swing.JButton();
-        BtnContratos = new javax.swing.JButton();
-        BtnEstadoDeCuenta = new javax.swing.JButton();
+        lblMantenedorSeguros = new javax.swing.JLabel();
+        lblTextGestionarSeguros = new javax.swing.JLabel();
+        lblMantenedorContratos = new javax.swing.JLabel();
+        lblTextMantenedorContratos = new javax.swing.JLabel();
+        lblEstadoCuenta = new javax.swing.JLabel();
+        lblTextEstadoCuenta = new javax.swing.JLabel();
+        lblDepositos = new javax.swing.JLabel();
+        lblTextDepositos = new javax.swing.JLabel();
         lblLogout = new javax.swing.JLabel();
         lblCerrarSesion = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        MnCerrarSesion = new javax.swing.JMenuItem();
-        MnSalir = new javax.swing.JMenuItem();
-        MnAdministradoresCrud = new javax.swing.JMenu();
-        MnApoderado = new javax.swing.JMenuItem();
-        MnAlumno = new javax.swing.JMenuItem();
-        MnColegio = new javax.swing.JMenuItem();
-        MnTipoSeguro = new javax.swing.JMenuItem();
+        jPanel2 = new javax.swing.JPanel();
+        LblMensajeBienvenido1 = new javax.swing.JLabel();
+        LblMensajeBienvenido = new javax.swing.JLabel();
+        Logo = new javax.swing.JLabel();
+        lblMenuApoderados = new javax.swing.JLabel();
+        lblMenuAlumnos = new javax.swing.JLabel();
+        lblMenuColegios = new javax.swing.JLabel();
+        lblMenuTipoSeguros = new javax.swing.JLabel();
+        lblMenu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
         setBackground(new java.awt.Color(255, 255, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setFont(new java.awt.Font("AGA Arabesque", 1, 36)); // NOI18N
         getContentPane().setLayout(null);
 
-        LblMensajeBienvenido.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        LblMensajeBienvenido.setText("BIENVENIDO!");
-        getContentPane().add(LblMensajeBienvenido);
-        LblMensajeBienvenido.setBounds(180, 30, 270, 44);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LblMensajeBienvenido1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        LblMensajeBienvenido1.setText("--------------");
-        getContentPane().add(LblMensajeBienvenido1);
-        LblMensajeBienvenido1.setBounds(230, 90, 227, 44);
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
 
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
-        getContentPane().add(Logo);
-        Logo.setBounds(0, -20, 200, 180);
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
+            }
+        });
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, 30));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 30, 30));
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 960, 50);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(null);
 
-        BtnSeguros.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnSeguros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/GestionarSeguros.png"))); // NOI18N
-        BtnSeguros.setText("Gestionar Seguros");
-        BtnSeguros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnSegurosActionPerformed(evt);
+        lblMantenedorSeguros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMantenedorSeguros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Safe1.png"))); // NOI18N
+        lblMantenedorSeguros.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMantenedorSegurosMouseMoved(evt);
             }
         });
-        jPanel1.add(BtnSeguros);
-        BtnSeguros.setBounds(20, 20, 260, 60);
-
-        BtnContratos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnContratos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdministrarContratos.png"))); // NOI18N
-        BtnContratos.setText("Administrar Contratos");
-        BtnContratos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnContratosActionPerformed(evt);
+        lblMantenedorSeguros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMantenedorSegurosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMantenedorSegurosMouseExited(evt);
             }
         });
-        jPanel1.add(BtnContratos);
-        BtnContratos.setBounds(290, 20, 290, 60);
+        jPanel1.add(lblMantenedorSeguros);
+        lblMantenedorSeguros.setBounds(50, 40, 270, 310);
 
-        BtnEstadoDeCuenta.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnEstadoDeCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EstadoCuenta.png"))); // NOI18N
-        BtnEstadoDeCuenta.setText("Estado de Cuenta");
-        BtnEstadoDeCuenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnEstadoDeCuentaActionPerformed(evt);
+        lblTextGestionarSeguros.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTextGestionarSeguros.setForeground(new java.awt.Color(12, 161, 215));
+        lblTextGestionarSeguros.setText("SEGUROS");
+        jPanel1.add(lblTextGestionarSeguros);
+        lblTextGestionarSeguros.setBounds(130, 320, 116, 29);
+
+        lblMantenedorContratos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblMantenedorContratos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ContractIcon.png"))); // NOI18N
+        lblMantenedorContratos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMantenedorContratosMouseMoved(evt);
             }
         });
-        jPanel1.add(BtnEstadoDeCuenta);
-        BtnEstadoDeCuenta.setBounds(180, 90, 250, 62);
+        lblMantenedorContratos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMantenedorContratosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMantenedorContratosMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblMantenedorContratos);
+        lblMantenedorContratos.setBounds(390, 40, 270, 310);
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 160, 600, 160);
+        lblTextMantenedorContratos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTextMantenedorContratos.setForeground(new java.awt.Color(12, 161, 215));
+        lblTextMantenedorContratos.setText("CONTRATOS");
+        jPanel1.add(lblTextMantenedorContratos);
+        lblTextMantenedorContratos.setBounds(430, 320, 230, 29);
 
-        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logout.png"))); // NOI18N
+        lblEstadoCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblEstadoCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/StatusMoney.png"))); // NOI18N
+        lblEstadoCuenta.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblEstadoCuentaMouseMoved(evt);
+            }
+        });
+        lblEstadoCuenta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblEstadoCuentaMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblEstadoCuentaMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblEstadoCuenta);
+        lblEstadoCuenta.setBounds(50, 370, 270, 310);
+
+        lblTextEstadoCuenta.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTextEstadoCuenta.setForeground(new java.awt.Color(12, 161, 215));
+        lblTextEstadoCuenta.setText("ESTADO DE CUENTAS");
+        jPanel1.add(lblTextEstadoCuenta);
+        lblTextEstadoCuenta.setBounds(60, 650, 270, 29);
+
+        lblDepositos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblDepositos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Depositos.png"))); // NOI18N
+        lblDepositos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblDepositosMouseMoved(evt);
+            }
+        });
+        lblDepositos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblDepositosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblDepositosMouseExited(evt);
+            }
+        });
+        jPanel1.add(lblDepositos);
+        lblDepositos.setBounds(390, 380, 270, 310);
+
+        lblTextDepositos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTextDepositos.setForeground(new java.awt.Color(12, 161, 215));
+        lblTextDepositos.setText("DEPÓSITOS");
+        jPanel1.add(lblTextDepositos);
+        lblTextDepositos.setBounds(460, 650, 160, 40);
+
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 700, 710));
+
+        lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logout1.png"))); // NOI18N
         lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblLogoutMouseClicked(evt);
             }
         });
-        getContentPane().add(lblLogout);
-        lblLogout.setBounds(570, 10, 40, 30);
+        jPanel4.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 70, 80));
 
+        lblCerrarSesion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblCerrarSesion.setText("Cerrar Sesión");
-        getContentPane().add(lblCerrarSesion);
-        lblCerrarSesion.setBounds(550, 40, 90, 20);
+        jPanel4.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 130, 30));
 
-        jMenuBar1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(null);
 
-        jMenu1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
-        jMenu1.setText("Opciones");
-        jMenu1.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        LblMensajeBienvenido1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        LblMensajeBienvenido1.setText("--------------");
+        jPanel2.add(LblMensajeBienvenido1);
+        LblMensajeBienvenido1.setBounds(120, 70, 227, 44);
 
-        MnCerrarSesion.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        MnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logout.png"))); // NOI18N
-        MnCerrarSesion.setText("Cerrar Sesión");
-        MnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnCerrarSesionActionPerformed(evt);
+        LblMensajeBienvenido.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        LblMensajeBienvenido.setText("BIENVENIDO!");
+        jPanel2.add(LblMensajeBienvenido);
+        LblMensajeBienvenido.setBounds(10, 20, 270, 44);
+
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 390, 120));
+
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        jPanel4.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 200, 150));
+
+        lblMenuApoderados.setBackground(new java.awt.Color(255, 255, 255));
+        lblMenuApoderados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMenuApoderados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ApoderadosMenu.png"))); // NOI18N
+        lblMenuApoderados.setText("Apoderados");
+        lblMenuApoderados.setOpaque(true);
+        lblMenuApoderados.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMenuApoderadosMouseMoved(evt);
             }
         });
-        jMenu1.add(MnCerrarSesion);
-
-        MnSalir.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        MnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
-        MnSalir.setText("Salir");
-        MnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnSalirActionPerformed(evt);
+        lblMenuApoderados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuApoderadosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMenuApoderadosMouseExited(evt);
             }
         });
-        jMenu1.add(MnSalir);
+        jPanel4.add(lblMenuApoderados, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 80, 170, 60));
 
-        jMenuBar1.add(jMenu1);
-
-        MnAdministradoresCrud.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24)), "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
-        MnAdministradoresCrud.setText("Otros");
-        MnAdministradoresCrud.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-
-        MnApoderado.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        MnApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdminApoderados.png"))); // NOI18N
-        MnApoderado.setText("Apoderado");
-        MnApoderado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnApoderadoActionPerformed(evt);
+        lblMenuAlumnos.setBackground(new java.awt.Color(255, 255, 255));
+        lblMenuAlumnos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMenuAlumnos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EstudiantesMenu.png"))); // NOI18N
+        lblMenuAlumnos.setText("Alumnos");
+        lblMenuAlumnos.setOpaque(true);
+        lblMenuAlumnos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMenuAlumnosMouseMoved(evt);
             }
         });
-        MnAdministradoresCrud.add(MnApoderado);
-
-        MnAlumno.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        MnAlumno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdministrarStudent.png"))); // NOI18N
-        MnAlumno.setText("Alumno");
-        MnAdministradoresCrud.add(MnAlumno);
-
-        MnColegio.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        MnColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdministrarColegio.png"))); // NOI18N
-        MnColegio.setText("Colegio");
-        MnColegio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnColegioActionPerformed(evt);
+        lblMenuAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMenuAlumnosMouseExited(evt);
             }
         });
-        MnAdministradoresCrud.add(MnColegio);
+        jPanel4.add(lblMenuAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 150, 170, 70));
 
-        MnTipoSeguro.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
-        //MnTipoSeguro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/TipoSeguro.png"))); // NOI18N
-        MnTipoSeguro.setText("Tipo Seguros");
-        MnTipoSeguro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnTipoSeguroActionPerformed(evt);
+        lblMenuColegios.setBackground(new java.awt.Color(255, 255, 255));
+        lblMenuColegios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMenuColegios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ColegiosMenu.png"))); // NOI18N
+        lblMenuColegios.setText("Colegios");
+        lblMenuColegios.setOpaque(true);
+        lblMenuColegios.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMenuColegiosMouseMoved(evt);
             }
         });
-        MnAdministradoresCrud.add(MnTipoSeguro);
+        lblMenuColegios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuColegiosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMenuColegiosMouseExited(evt);
+            }
+        });
+        jPanel4.add(lblMenuColegios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 240, 170, 80));
 
-        jMenuBar1.add(MnAdministradoresCrud);
+        lblMenuTipoSeguros.setBackground(new java.awt.Color(255, 255, 255));
+        lblMenuTipoSeguros.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblMenuTipoSeguros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/TipoSeguro.png"))); // NOI18N
+        lblMenuTipoSeguros.setText("Tipo Seguros");
+        lblMenuTipoSeguros.setOpaque(true);
+        lblMenuTipoSeguros.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMenuTipoSegurosMouseMoved(evt);
+            }
+        });
+        lblMenuTipoSeguros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuTipoSegurosMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMenuTipoSegurosMouseExited(evt);
+            }
+        });
+        jPanel4.add(lblMenuTipoSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 340, 170, 70));
 
-        setJMenuBar(jMenuBar1);
+        lblMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblMenu.setForeground(new java.awt.Color(12, 161, 215));
+        lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Menus.png"))); // NOI18N
+        lblMenu.setText("Menú");
+        lblMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMenu.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lblMenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMenuMouseMoved(evt);
+            }
+        });
+        lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMenuMouseExited(evt);
+            }
+        });
+        jPanel4.add(lblMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 130, 70));
+
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(0, 50, 960, 920);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void MnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnCerrarSesionActionPerformed
-        // TODO add your handling code here:
-        int input = JOptionPane.showConfirmDialog(null, "¿Seguro deseas Cerrar Sesion?");
-        if (input == 0) {
-            JOptionPane.showMessageDialog(this, "Sesión Cerrada con éxito");
-            this.setVisible(false);
-            AutenticacionView Autenti = new AutenticacionView();
-            Autenti.setLocationRelativeTo(null);
-            Autenti.setVisible(true);
-        } else {
-
-        }
-    }//GEN-LAST:event_MnCerrarSesionActionPerformed
-
-    private void MnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnSalirActionPerformed
-        // TODO add your handling code here:
-        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
-        if (input == 0) {
-            this.dispose();
-        }
-    }//GEN-LAST:event_MnSalirActionPerformed
-
-    private void BtnContratosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnContratosActionPerformed
-        // TODO add your handling code here:
-        MenuContratosView ConsultContr = new MenuContratosView();
-        this.setVisible(false);
-        ConsultContr.setLocationRelativeTo(null);
-        ConsultContr.setVisible(true);
-    }//GEN-LAST:event_BtnContratosActionPerformed
-
-    private void BtnEstadoDeCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnEstadoDeCuentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnEstadoDeCuentaActionPerformed
-
-    private void MnApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnApoderadoActionPerformed
-        // TODO add your handling code here:
-        MenuApoderadoView listApod = new MenuApoderadoView();
-        this.setVisible(false);
-        listApod.setLocationRelativeTo(null);
-        listApod.setVisible(true);
-    }//GEN-LAST:event_MnApoderadoActionPerformed
-
-    private void MnColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnColegioActionPerformed
-        // TODO add your handling code here:
-        MenuColegioView menColegio = new MenuColegioView();
-        this.setVisible(false);
-        menColegio.setLocationRelativeTo(null);
-        menColegio.setVisible(true);
-    }//GEN-LAST:event_MnColegioActionPerformed
 
     private void lblLogoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblLogoutMouseClicked
         // TODO add your handling code here:
@@ -266,21 +389,206 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblLogoutMouseClicked
 
-    private void BtnSegurosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSegurosActionPerformed
+    private void lblMantenedorContratosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMantenedorContratosMouseExited
+        // TODO add your handling code here:
+        lblMantenedorContratos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMantenedorContratosMouseExited
+
+    private void lblMantenedorContratosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMantenedorContratosMouseClicked
+        // TODO add your handling code here:
+        MenuContratosView ConsultContr = new MenuContratosView();
+        this.setVisible(false);
+        ConsultContr.setLocationRelativeTo(null);
+        ConsultContr.setVisible(true);
+    }//GEN-LAST:event_lblMantenedorContratosMouseClicked
+
+    private void lblMantenedorContratosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMantenedorContratosMouseMoved
+        // TODO add your handling code here:
+        lblMantenedorContratos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+    }//GEN-LAST:event_lblMantenedorContratosMouseMoved
+
+    private void lblMantenedorSegurosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMantenedorSegurosMouseMoved
+        // TODO add your handling code here:
+        lblMantenedorSeguros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+    }//GEN-LAST:event_lblMantenedorSegurosMouseMoved
+
+    private void lblMantenedorSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMantenedorSegurosMouseClicked
         // TODO add your handling code here:
         MenuSegurosView menuSeguros = new MenuSegurosView();
         this.setVisible(false);
         menuSeguros.setLocationRelativeTo(null);
         menuSeguros.setVisible(true);
-    }//GEN-LAST:event_BtnSegurosActionPerformed
+    }//GEN-LAST:event_lblMantenedorSegurosMouseClicked
 
-    private void MnTipoSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnTipoSeguroActionPerformed
+    private void lblMantenedorSegurosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMantenedorSegurosMouseExited
+        // TODO add your handling code here:
+        lblMantenedorSeguros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMantenedorSegurosMouseExited
+
+    private void lblEstadoCuentaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEstadoCuentaMouseMoved
+        // TODO add your handling code here:
+        lblEstadoCuenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+    }//GEN-LAST:event_lblEstadoCuentaMouseMoved
+
+    private void lblEstadoCuentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEstadoCuentaMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblEstadoCuentaMouseClicked
+
+    private void lblEstadoCuentaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblEstadoCuentaMouseExited
+        // TODO add your handling code here:
+        lblEstadoCuenta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblEstadoCuentaMouseExited
+
+    private void lblDepositosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDepositosMouseMoved
+        // TODO add your handling code here:
+        lblDepositos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+    }//GEN-LAST:event_lblDepositosMouseMoved
+
+    private void lblDepositosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDepositosMouseClicked
+        // TODO add your handling code here:
+        MenuDepositosView menuDepositos = new MenuDepositosView();
+        this.setVisible(false);
+        menuDepositos.setLocationRelativeTo(null);
+        menuDepositos.setVisible(true);
+    }//GEN-LAST:event_lblDepositosMouseClicked
+
+    private void lblDepositosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblDepositosMouseExited
+        // TODO add your handling code here:
+        lblDepositos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblDepositosMouseExited
+
+    private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
+        // TODO add your handling code here:lblMenu
+
+        AnimationClass apoderados = new AnimationClass();
+        apoderados.jLabelXRight(-170, 10, 4, 5, lblMenuApoderados);
+        apoderados.jLabelXLeft(10, -170, 10, 5, lblMenuApoderados);
+
+        AnimationClass alumnos = new AnimationClass();
+        alumnos.jLabelXRight(-170, 10, 6, 5, lblMenuAlumnos);
+        alumnos.jLabelXLeft(10, -170, 10, 5, lblMenuAlumnos);
+
+        AnimationClass colegios = new AnimationClass();
+        colegios.jLabelXRight(-170, 10, 8, 5, lblMenuColegios);
+        colegios.jLabelXLeft(10, -170, 10, 5, lblMenuColegios);
+
+        AnimationClass tipoSeguros = new AnimationClass();
+        tipoSeguros.jLabelXRight(-170, 10, 10, 5, lblMenuTipoSeguros);
+        tipoSeguros.jLabelXLeft(10, -170, 10, 5, lblMenuTipoSeguros);
+    }//GEN-LAST:event_lblMenuMouseClicked
+
+    private void lblMenuApoderadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuApoderadosMouseClicked
+        // TODO add your handling code here:
+        MenuApoderadoView listApod = new MenuApoderadoView();
+        this.setVisible(false);
+        listApod.setLocationRelativeTo(null);
+        listApod.setVisible(true);
+    }//GEN-LAST:event_lblMenuApoderadosMouseClicked
+
+    private void lblMenuApoderadosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuApoderadosMouseExited
+        // TODO add your handling code here:
+        lblMenuApoderados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        lblMenuApoderados.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_lblMenuApoderadosMouseExited
+
+    private void lblMenuApoderadosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuApoderadosMouseMoved
+        // TODO add your handling code here:
+        lblMenuApoderados.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+        lblMenuApoderados.setBackground(new Color(100, 196, 230));
+    }//GEN-LAST:event_lblMenuApoderadosMouseMoved
+
+    private void lblMenuAlumnosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuAlumnosMouseMoved
+        // TODO add your handling code here:
+        lblMenuAlumnos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+        lblMenuAlumnos.setBackground(new Color(100, 196, 230));
+    }//GEN-LAST:event_lblMenuAlumnosMouseMoved
+
+    private void lblMenuAlumnosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuAlumnosMouseExited
+        // TODO add your handling code here:
+        lblMenuAlumnos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        lblMenuAlumnos.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_lblMenuAlumnosMouseExited
+
+    private void lblMenuColegiosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuColegiosMouseExited
+        // TODO add your handling code here:
+        lblMenuColegios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        lblMenuColegios.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_lblMenuColegiosMouseExited
+
+    private void lblMenuColegiosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuColegiosMouseMoved
+        // TODO add your handling code here:
+        lblMenuColegios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+        lblMenuColegios.setBackground(new Color(100, 196, 230));
+    }//GEN-LAST:event_lblMenuColegiosMouseMoved
+
+    private void lblMenuTipoSegurosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuTipoSegurosMouseExited
+        // TODO add your handling code here:
+        lblMenuTipoSeguros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        lblMenuTipoSeguros.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_lblMenuTipoSegurosMouseExited
+
+    private void lblMenuTipoSegurosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuTipoSegurosMouseMoved
+        // TODO add your handling code here:
+        lblMenuTipoSeguros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(12, 161, 215)));
+        lblMenuTipoSeguros.setBackground(new Color(100, 196, 230));
+    }//GEN-LAST:event_lblMenuTipoSegurosMouseMoved
+
+    private void lblMenuTipoSegurosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuTipoSegurosMouseClicked
         // TODO add your handling code here:
         AgregarTipoSegurosView tipoSeg = new AgregarTipoSegurosView();
         this.setVisible(false);
         tipoSeg.setLocationRelativeTo(null);
         tipoSeg.setVisible(true);
-    }//GEN-LAST:event_MnTipoSeguroActionPerformed
+    }//GEN-LAST:event_lblMenuTipoSegurosMouseClicked
+
+    private void lblMenuMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseMoved
+
+    }//GEN-LAST:event_lblMenuMouseMoved
+
+    private void lblMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseExited
+
+    }//GEN-LAST:event_lblMenuMouseExited
+
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void lblMenuColegiosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuColegiosMouseClicked
+        // TODO add your handling code here:
+        MenuColegioView menuColegio = new MenuColegioView();
+        this.setVisible(false);
+        menuColegio.setLocationRelativeTo(null);
+        menuColegio.setVisible(true);
+    }//GEN-LAST:event_lblMenuColegiosMouseClicked
 
     /**
      * @param args the command line arguments
@@ -319,23 +627,30 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnContratos;
-    private javax.swing.JButton BtnEstadoDeCuenta;
-    private javax.swing.JButton BtnSeguros;
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.JLabel LblMensajeBienvenido;
     private javax.swing.JLabel LblMensajeBienvenido1;
     private javax.swing.JLabel Logo;
-    private javax.swing.JMenu MnAdministradoresCrud;
-    private javax.swing.JMenuItem MnAlumno;
-    private javax.swing.JMenuItem MnApoderado;
-    private javax.swing.JMenuItem MnCerrarSesion;
-    private javax.swing.JMenuItem MnColegio;
-    private javax.swing.JMenuItem MnSalir;
-    private javax.swing.JMenuItem MnTipoSeguro;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblCerrarSesion;
+    private javax.swing.JLabel lblDepositos;
+    private javax.swing.JLabel lblEstadoCuenta;
+    private javax.swing.JLabel lblLogoMenu;
     private javax.swing.JLabel lblLogout;
+    private javax.swing.JLabel lblMantenedorContratos;
+    private javax.swing.JLabel lblMantenedorSeguros;
+    private javax.swing.JLabel lblMenu;
+    private javax.swing.JLabel lblMenuAlumnos;
+    private javax.swing.JLabel lblMenuApoderados;
+    private javax.swing.JLabel lblMenuColegios;
+    private javax.swing.JLabel lblMenuTipoSeguros;
+    private javax.swing.JLabel lblMinimizar;
+    private javax.swing.JLabel lblTextDepositos;
+    private javax.swing.JLabel lblTextEstadoCuenta;
+    private javax.swing.JLabel lblTextGestionarSeguros;
+    private javax.swing.JLabel lblTextMantenedorContratos;
     // End of variables declaration//GEN-END:variables
 }
