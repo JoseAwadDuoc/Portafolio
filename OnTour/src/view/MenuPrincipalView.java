@@ -302,6 +302,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         lblMenuAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuAlumnosMouseClicked(evt);
+            }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 lblMenuAlumnosMouseExited(evt);
             }
@@ -589,6 +592,14 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         menuColegio.setLocationRelativeTo(null);
         menuColegio.setVisible(true);
     }//GEN-LAST:event_lblMenuColegiosMouseClicked
+
+    private void lblMenuAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuAlumnosMouseClicked
+        // TODO add your handling code here:
+         MenuAlumnosView menuAlumnos = new MenuAlumnosView();
+        this.setVisible(false);
+        menuAlumnos.setLocationRelativeTo(null);
+        menuAlumnos.setVisible(true);
+    }//GEN-LAST:event_lblMenuAlumnosMouseClicked
 
     /**
      * @param args the command line arguments
