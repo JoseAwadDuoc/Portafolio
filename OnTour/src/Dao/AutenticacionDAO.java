@@ -24,7 +24,7 @@ public class AutenticacionDAO extends DbUtilidades {
             
             con = Conexion.conectar();
             st = con.createStatement();
-            String sql = "SELECT RUT_REPRESENTANTE,PASS_REPRESENTANTE,NOMBRES FROM REPRESENTANTE_AGENCIA "
+            String sql = "SELECT RUT_REPRESENTANTE,PASS_REPRESENTANTE,NOMBRES,APATERNO FROM REPRESENTANTE_AGENCIA "
                     + "WHERE RUT_REPRESENTANTE = '" + rut + "' AND "
                     + "PASS_REPRESENTANTE = '" + contraseña + "'";
 
@@ -33,6 +33,7 @@ public class AutenticacionDAO extends DbUtilidades {
             while (rs.next()) {
                 System.out.println("Usuario Validado");
                 RP.setNombre(rs.getString(3));
+                RP.setaPaterno(rs.getString(4));
                 return true;
             }
         } catch (Exception e) {
