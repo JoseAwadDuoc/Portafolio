@@ -15,6 +15,7 @@ import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import model.KeyValue;
 
 /**
  *
@@ -38,7 +39,7 @@ public class MenuColegioView extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(100, 200));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
-        this.CmbxCiudadColegio.setModel(ciudadDAO.obtenerCiudad());
+        this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
         this.jPanelAgregarColegio.setVisible(false);
         this.btnModificarColegio.setVisible(false);
         this.jPanelListarColegios.setVisible(false);
@@ -65,8 +66,8 @@ public class MenuColegioView extends javax.swing.JFrame {
         LblDireccionColegio = new javax.swing.JLabel();
         TxtDireccionColegio = new javax.swing.JTextField();
         LblCiudadColegio = new javax.swing.JLabel();
-        CmbxCiudadColegio = new javax.swing.JComboBox<>();
-        cmbxComunaColegio = new javax.swing.JComboBox<>();
+        cmbCiudad = new javax.swing.JComboBox<>();
+        cmbComuna = new javax.swing.JComboBox<>();
         LblComunaColegio = new javax.swing.JLabel();
         LblTelefonoColegio = new javax.swing.JLabel();
         TxtTelefonoColegio = new javax.swing.JTextField();
@@ -163,20 +164,20 @@ public class MenuColegioView extends javax.swing.JFrame {
         jPanelAgregarColegio.add(LblCiudadColegio);
         LblCiudadColegio.setBounds(50, 160, 90, 22);
 
-        CmbxCiudadColegio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        CmbxCiudadColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
-        CmbxCiudadColegio.addItemListener(new java.awt.event.ItemListener() {
+        cmbCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
+        cmbCiudad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                CmbxCiudadColegioItemStateChanged(evt);
+                cmbCiudadItemStateChanged(evt);
             }
         });
-        jPanelAgregarColegio.add(CmbxCiudadColegio);
-        CmbxCiudadColegio.setBounds(130, 150, 210, 40);
+        jPanelAgregarColegio.add(cmbCiudad);
+        cmbCiudad.setBounds(130, 150, 210, 40);
 
-        cmbxComunaColegio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        cmbxComunaColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
-        jPanelAgregarColegio.add(cmbxComunaColegio);
-        cmbxComunaColegio.setBounds(130, 200, 210, 40);
+        cmbComuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
+        jPanelAgregarColegio.add(cmbComuna);
+        cmbComuna.setBounds(130, 200, 210, 40);
 
         LblComunaColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblComunaColegio.setText("Comuna: ");
@@ -267,22 +268,20 @@ public class MenuColegioView extends javax.swing.JFrame {
 //        agregarColegio.setVisible(true);
     }//GEN-LAST:event_BtnAgregarColegioActionPerformed
 
-    private void CmbxCiudadColegioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_CmbxCiudadColegioItemStateChanged
+    private void cmbCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCiudadItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            String comuna;
-            comuna = String.valueOf(CmbxCiudadColegio.getSelectedItem());
-            this.cmbxComunaColegio.setModel(comunaDAO.obtenerComuna(comuna));
+            String comuna = String.valueOf(cmbCiudad.getSelectedItem());
+            this.cmbComuna.setModel(comunaDAO.obtenerComunas(comuna));
         }
-    }//GEN-LAST:event_CmbxCiudadColegioItemStateChanged
+    }//GEN-LAST:event_cmbCiudadItemStateChanged
 
     private void BtnAgregarColegio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarColegio1ActionPerformed
         // TODO add your handling code here:
         try {
 
-            String cmbxComuna = String.valueOf(cmbxComunaColegio.getSelectedItem());
-            String cmbxComuna1 = comunaDAO.obtenerIdComuna(cmbxComuna);
-            int idcomuna = Integer.parseInt(cmbxComuna1);
+            KeyValue comuna = (KeyValue)cmbComuna.getSelectedItem();
+            int idcomuna = comuna.getId();
 
             String nombre = TxtNombreColegio.getText();
             String direccion = TxtDireccionColegio.getText();
@@ -378,7 +377,6 @@ public class MenuColegioView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarColegio;
     private javax.swing.JButton BtnAgregarColegio1;
-    private javax.swing.JComboBox<String> CmbxCiudadColegio;
     private javax.swing.JLabel LblCiudadColegio;
     private javax.swing.JLabel LblComunaColegio;
     private javax.swing.JLabel LblDireccionColegio;
@@ -391,7 +389,8 @@ public class MenuColegioView extends javax.swing.JFrame {
     private javax.swing.JButton btnConsultarColegios;
     private javax.swing.JPanel btnListarColegio;
     private javax.swing.JButton btnModificarColegio;
-    private javax.swing.JComboBox<String> cmbxComunaColegio;
+    private javax.swing.JComboBox<String> cmbCiudad;
+    private javax.swing.JComboBox<String> cmbComuna;
     private javax.swing.JPanel jPanelAgregarColegio;
     private javax.swing.JPanel jPanelListarColegios;
     private javax.swing.JScrollPane jScrollPane1;

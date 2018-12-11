@@ -27,7 +27,7 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
     public GenerarReporteAvance() {
         this.setMinimumSize(new Dimension(600, 600));
         initComponents();
-        this.CmbColegio.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerColegio()));
+        this.CmbColegio.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerColegios()));
         this.CmbCurso.setEnabled(false);
     }
 
@@ -126,7 +126,7 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
             String curso;
             curso = String.valueOf(CmbColegio.getSelectedItem());
             this.CmbCurso.setEnabled(true);
-            this.CmbCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCurso(curso)));
+            this.CmbCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCursos(curso)));
         }
 
 // TODO add your handling code here:
@@ -141,7 +141,7 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
             String combocur1 = contratoDAO.obtenerIdCurso(combocur);
             int idcurso = Integer.parseInt(combocur1);
 
-            int idcontrato = contratoDAO.obtenerIdContrato(idcurso);
+            int idcontrato = contratoDAO.obtenerIdContratoPorIdCurso(idcurso);
 
             reporteDAO.GenerarReporteAvance(idcontrato);
 

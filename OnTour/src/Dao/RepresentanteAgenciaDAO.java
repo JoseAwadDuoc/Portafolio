@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import model.KeyValue;
 
 /**
  *
@@ -77,44 +78,21 @@ public class RepresentanteAgenciaDAO extends DbUtilidades {
 
 
     public DefaultComboBoxModel obtenerRepresentantes() {
-        DefaultComboBoxModel listamodelo = new DefaultComboBoxModel();
-        listamodelo.addElement("Seleccione Agente");
-        ResultSet rs = this.consulta("Select CONCAT(NOMBRES,CONCAT(' ',APATERNO)) as nombre_agente from REPRESENTANTE_AGENCIA");
-
+        DefaultComboBoxModel lst = new DefaultComboBoxModel();
+        lst.addElement(new KeyValue(-1, "Seleccione Representante"));
+        ResultSet rs = this.consulta("Select CONCAT(NOMBRES,CONCAT(' ',APATERNO)) as nombre_agente, rut_representante from REPRESENTANTE_AGENCIA");
         try {
             while (rs.next()) {
-                listamodelo.addElement(rs.getString("nombre_agente"));
-
+                int id = rs.getInt("rut_representante");
+                String text = rs.getString("nombre_agente");
+                lst.addElement(new KeyValue(id, text));
             }
             rs.close();
-
         } catch (SQLException e) {
-
             System.out.println(e.getMessage());
-
         }
-
-        return listamodelo;
+        return lst;
 
     }
 
-    public String obtenerRutRepresentante(String nombreagente) {
-
-        ResultSet rs = this.consulta("Select CONCAT(NOMBRES,CONCAT(' ',APATERNO)) as nombre_agente,rut_representante from REPRESENTANTE_AGENCIA where CONCAT(NOMBRES,CONCAT(' ',APATERNO)) = '" + nombreagente + "'");
-        String rutagente = new String();
-        try {
-            while (rs.next()) {
-                rutagente = rs.getString("rut_representante");
-
-            }
-            rs.close();
-
-        } catch (SQLException e) {
-
-            System.out.println(e.getMessage());
-
-        }
-
-        return rutagente;
-    }
 }
