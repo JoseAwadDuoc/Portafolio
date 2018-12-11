@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
 import model.KeyValue;
 
 /**
@@ -17,7 +18,7 @@ import model.KeyValue;
  */
 public class ContratoDAO extends DbUtilidades {
 
-    public List<String> obtenerPaquete() {
+    public List<String> obtenerPaquetes() {
         List<String> listapaquete = new ArrayList<>();
         listapaquete.add("Seleccione Paquete Turistico");
         ResultSet rs = this.consulta("Select * from paquete ORDER BY descripcion ASC");
@@ -34,7 +35,7 @@ public class ContratoDAO extends DbUtilidades {
         return listapaquete;
     }
 
-    public List<String> obtenerColegio() {
+    public List<String> obtenerColegios() {
         List<String> listapaquete = new ArrayList<>();
         listapaquete.add("Seleccione Colegio Asociado");
         ResultSet rs = this.consulta("Select * from COLEGIO ORDER BY NOMBRE_COLEGIO ASC");
@@ -53,7 +54,7 @@ public class ContratoDAO extends DbUtilidades {
         return listapaquete;
     }
 
-    public List<String> obtenerCurso(String colegio) {
+    public List<String> obtenerCursos(String colegio) {
         List<String> listapaquete = new ArrayList<>();
         listapaquete.add("Seleccione Curso Asociado");
         ResultSet rs = this.consulta("Select * from CURSO cu join colegio co on(cu.idcolegio=co.idcolegio)"
@@ -124,7 +125,7 @@ public class ContratoDAO extends DbUtilidades {
         return idcurso;
     }
 
-    public int obtenerIdContrato(int idcurso) {
+    public int obtenerIdContratoPorIdCurso(int idcurso) {
 
         ResultSet rs = this.consulta("Select * from Contrato where idcurso = '" + idcurso + "'");
         int idcontrato = 0;
@@ -141,7 +142,9 @@ public class ContratoDAO extends DbUtilidades {
 
         return idcontrato;
     }
-
+    
+   
+    
     public String agregarContrato(int idpaquete, int rut, int idcurso, int idseguro, String fecha_inicio, int monto_venta, String fecha_evento) {
         /* ResultSet rs = this.consulta("INSERT INTO CONTRATO (IDPAQUETE, RUT_REPRES, IDCURSO, IDSEGURO, FECHA_CONTRATO, MONTO_META, FECHA_EVENTO) "
                 + "VALUES (" + idpaquete + 
@@ -248,6 +251,23 @@ public class ContratoDAO extends DbUtilidades {
         }
 
         return catidadAlumnos;
+    }
+    
+    public DefaultComboBoxModel obtenerContrato() {
+        DefaultComboBoxModel lst = new DefaultComboBoxModel();
+        lst.addElement(new KeyValue(-1, "Seleccione Contrato"));
+        ResultSet rs = this.consulta("Select IDCONTRATO from contrato where estado = 1 ORDER BY IDCONTRATO ASC");
+        try {
+            while (rs.next()) {
+                int id = rs.getInt("IDCONTRATO");
+                String text = String.valueOf(id);
+                lst.addElement(new KeyValue(id, text));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return lst;
     }
 
 //    

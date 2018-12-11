@@ -10,7 +10,10 @@ import Dao.*;
 import java.util.List;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
-import model.Tabla_PdfVO;
+import Dao.*;
+import java.util.List;
+import java.util.Map;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,13 +23,12 @@ import model.Tabla_PdfVO;
 
 public class PDFController {
 
-    private Tabla_PdfVO pdfVO = new Tabla_PdfVO();
     private PdfDAO pdao = new PdfDAO();
 
     public DefaultTableModel consultarContratos() {
 
         DefaultTableModel modelotabla = new DefaultTableModel();
-        Map<String, List> map = this.pdfVO.obtenerContratos();
+        Map<String, List> map = this.pdao.obtenerArchivosContratos();
         if (map != null) {
 
             List columnLabels = map.get("columnLabels");

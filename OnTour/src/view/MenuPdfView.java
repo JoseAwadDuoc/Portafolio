@@ -5,6 +5,7 @@
  */
 package view;
 
+import Dao.ContratoDAO;
 import Dao.PdfDAO;
 
 import controller.PDFController;
@@ -20,7 +21,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import model.Tabla_PdfVO;
+import model.KeyValue;
 
 /**
  *
@@ -28,13 +29,13 @@ import model.Tabla_PdfVO;
  */
 public class MenuPdfView extends javax.swing.JFrame {
 
-    private PdfDAO pdfdao = new PdfDAO();
+    private ContratoDAO contratoDao = new ContratoDAO();
+    private PdfDAO pdfDao = new PdfDAO();
     private PDFController controller = new PDFController();
 
     /**
      * Creates new form MenuPdfView
      */
-    Tabla_PdfVO tpdf = new Tabla_PdfVO();
     String ruta_default = "C:/portafolio/PDF/";
     String ruta_archivo = "";
     String nombre_archivo = " ";
@@ -43,7 +44,7 @@ public class MenuPdfView extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(880, 500));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
-        this.CmbContrato.setModel(pdfdao.obtenerContrato());
+        this.CmbContrato.setModel(contratoDao.obtenerContrato());
 
         this.tablePdf.setVisible(true);
         DefaultTableModel modelotabla = this.controller.consultarContratos();
@@ -251,30 +252,20 @@ public class MenuPdfView extends javax.swing.JFrame {
     private void btnGuardarPdfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPdfActionPerformed
 
         //Obtención rut agente
-        int idcontra = Integer.parseInt(String.valueOf(CmbContrato.getSelectedItem()));
-        int idcontrato = pdfdao.obtenerIdContrato(idcontra);
+        KeyValue contrato = (KeyValue) CmbContrato.getSelectedItem();
+        int idcontrato = contrato.getId();
 
-        boolean existeArchivo = this.pdfdao.existeArchivoPorIdContrato(idcontrato);
+        boolean existeArchivo = this.pdfDao.existeArchivoPorIdContrato(idcontrato);
 
         if (existeArchivo) {
             JOptionPane.showMessageDialog(this, "Ya existe un archivo para este contrato.");
             return;
-
         }
-
-        //PRUEBA
-        //TERMINO PRUEBA
-        System.out.println("nombre:" + nombre_archivo);
-        System.out.println("ruta:" + ruta_archivo);
-        System.out.println("idcontrato " + idcontrato);
 
         try {
 
-            pdfdao.agregarPdf(nombre_archivo, ruta_archivo, idcontrato);
-            // guardar_pdf(idcontrato,nombre_archivo,ruta_archivo);
-            //tpdf.visualizar_PdfVO(tabla);
+            pdfDao.agregarPdf(nombre_archivo, ruta_archivo, idcontrato);
 
-            //TABLA
             this.tablePdf.setVisible(true);
             DefaultTableModel modelotabla = this.controller.consultarContratos();
             this.tablePdf.setModel(modelotabla);
@@ -299,7 +290,7 @@ public class MenuPdfView extends javax.swing.JFrame {
                 int idContrato = Integer.parseInt(valor.toString());
 
                 //ELIMINAR ARCHIVO REAL
-                String rutadlt = pdfdao.obtenerRutaPdf(idContrato);
+                String rutadlt = pdfDao.obtenerRutaPdf(idContrato);
                 File destino = new File(rutadlt);
                 destino.delete();
 

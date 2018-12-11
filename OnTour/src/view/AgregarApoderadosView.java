@@ -13,6 +13,7 @@ import java.awt.event.ItemEvent;
 import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
 import model.Apoderado;
+import model.KeyValue;
 
 /**
  *
@@ -31,8 +32,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(615, 853));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
-        this.cmbxCiudad.setModel(ciudadDAO.obtenerCiudad());
-
+        this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
     }
 
     /**
@@ -58,9 +58,9 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         LblTelefono = new javax.swing.JLabel();
         txtTelefonoApoderado = new javax.swing.JTextField();
         LblCiudad = new javax.swing.JLabel();
-        cmbxCiudad = new javax.swing.JComboBox<>();
+        cmbCiudad = new javax.swing.JComboBox<>();
         LblComunaApoderado = new javax.swing.JLabel();
-        cmbxComuna = new javax.swing.JComboBox<>();
+        cmbComuna = new javax.swing.JComboBox<>();
         LblDireccion = new javax.swing.JLabel();
         txtDireccionApoderado = new javax.swing.JTextField();
         LblPassApoderado = new javax.swing.JLabel();
@@ -141,30 +141,25 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         jPanel1.add(LblCiudad);
         LblCiudad.setBounds(110, 350, 130, 22);
 
-        cmbxCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        cmbxCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
-        cmbxCiudad.addItemListener(new java.awt.event.ItemListener() {
+        cmbCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
+        cmbCiudad.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbxCiudadItemStateChanged(evt);
+                cmbCiudadItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbxCiudad);
-        cmbxCiudad.setBounds(200, 350, 210, 30);
+        jPanel1.add(cmbCiudad);
+        cmbCiudad.setBounds(200, 350, 210, 30);
 
         LblComunaApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblComunaApoderado.setText("Comuna: ");
         jPanel1.add(LblComunaApoderado);
         LblComunaApoderado.setBounds(100, 400, 130, 22);
 
-        cmbxComuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        cmbxComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
-        cmbxComuna.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbxComunaItemStateChanged(evt);
-            }
-        });
-        jPanel1.add(cmbxComuna);
-        cmbxComuna.setBounds(200, 400, 210, 30);
+        cmbComuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
+        jPanel1.add(cmbComuna);
+        cmbComuna.setBounds(200, 400, 210, 30);
 
         LblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblDireccion.setText("Dirección: ");
@@ -265,19 +260,13 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAPaternoApoderadoActionPerformed
 
-    private void cmbxCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbxCiudadItemStateChanged
+    private void cmbCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCiudadItemStateChanged
         // TODO add your handling code here:
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            String comuna;
-            comuna = String.valueOf(cmbxCiudad.getSelectedItem());
-            this.cmbxComuna.setModel(comunaDAO.obtenerComuna(comuna));
+            String comuna = String.valueOf(cmbCiudad.getSelectedItem());
+            this.cmbComuna.setModel(comunaDAO.obtenerComunas(comuna));
         }
-
-    }//GEN-LAST:event_cmbxCiudadItemStateChanged
-
-    private void cmbxComunaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbxComunaItemStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbxComunaItemStateChanged
+    }//GEN-LAST:event_cmbCiudadItemStateChanged
 
     private void btnVolverApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverApoderadoActionPerformed
         // TODO add your handling code here:
@@ -301,9 +290,8 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
             String fechaNac = formato.format(jDateChooserFechaNac.getDate());
             int tel = Integer.parseInt(txtTelefonoApoderado.getText());
 
-            String comboCom = String.valueOf(cmbxComuna.getSelectedItem());
-            String comboCom1 = comunaDAO.obtenerIdComuna(comboCom);
-            int idcomuna = Integer.parseInt(comboCom1);
+            KeyValue comuna = (KeyValue)cmbComuna.getSelectedItem();
+            int idcomuna = comuna.getId();
 
             String direccion = txtDireccionApoderado.getText();
             String contrasena = String.valueOf(txtPassApoderado.getPassword());
@@ -391,8 +379,8 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     private javax.swing.JButton btnResgistrarApoderado;
     private javax.swing.JButton btnVolverApoderado;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cmbxCiudad;
-    private javax.swing.JComboBox<String> cmbxComuna;
+    private javax.swing.JComboBox<String> cmbCiudad;
+    private javax.swing.JComboBox<String> cmbComuna;
     private com.toedter.calendar.JDateChooser jDateChooserFechaNac;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txtAMaternoApoderado;

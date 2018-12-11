@@ -357,17 +357,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         lblMenu.setText("Menú");
         lblMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblMenu.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lblMenu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                lblMenuMouseMoved(evt);
-            }
-        });
         lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lblMenuMouseClicked(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                lblMenuMouseExited(evt);
             }
         });
         jPanel4.add(lblMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 130, 70));
@@ -543,14 +535,6 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         tipoSeg.setLocationRelativeTo(null);
         tipoSeg.setVisible(true);
     }//GEN-LAST:event_lblMenuTipoSegurosMouseClicked
-
-    private void lblMenuMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseMoved
-
-    }//GEN-LAST:event_lblMenuMouseMoved
-
-    private void lblMenuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseExited
-
-    }//GEN-LAST:event_lblMenuMouseExited
 
     private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
 

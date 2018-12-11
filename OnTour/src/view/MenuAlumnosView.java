@@ -31,7 +31,7 @@ public class MenuAlumnosView extends javax.swing.JFrame {
      */
     public MenuAlumnosView() {
         initComponents();
-        this.cmbColegio.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerColegio()));
+        this.cmbColegio.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerColegios()));
         this.jScrollPane1.setVisible(true);
 
         DefaultTableModel modelotabla = this.controller.consultaralumnos_todos();
@@ -183,7 +183,7 @@ public class MenuAlumnosView extends javax.swing.JFrame {
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             String curso;
             curso = String.valueOf(cmbColegio.getSelectedItem());
-            this.cmbCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCurso(curso)));
+            this.cmbCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCursos(curso)));
         }
 
         // TODO add your handling code here:

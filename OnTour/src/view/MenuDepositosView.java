@@ -181,8 +181,8 @@ public class MenuDepositosView extends javax.swing.JFrame {
                 Object valor = ((DefaultTableModel) this.tableDepositos.getModel()).getValueAt(seleccionado, 0);
                 int idDeposito = Integer.parseInt(valor.toString());
 
-                boolean eliminado = this.controller.actualizarDeposito(idDeposito);
-                if(eliminado){
+                boolean actualizado = this.controller.actualizarDeposito(idDeposito);
+                if(actualizado){
                     ((DefaultTableModel) this.tableDepositos.getModel()).removeRow(seleccionado);
                     JOptionPane.showMessageDialog(this, "Depósito Actualizado");
                 }

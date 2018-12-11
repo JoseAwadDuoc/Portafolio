@@ -5,10 +5,14 @@
  */
 package controller;
 
+import Dao.ApoderadoDAO;
 import Dao.DepositoDAO;
 import java.util.List;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
+import model.Apoderado;
+import model.Deposito;
+import utils.CorreoUtils;
 
 /**
  *
@@ -17,6 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class DepositosController {
 
     private DepositoDAO depositoDAO = new DepositoDAO();
+    private ApoderadoDAO apoderadoDAO = new ApoderadoDAO();
 
     public DefaultTableModel consultarDepositos() {
 
@@ -40,14 +45,27 @@ public class DepositosController {
         return modelotabla;
     }
 
-    public boolean actualizarDeposito(int id) {
+    public boolean actualizarDeposito(int idDeposito) {
         try {
-            this.depositoDAO.ActualizarDeposito(id);
-            return true;
+            boolean actualizado = this.depositoDAO.actualizarDeposito(idDeposito);
+            System.out.println("actualizado "+actualizado);
+            if(actualizado){
+                Deposito deposito = this.depositoDAO.obtenerDepositoPorId(idDeposito);
+                Apoderado apoderado = this.apoderadoDAO.buscarApoderadoPorRut(deposito.getRutApoderado());
+                CorreoUtils.enviarCorreoValidarDepositoApoderado(apoderado,deposito);
+            }
+            return actualizado;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
 
     }
+//    
+//    boolean creado = this.apoderadoDAO.agregarApoderado(apoderado);
+//        System.out.println("creado "+creado);
+//        if(creado){
+//            CorreoUtils.enviarCorreoValidarDepositoApoderado(apoderado);
+//        }
+//    
 }

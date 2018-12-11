@@ -13,6 +13,9 @@ import java.awt.event.ItemEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.Apoderado;
+import model.Ciudad;
+import model.Comuna;
+import model.KeyValue;
 
 /**
  *
@@ -31,11 +34,11 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(478, 600));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
         if (rutApoderado > 0) {
             this.txtRut.setText(String.valueOf(rutApoderado));
             this.btnBuscarxRut.doClick();
         }
-        this.cmbCiudad.setModel(ciudadDAO.obtenerCiudad());
     }
 
     /**
@@ -226,8 +229,17 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
             txtTelefono.setText(String.valueOf(apo.getTelefono()));
             txtDireccion.setText(String.valueOf(apo.getDireccion()));
             txtCorreo.setText(String.valueOf(apo.getCorreo()));
-            cmbCiudad.setSelectedItem(String.valueOf(""));
-            cmbComuna.setSelectedItem(String.valueOf(apo.getIdComuna()));
+            
+            int idComuna = apo.getIdComuna();
+            Comuna comuna = comunaDAO.obtenerComunaPorId(idComuna);
+            Ciudad ciudad = ciudadDAO.obtenerCiudadPorId(comuna.getIdCiudad());
+            
+            cmbCiudad.setSelectedItem(new KeyValue(ciudad.getId(), ciudad.getNombre()));
+            
+            this.cmbComuna.setModel(comunaDAO.obtenerComunas(ciudad.getNombre()));
+            
+            cmbComuna.setSelectedItem(new KeyValue(comuna.getId(), comuna.getNombre()));
+            
             txtContrasena.setText(String.valueOf(apo.getContrasena()));
             rbtPerfilNo.setActionCommand("NO");
 
@@ -244,11 +256,9 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
     private void cmbCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCiudadItemStateChanged
 
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            String ciudad;
-            ciudad = String.valueOf(cmbCiudad.getSelectedItem());
-            this.cmbComuna.setModel(comunaDAO.obtenerComuna(ciudad));
+            String ciudad = String.valueOf(cmbCiudad.getSelectedItem());
+            this.cmbComuna.setModel(comunaDAO.obtenerComunas(ciudad));
         }
-
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbCiudadItemStateChanged
 
@@ -265,20 +275,14 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
             
             int telefono = Integer.parseInt(txtTelefono.getText());
             String fnacimiento = txtFNacimiento.getText();
-            //IDCOMUNA OBTENER
-            String nombrecomuna_mod = String.valueOf(cmbComuna.getSelectedItem());
+    
+            KeyValue comuna = (KeyValue) cmbComuna.getSelectedItem();
             
-            if ("Seleccione Comuna".equals(nombrecomuna_mod)) {
+            if ("Seleccione Comuna".equals(comuna.getText())) {
                 throw new Exception("Seleccione Ciudad y Comuna");
             }
             
-            String nombrecomuna_idcomuna = comunaDAO.obtenerIdComuna(nombrecomuna_mod);
-            
-            if ("".equals(nombrecomuna_idcomuna)) {
-                throw new Exception("Seleccione Ciudad y Comuna");
-            }
-            
-            int idcomuna = Integer.parseInt(nombrecomuna_idcomuna);
+            int idcomuna = comuna.getId();
             
             String direccion = txtDireccion.getText();
             String contrasena = String.valueOf(txtContrasena.getPassword());

@@ -27,6 +27,7 @@ import javax.swing.border.EmptyBorder;
  * @author jose_
  */
 public class AutenticacionView extends javax.swing.JFrame {
+
     private AutenticacionController controller = new AutenticacionController();
 
     private Timer tiempo;
@@ -218,11 +219,9 @@ public class AutenticacionView extends javax.swing.JFrame {
     private void BtnAutenticacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAutenticacionActionPerformed
         // TODO add your handling code here:
 
-        int rutt = Integer.parseInt(TxtRut.getText());
-        String pass = new String(TxtPass.getPassword());
-
         try {
-
+            int rutt = Integer.parseInt(TxtRut.getText());
+            String pass = new String(TxtPass.getPassword());
             if (controller.validarUsuario(rutt, pass)) {
                 this.pbBarra.setVisible(true);
                 cont = -1;

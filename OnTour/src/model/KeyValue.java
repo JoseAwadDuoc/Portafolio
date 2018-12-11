@@ -36,9 +36,13 @@ public class KeyValue {
     }
 
     @Override
-    public String toString() {
-        return this.text; //To change body of generated methods, choose Tools | Templates.
+    public boolean equals(Object o) {
+        KeyValue other = (KeyValue)o;
+        return this.getId() == other.getId(); //To change body of generated methods, choose Tools | Templates.
     }
     
-    
+    @Override
+    public String toString() {
+        return this.text.trim(); //To change body of generated methods, choose Tools | Templates.
+    }
 }

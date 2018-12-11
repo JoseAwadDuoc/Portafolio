@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import model.Deposito;
 
 /**
  *
@@ -16,24 +17,9 @@ import java.util.Map;
  */
 public class DepositoDAO extends DbUtilidades {
 
-    public String ActualizarDeposito(int id) {
-        ResultSet rs = this.consulta("CALL sp_deposito_enable(" + id + ")");
-        String deposito = new String();
-        try {
-            while (rs.next()) {
+    public boolean actualizarDeposito(int id) {
+       return this.actualizar("CALL sp_deposito_enable(" + id + ")");
 
-                confirmarCambio();
-
-                System.out.println("Depósito validado Correctamente");
-            }
-            rs.close();
-
-        } catch (SQLException e) {
-
-            System.out.println(e.getMessage());
-
-        }
-        return deposito;
     }
 
     public Map<String, List> obtenerDepositos() {
@@ -75,5 +61,26 @@ public class DepositoDAO extends DbUtilidades {
             System.out.println("No se ha encontrado ningún depósito para validar.");
         }
         return map;
+    }
+    
+    public Deposito obtenerDepositoPorId(int idDeposito) {
+
+        ResultSet rs = this.consulta("Select * from deposito where iddeposito = " + idDeposito );
+        Deposito deposito = new Deposito();
+        try {
+            while (rs.next()) {
+                deposito.setMontoDeposito(rs.getInt("montodeposito"));
+                deposito.setRutApoderado(rs.getInt("rut_apoderado"));
+                deposito.setRutAlumno(rs.getInt("rut_alumno"));
+                deposito.setFechaDeposito(rs.getDate("fechadeposito"));
+                deposito.setEstado(rs.getInt("estado"));
+            
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return deposito;
     }
 }
