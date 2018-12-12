@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.text.SimpleDateFormat;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import model.Apoderado;
 import model.KeyValue;
 
@@ -29,7 +30,8 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
      * Creates new form AgregarApoderados
      */
     public AgregarApoderadosView() {
-        this.setMinimumSize(new Dimension(615, 853));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(520, 940));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
@@ -46,212 +48,362 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
+        btnResgistrarApoderado = new javax.swing.JButton();
+        btnLimpiarApoderado = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         LblRutApoderado = new javax.swing.JLabel();
         txtRutApoderado = new javax.swing.JTextField();
+        jSeparator2 = new javax.swing.JSeparator();
         LblNombreApoderado = new javax.swing.JLabel();
         txtNombreApoderado = new javax.swing.JTextField();
-        LblAPaterno = new javax.swing.JLabel();
+        jSeparator3 = new javax.swing.JSeparator();
         txtAPaternoApoderado = new javax.swing.JTextField();
-        LblAMaterno = new javax.swing.JLabel();
+        LblAPaterno = new javax.swing.JLabel();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
         txtAMaternoApoderado = new javax.swing.JTextField();
+        LblAMaterno = new javax.swing.JLabel();
+        jDateChooserFechaNac = new com.toedter.calendar.JDateChooser();
         LblFNacimiento = new javax.swing.JLabel();
-        LblTelefono = new javax.swing.JLabel();
         txtTelefonoApoderado = new javax.swing.JTextField();
-        LblCiudad = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        LblTelefono = new javax.swing.JLabel();
         cmbCiudad = new javax.swing.JComboBox<>();
-        LblComunaApoderado = new javax.swing.JLabel();
         cmbComuna = new javax.swing.JComboBox<>();
-        LblDireccion = new javax.swing.JLabel();
+        LblCiudad = new javax.swing.JLabel();
+        LblComunaApoderado = new javax.swing.JLabel();
         txtDireccionApoderado = new javax.swing.JTextField();
-        LblPassApoderado = new javax.swing.JLabel();
+        LblDireccion = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
         txtPassApoderado = new javax.swing.JPasswordField();
-        LblCorreoApoderado = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        LblPassApoderado = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
         txtCorreoApoderado = new javax.swing.JTextField();
+        LblCorreoApoderado = new javax.swing.JLabel();
         LblPerfilApoderado = new javax.swing.JLabel();
         RbtPerfilSi = new javax.swing.JRadioButton();
         RbtPerfilNo = new javax.swing.JRadioButton();
-        btnResgistrarApoderado = new javax.swing.JButton();
-        btnVolverApoderado = new javax.swing.JButton();
-        btnLimpiarApoderado = new javax.swing.JButton();
-        jDateChooserFechaNac = new com.toedter.calendar.JDateChooser();
+        BtnVolver = new javax.swing.JButton();
+        jSeparator9 = new javax.swing.JSeparator();
+        jPanel3 = new javax.swing.JPanel();
+        lblMinimizar = new javax.swing.JLabel();
+        lblLogoMenu = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
+        setBackground(new java.awt.Color(255, 255, 255));
+        getContentPane().setLayout(null);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Registrar Apoderado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
-        jPanel1.setLayout(null);
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LblRutApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblRutApoderado.setText("RUT:");
-        jPanel1.add(LblRutApoderado);
-        LblRutApoderado.setBounds(120, 60, 100, 22);
-
-        txtRutApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txtRutApoderado);
-        txtRutApoderado.setBounds(200, 50, 210, 40);
-
-        LblNombreApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblNombreApoderado.setText("Nombre: ");
-        jPanel1.add(LblNombreApoderado);
-        LblNombreApoderado.setBounds(90, 110, 130, 22);
-
-        txtNombreApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txtNombreApoderado);
-        txtNombreApoderado.setBounds(200, 100, 210, 40);
-
-        LblAPaterno.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblAPaterno.setText("Apellido Paterno:");
-        jPanel1.add(LblAPaterno);
-        LblAPaterno.setBounds(20, 160, 180, 22);
-
-        txtAPaternoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txtAPaternoApoderado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtAPaternoApoderadoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtAPaternoApoderado);
-        txtAPaternoApoderado.setBounds(200, 150, 210, 40);
-
-        LblAMaterno.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblAMaterno.setText("Apellido Materno:");
-        jPanel1.add(LblAMaterno);
-        LblAMaterno.setBounds(20, 210, 190, 22);
-
-        txtAMaternoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txtAMaternoApoderado);
-        txtAMaternoApoderado.setBounds(200, 200, 210, 40);
-
-        LblFNacimiento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblFNacimiento.setText("Fecha Nacimiento:");
-        jPanel1.add(LblFNacimiento);
-        LblFNacimiento.setBounds(10, 260, 170, 20);
-
-        LblTelefono.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblTelefono.setText("Teléfono: ");
-        jPanel1.add(LblTelefono);
-        LblTelefono.setBounds(90, 310, 140, 22);
-
-        txtTelefonoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txtTelefonoApoderado);
-        txtTelefonoApoderado.setBounds(200, 300, 210, 40);
-
-        LblCiudad.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblCiudad.setText("Ciudad:");
-        jPanel1.add(LblCiudad);
-        LblCiudad.setBounds(110, 350, 130, 22);
-
-        cmbCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        cmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
-        cmbCiudad.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbCiudadItemStateChanged(evt);
-            }
-        });
-        jPanel1.add(cmbCiudad);
-        cmbCiudad.setBounds(200, 350, 210, 30);
-
-        LblComunaApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblComunaApoderado.setText("Comuna: ");
-        jPanel1.add(LblComunaApoderado);
-        LblComunaApoderado.setBounds(100, 400, 130, 22);
-
-        cmbComuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        cmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
-        jPanel1.add(cmbComuna);
-        cmbComuna.setBounds(200, 400, 210, 30);
-
-        LblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblDireccion.setText("Dirección: ");
-        jPanel1.add(LblDireccion);
-        LblDireccion.setBounds(90, 450, 130, 22);
-
-        txtDireccionApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txtDireccionApoderado);
-        txtDireccionApoderado.setBounds(200, 440, 210, 40);
-
-        LblPassApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblPassApoderado.setText("Contraseña:");
-        jPanel1.add(LblPassApoderado);
-        LblPassApoderado.setBounds(70, 500, 150, 22);
-
-        txtPassApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txtPassApoderado);
-        txtPassApoderado.setBounds(200, 490, 210, 40);
-
-        LblCorreoApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblCorreoApoderado.setText("Correo Electronico:");
-        jPanel1.add(LblCorreoApoderado);
-        LblCorreoApoderado.setBounds(10, 550, 190, 22);
-
-        txtCorreoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jPanel1.add(txtCorreoApoderado);
-        txtCorreoApoderado.setBounds(200, 540, 210, 40);
-
-        LblPerfilApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        LblPerfilApoderado.setText("Encargado:");
-        jPanel1.add(LblPerfilApoderado);
-        LblPerfilApoderado.setBounds(80, 600, 140, 22);
-
-        buttonGroup1.add(RbtPerfilSi);
-        RbtPerfilSi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        RbtPerfilSi.setText("Sí");
-        jPanel1.add(RbtPerfilSi);
-        RbtPerfilSi.setBounds(240, 580, 50, 60);
-
-        buttonGroup1.add(RbtPerfilNo);
-        RbtPerfilNo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        RbtPerfilNo.setSelected(true);
-        RbtPerfilNo.setText("No");
-        jPanel1.add(RbtPerfilNo);
-        RbtPerfilNo.setBounds(320, 580, 50, 60);
-
+        btnResgistrarApoderado.setBackground(new java.awt.Color(255, 255, 255));
         btnResgistrarApoderado.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        btnResgistrarApoderado.setForeground(new java.awt.Color(12, 161, 215));
         btnResgistrarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
         btnResgistrarApoderado.setText("Registrar");
+        btnResgistrarApoderado.setBorder(null);
+        btnResgistrarApoderado.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnResgistrarApoderado.setMargin(new java.awt.Insets(2, 4, 2, 14));
+        btnResgistrarApoderado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnResgistrarApoderadoMouseMoved(evt);
+            }
+        });
+        btnResgistrarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnResgistrarApoderadoMouseExited(evt);
+            }
+        });
         btnResgistrarApoderado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnResgistrarApoderadoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnResgistrarApoderado);
-        btnResgistrarApoderado.setBounds(200, 650, 220, 60);
+        jPanel1.add(btnResgistrarApoderado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 720, 330, 60));
 
-        btnVolverApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnVolverApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        btnVolverApoderado.setText("Volver");
-        btnVolverApoderado.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnVolverApoderadoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnVolverApoderado);
-        btnVolverApoderado.setBounds(320, 750, 130, 40);
-
-        btnLimpiarApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLimpiarApoderado.setBackground(new java.awt.Color(255, 255, 255));
+        btnLimpiarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLimpiarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
         btnLimpiarApoderado.setText("Limpiar");
-        jPanel1.add(btnLimpiarApoderado);
-        btnLimpiarApoderado.setBounds(170, 750, 120, 40);
-        jPanel1.add(jDateChooserFechaNac);
-        jDateChooserFechaNac.setBounds(200, 250, 210, 40);
+        btnLimpiarApoderado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLimpiarApoderado.setIconTextGap(-1);
+        btnLimpiarApoderado.setMargin(new java.awt.Insets(2, 4, 2, 14));
+        btnLimpiarApoderado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnLimpiarApoderadoMouseMoved(evt);
+            }
+        });
+        btnLimpiarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimpiarApoderadoMouseExited(evt);
+            }
+        });
+        jPanel1.add(btnLimpiarApoderado, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 800, 150, 60));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 817, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Registrar Apoderado", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel2.setLayout(null);
+
+        LblRutApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblRutApoderado.setText("RUT:");
+        jPanel2.add(LblRutApoderado);
+        LblRutApoderado.setBounds(110, 50, 100, 22);
+
+        txtRutApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtRutApoderado.setBorder(null);
+        jPanel2.add(txtRutApoderado);
+        txtRutApoderado.setBounds(160, 40, 240, 40);
+
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator2);
+        jSeparator2.setBounds(110, 80, 290, 20);
+
+        LblNombreApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblNombreApoderado.setText("Nombre: ");
+        jPanel2.add(LblNombreApoderado);
+        LblNombreApoderado.setBounds(110, 100, 90, 22);
+
+        txtNombreApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtNombreApoderado.setBorder(null);
+        jPanel2.add(txtNombreApoderado);
+        txtNombreApoderado.setBounds(190, 90, 210, 40);
+
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator3);
+        jSeparator3.setBounds(110, 130, 290, 20);
+
+        txtAPaternoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtAPaternoApoderado.setBorder(null);
+        txtAPaternoApoderado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAPaternoApoderadoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(txtAPaternoApoderado);
+        txtAPaternoApoderado.setBounds(190, 140, 210, 40);
+
+        LblAPaterno.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblAPaterno.setText("Apellido Paterno:");
+        jPanel2.add(LblAPaterno);
+        LblAPaterno.setBounds(30, 160, 160, 22);
+
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator4);
+        jSeparator4.setBounds(110, 180, 290, 20);
+
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator5);
+        jSeparator5.setBounds(110, 230, 290, 20);
+
+        txtAMaternoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtAMaternoApoderado.setBorder(null);
+        jPanel2.add(txtAMaternoApoderado);
+        txtAMaternoApoderado.setBounds(190, 190, 210, 40);
+
+        LblAMaterno.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblAMaterno.setText("Apellido Materno:");
+        jPanel2.add(LblAMaterno);
+        LblAMaterno.setBounds(30, 210, 160, 22);
+
+        jDateChooserFechaNac.setBackground(new java.awt.Color(255, 255, 255));
+        jDateChooserFechaNac.setForeground(new java.awt.Color(255, 255, 255));
+        jDateChooserFechaNac.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jDateChooserFechaNac.setMaxSelectableDate(new java.util.Date(1544500861000L));
+        jDateChooserFechaNac.setMinSelectableDate(new java.util.Date(-1577902573000L));
+        jPanel2.add(jDateChooserFechaNac);
+        jDateChooserFechaNac.setBounds(190, 250, 210, 40);
+
+        LblFNacimiento.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblFNacimiento.setText("Fecha Nacimiento:");
+        jPanel2.add(LblFNacimiento);
+        LblFNacimiento.setBounds(20, 260, 170, 20);
+
+        txtTelefonoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTelefonoApoderado.setBorder(null);
+        jPanel2.add(txtTelefonoApoderado);
+        txtTelefonoApoderado.setBounds(190, 290, 210, 40);
+
+        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator6);
+        jSeparator6.setBounds(110, 330, 290, 20);
+
+        LblTelefono.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblTelefono.setText("Teléfono: ");
+        jPanel2.add(LblTelefono);
+        LblTelefono.setBounds(100, 310, 100, 22);
+
+        cmbCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
+        cmbCiudad.setBorder(null);
+        cmbCiudad.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCiudadItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(cmbCiudad);
+        cmbCiudad.setBounds(190, 340, 210, 50);
+
+        cmbComuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
+        jPanel2.add(cmbComuna);
+        cmbComuna.setBounds(190, 400, 210, 50);
+
+        LblCiudad.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblCiudad.setText("Ciudad:");
+        jPanel2.add(LblCiudad);
+        LblCiudad.setBounds(120, 350, 80, 22);
+
+        LblComunaApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblComunaApoderado.setText("Comuna: ");
+        jPanel2.add(LblComunaApoderado);
+        LblComunaApoderado.setBounds(100, 400, 90, 22);
+
+        txtDireccionApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtDireccionApoderado.setBorder(null);
+        jPanel2.add(txtDireccionApoderado);
+        txtDireccionApoderado.setBounds(180, 460, 220, 40);
+
+        LblDireccion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblDireccion.setText("Dirección: ");
+        jPanel2.add(LblDireccion);
+        LblDireccion.setBounds(90, 480, 110, 22);
+
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator7);
+        jSeparator7.setBounds(110, 500, 290, 20);
+
+        txtPassApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtPassApoderado.setBorder(null);
+        jPanel2.add(txtPassApoderado);
+        txtPassApoderado.setBounds(190, 520, 210, 40);
+
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator8);
+        jSeparator8.setBounds(110, 560, 290, 20);
+
+        LblPassApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblPassApoderado.setText("Contraseña:");
+        jPanel2.add(LblPassApoderado);
+        LblPassApoderado.setBounds(80, 540, 120, 22);
+
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel2.add(jSeparator1);
+        jSeparator1.setBounds(110, 630, 290, 20);
+
+        txtCorreoApoderado.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtCorreoApoderado.setBorder(null);
+        jPanel2.add(txtCorreoApoderado);
+        txtCorreoApoderado.setBounds(180, 590, 220, 40);
+
+        LblCorreoApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblCorreoApoderado.setText("Correo Electrónico:");
+        jPanel2.add(LblCorreoApoderado);
+        LblCorreoApoderado.setBounds(10, 610, 180, 22);
+
+        LblPerfilApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        LblPerfilApoderado.setText("Encargado:");
+        jPanel2.add(LblPerfilApoderado);
+        LblPerfilApoderado.setBounds(80, 670, 110, 22);
+
+        RbtPerfilSi.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RbtPerfilSi);
+        RbtPerfilSi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        RbtPerfilSi.setText("Sí");
+        jPanel2.add(RbtPerfilSi);
+        RbtPerfilSi.setBounds(200, 650, 50, 50);
+
+        RbtPerfilNo.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(RbtPerfilNo);
+        RbtPerfilNo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        RbtPerfilNo.setSelected(true);
+        RbtPerfilNo.setText("No");
+        jPanel2.add(RbtPerfilNo);
+        RbtPerfilNo.setBounds(280, 650, 50, 50);
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 450, 710));
+
+        BtnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        BtnVolver.setText("Volver");
+        BtnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnVolver.setIconTextGap(-10);
+        BtnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        BtnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnVolverMouseMoved(evt);
+            }
+        });
+        BtnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnVolverMouseExited(evt);
+            }
+        });
+        BtnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 800, 140, 60));
+
+        jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 800, -1, 60));
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 50, 520, 890);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
+            }
+        });
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, -1, 30));
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 10, 30, 30));
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 520, 50);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -268,14 +420,6 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbCiudadItemStateChanged
 
-    private void btnVolverApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverApoderadoActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        MenuApoderadoView MenuPrin = new MenuApoderadoView();
-        MenuPrin.setLocationRelativeTo(null);
-        MenuPrin.setVisible(true);
-    }//GEN-LAST:event_btnVolverApoderadoActionPerformed
-
     private void btnResgistrarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResgistrarApoderadoActionPerformed
 
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
@@ -290,7 +434,7 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
             String fechaNac = formato.format(jDateChooserFechaNac.getDate());
             int tel = Integer.parseInt(txtTelefonoApoderado.getText());
 
-            KeyValue comuna = (KeyValue)cmbComuna.getSelectedItem();
+            KeyValue comuna = (KeyValue) cmbComuna.getSelectedItem();
             int idcomuna = comuna.getId();
 
             String direccion = txtDireccionApoderado.getText();
@@ -323,6 +467,77 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }//GEN-LAST:event_btnResgistrarApoderadoActionPerformed
+
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void BtnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnVolverMouseMoved
+        // TODO add your handling code here:
+        BtnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnVolverMouseMoved
+
+    private void BtnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnVolverMouseExited
+        // TODO add your handling code here:
+        BtnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnVolverMouseExited
+
+    private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MenuApoderadoView MenuPrin = new MenuApoderadoView();
+        MenuPrin.setLocationRelativeTo(null);
+        MenuPrin.setVisible(true);
+    }//GEN-LAST:event_BtnVolverActionPerformed
+
+    private void btnResgistrarApoderadoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResgistrarApoderadoMouseMoved
+        // TODO add your handling code here:
+        btnResgistrarApoderado.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnResgistrarApoderadoMouseMoved
+
+    private void btnResgistrarApoderadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnResgistrarApoderadoMouseExited
+        // TODO add your handling code here:
+        btnResgistrarApoderado.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnResgistrarApoderadoMouseExited
+
+    private void btnLimpiarApoderadoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarApoderadoMouseMoved
+        // TODO add your handling code here:
+        btnLimpiarApoderado.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnLimpiarApoderadoMouseMoved
+
+    private void btnLimpiarApoderadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarApoderadoMouseExited
+        // TODO add your handling code here:
+        btnLimpiarApoderado.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnLimpiarApoderadoMouseExited
 
     /**
      * @param args the command line arguments
@@ -361,6 +576,8 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrar;
+    private javax.swing.JButton BtnVolver;
     private javax.swing.JLabel LblAMaterno;
     private javax.swing.JLabel LblAPaterno;
     private javax.swing.JLabel LblCiudad;
@@ -377,12 +594,24 @@ public class AgregarApoderadosView extends javax.swing.JFrame {
     private javax.swing.JRadioButton RbtPerfilSi;
     private javax.swing.JButton btnLimpiarApoderado;
     private javax.swing.JButton btnResgistrarApoderado;
-    private javax.swing.JButton btnVolverApoderado;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbCiudad;
     private javax.swing.JComboBox<String> cmbComuna;
     private com.toedter.calendar.JDateChooser jDateChooserFechaNac;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     private javax.swing.JTextField txtAMaternoApoderado;
     private javax.swing.JTextField txtAPaternoApoderado;
     private javax.swing.JTextField txtCorreoApoderado;

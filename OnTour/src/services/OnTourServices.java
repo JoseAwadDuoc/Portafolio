@@ -13,11 +13,12 @@ public class OnTourServices {
 
     private ApoderadoDAO apoderadoDAO = new ApoderadoDAO();
 
-    /**
-     * Metodo con un parametro
-     * @param nombre
-     * @return
-     */
+  /**
+   * 
+   * @param rut rut apoderado
+   * @return retorna un apoderado por rut
+   */
+    
     @WebMethod
     public Apoderado buscarApoderadoPorRut(int rut) { 
         return this.apoderadoDAO.buscarApoderadoPorRut(rut);
@@ -25,7 +26,7 @@ public class OnTourServices {
 
     /**
      * Metodo main para ejecutar el servicio web SOAP
-     * @param args
+     * @param args metodo para iniciar web services
      */
     public static void main(String[] args) {
         //wsimport -keep -verbose http://localhost:8081/ontourservices?wsdl

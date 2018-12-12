@@ -40,7 +40,8 @@ public class MenuSegurosView extends javax.swing.JFrame {
      * Creates new form MenuColegioView
      */
     public MenuSegurosView() {
-        this.setMinimumSize(new Dimension(960, 380));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(790, 500));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.btnModificarSeguros.setVisible(false);
@@ -56,44 +57,136 @@ public class MenuSegurosView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        lblMinimizar = new javax.swing.JLabel();
+        lblLogoMenu = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         btnListarColegio = new javax.swing.JPanel();
         BtnAgregarSeguro = new javax.swing.JButton();
         btnConsultarSeguros = new javax.swing.JButton();
         btnModificarSeguros = new javax.swing.JButton();
-        VolverSeguro = new javax.swing.JButton();
         jPanelListarSeguros = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableSeguro = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
+            }
+        });
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, -1, 30));
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 10, 30, 30));
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 790, 50);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 177, 159));
 
-        btnListarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Admistrador de Seguros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        btnListarColegio.setBackground(new java.awt.Color(255, 255, 255));
+        btnListarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Admistrador de Seguros", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
+        BtnAgregarSeguro.setBackground(new java.awt.Color(255, 255, 255));
         BtnAgregarSeguro.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnAgregarSeguro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddColegio2.png"))); // NOI18N
         BtnAgregarSeguro.setText("Agregar");
+        BtnAgregarSeguro.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnAgregarSeguroMouseMoved(evt);
+            }
+        });
+        BtnAgregarSeguro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnAgregarSeguroMouseExited(evt);
+            }
+        });
         BtnAgregarSeguro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAgregarSeguroActionPerformed(evt);
             }
         });
 
+        btnConsultarSeguros.setBackground(new java.awt.Color(255, 255, 255));
         btnConsultarSeguros.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnConsultarSeguros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
         btnConsultarSeguros.setText("Consultar");
+        btnConsultarSeguros.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnConsultarSegurosMouseMoved(evt);
+            }
+        });
+        btnConsultarSeguros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsultarSegurosMouseExited(evt);
+            }
+        });
         btnConsultarSeguros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarSegurosActionPerformed(evt);
             }
         });
 
+        btnModificarSeguros.setBackground(new java.awt.Color(255, 255, 255));
         btnModificarSeguros.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnModificarSeguros.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Delete.png"))); // NOI18N
         btnModificarSeguros.setText("Eliminar");
         btnModificarSeguros.setEnabled(false);
+        btnModificarSeguros.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnModificarSegurosMouseMoved(evt);
+            }
+        });
+        btnModificarSeguros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarSegurosMouseExited(evt);
+            }
+        });
         btnModificarSeguros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarSegurosActionPerformed(evt);
@@ -124,16 +217,10 @@ public class MenuSegurosView extends javax.swing.JFrame {
                 .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        VolverSeguro.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        VolverSeguro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        VolverSeguro.setText("Volver");
-        VolverSeguro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VolverSeguroActionPerformed(evt);
-            }
-        });
+        jPanel1.add(btnListarColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
-        jPanelListarSeguros.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Listar Seguros", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanelListarSeguros.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelListarSeguros.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Listar Seguros", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanelListarSeguros.setLayout(null);
 
         jTableSeguro.setModel(new javax.swing.table.DefaultTableModel(
@@ -152,36 +239,36 @@ public class MenuSegurosView extends javax.swing.JFrame {
         jPanelListarSeguros.add(jScrollPane1);
         jScrollPane1.setBounds(20, 30, 560, 130);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanelListarSeguros, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnListarColegio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(VolverSeguro)
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnListarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(VolverSeguro, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelListarSeguros, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(26, Short.MAX_VALUE))
-        );
+        jPanel1.add(jPanelListarSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 595, 170));
+
+        btnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.setIconTextGap(-10);
+        btnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        btnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnVolverMouseMoved(evt);
+            }
+        });
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
+            }
+        });
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 370, 140, 60));
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 50, 790, 450);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -227,13 +314,84 @@ public class MenuSegurosView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnModificarSegurosActionPerformed
 
-    private void VolverSeguroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverSeguroActionPerformed
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void btnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseMoved
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnVolverMouseMoved
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         MenuPrincipalView MenuPrin = new MenuPrincipalView();
         MenuPrin.setLocationRelativeTo(null);
         MenuPrin.setVisible(true);
-    }//GEN-LAST:event_VolverSeguroActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void BtnAgregarSeguroMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAgregarSeguroMouseMoved
+        // TODO add your handling code here:
+        BtnAgregarSeguro.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnAgregarSeguroMouseMoved
+
+    private void btnConsultarSegurosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarSegurosMouseMoved
+        // TODO add your handling code here:
+        btnConsultarSeguros.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnConsultarSegurosMouseMoved
+
+    private void btnModificarSegurosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarSegurosMouseMoved
+        // TODO add your handling code here:
+        btnModificarSeguros.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnModificarSegurosMouseMoved
+
+    private void BtnAgregarSeguroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAgregarSeguroMouseExited
+        // TODO add your handling code here:
+        BtnAgregarSeguro.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnAgregarSeguroMouseExited
+
+    private void btnConsultarSegurosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarSegurosMouseExited
+        // TODO add your handling code here:
+        btnConsultarSeguros.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnConsultarSegurosMouseExited
+
+    private void btnModificarSegurosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarSegurosMouseExited
+        // TODO add your handling code here:
+        btnModificarSeguros.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnModificarSegurosMouseExited
 
     /**
      * @param args the command line arguments
@@ -275,13 +433,18 @@ public class MenuSegurosView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarSeguro;
-    private javax.swing.JButton VolverSeguro;
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.JButton btnConsultarSeguros;
     private javax.swing.JPanel btnListarColegio;
     private javax.swing.JButton btnModificarSeguros;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelListarSeguros;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableSeguro;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     // End of variables declaration//GEN-END:variables
 }

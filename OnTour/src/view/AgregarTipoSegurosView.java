@@ -20,7 +20,8 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
      * Creates new form AgregarContratos
      */
     public AgregarTipoSegurosView() {
-        this.setMinimumSize(new Dimension(480, 370));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(480, 330));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
     }
@@ -34,74 +35,176 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        lblMinimizar = new javax.swing.JLabel();
+        lblLogoMenu = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         jpanelRegistrarSeguro = new javax.swing.JPanel();
         lblTipoSeguro = new javax.swing.JLabel();
         lblMonto = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-        BtnBorrarcampos = new javax.swing.JButton();
-        BtnCancelar = new javax.swing.JButton();
         txtNombreTipoSeguro = new javax.swing.JTextField();
+        btnLimpiarApoderado = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
         getContentPane().setLayout(null);
 
-        jpanelRegistrarSeguro.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Registrar Tipo Seguro", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
+            }
+        });
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, 30));
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 30, 30));
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 480, 50);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jpanelRegistrarSeguro.setBackground(new java.awt.Color(255, 255, 255));
+        jpanelRegistrarSeguro.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Registrar Tipo Seguro", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
         jpanelRegistrarSeguro.setLayout(null);
 
         lblTipoSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTipoSeguro.setText("Nombre tipo seguro:");
         jpanelRegistrarSeguro.add(lblTipoSeguro);
-        lblTipoSeguro.setBounds(20, 60, 150, 20);
+        lblTipoSeguro.setBounds(20, 70, 150, 20);
 
         lblMonto.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jpanelRegistrarSeguro.add(lblMonto);
         lblMonto.setBounds(180, 280, 190, 30);
 
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
         btnAgregar.setText("Guardar");
+        btnAgregar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseMoved(evt);
+            }
+        });
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseExited(evt);
+            }
+        });
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
         jpanelRegistrarSeguro.add(btnAgregar);
-        btnAgregar.setBounds(140, 110, 260, 50);
+        btnAgregar.setBounds(70, 100, 310, 60);
 
-        BtnBorrarcampos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BtnBorrarcampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
-        BtnBorrarcampos.setText("Limpiar");
-        BtnBorrarcampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBorrarcamposActionPerformed(evt);
-            }
-        });
-        jpanelRegistrarSeguro.add(BtnBorrarcampos);
-        BtnBorrarcampos.setBounds(140, 190, 120, 40);
-
-        BtnCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        BtnCancelar.setText("Volver");
-        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCancelarActionPerformed(evt);
-            }
-        });
-        jpanelRegistrarSeguro.add(BtnCancelar);
-        BtnCancelar.setBounds(270, 190, 130, 40);
+        txtNombreTipoSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtNombreTipoSeguro.setBorder(null);
         jpanelRegistrarSeguro.add(txtNombreTipoSeguro);
-        txtNombreTipoSeguro.setBounds(180, 50, 200, 40);
+        txtNombreTipoSeguro.setBounds(170, 50, 210, 40);
 
-        getContentPane().add(jpanelRegistrarSeguro);
-        jpanelRegistrarSeguro.setBounds(20, 50, 440, 250);
+        btnLimpiarApoderado.setBackground(new java.awt.Color(255, 255, 255));
+        btnLimpiarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnLimpiarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
+        btnLimpiarApoderado.setText("Limpiar");
+        btnLimpiarApoderado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLimpiarApoderado.setIconTextGap(-1);
+        btnLimpiarApoderado.setMargin(new java.awt.Insets(2, 4, 2, 14));
+        btnLimpiarApoderado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnLimpiarApoderadoMouseMoved(evt);
+            }
+        });
+        btnLimpiarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimpiarApoderadoMouseExited(evt);
+            }
+        });
+        btnLimpiarApoderado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarApoderadoActionPerformed(evt);
+            }
+        });
+        jpanelRegistrarSeguro.add(btnLimpiarApoderado);
+        btnLimpiarApoderado.setBounds(70, 170, 150, 60);
+
+        btnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.setIconTextGap(-10);
+        btnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        btnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnVolverMouseMoved(evt);
+            }
+        });
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
+            }
+        });
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jpanelRegistrarSeguro.add(btnVolver);
+        btnVolver.setBounds(240, 170, 140, 60);
+        jpanelRegistrarSeguro.add(jSeparator1);
+        jSeparator1.setBounds(20, 90, 360, 10);
+
+        jPanel1.add(jpanelRegistrarSeguro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 440, 250));
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 50, 480, 280);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtnBorrarcamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarcamposActionPerformed
-        txtNombreTipoSeguro.setText(" ");
-    }//GEN-LAST:event_BtnBorrarcamposActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         try {
@@ -109,15 +212,20 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
             String tipoSeguro = txtNombreTipoSeguro.getText();
             System.out.println("nombre: " + tipoSeguro);
 
-            TipoSeguro nombreSeguro = new TipoSeguro();
-            nombreSeguro.setTipoSeguro(tipoSeguro);
+            if (tipoSeguro.length() <= 0) {
+                JOptionPane.showMessageDialog(this, "Tipo de seguro debe ser completado");
+            } else {
+                TipoSeguro nombreSeguro = new TipoSeguro();
+                nombreSeguro.setTipoSeguro(tipoSeguro);
 
-            boolean agregado = controller.agregarTipoSeguro(nombreSeguro);
-            
-            if (agregado) {
-                JOptionPane.showMessageDialog(this, "Tipo de seguro registrado");
-            }else{
-                JOptionPane.showMessageDialog(this, "El tipo de seguro no se pudo registrar", "Error", JOptionPane.ERROR_MESSAGE);
+                boolean agregado = controller.agregarTipoSeguro(nombreSeguro);
+
+                if (agregado) {
+                    JOptionPane.showMessageDialog(this, "Tipo de seguro registrado");
+                } else {
+                    JOptionPane.showMessageDialog(this, "El tipo de seguro no se pudo registrar", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
 
         } catch (Exception e) {
@@ -127,13 +235,81 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
+    private void btnLimpiarApoderadoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarApoderadoMouseMoved
+        // TODO add your handling code here:
+        btnLimpiarApoderado.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnLimpiarApoderadoMouseMoved
+
+    private void btnLimpiarApoderadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarApoderadoMouseExited
+        // TODO add your handling code here:
+        btnLimpiarApoderado.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnLimpiarApoderadoMouseExited
+
+    private void btnLimpiarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarApoderadoActionPerformed
+        // TODO add your handling code here:
+        txtNombreTipoSeguro.setText("");
+    }//GEN-LAST:event_btnLimpiarApoderadoActionPerformed
+
+    private void btnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseMoved
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnVolverMouseMoved
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         MenuPrincipalView menuPrinc = new MenuPrincipalView();
         menuPrinc.setLocationRelativeTo(null);
         menuPrinc.setVisible(true);
-    }//GEN-LAST:event_BtnCancelarActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnAgregarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseMoved
+        // TODO add your handling code here:
+        btnAgregar.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnAgregarMouseMoved
+
+    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
+        // TODO add your handling code here:
+        btnAgregar.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnAgregarMouseExited
+
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -202,10 +378,16 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnBorrarcampos;
-    private javax.swing.JButton BtnCancelar;
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnLimpiarApoderado;
+    private javax.swing.JButton btnVolver;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel jpanelRegistrarSeguro;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblMonto;
     private javax.swing.JLabel lblTipoSeguro;
     private javax.swing.JTextField txtNombreTipoSeguro;

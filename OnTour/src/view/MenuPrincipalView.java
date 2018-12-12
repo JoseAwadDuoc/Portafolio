@@ -28,7 +28,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
      */
     public MenuPrincipalView() {
         this.setUndecorated(true);
-        this.setMinimumSize(new Dimension(961, 970));
+        this.setMinimumSize(new Dimension(860,670));
         initComponents();
 //        setExtendedState(MAXIMIZED_BOTH);
         UIManager.put("TextField.background", Color.WHITE);
@@ -65,9 +65,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         lblMantenedorContratos = new javax.swing.JLabel();
         lblTextMantenedorContratos = new javax.swing.JLabel();
         lblEstadoCuenta = new javax.swing.JLabel();
-        lblTextEstadoCuenta = new javax.swing.JLabel();
         lblDepositos = new javax.swing.JLabel();
         lblTextDepositos = new javax.swing.JLabel();
+        lblTextEstadoCuenta = new javax.swing.JLabel();
         lblLogout = new javax.swing.JLabel();
         lblCerrarSesion = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -110,7 +110,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 lblMinimizarMouseExited(evt);
             }
         });
-        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, 30));
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, -1, 30));
 
         BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
         BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
@@ -129,10 +129,10 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 BtnCerrarActionPerformed(evt);
             }
         });
-        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 30, 30));
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 30, 30));
 
         getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 960, 50);
+        jPanel3.setBounds(0, 0, 860, 50);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -158,13 +158,13 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lblMantenedorSeguros);
-        lblMantenedorSeguros.setBounds(50, 40, 270, 310);
+        lblMantenedorSeguros.setBounds(40, 20, 170, 180);
 
-        lblTextGestionarSeguros.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTextGestionarSeguros.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTextGestionarSeguros.setForeground(new java.awt.Color(12, 161, 215));
         lblTextGestionarSeguros.setText("SEGUROS");
         jPanel1.add(lblTextGestionarSeguros);
-        lblTextGestionarSeguros.setBounds(130, 320, 116, 29);
+        lblTextGestionarSeguros.setBounds(90, 180, 80, 17);
 
         lblMantenedorContratos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblMantenedorContratos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ContractIcon.png"))); // NOI18N
@@ -182,13 +182,13 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lblMantenedorContratos);
-        lblMantenedorContratos.setBounds(390, 40, 270, 310);
+        lblMantenedorContratos.setBounds(230, 20, 170, 180);
 
-        lblTextMantenedorContratos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTextMantenedorContratos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTextMantenedorContratos.setForeground(new java.awt.Color(12, 161, 215));
         lblTextMantenedorContratos.setText("CONTRATOS");
         jPanel1.add(lblTextMantenedorContratos);
-        lblTextMantenedorContratos.setBounds(430, 320, 230, 29);
+        lblTextMantenedorContratos.setBounds(260, 170, 100, 20);
 
         lblEstadoCuenta.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblEstadoCuenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/StatusMoney.png"))); // NOI18N
@@ -206,13 +206,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lblEstadoCuenta);
-        lblEstadoCuenta.setBounds(50, 370, 270, 310);
-
-        lblTextEstadoCuenta.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblTextEstadoCuenta.setForeground(new java.awt.Color(12, 161, 215));
-        lblTextEstadoCuenta.setText("ESTADO DE CUENTAS");
-        jPanel1.add(lblTextEstadoCuenta);
-        lblTextEstadoCuenta.setBounds(60, 650, 270, 29);
+        lblEstadoCuenta.setBounds(40, 210, 170, 180);
 
         lblDepositos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblDepositos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Depositos.png"))); // NOI18N
@@ -230,15 +224,21 @@ public class MenuPrincipalView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(lblDepositos);
-        lblDepositos.setBounds(390, 380, 270, 310);
+        lblDepositos.setBounds(230, 210, 170, 180);
 
-        lblTextDepositos.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblTextDepositos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblTextDepositos.setForeground(new java.awt.Color(12, 161, 215));
         lblTextDepositos.setText("DEPÓSITOS");
         jPanel1.add(lblTextDepositos);
-        lblTextDepositos.setBounds(460, 650, 160, 40);
+        lblTextDepositos.setBounds(270, 350, 90, 40);
 
-        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 180, 700, 710));
+        lblTextEstadoCuenta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblTextEstadoCuenta.setForeground(new java.awt.Color(12, 161, 215));
+        lblTextEstadoCuenta.setText("ESTADO DE CUENTAS");
+        jPanel1.add(lblTextEstadoCuenta);
+        lblTextEstadoCuenta.setBounds(50, 360, 160, 30);
+
+        jPanel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 180, 440, 420));
 
         lblLogout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Logout1.png"))); // NOI18N
         lblLogout.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -246,11 +246,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 lblLogoutMouseClicked(evt);
             }
         });
-        jPanel4.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 70, 80));
+        jPanel4.add(lblLogout, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 10, 70, 80));
 
         lblCerrarSesion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblCerrarSesion.setText("Cerrar Sesión");
-        jPanel4.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 70, 130, 30));
+        jPanel4.add(lblCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 130, 30));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 0, 0, new java.awt.Color(0, 0, 0)));
@@ -259,14 +259,14 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         LblMensajeBienvenido1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         LblMensajeBienvenido1.setText("--------------");
         jPanel2.add(LblMensajeBienvenido1);
-        LblMensajeBienvenido1.setBounds(120, 70, 227, 44);
+        LblMensajeBienvenido1.setBounds(30, 70, 227, 44);
 
         LblMensajeBienvenido.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         LblMensajeBienvenido.setText("BIENVENIDO!");
         jPanel2.add(LblMensajeBienvenido);
         LblMensajeBienvenido.setBounds(10, 20, 270, 44);
 
-        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 390, 120));
+        jPanel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 350, 120));
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
         jPanel4.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 200, 150));
@@ -365,7 +365,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jPanel4.add(lblMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 130, 70));
 
         getContentPane().add(jPanel4);
-        jPanel4.setBounds(0, 50, 960, 920);
+        jPanel4.setBounds(0, 50, 860, 620);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

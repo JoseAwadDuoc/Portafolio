@@ -5,6 +5,7 @@
  */
 package view;
 
+import AppPackage.AnimationClass;
 import Dao.AutenticacionDAO;
 import Dao.CiudadDAO;
 import Dao.ColegioDAO;
@@ -36,7 +37,8 @@ public class MenuColegioView extends javax.swing.JFrame {
      * Creates new form MenuColegioView
      */
     public MenuColegioView() {
-        this.setMinimumSize(new Dimension(100, 200));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(955, 813));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
@@ -54,12 +56,17 @@ public class MenuColegioView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        lblMinimizar = new javax.swing.JLabel();
+        lblLogoMenu = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         btnListarColegio = new javax.swing.JPanel();
         BtnAgregarColegio = new javax.swing.JButton();
         btnConsultarColegios = new javax.swing.JButton();
         btnModificarColegio = new javax.swing.JButton();
-        VolverColegio = new javax.swing.JButton();
+        btnVolver = new javax.swing.JButton();
         jPanelAgregarColegio = new javax.swing.JPanel();
         LblNombreColegio = new javax.swing.JLabel();
         TxtNombreColegio = new javax.swing.JTextField();
@@ -72,15 +79,73 @@ public class MenuColegioView extends javax.swing.JFrame {
         LblTelefonoColegio = new javax.swing.JLabel();
         TxtTelefonoColegio = new javax.swing.JTextField();
         BtnAgregarColegio1 = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
         jPanelListarColegios = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableColegio = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
+            }
+        });
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel4.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, -1, 30));
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel4.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 10, 30, 30));
+
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(0, 0, 950, 50);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 177, 159));
 
-        btnListarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Admistrador de Colegio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        btnListarColegio.setBackground(new java.awt.Color(255, 255, 255));
+        btnListarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Admistrador de Colegio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        btnListarColegio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnAgregarColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnAgregarColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddColegio2.png"))); // NOI18N
@@ -90,6 +155,7 @@ public class MenuColegioView extends javax.swing.JFrame {
                 BtnAgregarColegioActionPerformed(evt);
             }
         });
+        btnListarColegio.add(BtnAgregarColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 59, -1, 65));
 
         btnConsultarColegios.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnConsultarColegios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
@@ -99,6 +165,7 @@ public class MenuColegioView extends javax.swing.JFrame {
                 btnConsultarColegiosActionPerformed(evt);
             }
         });
+        btnListarColegio.add(btnConsultarColegios, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 59, -1, 65));
 
         btnModificarColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnModificarColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Delete.png"))); // NOI18N
@@ -108,61 +175,62 @@ public class MenuColegioView extends javax.swing.JFrame {
                 btnModificarColegioActionPerformed(evt);
             }
         });
+        btnListarColegio.add(btnModificarColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 59, -1, 65));
 
-        javax.swing.GroupLayout btnListarColegioLayout = new javax.swing.GroupLayout(btnListarColegio);
-        btnListarColegio.setLayout(btnListarColegioLayout);
-        btnListarColegioLayout.setHorizontalGroup(
-            btnListarColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnListarColegioLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtnAgregarColegio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnConsultarColegios)
-                .addGap(18, 18, 18)
-                .addComponent(btnModificarColegio)
-                .addContainerGap(43, Short.MAX_VALUE))
-        );
-        btnListarColegioLayout.setVerticalGroup(
-            btnListarColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnListarColegioLayout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
-                .addGroup(btnListarColegioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnModificarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnConsultarColegios, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnAgregarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(31, Short.MAX_VALUE))
-        );
+        jPanel1.add(btnListarColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 570, 150));
 
-        VolverColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        VolverColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        VolverColegio.setText("Volver");
-        VolverColegio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                VolverColegioActionPerformed(evt);
+        btnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.setIconTextGap(-10);
+        btnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        btnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnVolverMouseMoved(evt);
             }
         });
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
+            }
+        });
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, 140, 60));
 
-        jPanelAgregarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Registrar Colegio", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanelAgregarColegio.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelAgregarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Registrar Colegio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanelAgregarColegio.setLayout(null);
 
         LblNombreColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblNombreColegio.setText("Nombre: ");
         jPanelAgregarColegio.add(LblNombreColegio);
         LblNombreColegio.setBounds(40, 60, 100, 22);
+
+        TxtNombreColegio.setBorder(null);
         jPanelAgregarColegio.add(TxtNombreColegio);
-        TxtNombreColegio.setBounds(130, 50, 210, 40);
+        TxtNombreColegio.setBounds(120, 50, 220, 40);
 
         LblDireccionColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblDireccionColegio.setText("Dirección: ");
         jPanelAgregarColegio.add(LblDireccionColegio);
-        LblDireccionColegio.setBounds(30, 110, 110, 22);
+        LblDireccionColegio.setBounds(30, 220, 100, 22);
+
+        TxtDireccionColegio.setBorder(null);
         jPanelAgregarColegio.add(TxtDireccionColegio);
-        TxtDireccionColegio.setBounds(130, 100, 210, 40);
+        TxtDireccionColegio.setBounds(120, 200, 220, 40);
 
         LblCiudadColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblCiudadColegio.setText("Ciudad: ");
         jPanelAgregarColegio.add(LblCiudadColegio);
-        LblCiudadColegio.setBounds(50, 160, 90, 22);
+        LblCiudadColegio.setBounds(50, 110, 90, 22);
 
         cmbCiudad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
@@ -172,25 +240,30 @@ public class MenuColegioView extends javax.swing.JFrame {
             }
         });
         jPanelAgregarColegio.add(cmbCiudad);
-        cmbCiudad.setBounds(130, 150, 210, 40);
+        cmbCiudad.setBounds(130, 100, 210, 40);
 
         cmbComuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
         jPanelAgregarColegio.add(cmbComuna);
-        cmbComuna.setBounds(130, 200, 210, 40);
+        cmbComuna.setBounds(130, 150, 210, 40);
 
         LblComunaColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblComunaColegio.setText("Comuna: ");
         jPanelAgregarColegio.add(LblComunaColegio);
-        LblComunaColegio.setBounds(40, 210, 100, 22);
+        LblComunaColegio.setBounds(40, 160, 100, 22);
 
         LblTelefonoColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         LblTelefonoColegio.setText("Teléfono:");
         jPanelAgregarColegio.add(LblTelefonoColegio);
         LblTelefonoColegio.setBounds(30, 260, 100, 22);
-        jPanelAgregarColegio.add(TxtTelefonoColegio);
-        TxtTelefonoColegio.setBounds(130, 250, 210, 40);
 
+        TxtTelefonoColegio.setBorder(null);
+        jPanelAgregarColegio.add(TxtTelefonoColegio);
+        TxtTelefonoColegio.setBounds(120, 250, 220, 40);
+
+        BtnAgregarColegio1.setBackground(new java.awt.Color(255, 255, 255));
+        BtnAgregarColegio1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BtnAgregarColegio1.setForeground(new java.awt.Color(12, 161, 215));
         BtnAgregarColegio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
         BtnAgregarColegio1.setText("Agregar");
         BtnAgregarColegio1.addActionListener(new java.awt.event.ActionListener() {
@@ -199,9 +272,24 @@ public class MenuColegioView extends javax.swing.JFrame {
             }
         });
         jPanelAgregarColegio.add(BtnAgregarColegio1);
-        BtnAgregarColegio1.setBounds(130, 300, 210, 50);
+        BtnAgregarColegio1.setBounds(120, 300, 220, 50);
 
-        jPanelListarColegios.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Listar Colegios", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelAgregarColegio.add(jSeparator1);
+        jSeparator1.setBounds(40, 290, 300, 10);
+
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelAgregarColegio.add(jSeparator2);
+        jSeparator2.setBounds(40, 90, 300, 10);
+
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jPanelAgregarColegio.add(jSeparator3);
+        jSeparator3.setBounds(40, 240, 300, 10);
+
+        jPanel1.add(jPanelAgregarColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 425, 370));
+
+        jPanelListarColegios.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelListarColegios.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Listar Colegios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanelListarColegios.setLayout(null);
 
         jTableColegio.setModel(new javax.swing.table.DefaultTableModel(
@@ -220,40 +308,10 @@ public class MenuColegioView extends javax.swing.JFrame {
         jPanelListarColegios.add(jScrollPane1);
         jScrollPane1.setBounds(20, 30, 450, 135);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanelListarColegios, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanelAgregarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnListarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(VolverColegio)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnListarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(VolverColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanelAgregarColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanelListarColegios, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
-        );
+        jPanel1.add(jPanelListarColegios, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 488, 180));
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 50, 950, 760);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,7 +338,7 @@ public class MenuColegioView extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
 
-            KeyValue comuna = (KeyValue)cmbComuna.getSelectedItem();
+            KeyValue comuna = (KeyValue) cmbComuna.getSelectedItem();
             int idcomuna = comuna.getId();
 
             String nombre = TxtNombreColegio.getText();
@@ -296,7 +354,7 @@ public class MenuColegioView extends javax.swing.JFrame {
     }//GEN-LAST:event_BtnAgregarColegio1ActionPerformed
 
     private void btnConsultarColegiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarColegiosActionPerformed
-        // TODO add your handling code here:
+
         this.jPanelAgregarColegio.setVisible(false);
         this.jPanelListarColegios.setVisible(true);
         this.jScrollPane1.setVisible(true);
@@ -331,13 +389,54 @@ public class MenuColegioView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnModificarColegioActionPerformed
 
-    private void VolverColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VolverColegioActionPerformed
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void btnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseMoved
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnVolverMouseMoved
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         MenuPrincipalView MenuPrin = new MenuPrincipalView();
         MenuPrin.setLocationRelativeTo(null);
         MenuPrin.setVisible(true);
-    }//GEN-LAST:event_VolverColegioActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,6 +476,7 @@ public class MenuColegioView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAgregarColegio;
     private javax.swing.JButton BtnAgregarColegio1;
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.JLabel LblCiudadColegio;
     private javax.swing.JLabel LblComunaColegio;
     private javax.swing.JLabel LblDireccionColegio;
@@ -385,16 +485,23 @@ public class MenuColegioView extends javax.swing.JFrame {
     private javax.swing.JTextField TxtDireccionColegio;
     private javax.swing.JTextField TxtNombreColegio;
     private javax.swing.JTextField TxtTelefonoColegio;
-    private javax.swing.JButton VolverColegio;
     private javax.swing.JButton btnConsultarColegios;
     private javax.swing.JPanel btnListarColegio;
     private javax.swing.JButton btnModificarColegio;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbCiudad;
     private javax.swing.JComboBox<String> cmbComuna;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanelAgregarColegio;
     private javax.swing.JPanel jPanelListarColegios;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JTable jTableColegio;
     private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     // End of variables declaration//GEN-END:variables
 }

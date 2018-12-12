@@ -5,7 +5,6 @@
  */
 package view;
 
-import Dao.ContratoDAO;
 import controller.ContratosController;
 import java.awt.Dimension;
 import javax.swing.ImageIcon;
@@ -19,8 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class MenuContratosView extends javax.swing.JFrame {
 
     private ContratosController controller = new ContratosController();
-    
-    
+
     /**
      * Creates new form Autenticacion
      */
@@ -28,10 +26,12 @@ public class MenuContratosView extends javax.swing.JFrame {
      * Creates new form ConsultaContratos
      */
     public MenuContratosView() {
-        this.setMinimumSize(new Dimension(1016,500));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(960, 530));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.tableContratos.setVisible(false);
+        this.btnEliminar.setEnabled(false);
     }
 
     /**
@@ -43,20 +43,174 @@ public class MenuContratosView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tableContratos = new javax.swing.JTable();
-        BtnVolver = new javax.swing.JButton();
+        jPanelBarraCerrarMinimizar = new javax.swing.JPanel();
+        lblLogoMenu = new javax.swing.JLabel();
+        lblMinimizar = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         Logo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         btnConsultar = new javax.swing.JButton();
         btnAgregarArchivo = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnAgregarContrato = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableContratos = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
         getContentPane().setLayout(null);
 
+        jPanelBarraCerrarMinimizar.setBackground(new java.awt.Color(255, 255, 255));
+        jPanelBarraCerrarMinimizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanelBarraCerrarMinimizar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanelBarraCerrarMinimizar.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
+            }
+        });
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanelBarraCerrarMinimizar.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, -1, 30));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanelBarraCerrarMinimizar.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 30, 30));
+
+        getContentPane().add(jPanelBarraCerrarMinimizar);
+        jPanelBarraCerrarMinimizar.setBounds(0, 0, 960, 50);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        jPanel2.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 200, 180));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Administrador de Contratos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jPanel1.setLayout(null);
+
+        btnConsultar.setBackground(new java.awt.Color(255, 255, 255));
+        btnConsultar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
+        btnConsultar.setText("Consultar ");
+        btnConsultar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnConsultarMouseMoved(evt);
+            }
+        });
+        btnConsultar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsultarMouseExited(evt);
+            }
+        });
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnConsultar);
+        btnConsultar.setBounds(10, 40, 190, 70);
+
+        btnAgregarArchivo.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarArchivo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAgregarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
+        btnAgregarArchivo.setText("PDF");
+        btnAgregarArchivo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnAgregarArchivoMouseMoved(evt);
+            }
+        });
+        btnAgregarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarArchivoMouseExited(evt);
+            }
+        });
+        btnAgregarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarArchivoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregarArchivo);
+        btnAgregarArchivo.setBounds(580, 40, 180, 70);
+
+        btnEliminar.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Delete.png"))); // NOI18N
+        btnEliminar.setText("Eliminar ");
+        btnEliminar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseMoved(evt);
+            }
+        });
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+        });
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar);
+        btnEliminar.setBounds(400, 40, 170, 70);
+
+        btnAgregarContrato.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarContrato.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAgregarContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
+        btnAgregarContrato.setText("Agregar ");
+        btnAgregarContrato.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnAgregarContratoMouseMoved(evt);
+            }
+        });
+        btnAgregarContrato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarContratoMouseExited(evt);
+            }
+        });
+        btnAgregarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarContratoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregarContrato);
+        btnAgregarContrato.setBounds(210, 40, 180, 70);
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 770, 140));
+
+        tableContratos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         tableContratos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -68,93 +222,50 @@ public class MenuContratosView extends javax.swing.JFrame {
 
             }
         ));
+        tableContratos.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tableContratos);
 
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 180, 930, 210);
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 930, 210));
 
-        BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        BtnVolver.setText("Volver");
-        BtnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnVolverActionPerformed(evt);
+        btnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.setIconTextGap(-10);
+        btnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        btnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnVolverMouseMoved(evt);
             }
         });
-        getContentPane().add(BtnVolver);
-        BtnVolver.setBounds(650, 400, 150, 50);
-
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
-        getContentPane().add(Logo);
-        Logo.setBounds(0, -10, 200, 180);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Administrador de Contratos", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
-        jPanel1.setLayout(null);
-
-        btnConsultar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
-        btnConsultar.setText("Consultar ");
-        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConsultarActionPerformed(evt);
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
             }
         });
-        jPanel1.add(btnConsultar);
-        btnConsultar.setBounds(10, 40, 190, 70);
-
-        btnAgregarArchivo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAgregarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
-        btnAgregarArchivo.setText("PDF");
-        btnAgregarArchivo.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarArchivoActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregarArchivo);
-        btnAgregarArchivo.setBounds(580, 40, 180, 70);
+        jPanel2.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 400, 140, 60));
 
-        btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Delete.png"))); // NOI18N
-        btnEliminar.setText("Eliminar ");
-        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnEliminar);
-        btnEliminar.setBounds(400, 40, 170, 70);
-
-        btnAgregarContrato.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAgregarContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
-        btnAgregarContrato.setText("Agregar ");
-        btnAgregarContrato.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarContratoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAgregarContrato);
-        btnAgregarContrato.setBounds(210, 40, 180, 70);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(180, 30, 770, 140);
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 50, 960, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        this.btnEliminar.setEnabled(true);
         this.tableContratos.setVisible(true);
         DefaultTableModel modelotabla = this.controller.consultarContratos();
-        this.tableContratos.setModel(modelotabla); 
+        this.tableContratos.setModel(modelotabla);
 // TODO add your handling code here:
     }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        MenuPrincipalView MenuPrin = new MenuPrincipalView();
-        MenuPrin.setLocationRelativeTo(null);
-        MenuPrin.setVisible(true);
-    }//GEN-LAST:event_BtnVolverActionPerformed
 
     private void btnAgregarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarArchivoActionPerformed
         // TODO add your handling code here:
@@ -166,25 +277,25 @@ public class MenuContratosView extends javax.swing.JFrame {
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         // TODO add your handling code here:
-        int seleccionado= this.tableContratos.getSelectedRow();
+        int seleccionado = this.tableContratos.getSelectedRow();
         if (seleccionado > -1) {
-            
+
             int confirm = JOptionPane.showConfirmDialog(null, "¿Está Seguro del contrato a eliminar?", "Confirmar Eliminación", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
             if (confirm == JOptionPane.YES_OPTION) {
-                 
+
                 Object valor = ((DefaultTableModel) this.tableContratos.getModel()).getValueAt(seleccionado, 0);
                 int idContrato = Integer.parseInt(valor.toString());
-               
+
                 boolean eliminado = this.controller.eliminarContrato(idContrato);
-                if(eliminado){
+                if (eliminado) {
                     ((DefaultTableModel) this.tableContratos.getModel()).removeRow(seleccionado);
-                    JOptionPane.showMessageDialog(this, "Contrato EliminadoS");
+                    JOptionPane.showMessageDialog(this, "Contrato Eliminado");
                 }
 
             } else {
                 System.out.println("Cancelación de eliminado");
             }
-        }else {
+        } else {
             JOptionPane.showMessageDialog(null, "Seleccione un contrato");
         }
 
@@ -197,6 +308,97 @@ public class MenuContratosView extends javax.swing.JFrame {
         agregarContratos.setLocationRelativeTo(null);
         agregarContratos.setVisible(true);
     }//GEN-LAST:event_btnAgregarContratoActionPerformed
+
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void btnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseMoved
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnVolverMouseMoved
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MenuPrincipalView MenuPrin = new MenuPrincipalView();
+        MenuPrin.setLocationRelativeTo(null);
+        MenuPrin.setVisible(true);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnConsultarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseMoved
+        // TODO add your handling code here:
+        btnConsultar.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnConsultarMouseMoved
+
+    private void btnAgregarContratoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarContratoMouseMoved
+        // TODO add your handling code here:
+        btnAgregarContrato.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnAgregarContratoMouseMoved
+
+    private void btnEliminarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseMoved
+        // TODO add your handling code here:
+        btnEliminar.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnEliminarMouseMoved
+
+    private void btnAgregarArchivoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarArchivoMouseMoved
+        // TODO add your handling code here:
+        btnAgregarArchivo.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnAgregarArchivoMouseMoved
+
+    private void btnConsultarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarMouseExited
+        // TODO add your handling code here:
+        btnConsultar.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnConsultarMouseExited
+
+    private void btnAgregarContratoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarContratoMouseExited
+        // TODO add your handling code here:
+        btnAgregarContrato.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnAgregarContratoMouseExited
+
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        // TODO add your handling code here:
+        btnEliminar.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void btnAgregarArchivoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarArchivoMouseExited
+        // TODO add your handling code here:
+         btnAgregarArchivo.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnAgregarArchivoMouseExited
 
     /**
      * @param args the command line arguments
@@ -241,14 +443,19 @@ public class MenuContratosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnVolver;
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.JLabel Logo;
     private javax.swing.JButton btnAgregarArchivo;
     private javax.swing.JButton btnAgregarContrato;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelBarraCerrarMinimizar;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     private javax.swing.JTable tableContratos;
     // End of variables declaration//GEN-END:variables
 }

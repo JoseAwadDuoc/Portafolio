@@ -7,7 +7,6 @@ import Dao.SeguroDAO;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -27,13 +26,14 @@ public class AgregarContratosView extends javax.swing.JFrame {
 
     private int montoPaquete = 0;
     private int montoSeguro = 0;
-    private int cantidadAlumnos=0;
-    
+    private int cantidadAlumnos = 0;
+
     /**
      * Creates new form AgregarContratos
      */
     public AgregarContratosView() {
-        this.setMinimumSize(new Dimension(500, 620));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(470, 620));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.cmbPaquete.setModel(GuiUtils.createModelFromList(contratoDao.obtenerPaquetes()));
@@ -62,19 +62,27 @@ public class AgregarContratosView extends javax.swing.JFrame {
         dateChooserFechaEvento = new com.toedter.calendar.JDateChooser();
         cmbPaquete = new javax.swing.JComboBox<>();
         LblPaquete = new javax.swing.JLabel();
-        lblmonto = new javax.swing.JLabel();
         cmbSeguro = new javax.swing.JComboBox<>();
-        lblMontoValue = new javax.swing.JLabel();
         lblSeguro = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-        BtnBorrarcampos = new javax.swing.JButton();
-        BtnCancelar = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        lblMontoValue = new javax.swing.JLabel();
+        lblmonto = new javax.swing.JLabel();
+        btnLimpiarContrato = new javax.swing.JButton();
+        jSeparator9 = new javax.swing.JSeparator();
+        btnVolver = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        lblMinimizar = new javax.swing.JLabel();
+        lblLogoMenu = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
         getContentPane().setLayout(null);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Registrar Contrato", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Registrar Contrato", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
         jPanel1.setLayout(null);
 
         lblagente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -140,11 +148,6 @@ public class AgregarContratosView extends javax.swing.JFrame {
         jPanel1.add(LblPaquete);
         LblPaquete.setBounds(40, 240, 125, 20);
 
-        lblmonto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblmonto.setText("Monto Meta a cumplir:");
-        jPanel1.add(lblmonto);
-        lblmonto.setBounds(10, 290, 154, 20);
-
         cmbSeguro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbSeguro.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -152,52 +155,161 @@ public class AgregarContratosView extends javax.swing.JFrame {
             }
         });
         jPanel1.add(cmbSeguro);
-        cmbSeguro.setBounds(180, 320, 200, 40);
-
-        lblMontoValue.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jPanel1.add(lblMontoValue);
-        lblMontoValue.setBounds(180, 280, 190, 30);
+        cmbSeguro.setBounds(180, 290, 200, 40);
 
         lblSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblSeguro.setText("Seleccione Seguro:");
         jPanel1.add(lblSeguro);
-        lblSeguro.setBounds(30, 330, 130, 20);
+        lblSeguro.setBounds(30, 300, 130, 20);
 
+        btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
-        btnAgregar.setText("Guardar");
+        btnAgregar.setText("Guardar Contrato");
+        btnAgregar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseMoved(evt);
+            }
+        });
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarMouseExited(evt);
+            }
+        });
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
             }
         });
         jPanel1.add(btnAgregar);
-        btnAgregar.setBounds(140, 380, 260, 50);
+        btnAgregar.setBounds(20, 400, 360, 50);
 
-        BtnBorrarcampos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BtnBorrarcampos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
-        BtnBorrarcampos.setText("Limpiar");
-        BtnBorrarcampos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnBorrarcamposActionPerformed(evt);
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMontoValue.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblMontoValue.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(lblMontoValue, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, 190, 20));
+
+        lblmonto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblmonto.setText("TOTAL CONTRATO: $ ");
+        jPanel4.add(lblmonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
+
+        jPanel1.add(jPanel4);
+        jPanel4.setBounds(20, 340, 360, 50);
+
+        btnLimpiarContrato.setBackground(new java.awt.Color(255, 255, 255));
+        btnLimpiarContrato.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnLimpiarContrato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Limpiar.png"))); // NOI18N
+        btnLimpiarContrato.setText("Limpiar");
+        btnLimpiarContrato.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnLimpiarContrato.setIconTextGap(-1);
+        btnLimpiarContrato.setMargin(new java.awt.Insets(2, 4, 2, 14));
+        btnLimpiarContrato.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnLimpiarContratoMouseMoved(evt);
             }
         });
-        jPanel1.add(BtnBorrarcampos);
-        BtnBorrarcampos.setBounds(140, 460, 120, 40);
-
-        BtnCancelar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BtnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        BtnCancelar.setText("Volver");
-        BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCancelarActionPerformed(evt);
+        btnLimpiarContrato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnLimpiarContratoMouseExited(evt);
             }
         });
-        jPanel1.add(BtnCancelar);
-        BtnCancelar.setBounds(270, 460, 130, 40);
+        btnLimpiarContrato.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarContratoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLimpiarContrato);
+        btnLimpiarContrato.setBounds(20, 460, 150, 50);
+
+        jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel1.add(jSeparator9);
+        jSeparator9.setBounds(200, 460, 10, 50);
+
+        btnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.setIconTextGap(-10);
+        btnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        btnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnVolverMouseMoved(evt);
+            }
+        });
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
+            }
+        });
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnVolver);
+        btnVolver.setBounds(230, 460, 150, 50);
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 50, 440, 510);
+        jPanel1.setBounds(20, 50, 440, 550);
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
+            }
+        });
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, -1, 30));
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 30, 30));
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 470, 50);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 0, 470, 620);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -209,28 +321,16 @@ public class AgregarContratosView extends javax.swing.JFrame {
             curso = String.valueOf(cmbColegio.getSelectedItem());
             this.cmbCurso.setModel(GuiUtils.createModelFromList(contratoDao.obtenerCursos(curso)));
         }
-        
 
 // TODO add your handling code here:
     }//GEN-LAST:event_cmbColegioItemStateChanged
 
-    private void BtnBorrarcamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBorrarcamposActionPerformed
-        cmbPaquete.setSelectedIndex(0);
-        cmbColegio.setSelectedIndex(0);
-        cmbAgente.setSelectedIndex(0);
-        cmbCurso.setSelectedIndex(0);
-        dateChooserFechaEvento.setDate(null);
-        lblmonto.setText(" ");
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_BtnBorrarcamposActionPerformed
-
     private void cmbPaqueteItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbPaqueteItemStateChanged
         //Obtención del monto del paquete
         String combopaq = String.valueOf(cmbPaquete.getSelectedItem());
-        System.out.println("combopaq:"+ combopaq);
+        System.out.println("combopaq:" + combopaq);
         this.montoPaquete = contratoDao.obtenerMontoPaquete(combopaq);
-        System.out.println("montoPaquete:"+ this.montoPaquete);
+        System.out.println("montoPaquete:" + this.montoPaquete);
         int monto = this.calcularMontoResultado();
         if (monto > 0) {
             lblMontoValue.setText(String.valueOf(monto));
@@ -240,9 +340,9 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private void cmbCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCursoItemStateChanged
 
         String combopaq = String.valueOf(cmbCurso.getSelectedItem());
-        System.out.println("combo curso:"+ combopaq);
+        System.out.println("combo curso:" + combopaq);
         cantidadAlumnos = contratoDao.obtenerCatidadAlumnos(combopaq);
-        System.out.println("cantidad alumnos: "+ cantidadAlumnos);
+        System.out.println("cantidad alumnos: " + cantidadAlumnos);
         int monto = this.calcularMontoResultado();
         if (monto > 0) {
             lblMontoValue.setText(String.valueOf(monto));
@@ -260,11 +360,11 @@ public class AgregarContratosView extends javax.swing.JFrame {
         try {
             //Obtención del monto del paquete
             String descripcion = String.valueOf(cmbPaquete.getSelectedItem());
-            
+
             //Obtención rut agente
             KeyValue representante = (KeyValue) cmbAgente.getSelectedItem();
             int rutRepresentante = representante.getId();
- 
+
             String fecha_contrato = formato.format(new Date());
             System.out.println("Fecha de contrato: " + fecha_contrato);
 
@@ -287,7 +387,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
             //Obtener Fecha Evento
             String fecha_evento = formato.format(dateChooserFechaEvento.getDate());
             System.out.println("Fecha_evento : " + fecha_evento);
-            
+
             int monto = this.calcularMontoResultado();
 
             if (monto > 0) {
@@ -296,7 +396,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
             } else {
                 JOptionPane.showMessageDialog(this, "Falta monto calculado");
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
 //            lblmensaje.setText(e.getMessage());
@@ -305,26 +405,99 @@ public class AgregarContratosView extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        MenuContratosView ConsultContr = new MenuContratosView();
-        ConsultContr.setLocationRelativeTo(null);
-        ConsultContr.setVisible(true);
-    }//GEN-LAST:event_BtnCancelarActionPerformed
-
     private void cmbSeguroItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbSeguroItemStateChanged
         String comboseg = String.valueOf(cmbSeguro.getSelectedItem());
-        System.out.println("comboseg:"+ comboseg);
+        System.out.println("comboseg:" + comboseg);
         this.montoSeguro = seguroDao.obtenerMontoSeguro(comboseg);
-        System.out.println("montoSeguro:"+ this.montoSeguro);
+        System.out.println("montoSeguro:" + this.montoSeguro);
         int monto = this.calcularMontoResultado();
         if (monto > 0) {
             lblMontoValue.setText(String.valueOf(monto));
         }
     }//GEN-LAST:event_cmbSeguroItemStateChanged
 
-    
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void btnLimpiarContratoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarContratoMouseMoved
+        // TODO add your handling code here:
+        btnLimpiarContrato.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnLimpiarContratoMouseMoved
+
+    private void btnLimpiarContratoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimpiarContratoMouseExited
+        // TODO add your handling code here:
+        btnLimpiarContrato.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnLimpiarContratoMouseExited
+
+    private void btnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseMoved
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnVolverMouseMoved
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MenuContratosView ConsultContr = new MenuContratosView();
+        ConsultContr.setLocationRelativeTo(null);
+        ConsultContr.setVisible(true);
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnAgregarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseMoved
+        // TODO add your handling code here:
+        btnAgregar.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnAgregarMouseMoved
+
+    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
+        // TODO add your handling code here:
+        btnAgregar.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnAgregarMouseExited
+
+    private void btnLimpiarContratoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarContratoActionPerformed
+        // TODO add your handling code here:
+        cmbAgente.setSelectedIndex(0);
+        cmbColegio.setSelectedIndex(0);
+        cmbCurso.setSelectedIndex(0);
+        dateChooserFechaEvento.setDate(null);
+        cmbPaquete.setSelectedIndex(0);
+        cmbSeguro.setSelectedIndex(0);
+        lblMontoValue.setText(" ");
+    }//GEN-LAST:event_btnLimpiarContratoActionPerformed
+
     private int calcularMontoResultado() {
         int monto = 0;
         if (this.montoPaquete > 0 && this.montoSeguro > 0 && this.cantidadAlumnos > 0) {
@@ -333,7 +506,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
         }
         return monto;
     }
-    
+
     /**
      * @param args the command line arguments
      */
@@ -373,10 +546,11 @@ public class AgregarContratosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnBorrarcampos;
-    private javax.swing.JButton BtnCancelar;
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.JLabel LblPaquete;
     private javax.swing.JButton btnAgregar;
+    private javax.swing.JButton btnLimpiarContrato;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cmbAgente;
     private javax.swing.JComboBox<String> cmbColegio;
     private javax.swing.JComboBox<String> cmbCurso;
@@ -385,6 +559,12 @@ public class AgregarContratosView extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser dateChooserFechaEvento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblMontoValue;
     private javax.swing.JLabel lblSeguro;
     private javax.swing.JLabel lblagente;

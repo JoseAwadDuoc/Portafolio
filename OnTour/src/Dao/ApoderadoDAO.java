@@ -20,6 +20,11 @@ public class ApoderadoDAO extends DbUtilidades {
 
     public static Apoderado apo = new Apoderado();
 
+    /**
+     * Retorna listado de apoderados
+     *
+     * @return retorna listado de apoderados
+     */
     public Map<String, List> obtenerApoderados() {
         Map<String, List> map = null;
         try {
@@ -60,7 +65,13 @@ public class ApoderadoDAO extends DbUtilidades {
         return map;
     }
 
-    public boolean agregarApoderado(Apoderado apoderado){
+    /**
+     * Metodo para crear un apoderado nuevo
+     *
+     * @param apoderado apoderado
+     * @return crea un nuevo apoderado
+     */
+    public boolean agregarApoderado(Apoderado apoderado) {
         String perfil = apoderado.isEncargado() ? "SI" : "NO";
         int rut = apoderado.getRut();
         String nombres = apoderado.getNombres();
@@ -73,7 +84,7 @@ public class ApoderadoDAO extends DbUtilidades {
         String contrasena = apoderado.getContrasena();
         String correo = apoderado.getCorreo();
 
-      /*  return this.actualizar("INSERT INTO APODERADO (Rut_Apoderado,Pass_Apoderado,idComuna,Nombres,Apaterno,Amaterno,Fnacimiento,Telefono,Perfil,Direccion,Correo) "
+        /*  return this.actualizar("INSERT INTO APODERADO (Rut_Apoderado,Pass_Apoderado,idComuna,Nombres,Apaterno,Amaterno,Fnacimiento,Telefono,Perfil,Direccion,Correo) "
                 + "VALUES "
                 + "( " + rut + 
                 ",'" + contrasena + 
@@ -85,16 +96,30 @@ public class ApoderadoDAO extends DbUtilidades {
                 ",'" + perfil + 
                 "','" + direccion + 
                 "','" + correo + "')");
-        */
-      
-      contrasena = Md5Utils.md5(contrasena);
-      
-      return this.actualizar("call sp_apoderado_insertar("+rut+",'"+contrasena+"',"+idComuna+",'"+nombres+"','"+aPaterno+"','"+aMaterno+"','"+fechaNacimiento+"','"+telefono+"','"+perfil+"','"+direccion+"','"+correo+"',1)");
- 
+         */
+        contrasena = Md5Utils.md5(contrasena);
+
+        return this.actualizar("call sp_apoderado_insertar(" + rut + ",'"
+                + contrasena + "',"
+                + idComuna + ",'"
+                + nombres + "','"
+                + aPaterno + "','"
+                + aMaterno + "','"
+                + fechaNacimiento + "','"
+                + telefono + "','"
+                + perfil + "','"
+                + direccion + "','"
+                + correo
+                + "',1)");
     }
 
+    /**
+     * Método para buscar apoderados por su Rut
+     * @param rut rut de apoderado
+     * @return retorna un apoderado por su rut
+     */
     public Apoderado buscarApoderadoPorRut(int rut) {
-        
+
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
         ResultSet rs = this.consulta("Select * from Apoderado apo join COMUNA co on (apo.IDCOMUNA=co.IDCOMUNA) JOIN CIUDAD cu on(co.IDCIUDAD=cu.IDCIUDAD) where RUT_APODERADO = '" + rut + "'");
@@ -121,11 +146,11 @@ public class ApoderadoDAO extends DbUtilidades {
         return apoderado;
     }
 
-    public boolean actualizarApoderado(Apoderado apoderado){
-        
+    public boolean actualizarApoderado(Apoderado apoderado) {
+
         String perfil = apoderado.isEncargado() ? "SI" : "NO";
-        
-      /*  String sql = "UPDATE APODERADO SET NOMBRES='" + apoderado.getNombres() + 
+
+        /*  String sql = "UPDATE APODERADO SET NOMBRES='" + apoderado.getNombres() + 
                  "',APATERNO='" + apoderado.getaPaterno() + 
                  "',AMATERNO='" + apoderado.getaMaterno() + 
                  "',FNACIMIENTO = TO_DATE('" + apoderado.getFechaNacimiento() + "','DD-MM-YYYY')" +
@@ -136,10 +161,9 @@ public class ApoderadoDAO extends DbUtilidades {
                  "',PASS_APODERADO='" + apoderado.getContrasena() + 
                  "' WHERE RUT_APODERADO=" + apoderado.getRut();
 
-*/
-      String sql="call sp_apoderado_modificar("+apoderado.getRut()+",'"+apoderado.getContrasena()+"',"+apoderado.getIdComuna()+",'"+apoderado.getNombres()+"','"+apoderado.getaPaterno()+"','"+apoderado.getaMaterno()+"','"+apoderado.getFechaNacimiento()+"','"+apoderado.getTelefono()+"','"+perfil+"','"+apoderado.getDireccion()+"','"+apoderado.getCorreo()+"')";
-        
-        
+         */
+        String sql = "call sp_apoderado_modificar(" + apoderado.getRut() + ",'" + apoderado.getContrasena() + "'," + apoderado.getIdComuna() + ",'" + apoderado.getNombres() + "','" + apoderado.getaPaterno() + "','" + apoderado.getaMaterno() + "','" + apoderado.getFechaNacimiento() + "','" + apoderado.getTelefono() + "','" + perfil + "','" + apoderado.getDireccion() + "','" + apoderado.getCorreo() + "')";
+
         return this.actualizar(sql);
     }
 

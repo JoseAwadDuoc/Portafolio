@@ -30,6 +30,11 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
     /**
      * Creates new form ModificarApoderadoView
      */
+    
+    /**
+     * 
+     * @param rutApoderado rutApoderado 
+     */
     public ModificarApoderadoView(int rutApoderado) {
         this.setMinimumSize(new Dimension(478, 600));
         initComponents();
