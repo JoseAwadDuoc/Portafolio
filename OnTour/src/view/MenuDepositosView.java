@@ -115,7 +115,19 @@ public class MenuDepositosView extends javax.swing.JFrame {
 
         jPanelMenuDeposito.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 610, 160));
 
+        btnConsultarDepositos.setBackground(new java.awt.Color(255, 255, 255));
+        btnConsultarDepositos.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnConsultarDepositos.setText("Consultar");
+        btnConsultarDepositos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnConsultarDepositosMouseMoved(evt);
+            }
+        });
+        btnConsultarDepositos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsultarDepositosMouseExited(evt);
+            }
+        });
         btnConsultarDepositos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarDepositosActionPerformed(evt);
@@ -123,7 +135,19 @@ public class MenuDepositosView extends javax.swing.JFrame {
         });
         jPanelMenuDeposito.add(btnConsultarDepositos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 160, 60));
 
+        btnValidarDeposito.setBackground(new java.awt.Color(255, 255, 255));
+        btnValidarDeposito.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnValidarDeposito.setText("Validar");
+        btnValidarDeposito.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnValidarDepositoMouseMoved(evt);
+            }
+        });
+        btnValidarDeposito.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnValidarDepositoMouseExited(evt);
+            }
+        });
         btnValidarDeposito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnValidarDepositoActionPerformed(evt);
@@ -245,6 +269,26 @@ public class MenuDepositosView extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void btnConsultarDepositosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarDepositosMouseMoved
+        // TODO add your handling code here:
+        btnConsultarDepositos.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnConsultarDepositosMouseMoved
+
+    private void btnValidarDepositoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValidarDepositoMouseMoved
+        // TODO add your handling code here:
+        btnValidarDeposito.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnValidarDepositoMouseMoved
+
+    private void btnConsultarDepositosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarDepositosMouseExited
+        // TODO add your handling code here:
+        btnConsultarDepositos.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnConsultarDepositosMouseExited
+
+    private void btnValidarDepositoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnValidarDepositoMouseExited
+        // TODO add your handling code here:
+        btnValidarDeposito.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnValidarDepositoMouseExited
 
     /**
      * @param args the command line arguments

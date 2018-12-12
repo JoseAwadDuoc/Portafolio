@@ -11,6 +11,15 @@ public class Main {
     /**
      * @param args the command line arguments
      */
+    /**
+     * 
+     * @param args main de ejecución de proyecto
+     * @throws SQLException excepción
+     * @throws ClassNotFoundException excepción
+     * @throws InstantiationException excepción
+     * @throws IllegalAccessException excepción
+     * @throws UnsupportedLookAndFeelException excepción
+     */
     public static void main(String[] args) throws SQLException, ClassNotFoundException, InstantiationException, IllegalAccessException, UnsupportedLookAndFeelException {
 
         UIManager.setLookAndFeel(

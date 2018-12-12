@@ -19,10 +19,14 @@ import model.Alumno;
  * @author corellana
  */
 public class AlumnoDAO extends DbUtilidades {
-    
+
     public static Alumno alu = new Alumno();
-    
-    
+
+    /**
+     * retorna un listado de alumnos
+     *
+     * @return retorna listado de alumnos
+     */
     public Map<String, List> obtenerAlumnos() {
         Map<String, List> map = null;
         try {
@@ -62,14 +66,19 @@ public class AlumnoDAO extends DbUtilidades {
         }
         return map;
     }
-    
-    
+
+    /**
+     * retorna un listado de alumnos por curso
+     *
+     * @param idcurso id del curso
+     * @return retorna listado de alumnos por idCurso
+     */
     public Map<String, List> obtenerAlumnosxCurso(int idcurso) {
         Map<String, List> map = null;
         try {
 
             Statement st = Conexion.conectar().createStatement();
-            String sql = "Select * From ALUMNO where IDCURSO ="+idcurso+" ORDER BY APATERNO ASC";
+            String sql = "Select * From ALUMNO where IDCURSO =" + idcurso + " ORDER BY APATERNO ASC";
 
             ResultSet rs = st.executeQuery(sql);
 
@@ -103,11 +112,15 @@ public class AlumnoDAO extends DbUtilidades {
         }
         return map;
     }
-    
-    
-    
-     public boolean agregarAlumno(Alumno alumno){
-        
+
+    /**
+     * Crea un nuevo alumno
+     *
+     * @param alumno alumno
+     * @return un alumno
+     */
+    public boolean agregarAlumno(Alumno alumno) {
+
         int rut = alumno.getRut();
         int idCurso = alumno.getIdcurso();
         int idComuna = alumno.getIdcomuna();
@@ -118,31 +131,41 @@ public class AlumnoDAO extends DbUtilidades {
         String fechaNacimiento = alumno.getFechaNacimiento();
         String direccion = alumno.getDireccion();
         int telefono = alumno.getTelefono();
-        
-   
-      
-     
-      
-      return this.actualizar("call sp_alumno_insertar("+rut+",'"+idCurso+"',"+idComuna+",'"+rut_apod+"','"+nombres+"','"+aPaterno+"','"+aMaterno+"','"+fechaNacimiento+"','"+direccion+"','"+telefono+"',0)");
- 
+
+        return this.actualizar("call sp_alumno_insertar(" + rut + ",'"
+                + idCurso + "',"
+                + idComuna + ",'"
+                + rut_apod + "','"
+                + nombres + "','"
+                + aPaterno + "','"
+                + aMaterno + "','"
+                + fechaNacimiento + "','"
+                + direccion + "','"
+                + telefono
+                + "',0)");
     }
-     
-     
-     
-     
-     /*
-     CREAR METODO DE BUSCAR ALUMNOS POR CURSO
+
+    /**
+     * Metodo para actualizar alumnos
+     *
+     * @param alumno alumno
+     * @return modifica datos de alumno
      */
+    public boolean actualizarAlumno(Alumno alumno) {
 
-    public boolean actualizarAlumno (Alumno alumno){
-        
-        
-        
-      
-      String sql="call sp_alumno_modificar("+alumno.getRut()+","+alumno.getIdcurso()+",,"+alumno.getIdcomuna()+","+alumno.getRut_apoderado()+",'"+alumno.getNombre()+"','"+alumno.getaPaterno()+"','"+alumno.getaMaterno()+"','"+alumno.getFechaNacimiento()+"','"+alumno.getDireccion()+"','"+alumno.getTelefono()+"','"+alumno.getMonto()+"')";
-        
-     return this.actualizar(sql);   
-}
-   
-}
+        String sql = "call sp_alumno_modificar(" + alumno.getRut()
+                + "," + alumno.getIdcurso() + ",,"
+                + alumno.getIdcomuna() + ","
+                + alumno.getRut_apoderado() + ",'"
+                + alumno.getNombre() + "','"
+                + alumno.getaPaterno() + "','"
+                + alumno.getaMaterno() + "','"
+                + alumno.getFechaNacimiento() + "','"
+                + alumno.getDireccion() + "','"
+                + alumno.getTelefono() + "','"
+                + alumno.getMonto() + "')";
 
+        return this.actualizar(sql);
+    }
+
+}

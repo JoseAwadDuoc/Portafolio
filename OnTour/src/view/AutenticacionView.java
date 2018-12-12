@@ -116,10 +116,21 @@ public class AutenticacionView extends javax.swing.JFrame {
         jPanel1.add(TxtPass);
         TxtPass.setBounds(120, 300, 280, 30);
 
+        BtnAutenticacion.setBackground(new java.awt.Color(255, 255, 255));
         BtnAutenticacion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnAutenticacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/LoginUser.png"))); // NOI18N
         BtnAutenticacion.setText("INGRESAR");
         BtnAutenticacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        BtnAutenticacion.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnAutenticacionMouseMoved(evt);
+            }
+        });
+        BtnAutenticacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnAutenticacionMouseExited(evt);
+            }
+        });
         BtnAutenticacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnAutenticacionActionPerformed(evt);
@@ -256,6 +267,16 @@ public class AutenticacionView extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setState(MenuPrincipalView.ICONIFIED);
     }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void BtnAutenticacionMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAutenticacionMouseMoved
+        // TODO add your handling code here:
+        BtnAutenticacion.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnAutenticacionMouseMoved
+
+    private void BtnAutenticacionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnAutenticacionMouseExited
+        // TODO add your handling code here:
+        BtnAutenticacion.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnAutenticacionMouseExited
 
     public void limpiarInfo() {
         TxtRut.setText(null);

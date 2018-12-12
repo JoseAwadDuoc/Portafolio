@@ -41,7 +41,8 @@ public class MenuPdfView extends javax.swing.JFrame {
     String nombre_archivo = " ";
 
     public MenuPdfView() {
-        this.setMinimumSize(new Dimension(880, 500));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(810,531));
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.CmbContrato.setModel(contratoDao.obtenerContrato());
@@ -72,27 +73,46 @@ public class MenuPdfView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        Logo = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         lblSeleccionContrato = new javax.swing.JLabel();
         lblSeleccionarPdf = new javax.swing.JLabel();
         CmbContrato = new javax.swing.JComboBox<>();
         btnseleccionarPdf = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tablePdf = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         btnNuevoPdf = new javax.swing.JButton();
         btnGuardarPdf = new javax.swing.JButton();
         btnEliminarPdf = new javax.swing.JButton();
         btnCancelarPdf = new javax.swing.JButton();
-        Logo = new javax.swing.JLabel();
-        BtnVolver = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablePdf = new javax.swing.JTable();
+        btnVolver = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        lblMinimizar = new javax.swing.JLabel();
+        lblLogoMenu = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Guardar y Leer PDF");
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(null);
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Subir Archivo PDF", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("GUARDAR ARCHIVO ESCANEADO POR CONTRATO");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 790, -1));
+
+        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 200, 180));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Subir Archivo PDF", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         jPanel2.setLayout(null);
 
         lblSeleccionContrato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -110,9 +130,20 @@ public class MenuPdfView extends javax.swing.JFrame {
         jPanel2.add(CmbContrato);
         CmbContrato.setBounds(216, 37, 243, 44);
 
+        btnseleccionarPdf.setBackground(new java.awt.Color(255, 255, 255));
         btnseleccionarPdf.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnseleccionarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/PDF.png"))); // NOI18N
         btnseleccionarPdf.setText("Seleccionar PDF");
+        btnseleccionarPdf.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnseleccionarPdfMouseMoved(evt);
+            }
+        });
+        btnseleccionarPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnseleccionarPdfMouseExited(evt);
+            }
+        });
         btnseleccionarPdf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnseleccionarPdfActionPerformed(evt);
@@ -121,14 +152,101 @@ public class MenuPdfView extends javax.swing.JFrame {
         jPanel2.add(btnseleccionarPdf);
         btnseleccionarPdf.setBounds(216, 88, 243, 57);
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(220, 40, 560, 160);
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, 560, 160));
 
-        jLabel3.setFont(new java.awt.Font("Arial Black", 1, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("GUARDAR ARCHIVO ESCANEADO POR CONTRATO");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 10, 790, 21);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(null);
+
+        btnNuevoPdf.setBackground(new java.awt.Color(255, 255, 255));
+        btnNuevoPdf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnNuevoPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/NewPDF.png"))); // NOI18N
+        btnNuevoPdf.setText("Nuevo");
+        btnNuevoPdf.setMaximumSize(new java.awt.Dimension(71, 23));
+        btnNuevoPdf.setMinimumSize(new java.awt.Dimension(71, 23));
+        btnNuevoPdf.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnNuevoPdfMouseMoved(evt);
+            }
+        });
+        btnNuevoPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNuevoPdfMouseExited(evt);
+            }
+        });
+        btnNuevoPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoPdfActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnNuevoPdf);
+        btnNuevoPdf.setBounds(10, 10, 170, 45);
+
+        btnGuardarPdf.setBackground(new java.awt.Color(255, 255, 255));
+        btnGuardarPdf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnGuardarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/SavePDF.png"))); // NOI18N
+        btnGuardarPdf.setText("Guardar");
+        btnGuardarPdf.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnGuardarPdfMouseMoved(evt);
+            }
+        });
+        btnGuardarPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnGuardarPdfMouseExited(evt);
+            }
+        });
+        btnGuardarPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarPdfActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnGuardarPdf);
+        btnGuardarPdf.setBounds(10, 60, 170, 45);
+
+        btnEliminarPdf.setBackground(new java.awt.Color(255, 255, 255));
+        btnEliminarPdf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnEliminarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DeletePDF.png"))); // NOI18N
+        btnEliminarPdf.setText("Eliminar");
+        btnEliminarPdf.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnEliminarPdfMouseMoved(evt);
+            }
+        });
+        btnEliminarPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarPdfMouseExited(evt);
+            }
+        });
+        btnEliminarPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarPdfActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnEliminarPdf);
+        btnEliminarPdf.setBounds(10, 110, 170, 45);
+
+        btnCancelarPdf.setBackground(new java.awt.Color(255, 255, 255));
+        btnCancelarPdf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnCancelarPdf.setText("Cancelar");
+        btnCancelarPdf.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnCancelarPdfMouseMoved(evt);
+            }
+        });
+        btnCancelarPdf.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCancelarPdfMouseExited(evt);
+            }
+        });
+        btnCancelarPdf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarPdfActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnCancelarPdf);
+        btnCancelarPdf.setBounds(10, 160, 170, 45);
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 200, 230));
 
         tablePdf.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -143,74 +261,83 @@ public class MenuPdfView extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tablePdf);
 
-        getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(220, 210, 560, 150);
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 560, 150));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder()));
-        jPanel3.setLayout(null);
-
-        btnNuevoPdf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnNuevoPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/NewPDF.png"))); // NOI18N
-        btnNuevoPdf.setText("Nuevo");
-        btnNuevoPdf.setMaximumSize(new java.awt.Dimension(71, 23));
-        btnNuevoPdf.setMinimumSize(new java.awt.Dimension(71, 23));
-        btnNuevoPdf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNuevoPdfActionPerformed(evt);
+        btnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        btnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        btnVolver.setText("Volver");
+        btnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnVolver.setIconTextGap(-10);
+        btnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        btnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnVolverMouseMoved(evt);
             }
         });
-        jPanel3.add(btnNuevoPdf);
-        btnNuevoPdf.setBounds(10, 10, 170, 45);
-
-        btnGuardarPdf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnGuardarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/SavePDF.png"))); // NOI18N
-        btnGuardarPdf.setText("Guardar");
-        btnGuardarPdf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarPdfActionPerformed(evt);
+        btnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnVolverMouseExited(evt);
             }
         });
-        jPanel3.add(btnGuardarPdf);
-        btnGuardarPdf.setBounds(10, 60, 170, 45);
-
-        btnEliminarPdf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnEliminarPdf.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/DeletePDF.png"))); // NOI18N
-        btnEliminarPdf.setText("Eliminar");
-        btnEliminarPdf.addActionListener(new java.awt.event.ActionListener() {
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarPdfActionPerformed(evt);
+                btnVolverActionPerformed(evt);
             }
         });
-        jPanel3.add(btnEliminarPdf);
-        btnEliminarPdf.setBounds(10, 110, 170, 45);
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 140, 60));
 
-        btnCancelarPdf.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnCancelarPdf.setText("Cancelar");
-        btnCancelarPdf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCancelarPdfActionPerformed(evt);
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 50, 810, 480);
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
             }
         });
-        jPanel3.add(btnCancelarPdf);
-        btnCancelarPdf.setBounds(10, 160, 170, 45);
-
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(10, 210, 200, 230);
-
-        Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
-        getContentPane().add(Logo);
-        Logo.setBounds(10, 20, 200, 180);
-
-        BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
-        BtnVolver.setText("Volver");
-        BtnVolver.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnVolverActionPerformed(evt);
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
             }
         });
-        getContentPane().add(BtnVolver);
-        BtnVolver.setBounds(630, 370, 150, 50);
+        jPanel4.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, -1, 30));
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel4.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel4.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 10, 30, 30));
+
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(0, 0, 810, 50);
 
         pack();
         setLocationRelativeTo(null);
@@ -329,13 +456,104 @@ public class MenuPdfView extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnNuevoPdfActionPerformed
 
-    private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
+    private void btnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseMoved
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnVolverMouseMoved
+
+    private void btnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnVolverMouseExited
+        // TODO add your handling code here:
+        btnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnVolverMouseExited
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
         MenuContratosView menuContratos = new MenuContratosView();
         menuContratos.setLocationRelativeTo(null);
         menuContratos.setVisible(true);
-    }//GEN-LAST:event_BtnVolverActionPerformed
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void btnseleccionarPdfMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnseleccionarPdfMouseMoved
+        // TODO add your handling code here:
+        btnseleccionarPdf.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnseleccionarPdfMouseMoved
+
+    private void btnseleccionarPdfMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnseleccionarPdfMouseExited
+        // TODO add your handling code here:
+        btnseleccionarPdf.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnseleccionarPdfMouseExited
+
+    private void btnNuevoPdfMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoPdfMouseMoved
+        // TODO add your handling code here:
+        btnNuevoPdf.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnNuevoPdfMouseMoved
+
+    private void btnNuevoPdfMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoPdfMouseExited
+        // TODO add your handling code here:
+        btnNuevoPdf.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnNuevoPdfMouseExited
+
+    private void btnGuardarPdfMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarPdfMouseMoved
+        // TODO add your handling code here:
+        btnGuardarPdf.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnGuardarPdfMouseMoved
+
+    private void btnGuardarPdfMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarPdfMouseExited
+        // TODO add your handling code here:
+         btnGuardarPdf.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnGuardarPdfMouseExited
+
+    private void btnEliminarPdfMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarPdfMouseMoved
+        // TODO add your handling code here:
+        btnEliminarPdf.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnEliminarPdfMouseMoved
+
+    private void btnEliminarPdfMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarPdfMouseExited
+        // TODO add your handling code here:
+        btnEliminarPdf.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnEliminarPdfMouseExited
+
+    private void btnCancelarPdfMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarPdfMouseMoved
+        // TODO add your handling code here:
+        btnCancelarPdf.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnCancelarPdfMouseMoved
+
+    private void btnCancelarPdfMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarPdfMouseExited
+        // TODO add your handling code here:
+        btnCancelarPdf.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnCancelarPdfMouseExited
 
     /**
      * @param args the command line arguments
@@ -388,18 +606,23 @@ public class MenuPdfView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnVolver;
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.JComboBox<String> CmbContrato;
     private javax.swing.JLabel Logo;
     private javax.swing.JButton btnCancelarPdf;
     private javax.swing.JButton btnEliminarPdf;
     private javax.swing.JButton btnGuardarPdf;
     private javax.swing.JButton btnNuevoPdf;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JButton btnseleccionarPdf;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblSeleccionContrato;
     private javax.swing.JLabel lblSeleccionarPdf;
     private javax.swing.JTable tablePdf;

@@ -28,6 +28,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
         this.lblModificarApoderado.setVisible(false);
+        this.tableApoderados.setVisible(false);
 
     }
 
@@ -114,7 +115,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         jPanel2.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 170));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Administrador Apoderados", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(12, 161, 215))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Administrador Apoderados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(12, 161, 215))); // NOI18N
         jPanel1.setLayout(null);
 
         lblRegistrarApoderado.setBackground(new java.awt.Color(255, 255, 255));
@@ -181,6 +182,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
 
         jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 20, 510, 190));
 
+        tableApoderados.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tableApoderados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -280,8 +282,8 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
 
     private void lblListarApoderadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblListarApoderadoMouseClicked
         // TODO add your handling code here:
+        this.tableApoderados.setVisible(true);
         this.jScrollPane1.setVisible(true);
-
         DefaultTableModel modelotabla = this.controller.consultarApoderados();
         this.tableApoderados.setModel(modelotabla);
         this.lblModificarApoderado.setVisible(true);
