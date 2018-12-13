@@ -7,6 +7,7 @@ package Dao;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -132,17 +133,17 @@ public class AlumnoDAO extends DbUtilidades {
         String direccion = alumno.getDireccion();
         int telefono = alumno.getTelefono();
 
-        return this.actualizar("call sp_alumno_insertar(" + rut + ",'"
-                + idCurso + "',"
-                + idComuna + ",'"
-                + rut_apod + "','"
+        return this.actualizar("call sp_alumno_insertar(" + rut + ","
+                + idCurso + ","
+                + idComuna + ","
+                + rut_apod + ",'"
                 + nombres + "','"
                 + aPaterno + "','"
                 + aMaterno + "','"
                 + fechaNacimiento + "','"
-                + direccion + "','"
+                + direccion + "',"
                 + telefono
-                + "',0)");
+                + ",0)");
     }
 
     /**
@@ -154,7 +155,7 @@ public class AlumnoDAO extends DbUtilidades {
     public boolean actualizarAlumno(Alumno alumno) {
 
         String sql = "call sp_alumno_modificar(" + alumno.getRut()
-                + "," + alumno.getIdcurso() + ",,"
+                + "," + alumno.getIdcurso() + ","
                 + alumno.getIdcomuna() + ","
                 + alumno.getRut_apoderado() + ",'"
                 + alumno.getNombre() + "','"
@@ -166,6 +167,24 @@ public class AlumnoDAO extends DbUtilidades {
                 + alumno.getMonto() + "')";
 
         return this.actualizar(sql);
+    }
+    
+    public int obtenerRutApoderado(String apoderado) {
+
+        ResultSet rs = this.consulta("SELECT rut_apoderado FROM APODERADO\n" +
+"WHERE CONCAT(nombres,CONCAT(' ',CONCAT(apaterno,CONCAT(' ',amaterno))))='"+apoderado+"'");
+        int rut = 0;
+        try {
+            while (rs.next()) {
+                rut = rs.getInt("rut_apoderado");
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return rut;
     }
 
 }

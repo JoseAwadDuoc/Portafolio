@@ -88,7 +88,7 @@ public class AlumnosController {
         if (!alumno.getFechaNacimiento().contains("/")) {
             throw new Exception("Formato de fecha de nacimiento invalida");
         }
-        boolean creado = this.alumnoDAO.actualizarAlumno(alumno);
+        boolean creado = this.alumnoDAO.agregarAlumno(alumno);
         System.out.println("creado "+creado);
         
         return creado;
