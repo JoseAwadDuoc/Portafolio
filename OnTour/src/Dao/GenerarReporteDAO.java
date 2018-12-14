@@ -31,6 +31,8 @@ public class GenerarReporteDAO {
 
             parametro.put("idcontrato", idcontrato);
             System.out.println("parametro.put: " + parametro.toString());
+            
+           
 
             JasperPrint j = JasperFillManager.fillReport(reporte, parametro, con.conectar());
             System.out.println("uno: " + j.toString());
@@ -41,6 +43,7 @@ public class GenerarReporteDAO {
             System.out.println("tres: " + jv);
 
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             JOptionPane.showMessageDialog(null, "Error al Mostrar el Reporte " + e);
         }
 

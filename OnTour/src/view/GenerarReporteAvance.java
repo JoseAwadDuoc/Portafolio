@@ -253,6 +253,7 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No se encuentra un Contrato Vigente.");
+           
         }
 
         // TODO add your handling code here:

@@ -83,10 +83,25 @@ public class MenuAlumnosView extends javax.swing.JFrame {
         BtnRegistrarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnRegistrarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddApoderado.png"))); // NOI18N
         BtnRegistrarApoderado.setText("Registrar");
+        BtnRegistrarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BtnRegistrarApoderadoMouseClicked(evt);
+            }
+        });
+        BtnRegistrarApoderado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnRegistrarApoderadoActionPerformed(evt);
+            }
+        });
 
         BtnModificarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         BtnModificarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EditApoderado.png"))); // NOI18N
         BtnModificarApoderado.setText("Modificar");
+        BtnModificarApoderado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnModificarApoderadoActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(tableAlumnos);
 
@@ -214,6 +229,33 @@ public class MenuAlumnosView extends javax.swing.JFrame {
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFiltrarActionPerformed
+
+    private void BtnModificarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarApoderadoActionPerformed
+       int seleccionado = this.tableAlumnos.getSelectedRow();
+        if (seleccionado > -1) {
+
+            Object valor = ((DefaultTableModel) this.tableAlumnos.getModel()).getValueAt(seleccionado, 0);
+            int rutAlumno = Integer.parseInt(valor.toString());
+
+            ModificarAlumnosView ModificarAlud = new ModificarAlumnosView(rutAlumno);
+            this.setVisible(false);
+            ModificarAlud.setLocationRelativeTo(null);
+            ModificarAlud.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(this, "Seleccione un apoderado a modificar");
+        }
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnModificarApoderadoActionPerformed
+
+    private void BtnRegistrarApoderadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_BtnRegistrarApoderadoMouseClicked
+
+    private void BtnRegistrarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnRegistrarApoderadoActionPerformed
 
     /**
      * @param args the command line arguments

@@ -3,9 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/cristianorellanafarias/NetBeansProjects/Portafolio_121218/OnTour/src/Dao/ContratoDAO.java</file>
-            <file>file:/Users/cristianorellanafarias/NetBeansProjects/Portafolio_121218/OnTour/src/view/AgregarAlumnosView.java</file>
-            <file>file:/Users/cristianorellanafarias/NetBeansProjects/Portafolio_121218/OnTour/src/Dao/AutocompletarDAO.java</file>
+            <file>file:/Users/cristianorellanafarias/NetBeansProjects/Portafolio_121218/OnTour/src/view/GenerarReporteAvance.java</file>
+            <file>file:/Users/cristianorellanafarias/NetBeansProjects/Portafolio_121218/OnTour/src/Dao/GenerarReporteDAO.java</file>
         </group>
     </open-files>
 </project-private>

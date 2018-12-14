@@ -239,7 +239,7 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
             Comuna comuna = comunaDAO.obtenerComunaPorId(idComuna);
             Ciudad ciudad = ciudadDAO.obtenerCiudadPorId(comuna.getIdCiudad());
             
-            cmbCiudad.setSelectedItem(new KeyValue(ciudad.getId(), ciudad.getNombre()));
+            cmbCiudad.setSelectedItem(ciudad.getNombre());
             
             this.cmbComuna.setModel(comunaDAO.obtenerComunas(ciudad.getNombre()));
             

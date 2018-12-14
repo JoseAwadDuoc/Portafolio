@@ -67,7 +67,12 @@ public class AlumnosController {
         return modelotabla;
     }
     
-    
+     public Alumno buscaralumnoxrut(int rut) throws Exception{
+        if (rut <= 0) {
+            throw new Exception("Rut invalido");
+        }
+        return this.alumnoDAO.buscaralumnoporRut(rut);
+    }
     
   
     

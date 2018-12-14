@@ -9,11 +9,13 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import model.Alumno;
+import model.Apoderado;
 
 /**
  *
@@ -185,6 +187,35 @@ public class AlumnoDAO extends DbUtilidades {
         }
 
         return rut;
+    }
+    
+    
+    public Alumno buscaralumnoporRut(int rut) {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+
+        ResultSet rs = this.consulta("select * from alumno where rut_alumno='"+ rut + "'");
+        Alumno alumno = new Alumno();
+        try {
+            while (rs.next()) {
+                alumno.setRut(rs.getInt("RUT_ALUMNO"));
+                alumno.setRut_apoderado(rs.getInt("RUT_APOD"));
+                alumno.setNombre(rs.getString("NOMBRES"));
+                alumno.setaPaterno(rs.getString("APATERNO"));
+                alumno.setaMaterno(rs.getString("AMATERNO"));
+                alumno.setFechaNacimiento(sdf.format(rs.getDate("FNACIMIENTO")));
+                alumno.setTelefono(rs.getInt("TELEFONO"));
+                alumno.setDireccion(rs.getString("DIRECCION"));
+                alumno.setIdcomuna(rs.getInt("IDCOMUNA"));
+                alumno.setIdcurso(rs.getInt("IDCURSO"));
+                alumno.setMonto(rs.getInt("MONTO_PERSONAL"));
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return alumno;
     }
 
 }
