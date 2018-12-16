@@ -35,7 +35,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
         this.setUndecorated(true);
         this.setMinimumSize(new Dimension(470, 620));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.cmbPaquete.setModel(GuiUtils.createModelFromList(contratoDao.obtenerPaquetes()));
         this.cmbColegio.setModel(GuiUtils.createModelFromList(contratoDao.obtenerColegios()));
         this.cmbAgente.setModel(representanteAgenciaDao.obtenerRepresentantes());
@@ -79,16 +79,15 @@ public class AgregarContratosView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Registrar Contrato", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblagente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblagente.setText("Agente Registrador:");
-        jPanel1.add(lblagente);
-        lblagente.setBounds(30, 60, 140, 20);
+        jPanel1.add(lblagente, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, 20));
 
         cmbAgente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbAgente.addItemListener(new java.awt.event.ItemListener() {
@@ -96,13 +95,11 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 cmbAgenteItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbAgente);
-        cmbAgente.setBounds(180, 50, 200, 40);
+        jPanel1.add(cmbAgente, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 50, 200, 40));
 
         lblcolegio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblcolegio.setText("Seleccione Colegio:");
-        jPanel1.add(lblcolegio);
-        lblcolegio.setBounds(30, 110, 131, 20);
+        jPanel1.add(lblcolegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 20));
 
         cmbColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbColegio.addItemListener(new java.awt.event.ItemListener() {
@@ -110,8 +107,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 cmbColegioItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbColegio);
-        cmbColegio.setBounds(180, 100, 200, 40);
+        jPanel1.add(cmbColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 200, 40));
 
         cmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Curso Asociado" }));
         cmbCurso.addItemListener(new java.awt.event.ItemListener() {
@@ -119,20 +115,16 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 cmbCursoItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbCurso);
-        cmbCurso.setBounds(180, 150, 200, 40);
+        jPanel1.add(cmbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, 200, 40));
 
         lblcurso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblcurso.setText("Seleccione Curso:");
-        jPanel1.add(lblcurso);
-        lblcurso.setBounds(40, 150, 122, 20);
+        jPanel1.add(lblcurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 122, 20));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Fecha Evento : ");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(60, 200, 106, 20);
-        jPanel1.add(dateChooserFechaEvento);
-        dateChooserFechaEvento.setBounds(180, 200, 200, 30);
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 20));
+        jPanel1.add(dateChooserFechaEvento, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 200, 30));
 
         cmbPaquete.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbPaquete.addItemListener(new java.awt.event.ItemListener() {
@@ -140,13 +132,11 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 cmbPaqueteItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbPaquete);
-        cmbPaquete.setBounds(180, 240, 200, 40);
+        jPanel1.add(cmbPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 200, 40));
 
         LblPaquete.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LblPaquete.setText("Paquete Turistico:");
-        jPanel1.add(LblPaquete);
-        LblPaquete.setBounds(40, 240, 125, 20);
+        jPanel1.add(LblPaquete, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, -1, 20));
 
         cmbSeguro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbSeguro.addItemListener(new java.awt.event.ItemListener() {
@@ -154,13 +144,11 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 cmbSeguroItemStateChanged(evt);
             }
         });
-        jPanel1.add(cmbSeguro);
-        cmbSeguro.setBounds(180, 290, 200, 40);
+        jPanel1.add(cmbSeguro, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 290, 200, 40));
 
         lblSeguro.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblSeguro.setText("Seleccione Seguro:");
-        jPanel1.add(lblSeguro);
-        lblSeguro.setBounds(30, 300, 130, 20);
+        jPanel1.add(lblSeguro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, 20));
 
         btnAgregar.setBackground(new java.awt.Color(255, 255, 255));
         btnAgregar.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -181,8 +169,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 btnAgregarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAgregar);
-        btnAgregar.setBounds(20, 400, 360, 50);
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 360, 50));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
@@ -196,8 +183,7 @@ public class AgregarContratosView extends javax.swing.JFrame {
         lblmonto.setText("TOTAL CONTRATO: $ ");
         jPanel4.add(lblmonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 20));
 
-        jPanel1.add(jPanel4);
-        jPanel4.setBounds(20, 340, 360, 50);
+        jPanel1.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 360, 50));
 
         btnLimpiarContrato.setBackground(new java.awt.Color(255, 255, 255));
         btnLimpiarContrato.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -221,12 +207,10 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 btnLimpiarContratoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLimpiarContrato);
-        btnLimpiarContrato.setBounds(20, 460, 150, 50);
+        jPanel1.add(btnLimpiarContrato, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 460, 150, 50));
 
         jSeparator9.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jPanel1.add(jSeparator9);
-        jSeparator9.setBounds(200, 460, 10, 50);
+        jPanel1.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 10, 50));
 
         btnVolver.setBackground(new java.awt.Color(255, 255, 255));
         btnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -252,11 +236,9 @@ public class AgregarContratosView extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver);
-        btnVolver.setBounds(230, 460, 150, 50);
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, 150, 50));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(20, 50, 440, 550);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 440, 550));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -302,14 +284,12 @@ public class AgregarContratosView extends javax.swing.JFrame {
         });
         jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 30, 30));
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 470, 50);
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 50));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 470, 620);
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 470, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

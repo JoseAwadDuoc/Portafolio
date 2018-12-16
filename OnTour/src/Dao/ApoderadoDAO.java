@@ -30,7 +30,7 @@ public class ApoderadoDAO extends DbUtilidades {
         try {
 
             Statement st = Conexion.conectar().createStatement();
-            String sql = "Select * From apoderado where estado = 1";
+            String sql = "Select a.rut_apoderado as Rut,CONCAT(CONCAT(CONCAT(CONCAT(a.nombres,' '),a.apaterno),' '), a.amaterno) as Nombre, c.nombre_comuna as Comuna,a.direccion as Dirección,a.correo as Correo, a.telefono as Teléfono, a.pass_apoderado as Contraseña From apoderado a join comuna c on(a.idcomuna=c.idcomuna) where estado = 1";
 
             ResultSet rs = st.executeQuery(sql);
 

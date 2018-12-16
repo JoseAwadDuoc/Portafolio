@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
 import AppPackage.AnimationClass;
+import utils.GuiUtils;
 
 /**
  *
@@ -40,7 +41,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 //        this.jPanel2.setBackground(new Color(12,161,215));
         jPanel1.setBackground(Color.white);
 
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         RepresentanteAgencia rp = new RepresentanteAgencia();
         LblMensajeBienvenido1.setText(AutenticacionDAO.RP.getNombre() + " " + AutenticacionDAO.RP.getaPaterno());
     }

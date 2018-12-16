@@ -17,6 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.KeyValue;
+import utils.GuiUtils;
 
 /**
  *
@@ -38,9 +39,9 @@ public class MenuColegioView extends javax.swing.JFrame {
      */
     public MenuColegioView() {
         this.setUndecorated(true);
-        this.setMinimumSize(new Dimension(955, 813));
+        this.setMinimumSize(new Dimension(955,623));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
         this.jPanelAgregarColegio.setVisible(false);
         this.btnModificarColegio.setVisible(false);
@@ -63,7 +64,7 @@ public class MenuColegioView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblLogo = new javax.swing.JLabel();
         btnListarColegio = new javax.swing.JPanel();
-        BtnAgregarColegio = new javax.swing.JButton();
+        btnAgregarColegio = new javax.swing.JButton();
         btnConsultarColegios = new javax.swing.JButton();
         btnModificarColegio = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
@@ -78,7 +79,7 @@ public class MenuColegioView extends javax.swing.JFrame {
         LblComunaColegio = new javax.swing.JLabel();
         LblTelefonoColegio = new javax.swing.JLabel();
         TxtTelefonoColegio = new javax.swing.JTextField();
-        BtnAgregarColegio1 = new javax.swing.JButton();
+        btnAgregarColegio1 = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -147,19 +148,41 @@ public class MenuColegioView extends javax.swing.JFrame {
         btnListarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Admistrador de Colegio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
         btnListarColegio.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BtnAgregarColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnAgregarColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddColegio2.png"))); // NOI18N
-        BtnAgregarColegio.setText("Agregar");
-        BtnAgregarColegio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarColegioActionPerformed(evt);
+        btnAgregarColegio.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAgregarColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddColegio2.png"))); // NOI18N
+        btnAgregarColegio.setText("Agregar");
+        btnAgregarColegio.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnAgregarColegioMouseMoved(evt);
             }
         });
-        btnListarColegio.add(BtnAgregarColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 59, -1, 65));
+        btnAgregarColegio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarColegioMouseExited(evt);
+            }
+        });
+        btnAgregarColegio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarColegioActionPerformed(evt);
+            }
+        });
+        btnListarColegio.add(btnAgregarColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 59, -1, 65));
 
+        btnConsultarColegios.setBackground(new java.awt.Color(255, 255, 255));
         btnConsultarColegios.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnConsultarColegios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Listar.png"))); // NOI18N
         btnConsultarColegios.setText("Consultar");
+        btnConsultarColegios.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnConsultarColegiosMouseMoved(evt);
+            }
+        });
+        btnConsultarColegios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnConsultarColegiosMouseExited(evt);
+            }
+        });
         btnConsultarColegios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarColegiosActionPerformed(evt);
@@ -167,9 +190,20 @@ public class MenuColegioView extends javax.swing.JFrame {
         });
         btnListarColegio.add(btnConsultarColegios, new org.netbeans.lib.awtextra.AbsoluteConstraints(201, 59, -1, 65));
 
+        btnModificarColegio.setBackground(new java.awt.Color(255, 255, 255));
         btnModificarColegio.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnModificarColegio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Delete.png"))); // NOI18N
         btnModificarColegio.setText("Eliminar");
+        btnModificarColegio.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnModificarColegioMouseMoved(evt);
+            }
+        });
+        btnModificarColegio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnModificarColegioMouseExited(evt);
+            }
+        });
         btnModificarColegio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModificarColegioActionPerformed(evt);
@@ -261,18 +295,28 @@ public class MenuColegioView extends javax.swing.JFrame {
         jPanelAgregarColegio.add(TxtTelefonoColegio);
         TxtTelefonoColegio.setBounds(120, 250, 220, 40);
 
-        BtnAgregarColegio1.setBackground(new java.awt.Color(255, 255, 255));
-        BtnAgregarColegio1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BtnAgregarColegio1.setForeground(new java.awt.Color(12, 161, 215));
-        BtnAgregarColegio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
-        BtnAgregarColegio1.setText("Agregar");
-        BtnAgregarColegio1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAgregarColegio1ActionPerformed(evt);
+        btnAgregarColegio1.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarColegio1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnAgregarColegio1.setForeground(new java.awt.Color(12, 161, 215));
+        btnAgregarColegio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Guardar.png"))); // NOI18N
+        btnAgregarColegio1.setText("Agregar");
+        btnAgregarColegio1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnAgregarColegio1MouseMoved(evt);
             }
         });
-        jPanelAgregarColegio.add(BtnAgregarColegio1);
-        BtnAgregarColegio1.setBounds(120, 300, 220, 50);
+        btnAgregarColegio1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarColegio1MouseExited(evt);
+            }
+        });
+        btnAgregarColegio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarColegio1ActionPerformed(evt);
+            }
+        });
+        jPanelAgregarColegio.add(btnAgregarColegio1);
+        btnAgregarColegio1.setBounds(120, 300, 220, 50);
 
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jPanelAgregarColegio.add(jSeparator1);
@@ -311,12 +355,12 @@ public class MenuColegioView extends javax.swing.JFrame {
         jPanel1.add(jPanelListarColegios, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 488, 180));
 
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 50, 950, 760);
+        jPanel1.setBounds(0, 50, 950, 570);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnAgregarColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarColegioActionPerformed
+    private void btnAgregarColegioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColegioActionPerformed
         // TODO add your handling code here:
         this.jPanelAgregarColegio.setVisible(true);
         this.jPanelListarColegios.setVisible(false);
@@ -324,7 +368,7 @@ public class MenuColegioView extends javax.swing.JFrame {
 //        this.setVisible(false);
 //        agregarColegio.setLocationRelativeTo(null);
 //        agregarColegio.setVisible(true);
-    }//GEN-LAST:event_BtnAgregarColegioActionPerformed
+    }//GEN-LAST:event_btnAgregarColegioActionPerformed
 
     private void cmbCiudadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCiudadItemStateChanged
         // TODO add your handling code here:
@@ -334,7 +378,7 @@ public class MenuColegioView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cmbCiudadItemStateChanged
 
-    private void BtnAgregarColegio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAgregarColegio1ActionPerformed
+    private void btnAgregarColegio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarColegio1ActionPerformed
         // TODO add your handling code here:
         try {
 
@@ -351,7 +395,7 @@ public class MenuColegioView extends javax.swing.JFrame {
             e.printStackTrace();
         }
 
-    }//GEN-LAST:event_BtnAgregarColegio1ActionPerformed
+    }//GEN-LAST:event_btnAgregarColegio1ActionPerformed
 
     private void btnConsultarColegiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarColegiosActionPerformed
 
@@ -438,6 +482,46 @@ public class MenuColegioView extends javax.swing.JFrame {
         MenuPrin.setVisible(true);
     }//GEN-LAST:event_btnVolverActionPerformed
 
+    private void btnAgregarColegioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarColegioMouseMoved
+        // TODO add your handling code here:
+        btnAgregarColegio.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnAgregarColegioMouseMoved
+
+    private void btnAgregarColegioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarColegioMouseExited
+        // TODO add your handling code here:
+        btnAgregarColegio.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnAgregarColegioMouseExited
+
+    private void btnConsultarColegiosMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarColegiosMouseMoved
+        // TODO add your handling code here:
+        btnConsultarColegios.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnConsultarColegiosMouseMoved
+
+    private void btnConsultarColegiosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnConsultarColegiosMouseExited
+        // TODO add your handling code here:
+        btnConsultarColegios.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnConsultarColegiosMouseExited
+
+    private void btnModificarColegioMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarColegioMouseMoved
+        // TODO add your handling code here:
+        btnModificarColegio.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnModificarColegioMouseMoved
+
+    private void btnModificarColegioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarColegioMouseExited
+        // TODO add your handling code here:
+        btnModificarColegio.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnModificarColegioMouseExited
+
+    private void btnAgregarColegio1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarColegio1MouseMoved
+        // TODO add your handling code here:
+        btnAgregarColegio1.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnAgregarColegio1MouseMoved
+
+    private void btnAgregarColegio1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarColegio1MouseExited
+        // TODO add your handling code here:
+        btnAgregarColegio1.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnAgregarColegio1MouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -474,8 +558,6 @@ public class MenuColegioView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAgregarColegio;
-    private javax.swing.JButton BtnAgregarColegio1;
     private javax.swing.JButton BtnCerrar;
     private javax.swing.JLabel LblCiudadColegio;
     private javax.swing.JLabel LblComunaColegio;
@@ -485,6 +567,8 @@ public class MenuColegioView extends javax.swing.JFrame {
     private javax.swing.JTextField TxtDireccionColegio;
     private javax.swing.JTextField TxtNombreColegio;
     private javax.swing.JTextField TxtTelefonoColegio;
+    private javax.swing.JButton btnAgregarColegio;
+    private javax.swing.JButton btnAgregarColegio1;
     private javax.swing.JButton btnConsultarColegios;
     private javax.swing.JPanel btnListarColegio;
     private javax.swing.JButton btnModificarColegio;
