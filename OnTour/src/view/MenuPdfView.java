@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import model.KeyValue;
+import utils.GuiUtils;
 
 /**
  *
@@ -44,7 +45,7 @@ public class MenuPdfView extends javax.swing.JFrame {
         this.setUndecorated(true);
         this.setMinimumSize(new Dimension(810,531));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.CmbContrato.setModel(contratoDao.obtenerContrato());
 
         this.tablePdf.setVisible(true);

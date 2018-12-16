@@ -17,6 +17,7 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import utils.GuiUtils;
 
 /**
  *
@@ -43,7 +44,7 @@ public class MenuSegurosView extends javax.swing.JFrame {
         this.setUndecorated(true);
         this.setMinimumSize(new Dimension(790, 500));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.btnModificarSeguros.setVisible(false);
         this.jPanelListarSeguros.setVisible(false);
     }

@@ -16,6 +16,7 @@ import model.Apoderado;
 import model.Ciudad;
 import model.Comuna;
 import model.KeyValue;
+import utils.GuiUtils;
 
 /**
  *
@@ -38,7 +39,7 @@ public class ModificarApoderadoView extends javax.swing.JFrame {
     public ModificarApoderadoView(int rutApoderado) {
         this.setMinimumSize(new Dimension(478, 600));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
         if (rutApoderado > 0) {
             this.txtRut.setText(String.valueOf(rutApoderado));

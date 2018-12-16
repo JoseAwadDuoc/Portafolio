@@ -137,9 +137,9 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 				<textFieldExpression><![CDATA[$F{NOMBRE_ASEGURADORA}]]></textFieldExpression>
 			</textField>
 			<elementGroup/>
-			<barChart>
+			<bar3DChart>
 				<chart>
-					<reportElement x="262" y="10" width="521" height="278" uuid="45c8a242-1ffc-4d5a-82ab-83d7cecae016"/>
+					<reportElement x="264" y="0" width="522" height="286"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -156,8 +156,8 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 						<valueExpression><![CDATA[$F{Deposito a la Fecha}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
-				<barPlot>
-					<plot/>
+				<bar3DPlot>
+					<plot orientation="Horizontal"/>
 					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
 					<categoryAxisFormat>
 						<axisFormat/>
@@ -165,8 +165,8 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 					<valueAxisFormat>
 						<axisFormat/>
 					</valueAxisFormat>
-				</barPlot>
-			</barChart>
+				</bar3DPlot>
+			</bar3DChart>
 		</band>
 	</detail>
 	<columnFooter>

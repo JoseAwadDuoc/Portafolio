@@ -28,17 +28,11 @@ public class Main {
             AutenticacionView login = new AutenticacionView();
             login.setLocationRelativeTo(null);
             login.setVisible(true);
-
-            services.OnTourServices.main(args);
-
-            Conexion con = new Conexion();
-            con.conectar();
-
-//            GenerarReporteDAO g = new GenerarReporteDAO();
-//            g.GenerarReporteAvance(1);
-
+            //services.OnTourServices.main(args);
         } catch (Exception e) {
+            e.printStackTrace();
             System.out.println("Error al iniciar " + e);
+            System.exit(-1);
         }
     }
 }

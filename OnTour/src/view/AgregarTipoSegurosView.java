@@ -6,6 +6,7 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import model.TipoSeguro;
+import utils.GuiUtils;
 
 /**
  *
@@ -23,7 +24,7 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
         this.setUndecorated(true);
         this.setMinimumSize(new Dimension(480, 330));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
     }
 
     /**
@@ -51,7 +52,7 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -97,8 +98,7 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
         });
         jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, 30, 30));
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 480, 50);
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 50));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -200,8 +200,7 @@ public class AgregarTipoSegurosView extends javax.swing.JFrame {
 
         jPanel1.add(jpanelRegistrarSeguro, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 440, 250));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 50, 480, 280);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 480, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

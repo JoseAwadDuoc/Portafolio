@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import utils.GuiUtils;
 
 /**
  *
@@ -25,7 +26,7 @@ public final class MenuApoderadoView extends javax.swing.JFrame {
         this.setUndecorated(true);
         this.setMinimumSize(new Dimension(720, 570));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.lblModificarApoderado.setVisible(false);
         this.tableApoderados.setVisible(false);
 
