@@ -67,7 +67,12 @@ public class AlumnosController {
         return modelotabla;
     }
     
-    
+     public Alumno buscaralumnoxrut(int rut) throws Exception{
+        if (rut <= 0) {
+            throw new Exception("Rut invalido");
+        }
+        return this.alumnoDAO.buscaralumnoporRut(rut);
+    }
     
   
     
@@ -88,7 +93,7 @@ public class AlumnosController {
         if (!alumno.getFechaNacimiento().contains("/")) {
             throw new Exception("Formato de fecha de nacimiento invalida");
         }
-        boolean creado = this.alumnoDAO.actualizarAlumno(alumno);
+        boolean creado = this.alumnoDAO.agregarAlumno(alumno);
         System.out.println("creado "+creado);
         
         return creado;

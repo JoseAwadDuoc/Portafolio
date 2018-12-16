@@ -50,4 +50,22 @@ public class ComunaDAO extends DbUtilidades {
         }
         return comuna;
     }
+    
+    public int obtenerIDComuna(String comuna) {
+
+        ResultSet rs = this.consulta("SELECT IDCOMUNA FROM COMUNA WHERE NOMBRE_COMUNA ='"+comuna+"'");
+        int idcomuna = 0;
+        try {
+            while (rs.next()) {
+                idcomuna = rs.getInt("IDCOMUNA");
+
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return idcomuna;
+    }
 }
