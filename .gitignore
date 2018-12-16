@@ -1,3 +1,4 @@
-/OnTour/dist/
-/OnTour/build/
+OnTour/dist/**
+OnTour/build/**
 bkp/
+nbproject/**
