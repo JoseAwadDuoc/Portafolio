@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
@@ -21,6 +22,8 @@ import javax.swing.Timer;
 import javax.swing.UIManager;
 import javax.swing.border.AbstractBorder;
 import javax.swing.border.EmptyBorder;
+import org.apache.commons.io.IOUtils;
+import utils.GuiUtils;
 
 /**
  *
@@ -47,13 +50,7 @@ public class AutenticacionView extends javax.swing.JFrame {
         this.setMinimumSize(new Dimension(490, 590));
         this.setUndecorated(true);
         initComponents();
-//        UIManager.put("TextField.background", Color.WHITE);
-//        UIManager.put("TextField.border", BorderFactory.createCompoundBorder(
-//                new CustomeBorder(),
-//                new EmptyBorder(new Insets(4, 4, 4, 4))));
-//        this.getContentPane().setBackground(Color.white);
-//        jPanel1.setBackground(Color.white);
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.pbBarra.setVisible(false);
     }
 
@@ -86,7 +83,7 @@ public class AutenticacionView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
         setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -94,12 +91,11 @@ public class AutenticacionView extends javax.swing.JFrame {
                 BtnCerrarActionPerformed(evt);
             }
         });
-        getContentPane().add(BtnCerrar);
-        BtnCerrar.setBounds(450, 10, 30, 30);
+        getContentPane().add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 30, 30));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jPanel1.setLayout(null);
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         TxtRut.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         TxtRut.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
@@ -108,13 +104,11 @@ public class AutenticacionView extends javax.swing.JFrame {
                 TxtRutActionPerformed(evt);
             }
         });
-        jPanel1.add(TxtRut);
-        TxtRut.setBounds(120, 210, 280, 30);
+        jPanel1.add(TxtRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 280, 30));
 
         TxtPass.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         TxtPass.setBorder(null);
-        jPanel1.add(TxtPass);
-        TxtPass.setBounds(120, 300, 280, 30);
+        jPanel1.add(TxtPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 280, 30));
 
         BtnAutenticacion.setBackground(new java.awt.Color(255, 255, 255));
         BtnAutenticacion.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -136,47 +130,37 @@ public class AutenticacionView extends javax.swing.JFrame {
                 BtnAutenticacionActionPerformed(evt);
             }
         });
-        jPanel1.add(BtnAutenticacion);
-        BtnAutenticacion.setBounds(70, 350, 330, 60);
-        jPanel1.add(pbBarra);
-        pbBarra.setBounds(70, 420, 330, 20);
+        jPanel1.add(BtnAutenticacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 330, 60));
+        jPanel1.add(pbBarra, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 420, 330, 20));
 
         lblRut.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblRut.setText("RUT: ");
-        jPanel1.add(lblRut);
-        lblRut.setBounds(70, 180, 50, 22);
+        jPanel1.add(lblRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 50, -1));
 
         lblPass.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lblPass.setText("Contraseña: ");
-        jPanel1.add(lblPass);
-        lblPass.setBounds(60, 250, 130, 22);
+        jPanel1.add(lblPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 130, -1));
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
-        jPanel1.add(Logo);
-        Logo.setBounds(140, 10, 180, 160);
+        jPanel1.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 180, 160));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
         jSeparator1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(70, 330, 330, 10);
+        jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 330, 10));
 
         LblIconUserKey.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/KeyLogin.png"))); // NOI18N
-        jPanel1.add(LblIconUserKey);
-        LblIconUserKey.setBounds(70, 290, 50, 40);
+        jPanel1.add(LblIconUserKey, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 50, 40));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jSeparator2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jPanel1.add(jSeparator2);
-        jSeparator2.setBounds(70, 240, 330, 10);
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 240, 330, 10));
 
         LblIconUser1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/UserLogin.png"))); // NOI18N
-        jPanel1.add(LblIconUser1);
-        LblIconUser1.setBounds(70, 200, 40, 40);
+        jPanel1.add(LblIconUser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 200, 40, 40));
 
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(0, 50, 490, 540);
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 490, 540));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -195,8 +179,7 @@ public class AutenticacionView extends javax.swing.JFrame {
         lblLogoMenu.setText("On Tour");
         jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
 
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(0, 0, 490, 50);
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 490, 50));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

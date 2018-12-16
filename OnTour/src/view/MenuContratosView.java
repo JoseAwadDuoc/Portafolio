@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import utils.GuiUtils;
 
 /**
  *
@@ -29,7 +30,7 @@ public class MenuContratosView extends javax.swing.JFrame {
         this.setUndecorated(true);
         this.setMinimumSize(new Dimension(960, 530));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.tableContratos.setVisible(false);
         this.btnEliminar.setEnabled(false);
     }
