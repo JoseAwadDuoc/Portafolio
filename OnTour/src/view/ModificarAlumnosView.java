@@ -10,15 +10,12 @@ import Dao.ColegioDAO;
 import Dao.ComunaDAO;
 import Dao.ContratoDAO;
 import controller.AlumnosController;
-import controller.ApoderadosController;
-import controller.ContratosController;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
-import javax.swing.ImageIcon;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import model.Alumno;
 import model.Ciudad;
-import model.Colegio;
 import model.Comuna;
 import model.KeyValue;
 import utils.GuiUtils;
@@ -34,20 +31,19 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     private ComunaDAO comunaDAO = new ComunaDAO();
     private ContratoDAO contratoDao = new ContratoDAO();
     private ColegioDAO colegioDao = new ColegioDAO();
-    
+
     private Alumno alumnoActual = null;
-    
+
     /**
      * Creates new form ModificarApoderadoView
      */
-
     /**
      *
      * @param rutApoderado rutApoderado
      */
     public ModificarAlumnosView(int rutAlumno) {
-
-        this.setMinimumSize(new Dimension(478, 600));
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(590, 730));
         initComponents();
         setIconImage(GuiUtils.getImage("logo1.png"));
         this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
@@ -55,6 +51,7 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             this.txtRut.setText(String.valueOf(rutAlumno));
             this.btnBuscarxRut.doClick();
         }
+        this.btnmodificar.setEnabled(false);
         txtrutapoderado.setVisible(false);
     }
 
@@ -68,107 +65,196 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        btnmodificar = new javax.swing.JButton();
-        btnBuscarxRut = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lblLogoMenu = new javax.swing.JLabel();
+        lblMinimizar = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         txtRut = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        btnBuscarxRut = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
+        jToolBar1 = new javax.swing.JToolBar();
         jLabel2 = new javax.swing.JLabel();
         txtNombreUsuario = new javax.swing.JTextField();
+        jSeparator3 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
+        txtAppPaterno = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
+        txtAppMaterno = new javax.swing.JTextField();
+        jSeparator5 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         lblComuna = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtAppPaterno = new javax.swing.JTextField();
-        txtAppMaterno = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
         cmbCiudad = new javax.swing.JComboBox<>();
         cmbComuna = new javax.swing.JComboBox<>();
+        txtTelefono = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        txtFNacimiento = new javax.swing.JTextField();
-        lblmensaje = new javax.swing.JLabel();
         txtrutapoderado = new javax.swing.JTextField();
+        lblmensaje = new javax.swing.JLabel();
+        btnmodificar = new javax.swing.JButton();
+        BtnVolver = new javax.swing.JButton();
+        txtFNacimiento = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        lblFormatoFecha = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(null);
 
-        btnmodificar.setText("Modificar Alumno");
-        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnmodificarActionPerformed(evt);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
             }
         });
-        getContentPane().add(btnmodificar);
-        btnmodificar.setBounds(140, 460, 220, 40);
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, 30));
 
-        btnBuscarxRut.setBackground(new java.awt.Color(204, 0, 204));
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 10, 30, 30));
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 590, 50);
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Modificar Alumno", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        txtRut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtRut.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtRut.setBorder(null);
+        txtRut.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        txtRut.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jPanel1.add(txtRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 160, 20));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Rut Alumno:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 100, -1));
+
+        btnBuscarxRut.setBackground(new java.awt.Color(255, 255, 255));
         btnBuscarxRut.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnBuscarxRut.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ShearchApoderado.png"))); // NOI18N
         btnBuscarxRut.setText("Buscar");
+        btnBuscarxRut.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnBuscarxRutMouseMoved(evt);
+            }
+        });
+        btnBuscarxRut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarxRutMouseExited(evt);
+            }
+        });
         btnBuscarxRut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarxRutActionPerformed(evt);
             }
         });
-        getContentPane().add(btnBuscarxRut);
-        btnBuscarxRut.setBounds(290, 10, 170, 60);
+        jPanel1.add(btnBuscarxRut, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 150, 60));
 
-        jButton3.setText("Volver");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(382, 488, 69, 25);
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 300, 10));
 
-        jLabel1.setText("Rut Alumno:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(23, 17, 71, 16);
-        getContentPane().add(txtRut);
-        txtRut.setBounds(118, 14, 122, 22);
+        jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jToolBar1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jToolBar1.setRollover(true);
+        jPanel1.add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 480, 10));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Nombre:");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(86, 80, 50, 16);
-        getContentPane().add(txtNombreUsuario);
-        txtNombreUsuario.setBounds(154, 77, 228, 22);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
 
+        txtNombreUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtNombreUsuario.setBorder(null);
+        jPanel1.add(txtNombreUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 220, 20));
+
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 250, 20));
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Apellido Paterno:");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(35, 109, 98, 16);
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, -1, -1));
 
+        txtAppPaterno.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtAppPaterno.setBorder(null);
+        jPanel1.add(txtAppPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 210, 20));
+
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 290, 20));
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Apellido Materno:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(35, 138, 101, 16);
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
 
+        txtAppMaterno.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtAppMaterno.setBorder(null);
+        jPanel1.add(txtAppMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 220, 210, 20));
+
+        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 290, 20));
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel12.setText("Fecha de Nacimiento:");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Telefono:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(76, 199, 55, 14);
-        getContentPane().add(jSeparator1);
-        jSeparator1.setBounds(12, 45, 399, 6);
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, 14));
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Ciudad:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(87, 228, 44, 16);
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, -1, -1));
 
+        lblComuna.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblComuna.setText("Comuna:");
-        getContentPane().add(lblComuna);
-        lblComuna.setBounds(79, 260, 52, 16);
-
-        jLabel9.setText("Dirección:");
-        getContentPane().add(jLabel9);
-        jLabel9.setBounds(70, 360, 57, 16);
-        getContentPane().add(txtAppPaterno);
-        txtAppPaterno.setBounds(154, 106, 228, 22);
-        getContentPane().add(txtAppMaterno);
-        txtAppMaterno.setBounds(154, 135, 228, 22);
-        getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(154, 199, 228, 22);
+        jPanel1.add(lblComuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 370, -1, -1));
 
         cmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
         cmbCiudad.addItemListener(new java.awt.event.ItemListener() {
@@ -176,29 +262,88 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
                 cmbCiudadItemStateChanged(evt);
             }
         });
-        getContentPane().add(cmbCiudad);
-        cmbCiudad.setBounds(154, 228, 228, 22);
+        jPanel1.add(cmbCiudad, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 330, 210, 30));
 
         cmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
-        getContentPane().add(cmbComuna);
-        cmbComuna.setBounds(154, 257, 228, 22);
-        getContentPane().add(txtDireccion);
-        txtDireccion.setBounds(150, 350, 228, 22);
+        jPanel1.add(cmbComuna, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 370, 210, 30));
 
-        jLabel12.setText("Fecha de Nacimiento:");
-        getContentPane().add(jLabel12);
-        jLabel12.setBounds(12, 167, 124, 16);
-        getContentPane().add(txtFNacimiento);
-        txtFNacimiento.setBounds(154, 164, 228, 22);
+        txtTelefono.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtTelefono.setBorder(null);
+        jPanel1.add(txtTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 210, 30));
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Dirección:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, -1, 20));
+
+        txtDireccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtDireccion.setBorder(null);
+        jPanel1.add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 410, 210, 30));
+
+        txtrutapoderado.setBorder(null);
+        jPanel1.add(txtrutapoderado, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 130, -1, 30));
 
         lblmensaje.setForeground(new java.awt.Color(255, 51, 0));
         lblmensaje.setText("jLabel13");
-        getContentPane().add(lblmensaje);
-        lblmensaje.setBounds(40, 440, 301, 16);
+        jPanel1.add(lblmensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 301, 20));
 
-        txtrutapoderado.setText("jTextField1");
-        getContentPane().add(txtrutapoderado);
-        txtrutapoderado.setBounds(150, 390, 69, 22);
+        btnmodificar.setText("Modificar Alumno");
+        btnmodificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmodificarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnmodificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 480, 300, 50));
+
+        BtnVolver.setBackground(new java.awt.Color(255, 255, 255));
+        BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
+        BtnVolver.setText("Volver");
+        BtnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnVolver.setIconTextGap(-10);
+        BtnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        BtnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnVolverMouseMoved(evt);
+            }
+        });
+        BtnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnVolverMouseExited(evt);
+            }
+        });
+        BtnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(BtnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, -1, -1));
+
+        txtFNacimiento.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txtFNacimiento.setBorder(null);
+        jPanel1.add(txtFNacimiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 210, 30));
+
+        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 240, 290, 20));
+
+        lblFormatoFecha.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblFormatoFecha.setText("(dd-MM-YYYY)");
+        jPanel1.add(lblFormatoFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
+
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 300, 20));
+
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jPanel1.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 320, 300, 10));
+
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 500, 620));
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 50, 590, 680);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -206,7 +351,6 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     private void btnBuscarxRutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarxRutActionPerformed
         lblmensaje.setText("");
         try {
-            //Obtener apoderado
             String rut = txtRut.getText();
 
             alumnoActual = this.controller.buscaralumnoxrut(Integer.parseInt(rut));
@@ -215,19 +359,23 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             txtAppPaterno.setText(String.valueOf(alumnoActual.getaPaterno()));
             txtAppMaterno.setText(String.valueOf(alumnoActual.getaMaterno()));
             txtFNacimiento.setText(String.valueOf(alumnoActual.getFechaNacimiento()));
+//          jDateChooserFechaNac.setToolTipText(String.valueOf(alumnoActual.getFechaNacimiento()));
             txtTelefono.setText(String.valueOf(alumnoActual.getTelefono()));
             txtDireccion.setText(String.valueOf(alumnoActual.getDireccion()));
             txtrutapoderado.setText(String.valueOf(alumnoActual.getRut_apoderado()));
 
             Comuna comuna = comunaDAO.obtenerComunaPorId(alumnoActual.getIdcomuna());
             Ciudad ciudad = ciudadDAO.obtenerCiudadPorId(comuna.getIdCiudad());
-            
+
             cmbCiudad.setSelectedItem(new KeyValue(ciudad.getId(), ciudad.getNombre()));
             this.cmbComuna.setModel(comunaDAO.obtenerComunas(ciudad.getNombre()));
             cmbComuna.setSelectedItem(new KeyValue(comuna.getId(), comuna.getNombre()));
-            
+
+            this.btnmodificar.setEnabled(true);
+
         } catch (Exception e) {
-            lblmensaje.setText("El Objeto de Busqueda, no existe.");
+            JOptionPane.showMessageDialog(this, "El Alumno en busqueda, No Existe", "Error", JOptionPane.ERROR_MESSAGE);
+//            lblmensaje.setText("El Objeto de Busqueda, no existe.");
         }
     }//GEN-LAST:event_btnBuscarxRutActionPerformed
 
@@ -241,6 +389,7 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbCiudadItemStateChanged
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/YYYY");
         try {
             int rut = Integer.parseInt(txtRut.getText());
             String nombre = txtNombreUsuario.getText();
@@ -248,12 +397,13 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             String aMaterno = txtAppMaterno.getText();
             int telefono = Integer.parseInt(txtTelefono.getText());
             String fnacimiento = txtFNacimiento.getText();
+//            Date fnacimiento = formato.format(jDateChooserFechaNac.getDate());
             int rutapoderado = Integer.parseInt(txtrutapoderado.getText());
             if (txtTelefono.getText().length() != 9) {
                 throw new Exception("Número de teléfono invalido");
             }
 
-             KeyValue comuna = (KeyValue) cmbComuna.getSelectedItem();
+            KeyValue comuna = (KeyValue) cmbComuna.getSelectedItem();
 
             if ("Seleccione Comuna".equals(comuna.getText())) {
                 throw new Exception("Seleccione Ciudad y Comuna");
@@ -262,7 +412,7 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             int idcomuna = comuna.getId();
 
             String direccion = txtDireccion.getText();
-            
+
             alumnoActual.setRut(rut);
             alumnoActual.setRut_apoderado(rutapoderado);
             alumnoActual.setIdcomuna(idcomuna);
@@ -273,7 +423,15 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             alumnoActual.setTelefono(telefono);
             alumnoActual.setDireccion(direccion);
 
-           controller.actualizarAlumno(alumnoActual);
+            boolean actualizado = controller.actualizarAlumno(alumnoActual);
+
+            System.out.println("alumno actualizado: " + actualizado);
+
+            if (actualizado) {
+                JOptionPane.showMessageDialog(this, "Alumnos actualizado");
+            } else {
+                JOptionPane.showMessageDialog(this, "El alumnos no se pudo actualizar", "Error", JOptionPane.ERROR_MESSAGE);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -281,13 +439,66 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnmodificarActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void BtnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnVolverMouseMoved
+        // TODO add your handling code here:
+        BtnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnVolverMouseMoved
+
+    private void BtnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnVolverMouseExited
+        // TODO add your handling code here:
+        BtnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnVolverMouseExited
+
+    private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
         // TODO add your handling code here:
         this.setVisible(false);
-        MenuApoderadoView MenuApode = new MenuApoderadoView();
-        MenuApode.setLocationRelativeTo(null);
-        MenuApode.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        MenuAlumnosView MenuAlumnos = new MenuAlumnosView();
+        MenuAlumnos.setLocationRelativeTo(null);
+        MenuAlumnos.setVisible(true);
+    }//GEN-LAST:event_BtnVolverActionPerformed
+
+    private void btnBuscarxRutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarxRutMouseExited
+        // TODO add your handling code here:
+        btnBuscarxRut.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnBuscarxRutMouseExited
+
+    private void btnBuscarxRutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarxRutMouseMoved
+        // TODO add your handling code here:
+        btnBuscarxRut.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnBuscarxRutMouseMoved
+
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,12 +537,13 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrar;
+    private javax.swing.JButton BtnVolver;
     private javax.swing.JButton btnBuscarxRut;
     private javax.swing.JButton btnmodificar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbCiudad;
     private javax.swing.JComboBox<String> cmbComuna;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -340,8 +552,21 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblComuna;
+    private javax.swing.JLabel lblFormatoFecha;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     private javax.swing.JLabel lblmensaje;
     private javax.swing.JTextField txtAppMaterno;
     private javax.swing.JTextField txtAppPaterno;

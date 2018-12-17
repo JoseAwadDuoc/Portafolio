@@ -36,7 +36,7 @@ public class MenuAlumnosView extends javax.swing.JFrame {
 
         DefaultTableModel modelotabla = this.controller.consultaralumnos_todos();
         this.tableAlumnos.setModel(modelotabla);
-         this.btnFiltrar.setVisible(false);
+        this.btnFiltrar.setVisible(false);
     }
 
     /**
@@ -206,8 +206,7 @@ public class MenuAlumnosView extends javax.swing.JFrame {
 
     private void cmbCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCursoItemStateChanged
 
-  this.btnFiltrar.setVisible(true);
-
+        this.btnFiltrar.setVisible(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbCursoItemStateChanged
@@ -215,23 +214,22 @@ public class MenuAlumnosView extends javax.swing.JFrame {
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
 
         //Obtención ID CURSO (Para uso en el insert)//
-            String combocur = String.valueOf(cmbCurso.getSelectedItem());
-            String combocur1 = contratoDAO.obtenerIdCurso(combocur);
-            int idcurso = Integer.parseInt(combocur1);
-            
-            try {
+        String combocur = String.valueOf(cmbCurso.getSelectedItem());
+        String combocur1 = contratoDAO.obtenerIdCurso(combocur);
+        int idcurso = Integer.parseInt(combocur1);
+
+        try {
             DefaultTableModel modelotabla = this.controller.consultaralumnos_curso(idcurso);
-        this.tableAlumnos.setModel(modelotabla);
+            this.tableAlumnos.setModel(modelotabla);
         } catch (Exception e) {
-              JOptionPane.showMessageDialog(this, "No Existen alumnos para el curso");
+            JOptionPane.showMessageDialog(this, "No Existen alumnos para el curso");
         }
-        
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
     private void BtnModificarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarApoderadoActionPerformed
-       int seleccionado = this.tableAlumnos.getSelectedRow();
+        int seleccionado = this.tableAlumnos.getSelectedRow();
         if (seleccionado > -1) {
 
             Object valor = ((DefaultTableModel) this.tableAlumnos.getModel()).getValueAt(seleccionado, 0);
@@ -242,7 +240,7 @@ public class MenuAlumnosView extends javax.swing.JFrame {
             ModificarAlud.setLocationRelativeTo(null);
             ModificarAlud.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(this, "Seleccione un apoderado a modificar");
+            JOptionPane.showMessageDialog(this, "Seleccione un alumno a modificar");
         }
 
         // TODO add your handling code here:
@@ -250,11 +248,15 @@ public class MenuAlumnosView extends javax.swing.JFrame {
 
     private void BtnRegistrarApoderadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoMouseClicked
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_BtnRegistrarApoderadoMouseClicked
 
     private void BtnRegistrarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoActionPerformed
         // TODO add your handling code here:
+        AgregarAlumnosView agregarAlumnos = new AgregarAlumnosView();
+        this.setVisible(false);
+        agregarAlumnos.setLocationRelativeTo(null);
+        agregarAlumnos.setVisible(true);
     }//GEN-LAST:event_BtnRegistrarApoderadoActionPerformed
 
     /**

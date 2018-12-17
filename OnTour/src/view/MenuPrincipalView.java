@@ -157,7 +157,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jPanel4.add(lblMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 130, 70));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(12, 161, 215)));
         jPanel1.setLayout(null);
 
         lblMantenedorSeguros.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
