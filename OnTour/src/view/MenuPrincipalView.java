@@ -11,11 +11,9 @@ import model.RepresentanteAgencia;
 import java.awt.Dimension;
 import java.awt.Insets;
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
-import AppPackage.AnimationClass;
 import utils.GuiUtils;
 
 /**
@@ -24,12 +22,14 @@ import utils.GuiUtils;
  */
 public class MenuPrincipalView extends javax.swing.JFrame {
 
+    private boolean menuLeftShow = false;
+
     /**
      * Creates new form MenuPrincipal
      */
     public MenuPrincipalView() {
         this.setUndecorated(true);
-        this.setMinimumSize(new Dimension(860,670));
+        this.setMinimumSize(new Dimension(860, 670));
         initComponents();
 //        setExtendedState(MAXIMIZED_BOTH);
         UIManager.put("TextField.background", Color.WHITE);
@@ -40,6 +40,8 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 //        this.jMenuBar1.setBackground(new Color(12, 161, 215));
 //        this.jPanel2.setBackground(new Color(12,161,215));
         jPanel1.setBackground(Color.white);
+
+        jPanel5.setVisible(menuLeftShow);
 
         setIconImage(GuiUtils.getImage("logo1.png"));
         RepresentanteAgencia rp = new RepresentanteAgencia();
@@ -60,6 +62,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         lblMinimizar = new javax.swing.JLabel();
         BtnCerrar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        lblMenu = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblMantenedorSeguros = new javax.swing.JLabel();
         lblTextGestionarSeguros = new javax.swing.JLabel();
@@ -75,11 +78,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         LblMensajeBienvenido1 = new javax.swing.JLabel();
         LblMensajeBienvenido = new javax.swing.JLabel();
         Logo = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         lblMenuApoderados = new javax.swing.JLabel();
         lblMenuAlumnos = new javax.swing.JLabel();
         lblMenuColegios = new javax.swing.JLabel();
         lblMenuTipoSeguros = new javax.swing.JLabel();
-        lblMenu = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("On Tour");
@@ -137,7 +140,21 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel4.setOpaque(false);
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblMenu.setForeground(new java.awt.Color(12, 161, 215));
+        lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Menus.png"))); // NOI18N
+        lblMenu.setText("Menú");
+        lblMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        lblMenu.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblMenuMouseClicked(evt);
+            }
+        });
+        jPanel4.add(lblMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 130, 70));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(0, 0, 0)));
@@ -272,6 +289,10 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
         jPanel4.add(Logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, 200, 150));
 
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setOpaque(false);
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         lblMenuApoderados.setBackground(new java.awt.Color(255, 255, 255));
         lblMenuApoderados.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblMenuApoderados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ApoderadosMenu.png"))); // NOI18N
@@ -290,7 +311,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 lblMenuApoderadosMouseExited(evt);
             }
         });
-        jPanel4.add(lblMenuApoderados, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 80, 170, 60));
+        jPanel5.add(lblMenuApoderados, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 170, 60));
 
         lblMenuAlumnos.setBackground(new java.awt.Color(255, 255, 255));
         lblMenuAlumnos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -310,7 +331,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 lblMenuAlumnosMouseExited(evt);
             }
         });
-        jPanel4.add(lblMenuAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 150, 170, 70));
+        jPanel5.add(lblMenuAlumnos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 170, 70));
 
         lblMenuColegios.setBackground(new java.awt.Color(255, 255, 255));
         lblMenuColegios.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -330,7 +351,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 lblMenuColegiosMouseExited(evt);
             }
         });
-        jPanel4.add(lblMenuColegios, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 240, 170, 80));
+        jPanel5.add(lblMenuColegios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 170, 80));
 
         lblMenuTipoSeguros.setBackground(new java.awt.Color(255, 255, 255));
         lblMenuTipoSeguros.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -350,20 +371,9 @@ public class MenuPrincipalView extends javax.swing.JFrame {
                 lblMenuTipoSegurosMouseExited(evt);
             }
         });
-        jPanel4.add(lblMenuTipoSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(-170, 340, 170, 70));
+        jPanel5.add(lblMenuTipoSeguros, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 170, 70));
 
-        lblMenu.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lblMenu.setForeground(new java.awt.Color(12, 161, 215));
-        lblMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Menus.png"))); // NOI18N
-        lblMenu.setText("Menú");
-        lblMenu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        lblMenu.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        lblMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lblMenuMouseClicked(evt);
-            }
-        });
-        jPanel4.add(lblMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 0, 130, 70));
+        jPanel4.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 180, 350));
 
         getContentPane().add(jPanel4);
         jPanel4.setBounds(0, 50, 860, 620);
@@ -453,24 +463,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         lblDepositos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
     }//GEN-LAST:event_lblDepositosMouseExited
 
+
     private void lblMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuMouseClicked
         // TODO add your handling code here:lblMenu
-
-        AnimationClass apoderados = new AnimationClass();
-        apoderados.jLabelXRight(-170, 10, 4, 5, lblMenuApoderados);
-        apoderados.jLabelXLeft(10, -170, 10, 5, lblMenuApoderados);
-
-        AnimationClass alumnos = new AnimationClass();
-        alumnos.jLabelXRight(-170, 10, 6, 5, lblMenuAlumnos);
-        alumnos.jLabelXLeft(10, -170, 10, 5, lblMenuAlumnos);
-
-        AnimationClass colegios = new AnimationClass();
-        colegios.jLabelXRight(-170, 10, 8, 5, lblMenuColegios);
-        colegios.jLabelXLeft(10, -170, 10, 5, lblMenuColegios);
-
-        AnimationClass tipoSeguros = new AnimationClass();
-        tipoSeguros.jLabelXRight(-170, 10, 10, 5, lblMenuTipoSeguros);
-        tipoSeguros.jLabelXLeft(10, -170, 10, 5, lblMenuTipoSeguros);
+        menuLeftShow = !menuLeftShow;
+        jPanel5.setVisible(menuLeftShow);
     }//GEN-LAST:event_lblMenuMouseClicked
 
     private void lblMenuApoderadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuApoderadosMouseClicked
@@ -580,7 +577,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
     private void lblMenuAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMenuAlumnosMouseClicked
         // TODO add your handling code here:
-         MenuAlumnosView menuAlumnos = new MenuAlumnosView();
+        MenuAlumnosView menuAlumnos = new MenuAlumnosView();
         this.setVisible(false);
         menuAlumnos.setLocationRelativeTo(null);
         menuAlumnos.setVisible(true);
@@ -631,6 +628,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JLabel lblCerrarSesion;
     private javax.swing.JLabel lblDepositos;
     private javax.swing.JLabel lblEstadoCuenta;
