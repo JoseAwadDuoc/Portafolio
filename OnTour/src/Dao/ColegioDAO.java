@@ -63,8 +63,6 @@ public class ColegioDAO extends DbUtilidades {
     }
     
     public Colegio buscarColegioPorId(int idColegio) {
-        
-
         ResultSet rs = this.consulta("Select * from colegio where idcolegio = '" + idColegio + "'");
         Colegio colegio = new Colegio();
         try {
@@ -73,7 +71,6 @@ public class ColegioDAO extends DbUtilidades {
                 colegio.setIdComuna(rs.getInt("idcomuna"));
                 colegio.setDireccion(rs.getString("DIRECCION"));
                 colegio.setTelefono(rs.getInt("TELEFONO"));
-            
             }
             rs.close();
 

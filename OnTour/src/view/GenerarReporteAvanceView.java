@@ -10,22 +10,23 @@ import Dao.GenerarReporteDAO;
 import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
+import model.KeyValue;
 import utils.GuiUtils;
 
 /**
  *
  * @author corellana
  */
-public class GenerarReporteAvance extends javax.swing.JFrame {
+public class GenerarReporteAvanceView extends javax.swing.JFrame {
 
     private ContratoDAO contratoDAO = new ContratoDAO();
     private GenerarReporteDAO reporteDAO = new GenerarReporteDAO();
 
     /**
      * private ContratoDAO contratoDAO = new ContratoDAO(); Creates new form
-     * GenerarReporteAvance
+ generarReporteAvance
      */
-    public GenerarReporteAvance() {
+    public GenerarReporteAvanceView() {
         this.setUndecorated(true);
         this.setMinimumSize(new Dimension(520, 580));
         initComponents();
@@ -242,18 +243,14 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
 
         try {
 
-            //Obtención ID CURSO (Para uso en el insert)//
-            String combocur = String.valueOf(cmbCurso.getSelectedItem());
-            String combocur1 = contratoDAO.obtenerIdCurso(combocur);
-            int idcurso = Integer.parseInt(combocur1);
-
-            int idcontrato = contratoDAO.obtenerIdContratoPorIdCurso(idcurso);
-
-            reporteDAO.GenerarReporteAvance(idcontrato);
+            KeyValue curso = (KeyValue)cmbCurso.getSelectedItem();
+            int idcontrato = contratoDAO.obtenerIdContratoPorIdCurso(curso.getId());
+            
+            reporteDAO.generarReporteAvance(idcontrato);
 
         } catch (Exception e) {
+            e.printStackTrace();
             JOptionPane.showMessageDialog(this, "No se encuentra un Contrato Vigente.");
-           
         }
 
         // TODO add your handling code here:
@@ -351,20 +348,21 @@ public class GenerarReporteAvance extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GenerarReporteAvance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarReporteAvanceView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GenerarReporteAvance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarReporteAvanceView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GenerarReporteAvance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarReporteAvanceView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GenerarReporteAvance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GenerarReporteAvanceView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GenerarReporteAvance().setVisible(true);
+                new GenerarReporteAvanceView().setVisible(true);
             }
         });
     }

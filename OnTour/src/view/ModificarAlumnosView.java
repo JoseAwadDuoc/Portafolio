@@ -35,7 +35,8 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     private ContratoDAO contratoDao = new ContratoDAO();
     private ColegioDAO colegioDao = new ColegioDAO();
     
-
+    private Alumno alumnoActual = null;
+    
     /**
      * Creates new form ModificarApoderadoView
      */
@@ -48,14 +49,12 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
 
         this.setMinimumSize(new Dimension(478, 600));
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("../imagenes/logo1.png")).getImage());
+        setIconImage(GuiUtils.getImage("logo1.png"));
         this.cmbCiudad.setModel(ciudadDAO.obtenerCiudades());
-     this.cmbColegio.setModel(GuiUtils.createModelFromList(contratoDao.obtenerColegios()));
         if (rutAlumno > 0) {
             this.txtRut.setText(String.valueOf(rutAlumno));
             this.btnBuscarxRut.doClick();
         }
-        
         txtrutapoderado.setVisible(false);
     }
 
@@ -92,10 +91,6 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         txtFNacimiento = new javax.swing.JTextField();
         lblmensaje = new javax.swing.JLabel();
-        cmbColegio = new javax.swing.JComboBox<>();
-        cmbCurso = new javax.swing.JComboBox<>();
-        jLabel3 = new javax.swing.JLabel();
-        lblCurso = new javax.swing.JLabel();
         txtrutapoderado = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -129,51 +124,51 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(382, 488, 83, 29);
+        jButton3.setBounds(382, 488, 69, 25);
 
         jLabel1.setText("Rut Alumno:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(23, 17, 78, 16);
+        jLabel1.setBounds(23, 17, 71, 16);
         getContentPane().add(txtRut);
-        txtRut.setBounds(118, 14, 122, 26);
+        txtRut.setBounds(118, 14, 122, 22);
 
         jLabel2.setText("Nombre:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(86, 80, 54, 16);
+        jLabel2.setBounds(86, 80, 50, 16);
         getContentPane().add(txtNombreUsuario);
-        txtNombreUsuario.setBounds(154, 77, 228, 26);
+        txtNombreUsuario.setBounds(154, 77, 228, 22);
 
         jLabel4.setText("Apellido Paterno:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(35, 109, 107, 16);
+        jLabel4.setBounds(35, 109, 98, 16);
 
         jLabel5.setText("Apellido Materno:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(35, 138, 111, 16);
+        jLabel5.setBounds(35, 138, 101, 16);
 
         jLabel6.setText("Telefono:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(76, 199, 59, 14);
+        jLabel6.setBounds(76, 199, 55, 14);
         getContentPane().add(jSeparator1);
         jSeparator1.setBounds(12, 45, 399, 6);
 
         jLabel7.setText("Ciudad:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(87, 228, 48, 16);
+        jLabel7.setBounds(87, 228, 44, 16);
 
         lblComuna.setText("Comuna:");
         getContentPane().add(lblComuna);
-        lblComuna.setBounds(79, 260, 56, 16);
+        lblComuna.setBounds(79, 260, 52, 16);
 
         jLabel9.setText("Dirección:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(70, 360, 64, 16);
+        jLabel9.setBounds(70, 360, 57, 16);
         getContentPane().add(txtAppPaterno);
-        txtAppPaterno.setBounds(154, 106, 228, 26);
+        txtAppPaterno.setBounds(154, 106, 228, 22);
         getContentPane().add(txtAppMaterno);
-        txtAppMaterno.setBounds(154, 135, 228, 26);
+        txtAppMaterno.setBounds(154, 135, 228, 22);
         getContentPane().add(txtTelefono);
-        txtTelefono.setBounds(154, 199, 228, 26);
+        txtTelefono.setBounds(154, 199, 228, 22);
 
         cmbCiudad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Ciudad" }));
         cmbCiudad.addItemListener(new java.awt.event.ItemListener() {
@@ -182,54 +177,28 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cmbCiudad);
-        cmbCiudad.setBounds(154, 228, 228, 27);
+        cmbCiudad.setBounds(154, 228, 228, 22);
 
         cmbComuna.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione Comuna" }));
         getContentPane().add(cmbComuna);
-        cmbComuna.setBounds(154, 257, 228, 27);
+        cmbComuna.setBounds(154, 257, 228, 22);
         getContentPane().add(txtDireccion);
-        txtDireccion.setBounds(150, 350, 228, 26);
+        txtDireccion.setBounds(150, 350, 228, 22);
 
         jLabel12.setText("Fecha de Nacimiento:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(12, 167, 135, 16);
+        jLabel12.setBounds(12, 167, 124, 16);
         getContentPane().add(txtFNacimiento);
-        txtFNacimiento.setBounds(154, 164, 228, 26);
+        txtFNacimiento.setBounds(154, 164, 228, 22);
 
         lblmensaje.setForeground(new java.awt.Color(255, 51, 0));
         lblmensaje.setText("jLabel13");
         getContentPane().add(lblmensaje);
         lblmensaje.setBounds(40, 440, 301, 16);
 
-        cmbColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbColegio.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbColegioItemStateChanged(evt);
-            }
-        });
-        getContentPane().add(cmbColegio);
-        cmbColegio.setBounds(150, 290, 230, 27);
-
-        cmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbCurso.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbCursoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(cmbCurso);
-        cmbCurso.setBounds(150, 320, 230, 27);
-
-        jLabel3.setText("Colegio");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(90, 290, 50, 16);
-
-        lblCurso.setText("Curso");
-        getContentPane().add(lblCurso);
-        lblCurso.setBounds(90, 330, 53, 16);
-
         txtrutapoderado.setText("jTextField1");
         getContentPane().add(txtrutapoderado);
-        txtrutapoderado.setBounds(150, 390, 80, 26);
+        txtrutapoderado.setBounds(150, 390, 69, 22);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -240,32 +209,23 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             //Obtener apoderado
             String rut = txtRut.getText();
 
-            Alumno alu = this.controller.buscaralumnoxrut(Integer.parseInt(rut));
+            alumnoActual = this.controller.buscaralumnoxrut(Integer.parseInt(rut));
 
-            txtNombreUsuario.setText(String.valueOf(alu.getNombre()));
-            txtAppPaterno.setText(String.valueOf(alu.getaPaterno()));
-            txtAppMaterno.setText(String.valueOf(alu.getaMaterno()));
-            txtFNacimiento.setText(String.valueOf(alu.getFechaNacimiento()));
-            txtTelefono.setText(String.valueOf(alu.getTelefono()));
-            txtDireccion.setText(String.valueOf(alu.getDireccion()));
-            txtrutapoderado.setText(String.valueOf(alu.getRut_apoderado()));
+            txtNombreUsuario.setText(String.valueOf(alumnoActual.getNombre()));
+            txtAppPaterno.setText(String.valueOf(alumnoActual.getaPaterno()));
+            txtAppMaterno.setText(String.valueOf(alumnoActual.getaMaterno()));
+            txtFNacimiento.setText(String.valueOf(alumnoActual.getFechaNacimiento()));
+            txtTelefono.setText(String.valueOf(alumnoActual.getTelefono()));
+            txtDireccion.setText(String.valueOf(alumnoActual.getDireccion()));
+            txtrutapoderado.setText(String.valueOf(alumnoActual.getRut_apoderado()));
 
-            int idComuna = alu.getIdcomuna();
-            Comuna comuna = comunaDAO.obtenerComunaPorId(idComuna);
+            Comuna comuna = comunaDAO.obtenerComunaPorId(alumnoActual.getIdcomuna());
             Ciudad ciudad = ciudadDAO.obtenerCiudadPorId(comuna.getIdCiudad());
             
-            
-            
-            Colegio colegio = colegioDao.buscarColegioPorId(idComuna);
-
             cmbCiudad.setSelectedItem(new KeyValue(ciudad.getId(), ciudad.getNombre()));
-
             this.cmbComuna.setModel(comunaDAO.obtenerComunas(ciudad.getNombre()));
-            
-          
-
             cmbComuna.setSelectedItem(new KeyValue(comuna.getId(), comuna.getNombre()));
-
+            
         } catch (Exception e) {
             lblmensaje.setText("El Objeto de Busqueda, no existe.");
         }
@@ -299,34 +259,26 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
                 throw new Exception("Seleccione Ciudad y Comuna");
             }
 
-            String combocur = String.valueOf(cmbCurso.getSelectedItem());
-            String combocur1 = contratoDao.obtenerIdCurso(combocur);
-            int idcurso = Integer.parseInt(combocur1);
-
             int idcomuna = comuna.getId();
 
             String direccion = txtDireccion.getText();
             
-            Alumno alumno = new Alumno();
-            alumno.setRut(rut);
-            alumno.setRut_apoderado(rutapoderado);
-            alumno.setIdcomuna(idcomuna);
-            alumno.setIdcurso(idcurso);
-            alumno.setFechaNacimiento(fnacimiento);
-            alumno.setNombre(nombre);
-            alumno.setaPaterno(aPaterno);
-            alumno.setaMaterno(aMaterno);
-            alumno.setTelefono(telefono);
-            alumno.setDireccion(direccion);
+            alumnoActual.setRut(rut);
+            alumnoActual.setRut_apoderado(rutapoderado);
+            alumnoActual.setIdcomuna(idcomuna);
+            alumnoActual.setFechaNacimiento(fnacimiento);
+            alumnoActual.setNombre(nombre);
+            alumnoActual.setaPaterno(aPaterno);
+            alumnoActual.setaMaterno(aMaterno);
+            alumnoActual.setTelefono(telefono);
+            alumnoActual.setDireccion(direccion);
 
-           controller.actualizarAlumno(alumno);
+           controller.actualizarAlumno(alumnoActual);
 
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
-
-
     }//GEN-LAST:event_btnmodificarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -336,21 +288,6 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
         MenuApode.setLocationRelativeTo(null);
         MenuApode.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void cmbCursoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbCursoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbCursoActionPerformed
-
-    private void cmbColegioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbColegioItemStateChanged
-        // TODO add your handling code here:
-        
-        
-       if (evt.getStateChange() == ItemEvent.SELECTED) {
-            String curso;
-            curso = String.valueOf(cmbColegio.getSelectedItem());
-            this.cmbCurso.setModel(GuiUtils.createModelFromList(contratoDao.obtenerCursos(curso)));
-        }
-    }//GEN-LAST:event_cmbColegioItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -393,14 +330,11 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     private javax.swing.JButton btnmodificar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbCiudad;
-    private javax.swing.JComboBox<String> cmbColegio;
     private javax.swing.JComboBox<String> cmbComuna;
-    private javax.swing.JComboBox<String> cmbCurso;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -408,7 +342,6 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel lblComuna;
-    private javax.swing.JLabel lblCurso;
     private javax.swing.JLabel lblmensaje;
     private javax.swing.JTextField txtAppMaterno;
     private javax.swing.JTextField txtAppPaterno;

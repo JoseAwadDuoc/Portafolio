@@ -35,42 +35,40 @@ public class ContratoDAO extends DbUtilidades {
         return listapaquete;
     }
 
-    public List<String> obtenerColegios() {
-        List<String> listapaquete = new ArrayList<>();
-        listapaquete.add("Seleccione Colegio Asociado");
+    public List<KeyValue> obtenerColegios() {
+        List<KeyValue> listapaquete = new ArrayList<>();
+        listapaquete.add(new KeyValue(-1, "Seleccione Colegio Asociado"));
         ResultSet rs = this.consulta("Select * from COLEGIO ORDER BY NOMBRE_COLEGIO ASC");
-
         try {
             while (rs.next()) {
-                listapaquete.add(rs.getString("NOMBRE_COLEGIO"));
-
+                int id = rs.getInt("IDCOLEGIO");
+                String text = rs.getString("NOMBRE_COLEGIO");
+                listapaquete.add(new KeyValue(id, text));
             }
             rs.close();
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
         return listapaquete;
     }
 
-    public List<String> obtenerCursos(String colegio) {
-        List<String> listapaquete = new ArrayList<>();
-        listapaquete.add("Seleccione Curso Asociado");
+    public List<KeyValue> obtenerCursos(String colegio) {
+        List<KeyValue> lst = new ArrayList<>();
+        lst.add(new KeyValue(-1, "Seleccione Curso Asociado"));
         ResultSet rs = this.consulta("Select * from CURSO cu join colegio co on(cu.idcolegio=co.idcolegio)"
                 + "WHERE co.nombre_colegio = '" + colegio + "'");
-
         try {
             while (rs.next()) {
-                listapaquete.add(rs.getString("DESCRIPCION"));
+                int id = rs.getInt("IDCURSO");
+                String text = rs.getString("DESCRIPCION");
+                lst.add(new KeyValue(id, text));
             }
             rs.close();
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
-
-        return listapaquete;
+        return lst;
     }
 
     public int obtenerMontoPaquete(String descripcion) {

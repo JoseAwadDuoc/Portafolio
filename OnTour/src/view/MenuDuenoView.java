@@ -247,7 +247,7 @@ public class MenuDuenoView extends javax.swing.JFrame {
     private void lblGenerarReportesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGenerarReportesMouseClicked
         // TODO add your handling code here:
         this.setVisible(false);
-        GenerarReporteAvance generarReporte = new GenerarReporteAvance();
+        GenerarReporteAvanceView generarReporte = new GenerarReporteAvanceView();
         generarReporte.setLocationRelativeTo(null);
         generarReporte.setVisible(true);
     }//GEN-LAST:event_lblGenerarReportesMouseClicked

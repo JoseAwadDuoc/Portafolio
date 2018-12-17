@@ -13,7 +13,7 @@ public class Conexion {
         
         String pass="PORTAFOLIO";
         String user="PORTAFOLIO";
-        String bd="jdbc:oracle:thin:@172.16.55.176:1521:XE";
+        String bd="jdbc:oracle:thin:@localhost:1521:XE";
         //String bd = "jdbc:oracle:thin:@dbontour.intercity.net:1521:XE";
         
         try{

@@ -1,5 +1,6 @@
 package Dao;
 
+import com.mxrck.autocompleter.TextAutoCompleter;
 import model.Apoderado;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -167,4 +168,17 @@ public class ApoderadoDAO extends DbUtilidades {
         return this.actualizar(sql);
     }
 
+    public ArrayList<Object> buscarNombresApoderados() {
+        ArrayList<Object> lst = new ArrayList<>();
+        ResultSet rs = this.consulta("SELECT CONCAT(nombres,CONCAT(' ',CONCAT(apaterno,CONCAT(' ',amaterno)))) as \"NOMBRE_APODERADO\" FROM APODERADO");
+        try {
+            while (rs.next()) {
+                lst.add(rs.getString("NOMBRE_APODERADO"));
+            }
+            rs.close();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+        return lst;
+    }
 }

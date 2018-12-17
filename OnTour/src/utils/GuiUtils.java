@@ -9,6 +9,7 @@ import java.awt.Image;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import model.KeyValue;
 import org.apache.commons.io.IOUtils;
 
 /**
@@ -18,16 +19,15 @@ import org.apache.commons.io.IOUtils;
 public class GuiUtils {
     
     
-    public static DefaultComboBoxModel createModelFromList(List<String> list) {
+    public static DefaultComboBoxModel createModelFromList(List list) {
         
-        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
      
-        for(String s : list) {
+        for(Object s : list) {
             model.addElement(s);
         }
         return model;
     }
-    
     
     public static Image getImage(String name) {
         ImageIcon img = getImageIcon(name);

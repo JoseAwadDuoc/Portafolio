@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4bfdee44-4ed2-4929-9b0d-0b117768436c">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -40,18 +40,20 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="230" y="20" width="263" height="39" uuid="e9925186-7664-4c52-b36e-c27e554fd547"/>
+				<reportElement x="230" y="20" width="263" height="39"/>
 				<textElement textAlignment="Justified">
 					<font size="24"/>
 				</textElement>
 				<text><![CDATA[REPORTE DE AVANCE]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="403" y="0" width="152" height="20" uuid="a7e54d6c-7333-4e8e-9011-de2f124c9417"/>
-				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				<reportElement x="403" y="0" width="152" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.util.Date"><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="328" y="0" width="100" height="20" uuid="9c1d12be-6bbb-4635-860d-86a4b62f5fb9"/>
+				<reportElement x="328" y="0" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 		</band>
@@ -65,81 +67,99 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 	<detail>
 		<band height="298" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="100" height="20" uuid="14f88fc1-ec4a-44ce-b043-82e435ce81db"/>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[CONTRATO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="59" width="100" height="20" uuid="731b55af-05c0-4f93-abcc-e9d606ce089c"/>
+				<reportElement x="0" y="59" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[PAQUETE:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="90" width="100" height="20" uuid="802fbbd3-8538-4d7c-a1f7-970ee4867009"/>
+				<reportElement x="0" y="90" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[CURSO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="120" width="100" height="20" uuid="263e1416-563a-499f-9d12-c50400c3561d"/>
+				<reportElement x="0" y="120" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[FECHA CONTRATO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="150" width="100" height="20" uuid="251227a2-e909-4d61-99ca-ec40b7bb6be0"/>
+				<reportElement x="0" y="150" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[FECHA EVENTO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="179" width="100" height="20" uuid="60c539da-a0dc-4ee5-9c05-d7c048370c13"/>
+				<reportElement x="0" y="179" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[MONTO META:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="140" y="59" width="100" height="20" uuid="d4ce2a08-f075-4b07-aa5a-b05460b287c4"/>
-				<textFieldExpression><![CDATA[$F{Descripcion Paquete}]]></textFieldExpression>
+				<reportElement x="140" y="59" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Descripcion Paquete}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="0" width="100" height="20" uuid="217c44db-491d-4efb-9248-1d2cc002719f"/>
-				<textFieldExpression><![CDATA[$F{IDCONTRATO}]]></textFieldExpression>
+				<reportElement x="140" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{IDCONTRATO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="90" width="100" height="20" uuid="e9e45133-4e74-47dd-bd34-e6ecab7282ce"/>
-				<textFieldExpression><![CDATA[$F{Curso}]]></textFieldExpression>
+				<reportElement x="140" y="90" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Curso}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="120" width="100" height="20" uuid="a3e17516-6e36-4507-9a4f-e256e5c2cd6b"/>
-				<textFieldExpression><![CDATA[$F{FECHA_CONTRATO}]]></textFieldExpression>
+				<reportElement x="140" y="120" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{FECHA_CONTRATO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="150" width="100" height="20" uuid="adf54b2c-7bca-49e4-a122-bdee1e9cc5e9"/>
-				<textFieldExpression><![CDATA[$F{FECHA_EVENTO}]]></textFieldExpression>
+				<reportElement x="140" y="150" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.sql.Timestamp"><![CDATA[$F{FECHA_EVENTO}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="179" width="100" height="20" uuid="9a58f122-27f9-4b08-b5f8-5a923903bd0d"/>
-				<textFieldExpression><![CDATA[$F{MONTO_META}]]></textFieldExpression>
+				<reportElement x="140" y="179" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{MONTO_META}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="140" y="207" width="100" height="20" uuid="f90151ba-a2a7-465f-880f-9237259e2424"/>
-				<textFieldExpression><![CDATA[$F{Deposito a la Fecha}]]></textFieldExpression>
+				<reportElement x="140" y="207" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{Deposito a la Fecha}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="207" width="100" height="20" uuid="a8de39a4-b199-49a5-8be8-2e3101576a92"/>
+				<reportElement x="0" y="207" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[REGISTRADO:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="140" y="32" width="100" height="20" uuid="cc02325e-3f04-485c-a76b-7bce82693714"/>
-				<textFieldExpression><![CDATA[$F{Nombre Ejecutivo}]]></textFieldExpression>
+				<reportElement x="140" y="32" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Nombre Ejecutivo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="32" width="114" height="20" uuid="ab82a82f-46ae-4ac9-880b-c4e3170f7a5c"/>
+				<reportElement x="0" y="32" width="114" height="20"/>
+				<textElement/>
 				<text><![CDATA[NOMBRE EJECUTIVO:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="245" width="100" height="20" uuid="652c8e7c-353d-4bdd-a2e0-b2f5a0b33326"/>
+				<reportElement x="0" y="245" width="100" height="20"/>
+				<textElement/>
 				<text><![CDATA[ASEGURADORA]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="140" y="245" width="100" height="20" uuid="3777f8c6-9bc7-4a9f-aa27-9255ee343bc2"/>
-				<textFieldExpression><![CDATA[$F{NOMBRE_ASEGURADORA}]]></textFieldExpression>
+				<reportElement x="140" y="245" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{NOMBRE_ASEGURADORA}]]></textFieldExpression>
 			</textField>
 			<elementGroup/>
-			<bar3DChart>
+			<barChart>
 				<chart>
-					<reportElement x="264" y="0" width="522" height="286"/>
+					<reportElement x="262" y="10" width="521" height="278"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
@@ -151,22 +171,28 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 						<valueExpression><![CDATA[$F{MONTO_META}]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["MONTO AHORRADO"]]></seriesExpression>
+						<seriesExpression><![CDATA["MONTO AHORRADO"        ]]></seriesExpression>
 						<categoryExpression><![CDATA[$F{Deposito a la Fecha}]]></categoryExpression>
 						<valueExpression><![CDATA[$F{Deposito a la Fecha}]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
-				<bar3DPlot>
+				<barPlot>
 					<plot orientation="Horizontal"/>
 					<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
 					<categoryAxisFormat>
-						<axisFormat/>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
 					</categoryAxisFormat>
 					<valueAxisFormat>
-						<axisFormat/>
+						<axisFormat>
+							<labelFont/>
+							<tickLabelFont/>
+						</axisFormat>
 					</valueAxisFormat>
-				</bar3DPlot>
-			</bar3DChart>
+				</barPlot>
+			</barChart>
 		</band>
 	</detail>
 	<columnFooter>
@@ -175,7 +201,7 @@ col.nombre_colegio,cu.descripcion,ase.nombre_aseguradora,c.fecha_contrato,c.mont
 	<pageFooter>
 		<band height="54" splitType="Stretch">
 			<staticText>
-				<reportElement x="403" y="34" width="201" height="20" uuid="0e71da37-9909-4bb8-86b4-3cea5fcbc32a"/>
+				<reportElement x="403" y="34" width="201" height="20"/>
 				<textElement>
 					<font size="8"/>
 				</textElement>

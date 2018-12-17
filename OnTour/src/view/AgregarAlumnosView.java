@@ -6,6 +6,7 @@
 package view;
 
 import Dao.AlumnoDAO;
+import Dao.ApoderadoDAO;
 import Dao.CiudadDAO;
 import Dao.ComunaDAO;
 import Dao.Conexion;
@@ -18,6 +19,8 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import model.Alumno;
 import utils.GuiUtils;
@@ -28,52 +31,24 @@ import utils.GuiUtils;
  */
 public class AgregarAlumnosView extends javax.swing.JFrame {
 
+    private ApoderadoDAO apoderadoDAO = new ApoderadoDAO();
     private ContratoDAO contratoDao = new ContratoDAO();
     private ComunaDAO comunaDao = new ComunaDAO();
     private CiudadDAO ciudadDao = new CiudadDAO();
     private AlumnoDAO alumnoDao = new AlumnoDAO();
     private AlumnosController alcontroller= new AlumnosController();
 
-    private ResultSet consulta(String sql) {
-        System.out.println("consulta: " + sql);
-        Connection con = null;
-        ResultSet rs = null;
-        try {
-            con = Conexion.conectar();
-            PreparedStatement stm = con.prepareStatement(sql);
-            rs = stm.executeQuery();
-        } catch (SQLException e) {
-            System.out.println("Error consulta :" + e.getMessage());
-        }
-        return rs;
-    }
-
-    public String obtenerapoderados() {
-        String autocompletado = "";
-        TextAutoCompleter autoc = new TextAutoCompleter(txtApoderado);
-        txtApoderado.setText("Ingrese Nombre Apoderado");
-        ResultSet rs = this.consulta("SELECT CONCAT(nombres,CONCAT(' ',CONCAT(apaterno,CONCAT(' ',amaterno)))) as \"NOMBRE_APODERADO\" FROM APODERADO");
-        try {
-            while (rs.next()) {
-                autoc.addItem(rs.getString("NOMBRE_APODERADO"));
-
-            }
-            rs.close();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        }
-        return autocompletado;
-
-    }
-
     /**
      * Creates new form AgregarAlumnosView
      */
     public AgregarAlumnosView() {
         initComponents();
-
-        txtApoderado.setText(obtenerapoderados());
+        
+        ArrayList<Object> lstNombres = apoderadoDAO.buscarNombresApoderados();
+        
+        TextAutoCompleter textAutoCompleter = new TextAutoCompleter(txtApoderado);
+        textAutoCompleter.setItems(lstNombres);
+        
         this.cmbColegio.setModel(GuiUtils.createModelFromList(contratoDao.obtenerColegios()));
         this.cmbCiudad.setModel(ciudadDao.obtenerCiudades());
         this.lblCurso.setVisible(false);
@@ -125,7 +100,7 @@ public class AgregarAlumnosView extends javax.swing.JFrame {
 
         jLabel2.setText("Rut:");
 
-        jLabel3.setText("Apoderado:");
+        jLabel3.setText("Nombre apoderado:");
 
         txtApoderado.setToolTipText("Ingrese el nombre del apoderado");
         txtApoderado.addActionListener(new java.awt.event.ActionListener() {
@@ -205,23 +180,19 @@ public class AgregarAlumnosView extends javax.swing.JFrame {
                                 .addComponent(txtApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel11)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(34, 34, 34)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(jLabel1)
-                                                .addComponent(jLabel2)
-                                                .addComponent(jLabel4)
-                                                .addComponent(lblCurso)
-                                                .addComponent(jLabel6)
-                                                .addComponent(jLabel7)))
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addContainerGap()
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                .addComponent(lblComuna)
-                                                .addComponent(jLabel12)
-                                                .addComponent(jLabel9))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(34, 34, 34)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel11)
+                                            .addComponent(jLabel1)
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel4)
+                                            .addComponent(lblCurso)
+                                            .addComponent(jLabel6)
+                                            .addComponent(jLabel7)
+                                            .addComponent(lblComuna)
+                                            .addComponent(jLabel12)
+                                            .addComponent(jLabel9)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
                                         .addComponent(jLabel10)))
@@ -242,7 +213,7 @@ public class AgregarAlumnosView extends javax.swing.JFrame {
                                         .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(DateChooserFnacimiento, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(8, 8, 8)))
-                        .addGap(0, 48, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
