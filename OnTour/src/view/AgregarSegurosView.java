@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import model.KeyValue;
 import model.Seguro;
 import utils.GuiUtils;
+import utils.ValidacionesUtils;
 
 /**
  *
@@ -300,6 +301,9 @@ public class AgregarSegurosView extends javax.swing.JFrame {
             seguro.setFechFin(fecha_fin);
 
             boolean agregado = controller.agregarSeguro(seguro);
+            
+            System.out.println("seguro agregado: " + agregado);
+            
             if (agregado) {
                 JOptionPane.showMessageDialog(this, "Seguro registrado");
             } else {
@@ -307,10 +311,9 @@ public class AgregarSegurosView extends javax.swing.JFrame {
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            //e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Ingrese todos los datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-// TODO add your handling code here:
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
