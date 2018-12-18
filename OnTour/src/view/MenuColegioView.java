@@ -86,6 +86,7 @@ public class MenuColegioView extends javax.swing.JFrame {
         jPanelListarColegios = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableColegio = new javax.swing.JTable();
+        btnAgregarArchivo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -237,7 +238,7 @@ public class MenuColegioView extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 30, 140, 60));
+        jPanel1.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 90, 140, 60));
 
         jPanelAgregarColegio.setBackground(new java.awt.Color(255, 255, 255));
         jPanelAgregarColegio.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Registrar Colegio", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -353,6 +354,27 @@ public class MenuColegioView extends javax.swing.JFrame {
         jScrollPane1.setBounds(20, 30, 450, 135);
 
         jPanel1.add(jPanelListarColegios, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 180, 488, 180));
+
+        btnAgregarArchivo.setBackground(new java.awt.Color(255, 255, 255));
+        btnAgregarArchivo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnAgregarArchivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Add.png"))); // NOI18N
+        btnAgregarArchivo.setText("Cursos");
+        btnAgregarArchivo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnAgregarArchivoMouseMoved(evt);
+            }
+        });
+        btnAgregarArchivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgregarArchivoMouseExited(evt);
+            }
+        });
+        btnAgregarArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarArchivoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAgregarArchivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 150, -1));
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 50, 950, 570);
@@ -522,6 +544,24 @@ public class MenuColegioView extends javax.swing.JFrame {
         btnAgregarColegio1.setBackground((new java.awt.Color(255, 255, 255)));
     }//GEN-LAST:event_btnAgregarColegio1MouseExited
 
+    private void btnAgregarArchivoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarArchivoMouseMoved
+        // TODO add your handling code here:
+        btnAgregarArchivo.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnAgregarArchivoMouseMoved
+
+    private void btnAgregarArchivoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarArchivoMouseExited
+        // TODO add your handling code here:
+        btnAgregarArchivo.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnAgregarArchivoMouseExited
+
+    private void btnAgregarArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarArchivoActionPerformed
+        // TODO add your handling code here:
+        AgregarCursosView agregarCursos = new AgregarCursosView();
+        this.setVisible(false);
+        agregarCursos.setLocationRelativeTo(null);
+        agregarCursos.setVisible(true);
+    }//GEN-LAST:event_btnAgregarArchivoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -567,6 +607,7 @@ public class MenuColegioView extends javax.swing.JFrame {
     private javax.swing.JTextField TxtDireccionColegio;
     private javax.swing.JTextField TxtNombreColegio;
     private javax.swing.JTextField TxtTelefonoColegio;
+    private javax.swing.JButton btnAgregarArchivo;
     private javax.swing.JButton btnAgregarColegio;
     private javax.swing.JButton btnAgregarColegio1;
     private javax.swing.JButton btnConsultarColegios;

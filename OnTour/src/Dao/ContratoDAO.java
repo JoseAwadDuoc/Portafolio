@@ -122,6 +122,24 @@ public class ContratoDAO extends DbUtilidades {
 
         return idcurso;
     }
+    
+        public String obtenerIdColegio(String nombrecolegio) {
+
+        ResultSet rs = this.consulta("Select * from COLEGIO where NOMBRE_COLEGIO = '" + nombrecolegio + "'");
+        String idcurso = new String();
+        try {
+            while (rs.next()) {
+                idcurso = rs.getString("IDCOLEGIO");
+
+            }
+            rs.close();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return idcurso;
+    }
 
     public int obtenerIdContratoPorIdCurso(int idcurso) {
 
