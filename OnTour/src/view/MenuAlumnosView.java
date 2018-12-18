@@ -8,6 +8,7 @@ package view;
 import Dao.AlumnoDAO;
 import Dao.ContratoDAO;
 import controller.AlumnosController;
+import java.awt.Dimension;
 import java.awt.event.ItemEvent;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,13 +31,15 @@ public class MenuAlumnosView extends javax.swing.JFrame {
      * Creates new form MenuAlumnosView
      */
     public MenuAlumnosView() {
+        this.setUndecorated(true);
+        this.setMinimumSize(new Dimension(1081, 573));
         initComponents();
         this.cmbColegio.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerColegios()));
         this.jScrollPane1.setVisible(true);
-
         DefaultTableModel modelotabla = this.controller.consultaralumnos_todos();
         this.tableAlumnos.setModel(modelotabla);
-        this.btnFiltrar.setVisible(false);
+        this.btnFiltrar.setEnabled(false);
+        this.cmbCurso.setEnabled(false);
     }
 
     /**
@@ -48,44 +51,122 @@ public class MenuAlumnosView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        lblMinimizar = new javax.swing.JLabel();
+        lblLogoMenu = new javax.swing.JLabel();
+        BtnCerrar = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        lblLogo = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        btnFiltrar = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
+        BtnRegistrarApoderado = new javax.swing.JButton();
+        BtnModificarApoderado = new javax.swing.JButton();
         cmbColegio = new javax.swing.JComboBox<>();
         cmbCurso = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        BtnRegistrarApoderado = new javax.swing.JButton();
-        BtnModificarApoderado = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableAlumnos = new javax.swing.JTable();
         BtnVolver = new javax.swing.JButton();
-        btnFiltrar = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        cmbColegio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbColegio.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbColegioItemStateChanged(evt);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblMinimizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Minimizar.png"))); // NOI18N
+        lblMinimizar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseMoved(evt);
             }
         });
-
-        cmbCurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbCurso.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cmbCursoItemStateChanged(evt);
-            }
-        });
-
-        jLabel1.setText("SELECCIONE COLEGIO:");
-
-        jLabel2.setText("SELECCIONE CURSO:");
-
-        BtnRegistrarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnRegistrarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddApoderado.png"))); // NOI18N
-        BtnRegistrarApoderado.setText("Registrar");
-        BtnRegistrarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+        lblMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BtnRegistrarApoderadoMouseClicked(evt);
+                lblMinimizarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                lblMinimizarMouseExited(evt);
+            }
+        });
+        jPanel3.add(lblMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 10, -1, 30));
+
+        lblLogoMenu.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblLogoMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo.png"))); // NOI18N
+        lblLogoMenu.setText("On Tour");
+        jPanel3.add(lblLogoMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 120, 40));
+
+        BtnCerrar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Exit.png"))); // NOI18N
+        BtnCerrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseMoved(evt);
+            }
+        });
+        BtnCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnCerrarMouseExited(evt);
+            }
+        });
+        BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnCerrarActionPerformed(evt);
+            }
+        });
+        jPanel3.add(BtnCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 10, 30, 30));
+
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, 0, 1080, 50);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo1.png"))); // NOI18N
+        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 170));
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(12, 161, 215), 5, true), "Administrador Alumnos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(12, 161, 215))); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnFiltrar.setBackground(new java.awt.Color(255, 255, 255));
+        btnFiltrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Filter.png"))); // NOI18N
+        btnFiltrar.setText("Filtrar");
+        btnFiltrar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnFiltrarMouseMoved(evt);
+            }
+        });
+        btnFiltrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnFiltrarMouseExited(evt);
+            }
+        });
+        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFiltrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 150, 70));
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        jPanel2.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 10, 100));
+
+        BtnRegistrarApoderado.setBackground(new java.awt.Color(255, 255, 255));
+        BtnRegistrarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        BtnRegistrarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AdministrarStudent.png"))); // NOI18N
+        BtnRegistrarApoderado.setText("Registrar");
+        BtnRegistrarApoderado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnRegistrarApoderadoMouseMoved(evt);
+            }
+        });
+        BtnRegistrarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnRegistrarApoderadoMouseExited(evt);
             }
         });
         BtnRegistrarApoderado.addActionListener(new java.awt.event.ActionListener() {
@@ -93,112 +174,100 @@ public class MenuAlumnosView extends javax.swing.JFrame {
                 BtnRegistrarApoderadoActionPerformed(evt);
             }
         });
+        jPanel2.add(BtnRegistrarApoderado, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, -1, 70));
 
+        BtnModificarApoderado.setBackground(new java.awt.Color(255, 255, 255));
         BtnModificarApoderado.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnModificarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EditApoderado.png"))); // NOI18N
+        BtnModificarApoderado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Editar.png"))); // NOI18N
         BtnModificarApoderado.setText("Modificar");
+        BtnModificarApoderado.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnModificarApoderado.setIconTextGap(2);
+        BtnModificarApoderado.setMargin(new java.awt.Insets(2, 4, 2, 14));
+        BtnModificarApoderado.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnModificarApoderadoMouseMoved(evt);
+            }
+        });
+        BtnModificarApoderado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnModificarApoderadoMouseExited(evt);
+            }
+        });
         BtnModificarApoderado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnModificarApoderadoActionPerformed(evt);
             }
         });
+        jPanel2.add(BtnModificarApoderado, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 170, 70));
+
+        cmbColegio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbColegio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbColegioItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(cmbColegio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, 193, 44));
+
+        cmbCurso.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cmbCurso.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cmbCursoItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(cmbCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 80, 193, 44));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("COLEGIO:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 80, -1));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("CURSO:");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 60, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 850, 150));
 
         jScrollPane1.setViewportView(tableAlumnos);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(206, 180, 850, 260));
+
+        BtnVolver.setBackground(new java.awt.Color(255, 255, 255));
         BtnVolver.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return.png"))); // NOI18N
+        BtnVolver.setForeground(new java.awt.Color(12, 161, 215));
+        BtnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Return1.png"))); // NOI18N
         BtnVolver.setText("Volver");
+        BtnVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        BtnVolver.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnVolver.setIconTextGap(-10);
+        BtnVolver.setMargin(new java.awt.Insets(2, 0, 2, 14));
+        BtnVolver.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                BtnVolverMouseMoved(evt);
+            }
+        });
+        BtnVolver.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BtnVolverMouseExited(evt);
+            }
+        });
         BtnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnVolverActionPerformed(evt);
             }
         });
+        jPanel1.add(BtnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 450, 140, 60));
 
-        btnFiltrar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnFiltrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/AddApoderado.png"))); // NOI18N
-        btnFiltrar.setText("FILTRAR");
-        btnFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFiltrarActionPerformed(evt);
-            }
-        });
-
-        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cmbCurso, 0, 193, Short.MAX_VALUE)
-                            .addComponent(cmbColegio, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnFiltrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnRegistrarApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BtnModificarApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 34, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbColegio, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmbCurso, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addComponent(btnFiltrar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BtnRegistrarApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BtnModificarApoderado, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BtnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 50, 1080, 520);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
-        // TODO add your handling code here:
-        this.setVisible(false);
-        MenuPrincipalView MenuPrin = new MenuPrincipalView();
-        MenuPrin.setLocationRelativeTo(null);
-        MenuPrin.setVisible(true);
-    }//GEN-LAST:event_BtnVolverActionPerformed
 
     private void cmbColegioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbColegioItemStateChanged
         if (evt.getStateChange() == ItemEvent.SELECTED) {
             String curso;
             curso = String.valueOf(cmbColegio.getSelectedItem());
             this.cmbCurso.setModel(GuiUtils.createModelFromList(contratoDAO.obtenerCursos(curso)));
+            this.cmbCurso.setEnabled(true);
         }
 
         // TODO add your handling code here:
@@ -206,14 +275,12 @@ public class MenuAlumnosView extends javax.swing.JFrame {
 
     private void cmbCursoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cmbCursoItemStateChanged
 
-        this.btnFiltrar.setVisible(true);
+        this.btnFiltrar.setEnabled(true);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbCursoItemStateChanged
 
     private void btnFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFiltrarActionPerformed
-
-        //Obtención ID CURSO (Para uso en el insert)//
         String combocur = String.valueOf(cmbCurso.getSelectedItem());
         String combocur1 = contratoDAO.obtenerIdCurso(combocur);
         int idcurso = Integer.parseInt(combocur1);
@@ -224,7 +291,7 @@ public class MenuAlumnosView extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "No Existen alumnos para el curso");
         }
-
+        //Obtención ID CURSO (Para uso en el insert)//
         // TODO add your handling code here:
     }//GEN-LAST:event_btnFiltrarActionPerformed
 
@@ -246,10 +313,38 @@ public class MenuAlumnosView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnModificarApoderadoActionPerformed
 
-    private void BtnRegistrarApoderadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoMouseClicked
-        // TODO add your handling code here:
+    private void lblMinimizarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseMoved
 
-    }//GEN-LAST:event_BtnRegistrarApoderadoMouseClicked
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_lblMinimizarMouseMoved
+
+    private void lblMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseClicked
+        // TODO add your handling code here:
+        this.setState(MenuPrincipalView.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizarMouseClicked
+
+    private void lblMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizarMouseExited
+
+        lblMinimizar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_lblMinimizarMouseExited
+
+    private void BtnCerrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseMoved
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnCerrarMouseMoved
+
+    private void BtnCerrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnCerrarMouseExited
+        // TODO add your handling code here:
+        BtnCerrar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnCerrarMouseExited
+
+    private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "¿Seguro que deseas salir de la aplicación?");
+        if (input == 0) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_BtnCerrarActionPerformed
 
     private void BtnRegistrarApoderadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoActionPerformed
         // TODO add your handling code here:
@@ -258,6 +353,54 @@ public class MenuAlumnosView extends javax.swing.JFrame {
         agregarAlumnos.setLocationRelativeTo(null);
         agregarAlumnos.setVisible(true);
     }//GEN-LAST:event_BtnRegistrarApoderadoActionPerformed
+
+    private void BtnVolverMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnVolverMouseMoved
+        // TODO add your handling code here:
+        BtnVolver.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnVolverMouseMoved
+
+    private void BtnVolverMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnVolverMouseExited
+        // TODO add your handling code here:
+        BtnVolver.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnVolverMouseExited
+
+    private void BtnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnVolverActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+        MenuPrincipalView MenuPrin = new MenuPrincipalView();
+        MenuPrin.setLocationRelativeTo(null);
+        MenuPrin.setVisible(true);
+    }//GEN-LAST:event_BtnVolverActionPerformed
+
+    private void btnFiltrarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrarMouseMoved
+        // TODO add your handling code here:
+        btnFiltrar.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnFiltrarMouseMoved
+
+    private void BtnRegistrarApoderadoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoMouseMoved
+        // TODO add your handling code here:
+        BtnRegistrarApoderado.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnRegistrarApoderadoMouseMoved
+
+    private void BtnModificarApoderadoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnModificarApoderadoMouseMoved
+        // TODO add your handling code here:
+        BtnModificarApoderado.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_BtnModificarApoderadoMouseMoved
+
+    private void btnFiltrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrarMouseExited
+        // TODO add your handling code here:
+        btnFiltrar.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnFiltrarMouseExited
+
+    private void BtnRegistrarApoderadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnRegistrarApoderadoMouseExited
+        // TODO add your handling code here:
+        BtnRegistrarApoderado.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnRegistrarApoderadoMouseExited
+
+    private void BtnModificarApoderadoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BtnModificarApoderadoMouseExited
+        // TODO add your handling code here:
+        BtnModificarApoderado.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_BtnModificarApoderadoMouseExited
 
     /**
      * @param args the command line arguments
@@ -295,6 +438,7 @@ public class MenuAlumnosView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BtnCerrar;
     private javax.swing.JButton BtnModificarApoderado;
     private javax.swing.JButton BtnRegistrarApoderado;
     private javax.swing.JButton BtnVolver;
@@ -303,8 +447,14 @@ public class MenuAlumnosView extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbCurso;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel lblLogo;
+    private javax.swing.JLabel lblLogoMenu;
+    private javax.swing.JLabel lblMinimizar;
     private javax.swing.JTable tableAlumnos;
     // End of variables declaration//GEN-END:variables
 }

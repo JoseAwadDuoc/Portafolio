@@ -31,7 +31,7 @@ public class ApoderadoDAO extends DbUtilidades {
         try {
 
             Statement st = Conexion.conectar().createStatement();
-            String sql = "Select a.rut_apoderado as Rut,CONCAT(CONCAT(CONCAT(CONCAT(a.nombres,' '),a.apaterno),' '), a.amaterno) as Nombre, c.nombre_comuna as Comuna,a.direccion as Dirección,a.correo as Correo, a.telefono as Teléfono, a.pass_apoderado as Contraseña From apoderado a join comuna c on(a.idcomuna=c.idcomuna) where estado = 1";
+            String sql = "Select a.rut_apoderado as Rut,CONCAT(CONCAT(CONCAT(CONCAT(a.nombres,' '),a.apaterno),' '), a.amaterno) as Nombre, c.nombre_comuna as Comuna,a.direccion as Dirección,a.correo as Correo, a.telefono as Teléfono, a.pass_apoderado as Contraseña,a.perfil,a.estado From apoderado a join comuna c on(a.idcomuna=c.idcomuna) where estado = 1";
 
             ResultSet rs = st.executeQuery(sql);
 
@@ -124,6 +124,7 @@ public class ApoderadoDAO extends DbUtilidades {
         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
         ResultSet rs = this.consulta("Select * from Apoderado apo join COMUNA co on (apo.IDCOMUNA=co.IDCOMUNA) JOIN CIUDAD cu on(co.IDCIUDAD=cu.IDCIUDAD) where RUT_APODERADO = '" + rut + "'");
+//        Select a.rut_apoderado as Rut,CONCAT(CONCAT(CONCAT(CONCAT(a.nombres,' '),a.apaterno),' '), a.amaterno) as Nombre, c.nombre_comuna as Comuna,a.direccion as Dirección,a.correo as Correo, a.telefono as Teléfono, a.pass_apoderado as Contraseña,a.perfil,a.estado From apoderado a join comuna c on(a.idcomuna=c.idcomuna) where estado = 1
         Apoderado apoderado = new Apoderado();
         try {
             while (rs.next()) {

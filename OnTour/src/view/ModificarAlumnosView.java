@@ -286,7 +286,22 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
         lblmensaje.setText("jLabel13");
         jPanel1.add(lblmensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 450, 301, 20));
 
+        btnmodificar.setBackground(new java.awt.Color(255, 255, 255));
+        btnmodificar.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnmodificar.setText("Modificar Alumno");
+        btnmodificar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnmodificarMouseMoved(evt);
+            }
+        });
+        btnmodificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnmodificarMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnmodificarMouseExited(evt);
+            }
+        });
         btnmodificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmodificarActionPerformed(evt);
@@ -499,6 +514,20 @@ public class ModificarAlumnosView extends javax.swing.JFrame {
             System.exit(0);
         }
     }//GEN-LAST:event_BtnCerrarActionPerformed
+
+    private void btnmodificarMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmodificarMouseMoved
+        // TODO add your handling code here:
+        btnmodificar.setBackground((new java.awt.Color(231, 165, 165)));
+    }//GEN-LAST:event_btnmodificarMouseMoved
+
+    private void btnmodificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmodificarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnmodificarMouseClicked
+
+    private void btnmodificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmodificarMouseExited
+        // TODO add your handling code here:
+        btnmodificar.setBackground((new java.awt.Color(255, 255, 255)));
+    }//GEN-LAST:event_btnmodificarMouseExited
 
     /**
      * @param args the command line arguments
